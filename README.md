@@ -15,3 +15,5 @@ Status on each page is labelled. Not measured production CAD unless stated.
 The previous Pages host at `active-esl/enclosure-concepts` is **retired** (deployment wedged). Use this repo for the public gallery.
 
 **Publish:** push to `main` → Actions workflow **Deploy GitHub Pages** on the AESL `esl-proxmox` runner. After a new model GLB, rebake and copy the beauty still PNG — Still does not auto-update from GLB.
+
+_Deploy SHA bump after cancelled Pages deployment on first push._
