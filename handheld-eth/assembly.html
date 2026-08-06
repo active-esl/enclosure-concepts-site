@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color:#0b1220;color-scheme:dark">
 <head>
-  <meta name="aesl-build" content="20260806T123718Z-5ebb18d91f" />
+  <meta name="aesl-build" content="20260806T154714Z-f1cc705a7b" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0b1220" />
@@ -450,9 +450,9 @@
     const MANIFEST = {
   "id": "eth",
   "title": "Active POE",
-  "blurb": "Stepped rear eth/POE \u00b7 front + rear housing \u00b7 LOCKED I/O tip-in (open apron + face-wall RJ45/USB-C mouths with lead-in chamfers; no internal bay fill) \u00b7 small snap cover over mouths (cable notches). Ghost internals through shell by default. Toggle parts \u00b7 Spot \u00b7 Solo \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Concept shell \u2014 I/O bay locked 2026-08-03.",
+  "blurb": "Stepped rear eth/POE \u00b7 front + rear housing \u00b7 LOCKED I/O tip-in (open apron + face-wall RJ45/USB-C mouths with lead-in chamfers; no internal bay fill) \u00b7 PoE snap lid sealing bay cut-out (RJ45 cable notch; USB blanked). Ghost internals through shell by default. Toggle parts \u00b7 Spot \u00b7 Solo \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Concept shell \u2014 I/O bay locked 2026-08-03.",
   "glb": "assembly.glb",
-  "glb_version": "b6e252ff57",
+  "glb_version": "0de818873b",
   "parts": [
     {
       "id": "front",
@@ -480,7 +480,7 @@
     },
     {
       "id": "bay_hatch",
-      "label": "I/O snap cover (mouths)",
+      "label": "I/O snap cover (PoE)",
       "visible": true,
       "color": [
         120,
@@ -770,31 +770,31 @@
       "default": false,
       "dims": [
         {
-          "label": "bay_hatch W 53.6 mm",
-          "mm": 53.6,
+          "label": "bay_hatch W 53.5 mm",
+          "mm": 53.54,
           "a": [
-            0.073278,
-            0.06028000000000001,
-            0.009000000000000001
+            0.073308,
+            0.06033000000000001,
+            -0.0018000000000000008
           ],
           "b": [
-            0.12687800000000002,
-            0.06028000000000001,
-            0.009000000000000001
+            0.12684800000000002,
+            0.06033000000000001,
+            -0.0018000000000000008
           ]
         },
         {
-          "label": "bay_hatch H 5.7 mm",
-          "mm": 5.7,
+          "label": "bay_hatch H 37.8 mm",
+          "mm": 37.78,
           "a": [
-            0.13487800000000005,
-            0.04658,
-            0.009000000000000001
+            0.13484800000000002,
+            0.014549999999999983,
+            -0.0018000000000000008
           ],
           "b": [
-            0.13487800000000005,
-            0.05228000000000001,
-            0.009000000000000001
+            0.13484800000000002,
+            0.05233000000000001,
+            -0.0018000000000000008
           ]
         }
       ]
@@ -3095,7 +3095,9 @@
       return any ? _visBox : null;
     }
 
-    // Keep the pivot on whatever is actually on screen, without jerking the view.
+    // Shift orbit target (and camera by the same delta) when geometry moves
+    // in world space (explode). Never call from show/hide — visibility toggles
+    // must keep camera/target/zoom stable (enclosure-inspect-stable-view-on-toggle).
     function recenterPivot() {
       if (!modelReady) return;
       const box = visibleBox();
@@ -3166,7 +3168,7 @@
         if (g) g.visible = on;
         for (const o of (byName[id] || [])) o.visible = on;
       }
-      recenterPivot();
+      // Do not recenterPivot / frameVisible here — show/hide must not move the view.
       writeHash();
     }
     document.getElementById('toggles').addEventListener('change', (ev) => {
