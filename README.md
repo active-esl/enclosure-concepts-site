@@ -23,6 +23,11 @@ Confirm live tip: `curl -sS https://concepts.active-esl.com/handheld-eth/build.j
 
 Status on each page is labelled. Not measured production CAD unless stated.
 
+**WIP concepts** (currently Active Eink) are hidden from the gallery and top
+nav by default. Use **Show projects under development** on the gallery (stored
+in `localStorage`) to reveal them with a WIP badge. Deep links to WIP Inspect
+URLs still work when someone has the URL.
+
 ## Hosting notes
 
 - **Canonical content repo:** this tree (`active-esl/enclosure-concepts-site`).
