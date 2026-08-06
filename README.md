@@ -14,6 +14,6 @@ Status on each page is labelled. Not measured production CAD unless stated.
 
 The previous Pages host at `active-esl/enclosure-concepts` is **retired** (deployment wedged). Use this repo for the public gallery.
 
-**Publish:** push to `main` → Actions workflow **Deploy GitHub Pages** on the AESL `esl-proxmox` runner. After a new model GLB, rebake and copy the beauty still PNG — Still does not auto-update from GLB.
+**Publish:** push to `main`. Site currently uses **legacy branch Pages** (`main/`) because Actions `build_type=workflow` + `deploy-pages` stays stuck in `deployment_queued` for this org (same failure mode as the old repo). Workflow file `.github/workflows/pages.yml` is kept (disabled) for when workflow Pages works again. `.nojekyll` is present.
 
-_Deploy SHA bump after cancelled Pages deployment on first push._
+After a new model GLB, rebake and copy the beauty still PNG — Still does not auto-update from GLB.
