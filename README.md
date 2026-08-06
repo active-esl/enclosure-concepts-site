@@ -19,6 +19,8 @@ Intended share host: **`https://concepts.active-esl.com/`** (AESL CF custom doma
 
 Confirm live tip: `curl -sS https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/build.json` → `id` must match the published pack (currently `20260806T154714Z-f1cc705a7b`).
 
+**Archived baseline tags** (`test/eth-*`) live only on the old repo history — see [NOTE-archive-baseline-tags.md](NOTE-archive-baseline-tags.md).
+
 **Do not share jsDelivr** for this gallery. jsDelivr serves `.html` as `text/plain` with `X-Content-Type-Options: nosniff`, so browsers show escaped source instead of running Inspect.
 
 **GitHub Pages** (org deploy queue still wedged — may lag tip; not the share path until tip matches):  
