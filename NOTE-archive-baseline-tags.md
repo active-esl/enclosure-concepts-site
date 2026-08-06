@@ -22,5 +22,5 @@ git clone --branch test/eth-jack-wall-good-20260803 \
   git@github.com:active-esl/enclosure-concepts.git
 ```
 
-**Current tip (share):** Cloudflare Worker — see [README.md](README.md).  
-Confirm: `curl -sS https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/build.json`
+**Current tip (share):** GitHub Pages — see [README.md](README.md).  
+Confirm: `curl -sS https://concepts.active-esl.com/handheld-eth/build.json`

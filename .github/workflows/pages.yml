@@ -44,7 +44,8 @@ jobs:
 
           src = Path(".")
           dst = Path("_site")
-          ignore = {".git", ".github", "_site"}
+          # deploy/ is obsolete Worker tooling; docs notes stay out of the gallery tip.
+          ignore = {".git", ".github", "_site", "deploy"}
 
           for child in src.iterdir():
               if child.name in ignore:
@@ -59,11 +60,14 @@ jobs:
                   )
               else:
                   shutil.copy2(child, target)
+          # Custom domain (also set in repo Pages settings).
+          (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
+          (dst / ".nojekyll").touch()
           PY
-          touch _site/.nojekyll
           echo "publish_bytes=$(du -sb _site | awk '{print $1}')"
           test -f _site/index.html
           test -f _site/handheld-eth/build.json
+          test -f _site/CNAME
           python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
 
       - name: Setup Pages
@@ -77,3 +81,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Retry through GitHub's reporting loop; OIDC key rotation can flake once.
+          error_count: 20
+          reporting_interval: 10000
+          timeout: 900000

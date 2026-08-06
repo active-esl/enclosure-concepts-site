@@ -1,11 +1,7 @@
-name = "enclosure-concepts-site"
+# OBSOLETE — Worker host retired 2026-08-06.
+# Share: https://concepts.active-esl.com/
+# Do not wrangler deploy.
+name = "enclosure-concepts-site-OBSOLETE"
 main = "src/worker.js"
 compatibility_date = "2025-08-01"
-workers_dev = true
-# account_id injected by deploy.sh
-
-[assets]
-directory = "./public"
-binding = "ASSETS"
-not_found_handling = "404-page"
-html_handling = "none"
+workers_dev = false
