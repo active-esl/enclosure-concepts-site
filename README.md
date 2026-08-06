@@ -17,7 +17,7 @@ Interactive concept enclosure designs for team review (Michael / Ollie / Gary / 
 
 Confirm live tip: `curl -sS https://concepts.active-esl.com/handheld-eth/build.json` → `id` must match the published pack.
 
-**Archived baseline tags** (`test/eth-*`) live only on the old repo history — see [NOTE-archive-baseline-tags.md](NOTE-archive-baseline-tags.md).
+**Baselines:** 2026-08-06 gallery + eth dry-fit — [NOTE-gallery-eth-dryfit-baseline-20260806.md](NOTE-gallery-eth-dryfit-baseline-20260806.md). Older archive `test/eth-*` tags — [NOTE-archive-baseline-tags.md](NOTE-archive-baseline-tags.md).
 
 **Do not share jsDelivr** for this gallery. jsDelivr serves `.html` as `text/plain` with `X-Content-Type-Options: nosniff`, so browsers show escaped source instead of running Inspect.
 
