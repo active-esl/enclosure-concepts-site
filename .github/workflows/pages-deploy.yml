@@ -1,12 +1,13 @@
 # Static gallery → GitHub Pages.
-# Prefer ubuntu-latest; fall back path uses self-hosted when GH-hosted queue is wedged.
+# Use aesl self-hosted: ubuntu-latest jobs for this repo were stuck forever-queued
+# behind uncancellable pages-build-deployment / zombie workflow_dispatch runs.
+# Do not re-enable legacy gh-pages branch builds.
 name: Pages deploy
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-  workflow_call:
 
 permissions:
   contents: read
@@ -14,37 +15,48 @@ permissions:
   id-token: write
 
 jobs:
-  deploy-hosted:
-    if: ${{ true }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+  deploy:
+    runs-on: [self-hosted, Linux, X64, aesl]
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+
       - name: Prepare static publish tree
         run: |
           set -euo pipefail
-          rm -rf _site && mkdir -p _site
+          rm -rf _site
+          mkdir -p _site
           python3 - <<'PY'
           import shutil
           from pathlib import Path
           src, dst = Path("."), Path("_site")
           ignore = {".git", ".github", "_site", "deploy"}
           for child in src.iterdir():
-              if child.name in ignore: continue
+              if child.name in ignore:
+                  continue
               target = dst / child.name
               if child.is_dir():
-                  shutil.copytree(child, target, ignore=lambda d, names: [n for n in names if n in ignore], dirs_exist_ok=True)
+                  shutil.copytree(
+                      child, target,
+                      ignore=lambda d, names: [n for n in names if n in ignore],
+                      dirs_exist_ok=True,
+                  )
               else:
                   shutil.copy2(child, target)
           (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
           (dst / ".nojekyll").touch()
           PY
+          test -f _site/index.html
           test -f _site/handheld-eth/build.json
-          python3 -c 'import json; print(json.load(open("_site/handheld-eth/build.json"))["id"])'
+          test -f _site/CNAME
+          python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
       - id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
@@ -52,6 +64,7 @@ jobs:
           error_count: 20
           reporting_interval: 10000
           timeout: 600000
+
       - id: deployment_retry
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
@@ -60,6 +73,7 @@ jobs:
           error_count: 20
           reporting_interval: 10000
           timeout: 600000
+
       - id: deployment_final
         if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
         uses: actions/deploy-pages@v4
@@ -67,60 +81,14 @@ jobs:
           error_count: 30
           reporting_interval: 10000
           timeout: 900000
-      - name: Verify outcome
+
+      - name: Confirm deploy
         if: always()
         run: |
+          set -euo pipefail
           if [ "${{ steps.deployment.outcome }}" = "success" ] || [ "${{ steps.deployment_retry.outcome }}" = "success" ] || [ "${{ steps.deployment_final.outcome }}" = "success" ]; then
-            echo "deploy ok"
+            echo "Pages deploy succeeded"
           else
-            echo "deploy failed" >&2
+            echo "Pages deploy failed" >&2
             exit 1
           fi
-
-  deploy-self-hosted:
-    # Escape hatch when ubuntu-latest stays forever queued for this repo.
-    needs: deploy-hosted
-    if: always() && needs.deploy-hosted.result != 'success'
-    runs-on: [self-hosted, Linux, X64, aesl]
-    timeout-minutes: 25
-    steps:
-      - uses: actions/checkout@v4
-      - name: Prepare static publish tree
-        run: |
-          set -euo pipefail
-          rm -rf _site && mkdir -p _site
-          python3 - <<'PY'
-          import shutil
-          from pathlib import Path
-          src, dst = Path("."), Path("_site")
-          ignore = {".git", ".github", "_site", "deploy"}
-          for child in src.iterdir():
-              if child.name in ignore: continue
-              target = dst / child.name
-              if child.is_dir():
-                  shutil.copytree(child, target, ignore=lambda d, names: [n for n in names if n in ignore], dirs_exist_ok=True)
-              else:
-                  shutil.copy2(child, target)
-          (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
-          (dst / ".nojekyll").touch()
-          PY
-          test -f _site/handheld-eth/build.json
-          python3 -c 'import json; print(json.load(open("_site/handheld-eth/build.json"))["id"])'
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-      - id: deployment
-        uses: actions/deploy-pages@v4
-        continue-on-error: true
-        with:
-          error_count: 20
-          reporting_interval: 10000
-          timeout: 600000
-      - id: deployment_retry
-        if: steps.deployment.outcome == 'failure'
-        uses: actions/deploy-pages@v4
-        with:
-          error_count: 30
-          reporting_interval: 10000
-          timeout: 900000

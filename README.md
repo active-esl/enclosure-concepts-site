@@ -40,13 +40,16 @@ URLs still work when someone has the URL.
 - **Publish path:** GitHub Actions workflow `.github/workflows/pages.yml` on
   `main` only (`build_type: workflow`). Do **not** re-enable legacy
   `gh-pages` branch builds or Cloudflare Workers.
-- **2026-08-06 outage:** live tip stayed on `20260806T123718Z…` because
-  (1) Pages UI CNAME create/delete kept pushing to `gh-pages`, which raced
-  Actions and left builds stuck `building` / `Page build failed`, and
-  (2) `actions/deploy-pages` failed on GitHub OIDC JWKS rotation
+- **2026-08-06 outage:** tip stayed stale because (1) Pages UI CNAME
+  create/delete kept firing legacy `pages-build-deployment` that stuck
+  `queued`/`building` and poisoned the repo Actions queue (even
+  `ubuntu-latest` jobs stopped getting runners; cancels returned HTTP 500/502),
+  (2) `deploy-pages` also hit OIDC JWKS rotation
   (`Invalid actions OIDC token due to No keys from key endpoint match the id
-  token`) — `error_count` only retries status polls after create, so the
-  workflow now retries the deploy step itself. `gh-pages` branch removed.
+  token`). Fix: re-enable Pages as `build_type=workflow`, deploy via aesl
+  self-hosted runner (bypass wedged GH-hosted queue), retry deploy-pages on
+  OIDC create failure. Do not flip Pages back to legacy/`gh-pages`.
+
 
 After a new Look GLB, rebake/copy the beauty still PNG — Still does not
 auto-update from GLB (see `design-share-3d` skill). Publish by pushing `main`
