@@ -1,11 +1,10 @@
-# Deploy static gallery to GitHub Pages on AESL Proxmox CT101 runner.
-# Runner name: esl-proxmox-runner — labels [self-hosted, Linux, X64, aesl, esl-proxmox]
-# Do NOT use org gitrunner (ai-tools) or GitHub-hosted ubuntu-latest for this.
+# Deploy static gallery to GitHub Pages via GitHub-hosted ubuntu-latest.
+# (Self-hosted + legacy branch builds previously stuck in deployment_queued /
+# Page build failed for this org — do not regress to those paths.)
 #
 # Pages Settings (required once):
 #   Settings → Pages → Build and deployment → Source = GitHub Actions
-#   (API: build_type=workflow). That disables legacy branch /pages-build-deployment.
-#   Do not set Source back to "Deploy from a branch" (main/) — that path queues/fails.
+#   (API: build_type=workflow).
 name: Deploy GitHub Pages
 
 on:
@@ -20,23 +19,18 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  cancel-in-progress: true
 
 jobs:
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # Match active-esl/lab-infra runner-smoke + etablone-cloud verify.
-    # Explicit aesl pin; runner hostname is esl-proxmox-runner.
-    runs-on: [self-hosted, Linux, X64, aesl, esl-proxmox]
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Prepare static publish tree
         run: |
@@ -44,7 +38,6 @@ jobs:
           rm -rf _site
           mkdir -p _site
           # Publish repo root as the site; keep Actions metadata / VCS out of the artifact.
-          # python3 shutil — rsync is not installed on esl-proxmox-runner.
           python3 - <<'PY'
           import shutil
           from pathlib import Path
@@ -67,7 +60,6 @@ jobs:
               else:
                   shutil.copy2(child, target)
           PY
-          # Ensure GitHub never runs Jekyll on the artifact if settings regress.
           touch _site/.nojekyll
           echo "publish_bytes=$(du -sb _site | awk '{print $1}')"
           test -f _site/index.html
@@ -75,13 +67,13 @@ jobs:
           python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
 
       - name: Setup Pages
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
