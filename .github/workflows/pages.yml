@@ -21,7 +21,7 @@ permissions:
 # Do not cancel mid-deploy: a cancelled deploy leaves Pages queued/errored and
 # blocks the next artifact. Prefer one-at-a-time queue.
 concurrency:
-  group: pages
+  group: pages-workflow-v2
   cancel-in-progress: false
 
 jobs:
