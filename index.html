@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color:#0b1220;color-scheme:dark">
 <head>
-  <meta name="aesl-build" content="20260806T191256Z-f1b7c1036e" />
+  <meta name="aesl-build" content="20260806T191342Z-cta1line" />
   <meta charset="utf-8" />
-  <meta name="theme-color" content="#0b1220" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="20260806T191342Z-cta1line" />
+  <meta name="viewport" content="20260806T191342Z-cta1line" />
   <title>Active-ESL — enclosure concepts</title>
   <style>html,body{background-color:#0b1220;color-scheme:dark}</style>
   <link rel="stylesheet" href="site-nav.css?v=d180230ef5" />
@@ -62,10 +62,15 @@
       font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
       border: 1px solid rgba(255,204,102,.35);
     }
-    .ctas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    /* One row always (Look/Still/Inspect/Evaluate) — never wrap Evaluate to row 2. */
+    .ctas {
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 5px; margin-top: 14px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+    }
     .ctas a {
-      display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px;
-      border-radius: 999px; font-size: .88rem; font-weight: 650; text-decoration: none;
+      display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap;
+      min-height: 30px; padding: 4px 8px;
+      border-radius: 999px; font-size: .76rem; font-weight: 650; text-decoration: none;
       border: 1px solid rgba(62,198,255,.4); background: rgba(62,198,255,.14); color: var(--accent);
     }
     .ctas a.secondary {
