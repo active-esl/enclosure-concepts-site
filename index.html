@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color:#0b1220;color-scheme:dark">
 <head>
-  <meta name="aesl-build" content="20260805T163526Z-d66f3d32d2" />
+  <meta name="aesl-build" content="20260806T191256Z-f1b7c1036e" />
   <meta charset="utf-8" />
   <meta name="theme-color" content="#0b1220" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,9 +50,9 @@
     /* Default: hide WIP so casual visitors never flash development cards. */
     .card[data-maturity="wip"] { display: none; }
     body.show-wip .card[data-maturity="wip"] { display: flex; }
-    .card-still { display: block; color: inherit; }
+    .card-look { display: block; color: inherit; }
     .card img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #0a0f18; }
-    .card-still:hover img { opacity: 0.92; }
+    .card-look:hover img { opacity: 0.92; }
     .card .body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
     .card h2 { margin: 0 0 6px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.4; flex: 1; }
@@ -76,16 +76,16 @@
 </head>
 <body style="background-color:#0b1220;margin:0">
   <nav id="siteNav" class="site-nav" data-root="./" data-mode="gallery" aria-label="Concept site"></nav>
-  <script src="site-nav.js?v=a8e1wip062" defer></script>
+  <script src="site-nav.js?v=f1b7c1036e" defer></script>
   <div class="wrap">
     <div class="badge">Concept gallery</div>
     <h1>Active-ESL enclosure concepts</h1>
     <p class="lede">
       Concept ideas the team can open in the browser.
-      Use the top bar to move between concepts.
-      Mode bar order: <strong>Still</strong> · <strong>Look</strong> ·
+      Gallery cards open <strong>Look</strong> (beauty orbit) by default.
+      Mode bar: <strong>Look</strong> · <strong>Still</strong> ·
       <strong>Inspect</strong> · <strong>Evaluate</strong> (eth).
-      Still = sales/review render · Look = beauty orbit · Inspect = assembly
+      Look = beauty orbit · Still = sales/review render · Inspect = assembly
       explorer · Evaluate = printable fit/FEA/print board (ranking ≠ CE).
       Not measured production CAD until labelled otherwise.
     </p>
@@ -95,29 +95,29 @@
     </label>
     <div class="grid">
       <div class="card" data-maturity="public" data-concept="slim">
-        <a class="card-still" href="still.html?c=slim" aria-label="Open slim beauty still">
-          <img src="handheld/beauty_raytrace_baseline.png" alt="Active Slim concept still" />
+        <a class="card-look" href="handheld/" aria-label="Open Active Slim Look">
+          <img src="handheld/beauty_raytrace_baseline.png" alt="Active Slim concept" />
         </a>
         <div class="body">
           <h2>Active Slim</h2>
           <p>~10″ tablet-class shell, uniform thin edge. Networking via dock / USB‑C / PoE-when-docked.</p>
           <div class="ctas">
-            <a class="secondary" href="still.html?c=slim">Still →</a>
             <a href="handheld/">Look →</a>
+            <a class="secondary" href="still.html?c=slim">Still →</a>
             <a class="secondary" href="handheld/assembly.html">Inspect →</a>
           </div>
         </div>
       </div>
       <div class="card" data-maturity="public" data-concept="eth">
-        <a class="card-still" href="still.html?c=eth" aria-label="Open eth beauty still">
-          <img src="handheld-eth/beauty_raytrace.png" alt="Active POE concept still" />
+        <a class="card-look" href="handheld-eth/" aria-label="Open Active POE Look">
+          <img src="handheld-eth/beauty_raytrace.png" alt="Active POE concept" />
         </a>
         <div class="body">
           <h2>Active POE</h2>
           <p>Apple-language reveal body for onboard RJ45 + USB‑C. Thin visible edge; honest stack underneath.</p>
           <div class="ctas">
-            <a class="secondary" href="still.html?c=eth">Still →</a>
             <a href="handheld-eth/">Look →</a>
+            <a class="secondary" href="still.html?c=eth">Still →</a>
             <a class="secondary" href="handheld-eth/assembly.html">Inspect →</a>
             <a class="secondary" href="handheld-eth/fea/">Evaluate →</a>
           </div>
@@ -128,6 +128,7 @@
           <h2>Active Eink <span class="maturity-badge" title="Not yet customer-facing">WIP · under development</span></h2>
           <p>13.3″ Spectra 6 class · DD/AESL own imx93 PCB (202500.stp). Active product · PCB-only Inspect — identity pose pending Michael orientation.</p>
           <div class="ctas">
+            <a href="eink-imx93/">Look →</a>
             <a class="secondary" href="eink-imx93/assembly.html">Inspect →</a>
           </div>
         </div>

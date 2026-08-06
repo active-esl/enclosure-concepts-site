@@ -1,10 +1,10 @@
 {
-  "id": "20260805T163526Z-d66f3d32d2",
-  "built_at": "2026-08-05T16:35:26Z",
+  "id": "20260806T191256Z-f1b7c1036e",
+  "built_at": "2026-08-06T19:12:56Z",
   "concept": "enclosure-concepts",
   "assets": {
     "site-nav.css": "d180230ef5",
-    "site-nav.js": "59f7428247",
+    "site-nav.js": "f1b7c1036e",
     "look.js": "b61e24e6db",
     "look-viewer.js": "95fcba9977",
     "pages-update.js": "8ff9ecbdf6",

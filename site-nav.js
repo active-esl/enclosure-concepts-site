@@ -80,12 +80,13 @@
     ].join("");
 
     const cur = concepts.find((c) => c.id === concept);
-    // Order (Alex 2026-08-03): Still · Look · Inspect · Evaluate
+    // Order (Alex 2026-08-06): Look · Still · Inspect · Evaluate
+    // Gallery / concept pills default to Look; Still is secondary.
     const modeBlock = concept
       ? `<div class="site-nav__modes" role="navigation" aria-label="Mode">${
-          pill(modeHref("still"), "Still", mode === "still")
-        }${
           pill(modeHref("look"), "Look", mode === "look")
+        }${
+          pill(modeHref("still"), "Still", mode === "still")
         }${
           pill(modeHref("inspect"), "Inspect", mode === "inspect")
         }${
