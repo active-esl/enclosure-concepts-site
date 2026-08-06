@@ -16,9 +16,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    environment:
-      name: github-pages
-      url: ${{ steps.resolve_url.outputs.page_url }}
+    # environment github-pages omitted intentionally: env-gated jobs
+    # stay forever queued while Pages build service is wedged; deploy-pages OIDC is enough.
     steps:
       - name: Checkout
         uses: actions/checkout@v4
