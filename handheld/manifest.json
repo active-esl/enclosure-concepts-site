@@ -1,0 +1,361 @@
+{
+  "id": "slim",
+  "title": "Active Slim",
+  "blurb": "Thin ~7.6 mm slab \u00b7 front housing + rear housing \u00b7 no onboard RJ45 (dock / USB-C / PoE-when-docked). Ghost internals (Active Screen board, RJ45 not fitted) through shell by default \u00b7 rear-service (VESA / \u00bc-20 / RF / wordmark). Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Not measured CAD.",
+  "glb": "assembly.glb",
+  "glb_version": "cc0bb773bd",
+  "parts": [
+    {
+      "id": "front",
+      "label": "Front housing (LCD + PCB)",
+      "visible": true,
+      "color": [
+        168,
+        172,
+        178
+      ],
+      "transparent": true,
+      "opacity": 0.45
+    },
+    {
+      "id": "rear",
+      "label": "Rear housing",
+      "visible": true,
+      "color": [
+        145,
+        148,
+        152
+      ],
+      "transparent": true,
+      "opacity": 0.45
+    },
+    {
+      "id": "glass",
+      "label": "Display (ST1010 LENS+stack)",
+      "visible": true,
+      "color": [
+        28,
+        36,
+        48
+      ],
+      "transparent": true,
+      "opacity": 0.92,
+      "splash": "lcd_splash_active_esl.png",
+      "splash_style": "lcd",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "uv_badge",
+      "label": "UV badge (brand-full swatch)",
+      "visible": true,
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "splash": "active-esl-uv-badge-28x10-brand-full-600dpi.png",
+      "splash_style": "print",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "accents",
+      "label": "Accents (gated \u2014 home/cam off)",
+      "visible": false,
+      "color": [
+        190,
+        192,
+        196
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "PCB (Active Screen \u2014 no RJ45 fitted)",
+      "visible": true,
+      "color": [
+        28,
+        110,
+        55
+      ],
+      "ghost": true,
+      "transparent": true,
+      "face_colors": true,
+      "opacity": 0.7
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Overall rear (W\u00d7H\u00d7D)",
+      "default": false,
+      "dims": [
+        {
+          "label": "W 246.9 mm",
+          "mm": 246.9,
+          "a": [
+            -0.0004500000000000001,
+            0.177,
+            0.0052
+          ],
+          "b": [
+            0.24645000000000003,
+            0.177,
+            0.0052
+          ]
+        },
+        {
+          "label": "H 169.0 mm",
+          "mm": 169.0,
+          "a": [
+            0.25445,
+            0.0,
+            0.0052
+          ],
+          "b": [
+            0.25445,
+            0.169,
+            0.0052
+          ]
+        },
+        {
+          "label": "D 5.2 mm",
+          "mm": 5.2,
+          "a": [
+            0.25445,
+            0.169,
+            0.0
+          ],
+          "b": [
+            0.25445,
+            0.169,
+            0.0052
+          ]
+        }
+      ]
+    },
+    {
+      "id": "front",
+      "label": "Front",
+      "default": false,
+      "dims": [
+        {
+          "label": "front W 246.0 mm",
+          "mm": 246.0,
+          "a": [
+            0.0,
+            0.177,
+            0.0076
+          ],
+          "b": [
+            0.246,
+            0.177,
+            0.0076
+          ]
+        },
+        {
+          "label": "front H 169.0 mm",
+          "mm": 169.0,
+          "a": [
+            0.254,
+            0.0,
+            0.0076
+          ],
+          "b": [
+            0.254,
+            0.169,
+            0.0076
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "label": "Glass",
+      "default": false,
+      "dims": [
+        {
+          "label": "glass W 243.6 mm",
+          "mm": 243.6,
+          "a": [
+            0.0012000000476837158,
+            0.1758000030517578,
+            0.007599999904632568
+          ],
+          "b": [
+            0.2448000030517578,
+            0.1758000030517578,
+            0.007599999904632568
+          ]
+        },
+        {
+          "label": "glass H 166.6 mm",
+          "mm": 166.6,
+          "a": [
+            0.2528000030517578,
+            0.0012000000476837158,
+            0.007599999904632568
+          ],
+          "b": [
+            0.2528000030517578,
+            0.16780000305175782,
+            0.007599999904632568
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uv_badge",
+      "label": "Uv_badge",
+      "default": false,
+      "dims": [
+        {
+          "label": "uv_badge W 28.0 mm",
+          "mm": 28.0,
+          "a": [
+            0.024,
+            0.158,
+            0.007400000095367432
+          ],
+          "b": [
+            0.052000000000000005,
+            0.158,
+            0.007400000095367432
+          ]
+        },
+        {
+          "label": "uv_badge H 10.0 mm",
+          "mm": 10.0,
+          "a": [
+            0.06,
+            0.14,
+            0.007400000095367432
+          ],
+          "b": [
+            0.06,
+            0.15,
+            0.007400000095367432
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accents",
+      "label": "Accents",
+      "default": false,
+      "dims": [
+        {
+          "label": "accents W 0.0 mm",
+          "mm": 0.01,
+          "a": [
+            -0.001,
+            0.00701,
+            -0.00099
+          ],
+          "b": [
+            -0.00099,
+            0.00701,
+            -0.00099
+          ]
+        },
+        {
+          "label": "accents H 0.0 mm",
+          "mm": 0.01,
+          "a": [
+            0.00701,
+            -0.001,
+            -0.00099
+          ],
+          "b": [
+            0.00701,
+            -0.00099,
+            -0.00099
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "Pcb",
+      "default": false,
+      "dims": [
+        {
+          "label": "pcb W 146.0 mm",
+          "mm": 145.99,
+          "a": [
+            0.050005001068115236,
+            0.1416499938964844,
+            0.005990992546081543
+          ],
+          "b": [
+            0.19599690246582033,
+            0.1416499938964844,
+            0.005990992546081543
+          ]
+        },
+        {
+          "label": "pcb H 98.3 mm",
+          "mm": 98.3,
+          "a": [
+            0.2039969024658203,
+            0.0353499984741211,
+            0.005990992546081543
+          ],
+          "b": [
+            0.2039969024658203,
+            0.13364999389648438,
+            0.005990992546081543
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.5,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.5,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.25,
+      0.15
+    ],
+    "top": [
+      0.15,
+      1.4,
+      0.6
+    ]
+  },
+  "features": {
+    "measure": true,
+    "outline": true,
+    "outline_default": true,
+    "outline_depth_sensitivity": 320.0,
+    "outline_normal_sensitivity": 26.0,
+    "explode": true,
+    "explode_axis": [
+      0,
+      0,
+      1
+    ],
+    "explode_offsets_mm": {
+      "glass": 40,
+      "uv_badge": 38,
+      "accents": 35,
+      "front": 22,
+      "pcb": 14,
+      "rear": -10
+    },
+    "section": true,
+    "deeplink": true,
+    "fea": false,
+    "fea_overlays": []
+  },
+  "pages_links": []
+}

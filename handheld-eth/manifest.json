@@ -1,0 +1,1074 @@
+{
+  "id": "eth",
+  "title": "Active POE",
+  "blurb": "Stepped rear eth/POE \u00b7 front + rear housing \u00b7 LOCKED I/O tip-in (open apron + face-wall RJ45/USB-C mouths with lead-in chamfers; no internal bay fill) \u00b7 small snap cover over mouths (cable notches). Ghost internals through shell by default. Toggle parts \u00b7 Spot \u00b7 Solo \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Concept shell \u2014 I/O bay locked 2026-08-03.",
+  "glb": "assembly.glb",
+  "glb_version": "b6e252ff57",
+  "parts": [
+    {
+      "id": "front",
+      "label": "Front housing (LCD + PCB)",
+      "visible": true,
+      "color": [
+        168,
+        172,
+        178
+      ],
+      "transparent": true,
+      "opacity": 0.45
+    },
+    {
+      "id": "rear",
+      "label": "Rear housing",
+      "visible": true,
+      "color": [
+        145,
+        148,
+        152
+      ],
+      "transparent": true,
+      "opacity": 0.62
+    },
+    {
+      "id": "bay_hatch",
+      "label": "I/O snap cover (mouths)",
+      "visible": true,
+      "color": [
+        120,
+        160,
+        175
+      ],
+      "transparent": true,
+      "opacity": 0.75
+    },
+    {
+      "id": "glass",
+      "label": "Display (ST1010 LENS+stack)",
+      "visible": true,
+      "color": [
+        28,
+        36,
+        48
+      ],
+      "transparent": true,
+      "opacity": 0.92,
+      "splash": "lcd_splash_active_esl.png",
+      "splash_style": "lcd",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "ctp_flex",
+      "label": "CTP flex (ST1010)",
+      "visible": false,
+      "color": [
+        232,
+        140,
+        48
+      ],
+      "ghost": true,
+      "transparent": true,
+      "opacity": 0.35
+    },
+    {
+      "id": "ctp_flex_fold",
+      "label": "CTP flex fold pose (PCB-move check)",
+      "visible": true,
+      "color": [
+        255,
+        120,
+        24
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "lcd_ffc_fly",
+      "label": "PLACEHOLDER LCD FFC fly \u2014 LCM\u2192J006 (photo SoT)",
+      "visible": true,
+      "color": [
+        236,
+        240,
+        245
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "lcd_ffc",
+      "label": "LCD FFC (ST1010 gbd001 \u2014 long Y-strip; wrong mate path)",
+      "visible": false,
+      "color": [
+        64,
+        140,
+        220
+      ],
+      "ghost": true,
+      "transparent": true,
+      "opacity": 0.35
+    },
+    {
+      "id": "lcd_ffc_fold",
+      "label": "LCD FFC fold pose (PCB-move check)",
+      "visible": false,
+      "color": [
+        48,
+        160,
+        255
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "ctp_conn",
+      "label": "Molex J004 \u2014 CTP mate (6-way FFC)",
+      "visible": true,
+      "color": [
+        255,
+        170,
+        20
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "lcd_conn",
+      "label": "LCD connector J006 (40-way FFC)",
+      "visible": true,
+      "color": [
+        0,
+        230,
+        255
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "cam_conn",
+      "label": "Camera connector J012 (DF37 20-way)",
+      "visible": true,
+      "color": [
+        255,
+        64,
+        160
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "cam_module",
+      "label": "PLACEHOLDER cam module \u2014 WPD662 8.5\u00d78.5\u00d75.3 (datasheet; not STEP)",
+      "visible": true,
+      "color": [
+        28,
+        28,
+        32
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "m2_wifi",
+      "label": "M.2 Wi-Fi \u2014 EA 2EL / IW612 (2230 key E @ J001)",
+      "visible": true,
+      "color": [
+        32,
+        168,
+        160
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "m2_modem",
+      "label": "M.2 volume study \u2014 Quectel EM05-G (Sentai LTE; wrong part)",
+      "visible": false,
+      "color": [
+        176,
+        96,
+        255
+      ],
+      "highlight": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "uv_badge",
+      "label": "UV badge (brand-full swatch)",
+      "visible": false,
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "splash": "active-esl-uv-badge-28x10-brand-full-600dpi.png",
+      "splash_style": "print",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "accents",
+      "label": "Accents (cam ring when cam_front_enable)",
+      "visible": true,
+      "color": [
+        190,
+        192,
+        196
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "PCB (Active Screen board)",
+      "visible": true,
+      "color": [
+        28,
+        110,
+        55
+      ],
+      "ghost": true,
+      "transparent": true,
+      "face_colors": true,
+      "opacity": 0.7
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Overall rear (W\u00d7H\u00d7D)",
+      "default": false,
+      "dims": [
+        {
+          "label": "W 243.6 mm",
+          "mm": 243.6,
+          "a": [
+            0.0,
+            0.17460000000149012,
+            0.00619
+          ],
+          "b": [
+            0.24360000000149012,
+            0.17460000000149012,
+            0.00619
+          ]
+        },
+        {
+          "label": "H 166.6 mm",
+          "mm": 166.6,
+          "a": [
+            0.25160000000149013,
+            0.0,
+            0.00619
+          ],
+          "b": [
+            0.25160000000149013,
+            0.1666000000014901,
+            0.00619
+          ]
+        },
+        {
+          "label": "D 17.5 mm",
+          "mm": 17.54,
+          "a": [
+            0.25160000000149013,
+            0.1666000000014901,
+            -0.011350000000000002
+          ],
+          "b": [
+            0.25160000000149013,
+            0.1666000000014901,
+            0.00619
+          ]
+        }
+      ]
+    },
+    {
+      "id": "front",
+      "label": "Front",
+      "default": false,
+      "dims": [
+        {
+          "label": "front W 243.6 mm",
+          "mm": 243.6,
+          "a": [
+            0.0,
+            0.17460000000149012,
+            0.01084
+          ],
+          "b": [
+            0.24360000000149012,
+            0.17460000000149012,
+            0.01084
+          ]
+        },
+        {
+          "label": "front H 166.6 mm",
+          "mm": 166.6,
+          "a": [
+            0.25160000000149013,
+            0.0,
+            0.01084
+          ],
+          "b": [
+            0.25160000000149013,
+            0.1666000000014901,
+            0.01084
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bay_hatch",
+      "label": "Bay_hatch",
+      "default": false,
+      "dims": [
+        {
+          "label": "bay_hatch W 53.6 mm",
+          "mm": 53.6,
+          "a": [
+            0.073278,
+            0.06028000000000001,
+            0.009000000000000001
+          ],
+          "b": [
+            0.12687800000000002,
+            0.06028000000000001,
+            0.009000000000000001
+          ]
+        },
+        {
+          "label": "bay_hatch H 5.7 mm",
+          "mm": 5.7,
+          "a": [
+            0.13487800000000005,
+            0.04658,
+            0.009000000000000001
+          ],
+          "b": [
+            0.13487800000000005,
+            0.05228000000000001,
+            0.009000000000000001
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "label": "Glass",
+      "default": false,
+      "dims": [
+        {
+          "label": "glass W 243.6 mm",
+          "mm": 243.6,
+          "a": [
+            0.0,
+            0.17460000610351561,
+            0.012
+          ],
+          "b": [
+            0.24360000610351562,
+            0.17460000610351561,
+            0.012
+          ]
+        },
+        {
+          "label": "glass H 166.6 mm",
+          "mm": 166.6,
+          "a": [
+            0.2516000061035156,
+            0.0,
+            0.012
+          ],
+          "b": [
+            0.2516000061035156,
+            0.16660000610351564,
+            0.012
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ctp_flex",
+      "label": "Ctp_flex",
+      "default": false,
+      "dims": [
+        {
+          "label": "ctp_flex W 61.5 mm",
+          "mm": 61.5,
+          "a": [
+            0.156,
+            0.017330001831054688,
+            0.011699999809265137
+          ],
+          "b": [
+            0.2175,
+            0.017330001831054688,
+            0.011699999809265137
+          ]
+        },
+        {
+          "label": "ctp_flex H 66.9 mm",
+          "mm": 66.94,
+          "a": [
+            0.2255,
+            -0.057613357543945316,
+            0.011699999809265137
+          ],
+          "b": [
+            0.2255,
+            0.009330001831054688,
+            0.011699999809265137
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ctp_flex_fold",
+      "label": "Ctp_flex_fold",
+      "default": false,
+      "dims": [
+        {
+          "label": "ctp_flex_fold W 61.5 mm",
+          "mm": 61.5,
+          "a": [
+            0.156,
+            0.08427336120605469,
+            0.011225000381469726
+          ],
+          "b": [
+            0.2175,
+            0.08427336120605469,
+            0.011225000381469726
+          ]
+        },
+        {
+          "label": "ctp_flex_fold H 66.9 mm",
+          "mm": 66.94,
+          "a": [
+            0.2255,
+            0.009330001831054688,
+            0.011225000381469726
+          ],
+          "b": [
+            0.2255,
+            0.07627336120605469,
+            0.011225000381469726
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lcd_ffc_fly",
+      "label": "Lcd_ffc_fly",
+      "default": false,
+      "dims": [
+        {
+          "label": "lcd_ffc_fly W 11.3 mm",
+          "mm": 11.25,
+          "a": [
+            0.022504220962524416,
+            0.0780999984741211,
+            0.007347130298614502
+          ],
+          "b": [
+            0.0337562370300293,
+            0.0780999984741211,
+            0.007347130298614502
+          ]
+        },
+        {
+          "label": "lcd_ffc_fly H 20.4 mm",
+          "mm": 20.4,
+          "a": [
+            0.0417562370300293,
+            0.049700000762939456,
+            0.007347130298614502
+          ],
+          "b": [
+            0.0417562370300293,
+            0.0700999984741211,
+            0.007347130298614502
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lcd_ffc",
+      "label": "Lcd_ffc",
+      "default": false,
+      "dims": [
+        {
+          "label": "lcd_ffc W 17.4 mm",
+          "mm": 17.41,
+          "a": [
+            0.0051277847290039065,
+            0.14755003356933594,
+            0.007949999809265137
+          ],
+          "b": [
+            0.022537979125976562,
+            0.14755003356933594,
+            0.007949999809265137
+          ]
+        },
+        {
+          "label": "lcd_ffc H 121.1 mm",
+          "mm": 121.1,
+          "a": [
+            0.030537979125976562,
+            0.01845000457763672,
+            0.007949999809265137
+          ],
+          "b": [
+            0.030537979125976562,
+            0.13955003356933593,
+            0.007949999809265137
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lcd_ffc_fold",
+      "label": "Lcd_ffc_fold",
+      "default": false,
+      "dims": [
+        {
+          "label": "lcd_ffc_fold W 17.4 mm",
+          "mm": 17.41,
+          "a": [
+            0.022542020797729493,
+            0.14755003356933594,
+            0.00815999984741211
+          ],
+          "b": [
+            0.03995221710205078,
+            0.14755003356933594,
+            0.00815999984741211
+          ]
+        },
+        {
+          "label": "lcd_ffc_fold H 121.1 mm",
+          "mm": 121.1,
+          "a": [
+            0.04795221710205078,
+            0.01845000457763672,
+            0.00815999984741211
+          ],
+          "b": [
+            0.04795221710205078,
+            0.13955003356933593,
+            0.00815999984741211
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ctp_conn",
+      "label": "Ctp_conn",
+      "default": false,
+      "dims": [
+        {
+          "label": "ctp_conn W 5.0 mm",
+          "mm": 5.0,
+          "a": [
+            0.16824989318847658,
+            0.07425,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.17324989318847656,
+            0.07425,
+            0.0032999997138977053
+          ]
+        },
+        {
+          "label": "ctp_conn H 3.2 mm",
+          "mm": 3.25,
+          "a": [
+            0.18124989318847656,
+            0.063,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.18124989318847656,
+            0.06625,
+            0.0032999997138977053
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lcd_conn",
+      "label": "Lcd_conn",
+      "default": false,
+      "dims": [
+        {
+          "label": "lcd_conn W 3.2 mm",
+          "mm": 3.25,
+          "a": [
+            0.033499893188476564,
+            0.07890000152587891,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.036749893188476566,
+            0.07890000152587891,
+            0.0032999997138977053
+          ]
+        },
+        {
+          "label": "lcd_conn H 22.0 mm",
+          "mm": 22.0,
+          "a": [
+            0.04474989318847657,
+            0.04889999771118164,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.04474989318847657,
+            0.07090000152587891,
+            0.0032999997138977053
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cam_conn",
+      "label": "Cam_conn",
+      "default": false,
+      "dims": [
+        {
+          "label": "cam_conn W 6.2 mm",
+          "mm": 6.22,
+          "a": [
+            0.11868989562988282,
+            0.1510400085449219,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.12490989685058594,
+            0.1510400085449219,
+            0.0032999997138977053
+          ]
+        },
+        {
+          "label": "cam_conn H 3.0 mm",
+          "mm": 2.98,
+          "a": [
+            0.13290989685058593,
+            0.14005999755859375,
+            0.0032999997138977053
+          ],
+          "b": [
+            0.13290989685058593,
+            0.14304000854492188,
+            0.0032999997138977053
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cam_module",
+      "label": "Cam_module",
+      "default": false,
+      "dims": [
+        {
+          "label": "cam_module W 8.5 mm",
+          "mm": 8.5,
+          "a": [
+            0.11755000305175782,
+            0.17355000305175783,
+            0.007940000057220458
+          ],
+          "b": [
+            0.12605000305175781,
+            0.17355000305175783,
+            0.007940000057220458
+          ]
+        },
+        {
+          "label": "cam_module H 8.5 mm",
+          "mm": 8.5,
+          "a": [
+            0.13405000305175782,
+            0.1570500030517578,
+            0.007940000057220458
+          ],
+          "b": [
+            0.13405000305175782,
+            0.16555000305175782,
+            0.007940000057220458
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2_wifi",
+      "label": "M2_wifi",
+      "default": false,
+      "dims": [
+        {
+          "label": "m2_wifi W 30.0 mm",
+          "mm": 30.0,
+          "a": [
+            0.06840280151367188,
+            0.121875,
+            0.0018351995944976807
+          ],
+          "b": [
+            0.09840280151367188,
+            0.121875,
+            0.0018351995944976807
+          ]
+        },
+        {
+          "label": "m2_wifi H 22.0 mm",
+          "mm": 22.0,
+          "a": [
+            0.10640280151367187,
+            0.091875,
+            0.0018351995944976807
+          ],
+          "b": [
+            0.10640280151367187,
+            0.113875,
+            0.0018351995944976807
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2_modem",
+      "label": "M2_modem",
+      "default": false,
+      "dims": [
+        {
+          "label": "m2_modem W 42.0 mm",
+          "mm": 42.0,
+          "a": [
+            0.056402793884277345,
+            0.12587500000000001,
+            0.0017351995706558227
+          ],
+          "b": [
+            0.09840280151367188,
+            0.12587500000000001,
+            0.0017351995706558227
+          ]
+        },
+        {
+          "label": "m2_modem H 30.0 mm",
+          "mm": 30.0,
+          "a": [
+            0.10640280151367187,
+            0.08787500000000001,
+            0.0017351995706558227
+          ],
+          "b": [
+            0.10640280151367187,
+            0.11787500000000001,
+            0.0017351995706558227
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uv_badge",
+      "label": "Uv_badge",
+      "default": false,
+      "dims": [
+        {
+          "label": "uv_badge W 28.0 mm",
+          "mm": 28.0,
+          "a": [
+            0.024,
+            0.17430000305175783,
+            0.011800000190734863
+          ],
+          "b": [
+            0.052000000000000005,
+            0.17430000305175783,
+            0.011800000190734863
+          ]
+        },
+        {
+          "label": "uv_badge H 10.0 mm",
+          "mm": 10.0,
+          "a": [
+            0.06,
+            0.1563000030517578,
+            0.011800000190734863
+          ],
+          "b": [
+            0.06,
+            0.16630000305175782,
+            0.011800000190734863
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accents",
+      "label": "Accents",
+      "default": false,
+      "dims": [
+        {
+          "label": "accents W 3.8 mm",
+          "mm": 3.8,
+          "a": [
+            0.11989999999999999,
+            0.1712,
+            0.01204
+          ],
+          "b": [
+            0.1237,
+            0.1712,
+            0.01204
+          ]
+        },
+        {
+          "label": "accents H 3.8 mm",
+          "mm": 3.8,
+          "a": [
+            0.13169999999999998,
+            0.1594,
+            0.01204
+          ],
+          "b": [
+            0.13169999999999998,
+            0.16319999999999998,
+            0.01204
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "Pcb",
+      "default": false,
+      "dims": [
+        {
+          "label": "pcb W 146.0 mm",
+          "mm": 145.99,
+          "a": [
+            0.029667999267578127,
+            0.1533000030517578,
+            0.00684999942779541
+          ],
+          "b": [
+            0.17565989685058594,
+            0.1533000030517578,
+            0.00684999942779541
+          ]
+        },
+        {
+          "label": "pcb H 98.3 mm",
+          "mm": 98.3,
+          "a": [
+            0.18365989685058595,
+            0.047,
+            0.00684999942779541
+          ],
+          "b": [
+            0.18365989685058595,
+            0.1453000030517578,
+            0.00684999942779541
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pad",
+      "label": "Rear pad (CAD)",
+      "default": false,
+      "dims": [
+        {
+          "label": "pad W 192.3 mm",
+          "mm": 192.26,
+          "a": [
+            0.025667999999999993,
+            0.00029999999999999715,
+            -1.7763568394002505e-18
+          ],
+          "b": [
+            0.21793200000000001,
+            0.00029999999999999715,
+            -1.7763568394002505e-18
+          ]
+        },
+        {
+          "label": "pad H 150.0 mm",
+          "mm": 150.0,
+          "a": [
+            0.017667999999999993,
+            0.008299999999999997,
+            -1.7763568394002505e-18
+          ],
+          "b": [
+            0.017667999999999993,
+            0.15830000000000002,
+            -1.7763568394002505e-18
+          ]
+        },
+        {
+          "label": "raise 11.3 mm",
+          "mm": 11.35,
+          "a": [
+            0.017667999999999993,
+            0.15830000000000002,
+            -0.011350000000000002
+          ],
+          "b": [
+            0.017667999999999993,
+            0.15830000000000002,
+            -1.7763568394002505e-18
+          ]
+        },
+        {
+          "label": "thin edge 12.0 mm",
+          "mm": 12.0,
+          "a": [
+            0.25160000000149013,
+            0.01,
+            -0.00581
+          ],
+          "b": [
+            0.25160000000149013,
+            0.01,
+            0.00619
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.5,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.5,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.25,
+      0.15
+    ],
+    "io_low": [
+      0.85,
+      -1.25,
+      -0.55
+    ],
+    "top": [
+      0.15,
+      1.4,
+      0.6
+    ]
+  },
+  "features": {
+    "measure": true,
+    "outline": true,
+    "outline_default": true,
+    "outline_depth_sensitivity": 360.0,
+    "outline_normal_sensitivity": 30.0,
+    "explode": true,
+    "explode_axis": [
+      0,
+      0,
+      1
+    ],
+    "explode_offsets_mm": {
+      "glass": 55,
+      "ctp_flex": 55,
+      "ctp_flex_fold": 55,
+      "lcd_ffc_fly": 55,
+      "lcd_ffc": 55,
+      "lcd_ffc_fold": 55,
+      "ctp_conn": 18,
+      "lcd_conn": 18,
+      "cam_conn": 18,
+      "cam_module": 42,
+      "m2_wifi": 24,
+      "m2_modem": 28,
+      "uv_badge": 52,
+      "accents": 48,
+      "front": 28,
+      "pcb": 18,
+      "bay_hatch": -28,
+      "rear": -12
+    },
+    "section": true,
+    "deeplink": true,
+    "fea": true,
+    "fea_part": "rear",
+    "fea_view": "rear",
+    "fea_stl_stem": "rear",
+    "fea_offset_mm": [
+      0,
+      0,
+      0
+    ],
+    "fea_cases": [
+      "long_edge_bend",
+      "corner_twist"
+    ],
+    "fea_printables": [
+      {
+        "id": "rear",
+        "label": "Rear",
+        "href": "fea/#rear"
+      },
+      {
+        "id": "front",
+        "label": "Front",
+        "href": "fea/#front"
+      },
+      {
+        "id": "coupons",
+        "label": "Coupons",
+        "href": "fea/#coupons"
+      }
+    ],
+    "fea_overlays": [
+      {
+        "id": "long_edge_bend",
+        "url": "fea/long_edge_bend.json?v=14e16476bf",
+        "label": "Bend across the long axis (grip + push)",
+        "field": "von_mises_MPa",
+        "max": 17.560749,
+        "min": 0.0
+      },
+      {
+        "id": "corner_twist",
+        "url": "fea/corner_twist.json?v=ca7cd4031d",
+        "label": "Diagonal twist (one corner up)",
+        "field": "von_mises_MPa",
+        "max": 49.959769,
+        "min": 0.0
+      }
+    ]
+  },
+  "pages_links": [],
+  "exclusive_groups": [
+    {
+      "id": "ctp_flex_pose",
+      "label": "CTP flex pose",
+      "parts": [
+        "ctp_flex",
+        "ctp_flex_fold"
+      ],
+      "default": "ctp_flex_fold"
+    },
+    {
+      "id": "lcd_ffc_pose",
+      "label": "LCD FFC pose",
+      "parts": [
+        "lcd_ffc_fly",
+        "lcd_ffc",
+        "lcd_ffc_fold"
+      ],
+      "default": "lcd_ffc_fly"
+    }
+  ]
+}

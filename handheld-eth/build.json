@@ -1,0 +1,20 @@
+{
+  "id": "20260806T123718Z-5ebb18d91f",
+  "built_at": "2026-08-06T12:37:18Z",
+  "concept": "handheld-eth",
+  "assets": {
+    "handheld.glb": "5fe2c6a1ff",
+    "assembly.glb": "b6e252ff57",
+    "lcd_splash_active_esl.png": "c3b2d277a9",
+    "active-esl-uv-badge-28x10-brand-full-600dpi.png": "bd3627da5a",
+    "site-nav.css": "d180230ef5",
+    "site-nav.js": "f745b073ef",
+    "look.js": "b61e24e6db",
+    "look-viewer.js": "95fcba9977",
+    "pages-update.js": "8ff9ecbdf6",
+    "still.js": "d57c44b4a1",
+    "inspect-lighting.js": "3f90d182e8",
+    "fea/corner_twist.json": "ca7cd4031d",
+    "fea/long_edge_bend.json": "14e16476bf"
+  }
+}

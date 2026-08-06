@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#0b1220;color-scheme:dark">
+<head>
+  <meta name="aesl-build" content="20260805T175107Z-bb7ed7e9ef" />
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Active Slim</title>
+  <style>html,body{background-color:#0b1220;color-scheme:dark}</style>
+  <link rel="stylesheet" href="../site-nav.css?v=d180230ef5" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="../look-viewer.js?v=95fcba9977" defer></script>
+  <script src="../look.js?v=b61e24e6db" defer></script>
+  <style>
+    :root {
+      --bg: #0b1220; --panel: rgba(12, 18, 32, 0.88); --text: #f4f7fb;
+      --muted: #a9b4c7; --accent: #3ec6ff; --warn: #ffcc66;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%;
+      background: radial-gradient(1200px 700px at 70% 10%, #15233d 0%, var(--bg) 55%);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+    model-viewer {
+      width: 100%; height: 100%; background: transparent;
+      touch-action: pan-y;
+    }
+    .look-bar {
+      position: fixed; z-index: 15;
+      left: 12px; right: 12px;
+      top: calc(10px + var(--site-nav-h, 46px));
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; pointer-events: none;
+    }
+    .look-bar > * { pointer-events: auto; }
+    .look-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .look-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 40px; padding: 8px 16px; border-radius: 999px;
+      font-size: 0.92rem; font-weight: 700; text-decoration: none;
+      border: 1px solid rgba(62,198,255,.55); background: rgba(62,198,255,.2);
+      color: #fff; cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .look-btn:hover { border-color: rgba(62,198,255,.85); background: rgba(62,198,255,.32); }
+    .look-meta {
+      background: var(--panel); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.08); border-radius: 12px;
+      padding: 8px 12px; max-width: min(420px, 100%);
+    }
+    .look-meta h1 {
+      margin: 0; font-size: 0.95rem; font-weight: 650;
+    }
+    .look-meta p {
+      margin: 2px 0 0; color: var(--muted); font-size: 0.8rem;
+    }
+    .look-hint {
+      position: fixed; z-index: 15; left: 50%; bottom: 14px;
+      transform: translateX(-50%);
+      background: var(--panel); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px; padding: 7px 14px; color: var(--muted);
+      font-size: 0.8rem; pointer-events: none; white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .look-bar {
+        top: calc(8px + var(--site-nav-h, 84px));
+        flex-direction: column; align-items: stretch;
+      }
+      .look-meta { max-width: 100%; }
+      .look-actions { width: 100%; }
+      .look-btn { flex: 1; min-height: 44px; }
+      .look-hint {
+        font-size: 0.72rem; max-width: calc(100% - 16px);
+        white-space: normal; text-align: center;
+      }
+    }
+  </style>
+</head>
+<body data-look-gallery="../" style="background-color:#0b1220;margin:0">
+  <nav id="siteNav" class="site-nav" data-root="../" data-concept="slim" data-mode="look" aria-label="Concept site"></nav>
+  <script src="../site-nav.js?v=f745b073ef" defer></script>
+
+  <div class="look-bar">
+    <div class="look-actions">
+      <a class="look-btn" data-look-back href="../">← Back</a>
+    </div>
+    <div class="look-meta">
+      <h1>Active Slim — Look</h1>
+      <p>Active Slim · no onboard RJ45</p>
+    </div>
+  </div>
+
+  <model-viewer
+    src="handheld.glb?v=640d90a7f6"
+    alt="Active Slim enclosure with branded LCD"
+    camera-controls
+    touch-action="pan-y"
+    camera-target="auto"
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="22deg"
+    shadow-intensity="0.85"
+    exposure="1.1"
+    environment-image="neutral"
+    interaction-prompt="auto"
+  ></model-viewer>
+
+  <div class="look-hint">Esc · Back · drag to orbit · Ctrl+scroll zoom</div>
+<script src="../pages-update.js?v=8ff9ecbdf6" defer></script>
+</body>
+</html>

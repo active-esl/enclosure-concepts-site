@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#0b1220;color-scheme:dark">
+<head>
+  <meta name="aesl-build" content="20260805T175107Z-bb7ed7e9ef" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Active Slim</title>
+  <!-- Critical: paint dark before site-nav.css / body CSS — kills FOUC white flash -->
+  <style>html,body{background-color:#0b1220;color-scheme:dark}</style>
+  <link rel="stylesheet" href="../site-nav.css?v=d180230ef5" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1220; --panel: rgba(12, 18, 32, 0.94); --text: #f4f7fb;
+      --muted: #a9b4c7; --accent: #3ec6ff; --warn: #ffcc66; --dim: #ffd166;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden;
+      background: radial-gradient(1200px 700px at 70% 10%, #15233d 0%, var(--bg) 55%);
+      color: var(--text); font-family: "Segoe UI", system-ui, sans-serif;
+      -webkit-text-size-adjust: 100%; }
+    #c { position: fixed; inset: 0; width: 100%; height: 100%;
+      display: block; touch-action: none; }
+    #btnPanel {
+      position: fixed; z-index: 4;
+      top: calc(12px + var(--safe-top));
+      left: calc(12px + var(--safe-left));
+      min-width: 44px; min-height: 44px;
+      padding: 10px 14px;
+      background: rgba(12, 18, 32, 0.92); color: var(--accent);
+      border: 1px solid rgba(62,198,255,.45); border-radius: 999px;
+      font-size: .9rem; font-weight: 650; cursor: pointer;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btnPanel:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    /* Only show the floating control when the panel is closed. */
+    body.panel-open #btnPanel { display: none; }
+    .hud {
+      position: fixed; z-index: 3;
+      left: calc(12px + var(--safe-left));
+      top: calc(12px + var(--safe-top));
+      width: min(360px, calc(100% - 24px - var(--safe-left) - var(--safe-right)));
+      max-height: calc(100% - 24px - var(--safe-top) - var(--safe-bottom) - var(--site-nav-h, 0px));
+      overflow: auto; overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      transition: opacity .18s ease, transform .18s ease, visibility .18s;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(169,180,199,.45) rgba(255,255,255,.06);
+    }
+    .hud.dragging { transition: none; user-select: none; }
+    .hud.hud-placed { right: auto; bottom: auto; width: min(360px, calc(100vw - 16px)); }
+    .hud.collapsed {
+      overflow: hidden;
+      max-height: none;
+    }
+    .hud.collapsed .card-body { display: none; }
+    .hud.collapsed .card { padding-bottom: 10px; }
+    .hud.collapsed .card-head { margin-bottom: 0; }
+    .hud::-webkit-scrollbar { width: 8px; }
+    .hud::-webkit-scrollbar-track { background: rgba(255,255,255,.06); border-radius: 999px; }
+    .hud::-webkit-scrollbar-thumb {
+      background: rgba(169,180,199,.45); border-radius: 999px;
+    }
+    body.panel-closed .hud {
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-8px);
+    }
+    .card { background: var(--panel); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+      padding: 12px 14px 14px; box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+    .card-head { display: flex; gap: 8px; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 2px;
+      cursor: grab; touch-action: none; user-select: none;
+      border-radius: 10px; margin: -4px -6px 2px; padding: 4px 6px; }
+    .card-head:active { cursor: grabbing; }
+    .card-head-main { min-width: 0; flex: 1; }
+    #btnPanelClose {
+      flex: 0 0 auto; width: 40px; height: 40px; min-width: 40px; min-height: 40px;
+      padding: 0; margin: -4px -2px 0 0;
+      background: rgba(255,255,255,.06); color: var(--muted);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+      font-size: 1.25rem; line-height: 1; cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #btnPanelClose:hover { color: var(--text); border-color: rgba(255,255,255,.22); }
+    .badge { display: inline-block; margin-bottom: 4px; padding: 2px 7px; border-radius: 999px;
+      background: rgba(255,204,102,.15); color: var(--warn);
+      font-size: .68rem; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+    h1 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 650; line-height: 1.25; }
+    h2 { margin: 10px 0 4px; font-size: .72rem; font-weight: 650; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .05em; }
+    p, .muted { margin: 0 0 6px; color: var(--muted); font-size: .82rem; line-height: 1.4; }
+    #blurb { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden; }
+    #blurb.expanded { display: block; -webkit-line-clamp: unset; overflow: visible; }
+    #btnBlurbMore {
+      display: none; background: none; border: none; color: var(--accent);
+      padding: 0; min-height: 0; font-size: .8rem; cursor: pointer; margin: 0 0 6px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 4px; }
+    .nav-links a {
+      display: inline-flex; align-items: center; min-height: 32px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12);
+      color: var(--muted); font-size: .8rem; font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--accent); border-color: rgba(62,198,255,.35); }
+    .toggles { display: grid; gap: 2px; margin: 2px 0 2px; }
+    .toggles label { display: flex; gap: 10px; align-items: center; font-size: .9rem;
+      cursor: pointer; min-height: 40px; padding: 2px 0; min-width: 0; flex: 1;
+      -webkit-tap-highlight-color: transparent; }
+    .toggles input[type="checkbox"] { width: 18px; height: 18px; flex: 0 0 auto; }
+    .part-row {
+      display: flex; gap: 6px; align-items: center; min-height: 40px;
+    }
+    .part-row label { min-height: 36px; }
+    .solo-btn, .spot-btn {
+      flex: 0 0 auto; min-height: 32px; padding: 4px 10px; font-size: .75rem;
+      background: rgba(255,255,255,.05); color: var(--muted);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .solo-btn.active, .solo-btn[aria-pressed="true"] {
+      background: rgba(62,198,255,.28); color: #fff; border-color: rgba(62,198,255,.55);
+    }
+    .spot-btn.active, .spot-btn[aria-pressed="true"] {
+      background: rgba(255,204,102,.28); color: #fff; border-color: rgba(255,204,102,.55);
+    }
+    .parts-tools { margin: 2px 0 4px; }
+    .parts-tools button { min-height: 34px; padding: 6px 12px; font-size: .8rem; }
+    #btnShare.copied { background: rgba(110, 220, 160, .2); color: #9eecc0;
+      border-color: rgba(110, 220, 160, .45); }
+    .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; align-items: center; }
+    .view-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+    .view-row button { width: 100%; padding: 8px 6px; font-size: .82rem; }
+    button {
+      background: rgba(62,198,255,.15); color: var(--accent); border: 1px solid rgba(62,198,255,.35);
+      border-radius: 999px; padding: 8px 12px; font-size: .85rem; cursor: pointer;
+      min-height: 40px; -webkit-tap-highlight-color: transparent;
+    }
+    button.active { background: rgba(62,198,255,.4); color: #fff; border-color: rgba(62,198,255,.7); }
+    input[type="range"] { width: 100%; accent-color: var(--accent); height: 28px; }
+    /* Dark Inspect chrome: native <select> menuboxes default to white OS chrome
+       with light text (unreadable). color-scheme + option colours fix both
+       closed field and open list (FEA cases + section plane). */
+    select {
+      color-scheme: dark;
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: #141c2e;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position:
+        calc(100% - 16px) calc(50% - 2px),
+        calc(100% - 10px) calc(50% - 2px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px; padding: 8px 28px 8px 10px; font-size: .85rem;
+      min-height: 40px; flex: 1;
+    }
+    select:hover { border-color: rgba(62,198,255,.4); }
+    select:focus {
+      outline: 2px solid rgba(62,198,255,.55); outline-offset: 1px;
+      border-color: rgba(62,198,255,.55);
+    }
+    select option, select optgroup {
+      background-color: #141c2e;
+      color: #f4f7fb;
+    }
+    select option:checked, select option:hover, select option:focus {
+      background-color: #1e3a55;
+      color: #ffffff;
+    }
+    #measureOut, #feaOut { margin-top: 6px; font-size: .85rem; color: var(--text); min-height: 1.2em; }
+    #dimList { margin-top: 4px; font-size: .78rem; color: var(--dim); line-height: 1.4; }
+    details.tool {
+      margin-top: 6px; border-top: 1px solid rgba(255,255,255,.07); padding-top: 4px;
+    }
+    details.tool > summary {
+      list-style: none; cursor: pointer; user-select: none;
+      display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center;
+      min-height: 36px; font-size: .72rem; font-weight: 650; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .05em;
+      -webkit-tap-highlight-color: transparent;
+    }
+    details.tool > summary::-webkit-details-marker { display: none; }
+    details.tool > summary::after {
+      content: "▸"; color: var(--accent); font-size: .85rem; transition: transform .15s ease;
+    }
+    details.tool[open] > summary::after { transform: rotate(90deg); }
+    details.tool .tool-body { padding: 2px 0 4px; }
+    .chk-summary {
+      display: inline-flex; gap: 6px; align-items: center;
+      text-transform: none; letter-spacing: 0; font-size: .85rem; font-weight: 600;
+      color: var(--text); min-height: 32px; cursor: pointer;
+    }
+    .chk-summary input { width: 18px; height: 18px; }
+    .hint {
+      position: fixed; z-index: 2; left: 50%;
+      bottom: calc(14px + var(--safe-bottom)); transform: translateX(-50%);
+      background: var(--panel); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px; padding: 8px 14px; color: var(--muted); font-size: .8rem;
+      pointer-events: none; max-width: calc(100% - 24px); text-align: center;
+      opacity: 1; transition: opacity .4s ease;
+    }
+    .hint.faded { opacity: 0; }
+    body.panel-closed .hint:not(.faded) { opacity: .95; }
+    /* RHS camera stack — clear of left/top FEA·dims HUD and bottom Controls. */
+    #camStack {
+      position: fixed; z-index: 4;
+      right: calc(12px + var(--safe-right));
+      top: calc(12px + var(--safe-top) + var(--site-nav-h, 0px) + 8px);
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 6px;
+      background: rgba(12, 18, 32, 0.92);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #camStack button {
+      width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+      padding: 0; border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; font-weight: 700; line-height: 1;
+      background: rgba(62,198,255,.12); color: var(--accent);
+      border: 1px solid rgba(62,198,255,.35);
+    }
+    #camStack button:hover {
+      background: rgba(62,198,255,.28); color: #fff;
+      border-color: rgba(62,198,255,.6);
+    }
+    #camStack button:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+    #camStack button .cam-ico { font-size: 1.2rem; }
+    #camStack button .cam-txt {
+      font-size: .62rem; font-weight: 700; letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    #camStack .cam-sep {
+      height: 1px; margin: 2px 4px;
+      background: rgba(255,255,255,.1);
+    }
+    /* Do NOT set display:none here — CSS2DRenderer shows labels with
+       element.style.display = '' which cannot override a stylesheet rule.
+       Initial hide is JS-only (el.style.display + CSS2DObject.visible). */
+    .dim-label {
+      color: #1a1408; background: rgba(255,209,102,.92); border: 1px solid rgba(255,209,102,.95);
+      border-radius: 6px; padding: 2px 7px; font: 650 12px/1.3 "Segoe UI", system-ui, sans-serif;
+      white-space: nowrap; pointer-events: none; user-select: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    .slider-row { display: grid; gap: 2px; margin: 4px 0; font-size: .82rem; color: var(--muted); }
+    .chk-inline { display: flex; gap: 8px; align-items: center; min-height: 40px; font-size: .9rem; cursor: pointer; }
+    .chk-inline input { width: 18px; height: 18px; }
+    @media (max-width: 720px) {
+      #btnPanel {
+        top: auto; left: auto;
+        right: calc(12px + var(--safe-right));
+        bottom: calc(12px + var(--safe-bottom));
+      }
+      /* Keep cam stack top-right on mobile — clear of bottom HUD / Controls. */
+      #camStack {
+        top: calc(10px + var(--safe-top) + var(--site-nav-h, 0px));
+        bottom: auto;
+      }
+      .hud:not(.hud-placed) {
+        left: calc(8px + var(--safe-left));
+        right: calc(8px + var(--safe-right));
+        top: auto;
+        bottom: calc(12px + var(--safe-bottom));
+        width: auto;
+        max-height: min(58vh, calc(100% - 24px - var(--safe-top) - var(--safe-bottom)));
+      }
+      .hud.hud-placed {
+        max-height: min(58vh, calc(100% - 24px - var(--safe-top) - var(--safe-bottom)));
+      }
+      body.panel-closed .hud { transform: translateY(12px); }
+      .card { border-radius: 16px 16px 14px 14px; padding: 12px 14px 14px; }
+      .hint { bottom: calc(68px + var(--safe-bottom)); font-size: .75rem; }
+      body.panel-open .hint { opacity: 0; }
+      h1 { font-size: .98rem; }
+      .view-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body class="panel-open" style="background-color:#0b1220;margin:0">
+  <nav id="siteNav" class="site-nav" data-root="../" data-concept="slim" data-mode="inspect" aria-label="Concept site"></nav>
+  <script src="../site-nav.js?v=f745b073ef" defer></script>
+  <canvas id="c"></canvas>
+  <button type="button" id="btnPanel" aria-controls="hud" aria-expanded="true">Controls</button>
+  <div id="camStack" role="toolbar" aria-label="Camera controls">
+    <button type="button" id="btnZoomIn" title="Zoom in" aria-label="Zoom in"><span class="cam-ico" aria-hidden="true">+</span></button>
+    <button type="button" id="btnZoomOut" title="Zoom out" aria-label="Zoom out"><span class="cam-ico" aria-hidden="true">−</span></button>
+    <div class="cam-sep" aria-hidden="true"></div>
+    <button type="button" id="btnFit" title="Fit all visible parts in view" aria-label="Fit viewport"><span class="cam-txt">Fit</span></button>
+    <button type="button" id="btnFill" title="Fill viewport (tighter frame)" aria-label="Fill viewport"><span class="cam-txt">Fill</span></button>
+    <div class="cam-sep" aria-hidden="true"></div>
+    <button type="button" id="btnHome" title="Reset to current named view" aria-label="Reset view"><span class="cam-txt">Home</span></button>
+  </div>
+  <div class="hud" id="hud" role="region" aria-label="Assembly controls">
+    <div class="card">
+      <div class="card-head" id="hudDragHandle" title="Drag to move · double-click to collapse">
+        <div class="card-head-main">
+          <div class="badge">Placeholder</div>
+          <h1 id="title"></h1>
+        </div>
+        <button type="button" id="btnPanelClose" aria-label="Close panel" title="Close (Esc)">×</button>
+      </div>
+      <div class="card-body">
+      <p id="blurb"></p>
+      <button type="button" id="btnBlurbMore">More</button>
+      <div id="extraLinks" class="nav-links"></div>
+
+      <h2>Views</h2>
+      <div class="row view-row" id="viewRow"></div>
+
+      <h2>Parts</h2>
+      <div class="row parts-tools">
+        <button type="button" id="btnPartsAll">Show all</button>
+        <button type="button" id="btnPartsClear" title="Hide all parts">Clear all</button>
+        <button type="button" id="btnShare" title="Copy URL with current view and toggles">Copy link</button>
+      </div>
+      <div class="toggles" id="toggles"></div>
+
+      <div id="displayBlock">
+        <h2>Display</h2>
+        <div class="toggles" id="featureToggles"></div>
+      </div>
+
+      <div id="explodeBlock" hidden>
+        <details class="tool" id="explodeDetails">
+          <summary>Explode</summary>
+          <div class="tool-body">
+            <div class="slider-row">
+              <label for="explodeRange">Separation <span id="explodePct">0%</span></label>
+              <input type="range" id="explodeRange" min="0" max="100" value="0" />
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div id="sectionBlock" hidden>
+        <details class="tool" id="sectionDetails">
+          <summary>
+            <span>Section</span>
+            <label class="chk-summary" data-stop-toggle title="Slice the assembly">
+              <input type="checkbox" id="chkSection"> On
+            </label>
+          </summary>
+          <div class="tool-body">
+            <div class="row">
+              <select id="sectionPlane" aria-label="Section plane">
+                <!-- Default X cut: obvious from Front. Z cut is nearly invisible on a thin handheld. -->
+                <option value="yz" selected>YZ (X cut)</option>
+                <option value="xz">XZ (Y cut)</option>
+                <option value="xy">XY (Z cut)</option>
+              </select>
+            </div>
+            <div class="slider-row">
+              <label for="sectionRange">Cut <span id="sectionPct">50%</span></label>
+              <input type="range" id="sectionRange" min="0" max="100" value="50" />
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div id="feaBlock" hidden>
+        <details class="tool" id="feaDetails">
+          <summary>
+            <span>FEA (ranking)</span>
+            <label class="chk-summary" data-stop-toggle title="Stress overlay on the ranked shell">
+              <input type="checkbox" id="chkFea"> On
+            </label>
+          </summary>
+          <div class="tool-body">
+            <p class="muted" style="margin:0 0 8px;font-size:.82rem">
+              Ranking only · not CE · by printable part
+            </p>
+            <div id="feaPrintables" class="toggles" aria-label="Printable parts"></div>
+            <div class="row">
+              <select id="feaCase" aria-label="FEA load case"></select>
+            </div>
+            <div id="feaOut" class="muted"></div>
+            <p class="muted" style="margin:8px 0 0;font-size:.82rem">
+              Full by-part report:
+              <a href="fea/" style="color:var(--accent,#3ec6ff)">fea/</a>
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <div id="measBlock">
+        <details class="tool" id="measDetails">
+          <summary id="measHeading">Measurements</summary>
+          <div class="tool-body">
+            <div class="toggles" id="dimToggles"></div>
+            <div class="row" id="measOffRow">
+              <button type="button" id="btnDimsOff">All off</button>
+            </div>
+            <div id="dimList"></div>
+            <div class="row" id="measureRow">
+              <button type="button" id="btnMeasure">Measure</button>
+              <button type="button" id="btnClear">Clear</button>
+            </div>
+            <div id="measureOut"></div>
+          </div>
+        </details>
+      </div>
+
+      <div id="loading" class="muted">Loading model…</div>
+      </div>
+    </div>
+  </div>
+  <div class="hint" id="hint">Drag to orbit · scroll zoom · Measure: two clicks</div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+    import {
+      INSPECT_LIGHTING,
+      applyInspectEnvironment,
+      createInspectLights,
+    } from '../inspect-lighting.js?v=3f90d182e8';
+
+    const MANIFEST = {
+  "id": "slim",
+  "title": "Active Slim",
+  "blurb": "Thin ~7.6 mm slab \u00b7 front housing + rear housing \u00b7 no onboard RJ45 (dock / USB-C / PoE-when-docked). Ghost internals (Active Screen board, RJ45 not fitted) through shell by default \u00b7 rear-service (VESA / \u00bc-20 / RF / wordmark). Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Not measured CAD.",
+  "glb": "assembly.glb",
+  "glb_version": "cc0bb773bd",
+  "parts": [
+    {
+      "id": "front",
+      "label": "Front housing (LCD + PCB)",
+      "visible": true,
+      "color": [
+        168,
+        172,
+        178
+      ],
+      "transparent": true,
+      "opacity": 0.45
+    },
+    {
+      "id": "rear",
+      "label": "Rear housing",
+      "visible": true,
+      "color": [
+        145,
+        148,
+        152
+      ],
+      "transparent": true,
+      "opacity": 0.45
+    },
+    {
+      "id": "glass",
+      "label": "Display (ST1010 LENS+stack)",
+      "visible": true,
+      "color": [
+        28,
+        36,
+        48
+      ],
+      "transparent": true,
+      "opacity": 0.92,
+      "splash": "lcd_splash_active_esl.png",
+      "splash_style": "lcd",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "uv_badge",
+      "label": "UV badge (brand-full swatch)",
+      "visible": true,
+      "color": [
+        255,
+        255,
+        255
+      ],
+      "splash": "active-esl-uv-badge-28x10-brand-full-600dpi.png",
+      "splash_style": "print",
+      "splash_flip_u": false,
+      "splash_flip_v": true
+    },
+    {
+      "id": "accents",
+      "label": "Accents (gated \u2014 home/cam off)",
+      "visible": false,
+      "color": [
+        190,
+        192,
+        196
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "PCB (Active Screen \u2014 no RJ45 fitted)",
+      "visible": true,
+      "color": [
+        28,
+        110,
+        55
+      ],
+      "ghost": true,
+      "transparent": true,
+      "face_colors": true,
+      "opacity": 0.7
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Overall rear (W\u00d7H\u00d7D)",
+      "default": false,
+      "dims": [
+        {
+          "label": "W 246.9 mm",
+          "mm": 246.9,
+          "a": [
+            -0.0004500000000000001,
+            0.177,
+            0.0052
+          ],
+          "b": [
+            0.24645000000000003,
+            0.177,
+            0.0052
+          ]
+        },
+        {
+          "label": "H 169.0 mm",
+          "mm": 169.0,
+          "a": [
+            0.25445,
+            0.0,
+            0.0052
+          ],
+          "b": [
+            0.25445,
+            0.169,
+            0.0052
+          ]
+        },
+        {
+          "label": "D 5.2 mm",
+          "mm": 5.2,
+          "a": [
+            0.25445,
+            0.169,
+            0.0
+          ],
+          "b": [
+            0.25445,
+            0.169,
+            0.0052
+          ]
+        }
+      ]
+    },
+    {
+      "id": "front",
+      "label": "Front",
+      "default": false,
+      "dims": [
+        {
+          "label": "front W 246.0 mm",
+          "mm": 246.0,
+          "a": [
+            0.0,
+            0.177,
+            0.0076
+          ],
+          "b": [
+            0.246,
+            0.177,
+            0.0076
+          ]
+        },
+        {
+          "label": "front H 169.0 mm",
+          "mm": 169.0,
+          "a": [
+            0.254,
+            0.0,
+            0.0076
+          ],
+          "b": [
+            0.254,
+            0.169,
+            0.0076
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "label": "Glass",
+      "default": false,
+      "dims": [
+        {
+          "label": "glass W 243.6 mm",
+          "mm": 243.6,
+          "a": [
+            0.0012000000476837158,
+            0.1758000030517578,
+            0.007599999904632568
+          ],
+          "b": [
+            0.2448000030517578,
+            0.1758000030517578,
+            0.007599999904632568
+          ]
+        },
+        {
+          "label": "glass H 166.6 mm",
+          "mm": 166.6,
+          "a": [
+            0.2528000030517578,
+            0.0012000000476837158,
+            0.007599999904632568
+          ],
+          "b": [
+            0.2528000030517578,
+            0.16780000305175782,
+            0.007599999904632568
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uv_badge",
+      "label": "Uv_badge",
+      "default": false,
+      "dims": [
+        {
+          "label": "uv_badge W 28.0 mm",
+          "mm": 28.0,
+          "a": [
+            0.024,
+            0.158,
+            0.007400000095367432
+          ],
+          "b": [
+            0.052000000000000005,
+            0.158,
+            0.007400000095367432
+          ]
+        },
+        {
+          "label": "uv_badge H 10.0 mm",
+          "mm": 10.0,
+          "a": [
+            0.06,
+            0.14,
+            0.007400000095367432
+          ],
+          "b": [
+            0.06,
+            0.15,
+            0.007400000095367432
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accents",
+      "label": "Accents",
+      "default": false,
+      "dims": [
+        {
+          "label": "accents W 0.0 mm",
+          "mm": 0.01,
+          "a": [
+            -0.001,
+            0.00701,
+            -0.00099
+          ],
+          "b": [
+            -0.00099,
+            0.00701,
+            -0.00099
+          ]
+        },
+        {
+          "label": "accents H 0.0 mm",
+          "mm": 0.01,
+          "a": [
+            0.00701,
+            -0.001,
+            -0.00099
+          ],
+          "b": [
+            0.00701,
+            -0.00099,
+            -0.00099
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pcb",
+      "label": "Pcb",
+      "default": false,
+      "dims": [
+        {
+          "label": "pcb W 146.0 mm",
+          "mm": 145.99,
+          "a": [
+            0.050005001068115236,
+            0.1416499938964844,
+            0.005990992546081543
+          ],
+          "b": [
+            0.19599690246582033,
+            0.1416499938964844,
+            0.005990992546081543
+          ]
+        },
+        {
+          "label": "pcb H 98.3 mm",
+          "mm": 98.3,
+          "a": [
+            0.2039969024658203,
+            0.0353499984741211,
+            0.005990992546081543
+          ],
+          "b": [
+            0.2039969024658203,
+            0.13364999389648438,
+            0.005990992546081543
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.5,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.5,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.25,
+      0.15
+    ],
+    "top": [
+      0.15,
+      1.4,
+      0.6
+    ]
+  },
+  "features": {
+    "measure": true,
+    "outline": true,
+    "outline_default": true,
+    "outline_depth_sensitivity": 320.0,
+    "outline_normal_sensitivity": 26.0,
+    "explode": true,
+    "explode_axis": [
+      0,
+      0,
+      1
+    ],
+    "explode_offsets_mm": {
+      "glass": 40,
+      "uv_badge": 38,
+      "accents": 35,
+      "front": 22,
+      "pcb": 14,
+      "rear": -10
+    },
+    "section": true,
+    "deeplink": true,
+    "fea": false,
+    "fea_overlays": []
+  },
+  "pages_links": []
+};
+
+    const PARTS = MANIFEST.parts || [];
+    const PART_IDS = PARTS.map((p) => p.id);
+    const DIM_GROUPS = MANIFEST.dim_groups || [];
+    const FEATURES = MANIFEST.features || {};
+    const VIEW_DIRS = MANIFEST.views || {
+      front: [0.75, 0.5, 1.15],
+      rear: [-0.75, 0.5, -1.15],
+      side: [1.4, 0.25, 0.15],
+      top: [0.15, 1.4, 0.6],
+    };
+    const PART_COLOR = Object.fromEntries(
+      PARTS.map((p) => {
+        const c = p.color || [142, 146, 152];
+        return [p.id, (c[0] << 16) | (c[1] << 8) | c[2]];
+      })
+    );
+    const PART_META = Object.fromEntries(PARTS.map((p) => [p.id, p]));
+    const FEA_OVERLAYS = FEATURES.fea_overlays || [];
+    const EXPLODE_AXIS = new THREE.Vector3(...(FEATURES.explode_axis || [0, 0, 1])).normalize();
+    const EXPLODE_OFFSETS = FEATURES.explode_offsets_mm || {};
+
+    const btnPanel = document.getElementById('btnPanel');
+    const btnPanelClose = document.getElementById('btnPanelClose');
+    // Guards the camera-dependent view offset until the camera exists.
+    let viewOffsetReady = false;
+    // OrbitControls is created later; HUD drag disables it via this ref.
+    let controls = null;
+    const mqMobile = matchMedia('(max-width: 720px)');
+    let panelOpen = true;
+    let panelUserSet = false;
+
+    function isPanelOpen() {
+      return document.body.classList.contains('panel-open');
+    }
+
+    function setPanelOpen(open, { fromUser = false, skipHash = false } = {}) {
+      panelOpen = !!open;
+      if (fromUser) panelUserSet = true;
+      document.body.classList.toggle('panel-open', panelOpen);
+      document.body.classList.toggle('panel-closed', !panelOpen);
+      btnPanel.setAttribute('aria-expanded', panelOpen ? 'true' : 'false');
+      btnPanel.textContent = 'Controls';
+      applyPanelViewOffset();
+      if (!skipHash) writeHash();
+    }
+
+    function defaultPanelOpen() {
+      return !mqMobile.matches;
+    }
+
+    btnPanel.addEventListener('click', () => setPanelOpen(!isPanelOpen(), { fromUser: true }));
+    btnPanelClose.addEventListener('click', () => setPanelOpen(false, { fromUser: true }));
+    addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isPanelOpen()) {
+        e.preventDefault();
+        setPanelOpen(false, { fromUser: true });
+      }
+    });
+    mqMobile.addEventListener('change', () => {
+      if (!panelUserSet) setPanelOpen(defaultPanelOpen(), { fromUser: false });
+      updateHintDefault();
+    });
+    // Mobile starts collapsed so the model fills the screen; desktop starts open.
+    // Honour #ui=0|1 immediately so shared links don't flash the wrong chrome.
+    (function applyEarlyUiHash() {
+      const raw = (location.hash || '').replace(/^#/, '');
+      if (!raw) {
+        setPanelOpen(defaultPanelOpen(), { skipHash: true });
+        return;
+      }
+      const ui = Object.fromEntries(
+        raw.split('&').filter(Boolean).map((kv) => {
+          const i = kv.indexOf('=');
+          return i < 0 ? [kv, ''] : [decodeURIComponent(kv.slice(0, i)), decodeURIComponent(kv.slice(i + 1))];
+        })
+      ).ui;
+      if (ui === '0' || ui === '1') {
+        panelUserSet = true;
+        setPanelOpen(ui === '1', { skipHash: true });
+      } else {
+        setPanelOpen(defaultPanelOpen(), { skipHash: true });
+      }
+    })();
+    if (!isPanelOpen() && mqMobile.matches) {
+      btnPanel.classList.add('pulse-once');
+      setTimeout(() => btnPanel.classList.remove('pulse-once'), 2800);
+    }
+
+    // Drag title bar to reposition; double-click to collapse to chrome-only.
+    const hudEl = document.getElementById('hud');
+    const hudHandle = document.getElementById('hudDragHandle');
+    const HUD_STORE_KEY = `aesl-inspect-hud:${MANIFEST.id || 'unknown'}`;
+    let hudCollapsed = false;
+    let hudPlaced = false;
+    let hudDragging = false;
+    let suppressHudDblClick = false;
+
+    function hudSafePad() {
+      const cs = getComputedStyle(document.documentElement);
+      const n = (v) => {
+        const m = String(v || '0').match(/([\d.]+)/);
+        return m ? parseFloat(m[1]) : 0;
+      };
+      return {
+        top: n(cs.getPropertyValue('--safe-top')) + 8,
+        right: n(cs.getPropertyValue('--safe-right')) + 8,
+        bottom: n(cs.getPropertyValue('--safe-bottom')) + 8,
+        left: n(cs.getPropertyValue('--safe-left')) + 8,
+      };
+    }
+
+    function clampHudPosition(left, top) {
+      const pad = hudSafePad();
+      const rect = hudEl.getBoundingClientRect();
+      const w = rect.width || Math.min(360, innerWidth - 16);
+      const h = rect.height || 80;
+      const maxL = Math.max(pad.left, innerWidth - w - pad.right);
+      const maxT = Math.max(pad.top, innerHeight - h - pad.bottom);
+      return {
+        left: Math.min(Math.max(left, pad.left), maxL),
+        top: Math.min(Math.max(top, pad.top), maxT),
+      };
+    }
+
+    function defaultHudDockPos() {
+      const cs = getComputedStyle(document.documentElement);
+      const n = (v) => {
+        const m = String(v || '0').match(/([\d.]+)/);
+        return m ? parseFloat(m[1]) : 0;
+      };
+      return {
+        left: 12 + n(cs.getPropertyValue('--safe-left')),
+        top: 12 + n(cs.getPropertyValue('--safe-top')),
+      };
+    }
+
+    function clearHudPlacement({ persist = true } = {}) {
+      hudEl.style.left = '';
+      hudEl.style.top = '';
+      hudEl.style.right = '';
+      hudEl.style.bottom = '';
+      hudEl.classList.remove('hud-placed');
+      hudPlaced = false;
+      if (persist) persistHudChrome();
+      if (!hudDragging) applyPanelViewOffset();
+    }
+
+    function applyHudPosition(left, top, { persist = true } = {}) {
+      const p = clampHudPosition(left, top);
+      // Near the CSS dock slot → stay in default docked mode so view-offset
+      // still centres the model in the clear view area (not under the HUD).
+      const dock = defaultHudDockPos();
+      if (Math.hypot(p.left - dock.left, p.top - dock.top) < 28) {
+        clearHudPlacement({ persist });
+        return { left: dock.left, top: dock.top };
+      }
+      hudEl.style.left = `${p.left}px`;
+      hudEl.style.top = `${p.top}px`;
+      hudEl.style.right = 'auto';
+      hudEl.style.bottom = 'auto';
+      hudEl.classList.add('hud-placed');
+      hudPlaced = true;
+      if (persist) persistHudChrome();
+      // Never re-frame the 3D view while the window is being dragged.
+      if (!hudDragging) applyPanelViewOffset();
+      return p;
+    }
+
+    function setHudCollapsed(collapsed, { persist = true } = {}) {
+      hudCollapsed = !!collapsed;
+      hudEl.classList.toggle('collapsed', hudCollapsed);
+      hudHandle.title = hudCollapsed
+        ? 'Drag to move · double-click to expand'
+        : 'Drag to move · double-click to collapse';
+      if (hudPlaced) {
+        const r = hudEl.getBoundingClientRect();
+        applyHudPosition(r.left, r.top, { persist: false });
+      }
+      if (persist) persistHudChrome();
+      applyPanelViewOffset();
+    }
+
+    function persistHudChrome() {
+      try {
+        const payload = { collapsed: hudCollapsed };
+        if (hudPlaced) {
+          payload.left = parseFloat(hudEl.style.left) || 0;
+          payload.top = parseFloat(hudEl.style.top) || 0;
+        }
+        localStorage.setItem(HUD_STORE_KEY, JSON.stringify(payload));
+      } catch (_) { /* private mode */ }
+    }
+
+    function restoreHudChrome() {
+      try {
+        const raw = localStorage.getItem(HUD_STORE_KEY);
+        if (!raw) return;
+        const st = JSON.parse(raw);
+        if (!st || typeof st !== 'object') {
+          localStorage.removeItem(HUD_STORE_KEY);
+          return;
+        }
+        if (typeof st.left === 'number' && typeof st.top === 'number'
+            && Number.isFinite(st.left) && Number.isFinite(st.top)) {
+          // Reject absurd coords (pre-clamp) that used to zero the view.
+          if (Math.abs(st.left) > innerWidth * 3 || Math.abs(st.top) > innerHeight * 3) {
+            localStorage.removeItem(HUD_STORE_KEY);
+          } else {
+            applyHudPosition(st.left, st.top, { persist: false });
+          }
+        }
+        if (st.collapsed) setHudCollapsed(true, { persist: false });
+      } catch (_) {
+        try { localStorage.removeItem(HUD_STORE_KEY); } catch (__) { /* ignore */ }
+      }
+    }
+
+    hudHandle.addEventListener('pointerdown', (ev) => {
+      if (ev.button != null && ev.button !== 0) return;
+      if (ev.target.closest('#btnPanelClose')) return;
+      // Isolate from the canvas / OrbitControls under the HUD.
+      ev.preventDefault();
+      ev.stopPropagation();
+      const startX = ev.clientX;
+      const startY = ev.clientY;
+      const rect = hudEl.getBoundingClientRect();
+      const originL = rect.left;
+      const originT = rect.top;
+      let moved = false;
+      hudDragging = true;
+      hudEl.classList.add('dragging');
+      hudHandle.style.cursor = 'grabbing';
+      if (controls) controls.enabled = false;
+      try { hudHandle.setPointerCapture(ev.pointerId); } catch (_) { /* ok */ }
+
+      const onMove = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (!moved && (dx * dx + dy * dy) < 16) return;
+        moved = true;
+        applyHudPosition(originL + dx, originT + dy, { persist: false });
+      };
+      const onUp = (e) => {
+        window.removeEventListener('pointermove', onMove, true);
+        window.removeEventListener('pointerup', onUp, true);
+        window.removeEventListener('pointercancel', onUp, true);
+        hudDragging = false;
+        hudEl.classList.remove('dragging');
+        hudHandle.style.cursor = '';
+        try { hudHandle.releasePointerCapture(e.pointerId); } catch (_) { /* ok */ }
+        // Restore orbit unless Measure mode still owns the pointer.
+        if (controls) controls.enabled = !measureOn;
+        if (moved) {
+          suppressHudDblClick = true;
+          setTimeout(() => { suppressHudDblClick = false; }, 400);
+          const r = hudEl.getBoundingClientRect();
+          applyHudPosition(r.left, r.top, { persist: true });
+        }
+      };
+      // Capture-phase window listeners so release outside the HUD still cleans up.
+      window.addEventListener('pointermove', onMove, true);
+      window.addEventListener('pointerup', onUp, true);
+      window.addEventListener('pointercancel', onUp, true);
+    });
+
+    hudHandle.addEventListener('dblclick', (ev) => {
+      if (ev.target.closest('#btnPanelClose')) return;
+      if (suppressHudDblClick) return;
+      ev.preventDefault();
+      // Alt+double-click restores the default left dock + view centering.
+      if (ev.altKey) {
+        setHudCollapsed(false, { persist: false });
+        clearHudPlacement({ persist: true });
+        return;
+      }
+      setHudCollapsed(!hudCollapsed);
+    });
+
+    addEventListener('resize', () => {
+      if (!hudPlaced) {
+        applyPanelViewOffset();
+        return;
+      }
+      const r = hudEl.getBoundingClientRect();
+      applyHudPosition(r.left, r.top, { persist: true });
+    });
+
+    restoreHudChrome();
+
+    document.getElementById('title').textContent = MANIFEST.title || 'Assembly';
+    const blurbEl = document.getElementById('blurb');
+    blurbEl.innerHTML = MANIFEST.blurb || '';
+    const btnBlurbMore = document.getElementById('btnBlurbMore');
+    requestAnimationFrame(() => {
+      if (blurbEl.scrollHeight > blurbEl.clientHeight + 2) {
+        btnBlurbMore.style.display = 'inline';
+      }
+    });
+    btnBlurbMore.addEventListener('click', () => {
+      const open = blurbEl.classList.toggle('expanded');
+      btnBlurbMore.textContent = open ? 'Less' : 'More';
+    });
+    const linksEl = document.getElementById('extraLinks');
+    if (MANIFEST.pages_links?.length) {
+      linksEl.innerHTML = MANIFEST.pages_links.map((l) => {
+        const t = l.target ? ` target="${l.target}" rel="noopener"` : '';
+        return `<a href="${l.href}"${t}>${l.label}</a>`;
+      }).join('');
+    } else {
+      linksEl.remove();
+    }
+    const toggles = document.getElementById('toggles');
+    for (const p of PARTS) {
+      const row = document.createElement('div');
+      row.className = 'part-row';
+      const lab = document.createElement('label');
+      const baseLabel = String(p.label || p.id).replace(/\s*\(RED\)\s*$/i, '').trim();
+      p._baseLabel = baseLabel;
+      lab.innerHTML = `<input type="checkbox" data-part="${p.id}"${p.visible ? ' checked' : ''}> ${baseLabel}`;
+      const spot = document.createElement('button');
+      spot.type = 'button';
+      spot.className = 'spot-btn';
+      spot.dataset.spot = p.id;
+      spot.textContent = 'Spot';
+      spot.title = `Spotlight ${baseLabel} (dim others)`;
+      spot.setAttribute('aria-pressed', 'false');
+      const solo = document.createElement('button');
+      solo.type = 'button';
+      solo.className = 'solo-btn';
+      solo.dataset.solo = p.id;
+      solo.textContent = 'Solo';
+      solo.title = `Show only ${baseLabel}`;
+      solo.setAttribute('aria-pressed', 'false');
+      row.appendChild(lab);
+      row.appendChild(spot);
+      row.appendChild(solo);
+      toggles.appendChild(row);
+    }
+    const featToggles = document.getElementById('featureToggles');
+    if (FEATURES.outline) {
+      // outline: true = control available; checked only when outline_default.
+      // Default off — thick white edges clutter Inspect (Alex 2026-08-02).
+      const lab = document.createElement('label');
+      const checked = FEATURES.outline_default ? ' checked' : '';
+      lab.innerHTML = `<input type="checkbox" id="chkEdges"${checked}> Edge outline`;
+      featToggles.appendChild(lab);
+    } else {
+      document.getElementById('displayBlock').hidden = true;
+    }
+    if (FEATURES.explode) {
+      document.getElementById('explodeBlock').hidden = false;
+    }
+    if (FEATURES.section) {
+      document.getElementById('sectionBlock').hidden = false;
+    }
+    if (FEATURES.fea && FEA_OVERLAYS.length) {
+      document.getElementById('feaBlock').hidden = false;
+      const sel = document.getElementById('feaCase');
+      for (const o of FEA_OVERLAYS) {
+        const opt = document.createElement('option');
+        opt.value = o.id;
+        opt.textContent = o.label || o.id;
+        sel.appendChild(opt);
+      }
+      // Printables entry: one link per FDM shell slot (report is part-scoped).
+      const printables = FEATURES.fea_printables || [
+        { id: 'rear', label: 'Rear', href: 'fea/#rear' },
+        { id: 'front', label: 'Front', href: 'fea/#front' },
+        { id: 'hatch', label: 'Hatch', href: 'fea/#hatch' },
+        { id: 'coupons', label: 'Coupons', href: 'fea/#coupons' },
+      ];
+      const box = document.getElementById('feaPrintables');
+      if (box) {
+        for (const p of printables) {
+          const a = document.createElement('a');
+          a.href = p.href || (`fea/#${p.id}`);
+          a.textContent = p.label || p.id;
+          a.style.cssText =
+            'display:inline-flex;align-items:center;min-height:28px;padding:2px 8px;' +
+            'margin:0 6px 6px 0;border-radius:999px;text-decoration:none;' +
+            'border:1px solid rgba(62,198,255,.45);color:var(--accent,#3ec6ff);font-size:.82rem';
+          box.appendChild(a);
+        }
+      }
+    }
+    const dimToggles = document.getElementById('dimToggles');
+    for (const g of DIM_GROUPS) {
+      const lab = document.createElement('label');
+      lab.innerHTML = `<input type="checkbox" data-dim="${g.id}"${g.default ? ' checked' : ''}> ${g.label}`;
+      dimToggles.appendChild(lab);
+    }
+    if (!DIM_GROUPS.length) {
+      document.getElementById('measOffRow').style.display = 'none';
+      document.getElementById('dimList').style.display = 'none';
+    }
+    if (!DIM_GROUPS.length && !FEATURES.measure) {
+      document.getElementById('measBlock').hidden = true;
+    }
+    const viewRow = document.getElementById('viewRow');
+    const viewNames = Object.keys(VIEW_DIRS);
+    for (const name of viewNames) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.dataset.view = name;
+      b.textContent = name[0].toUpperCase() + name.slice(1);
+      if (name === viewNames[0]) b.classList.add('active');
+      viewRow.appendChild(b);
+    }
+    if (!FEATURES.measure) {
+      document.getElementById('measureRow').style.display = 'none';
+    }
+
+    let measureOn = false;
+    const hint = document.getElementById('hint');
+    let hintTimer = null;
+    function defaultHintText() {
+      if (mqMobile.matches) {
+        return FEATURES.measure
+          ? 'Drag to orbit · pinch zoom · Measure: two taps'
+          : 'Drag to orbit · pinch zoom';
+      }
+      return FEATURES.measure
+        ? 'Drag to orbit · scroll zoom · Measure: two clicks'
+        : 'Drag to orbit · scroll zoom';
+    }
+    function updateHintDefault() {
+      if (!measureOn) hint.textContent = defaultHintText();
+    }
+    function showHint(text, { sticky = false } = {}) {
+      hint.textContent = text;
+      hint.classList.remove('faded');
+      clearTimeout(hintTimer);
+      if (!sticky) {
+        hintTimer = setTimeout(() => hint.classList.add('faded'), 4500);
+      }
+    }
+    function fadeHintSoon() {
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hint.classList.add('faded'), 2500);
+    }
+    updateHintDefault();
+    showHint(defaultHintText());
+
+    const canvas = document.getElementById('c');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    // Exposure + IBL + studio lights from shared inspect-lighting.js.
+    renderer.localClippingEnabled = true;
+
+    const labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(innerWidth, innerHeight);
+    labelRenderer.domElement.style.position = 'fixed';
+    labelRenderer.domElement.style.inset = '0';
+    labelRenderer.domElement.style.pointerEvents = 'none';
+    labelRenderer.domElement.style.zIndex = '1';
+    document.body.appendChild(labelRenderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 2, 0.001, 20);
+    camera.position.set(0.28, 0.22, 0.32);
+
+    controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.target.set(0.11, 0.075, 0.0);
+
+    // Shared inspect-lighting.js (RoomEnvironment + studio lights).
+    applyInspectEnvironment(THREE, scene, renderer);
+    const { updateCameraLights: _updateInspectLights } = createInspectLights(THREE, scene);
+    function updateCameraLights() {
+      _updateInspectLights(camera, controls.target);
+    }
+    updateCameraLights();
+    window.__AESL_INSPECT_LIGHTING__ = INSPECT_LIGHTING;
+
+    const root = new THREE.Group();
+    scene.add(root);
+    const byName = {};
+    const partRoots = {};
+    const partBasePos = {};
+    const dimRoot = new THREE.Group();
+    scene.add(dimRoot);
+    const dimByGroup = {};
+    const dimLabelEntries = [];
+    const markers = new THREE.Group();
+    scene.add(markers);
+
+    const clipPlane = new THREE.Plane(new THREE.Vector3(0, 0, -1), 0);
+    const clipPlanes = [clipPlane];
+    let sectionOn = false;
+    let modelReady = false;
+    let suppressHash = false;
+    let feaCache = {};
+    let feaActive = null;
+    let partSnapshot = null;
+    let soloPartId = null;
+    // Spot = one-part attention (dim/desaturate others + mild accent).
+    // YAML highlight:true seeds default; ?spot= / #spot= override; empty spot= clears.
+    let spotPartId = null;
+
+    const dimMat = new THREE.LineBasicMaterial({ color: 0xffd166 });
+    const tickMat = new THREE.LineBasicMaterial({ color: 0xffd166 });
+
+    function makeDim(dim, staggerIndex = 0) {
+      const g = new THREE.Group();
+      const a = new THREE.Vector3(...dim.a);
+      const b = new THREE.Vector3(...dim.b);
+      const geo = new THREE.BufferGeometry().setFromPoints([a, b]);
+      g.add(new THREE.Line(geo, dimMat));
+      const dir = b.clone().sub(a);
+      dir.normalize();
+      let tick = new THREE.Vector3(0, 0, 1).cross(dir);
+      if (tick.lengthSq() < 1e-6) tick = new THREE.Vector3(0, 1, 0).cross(dir);
+      tick.normalize().multiplyScalar(0.003);
+      for (const p of [a, b]) {
+        const tgeo = new THREE.BufferGeometry().setFromPoints([
+          p.clone().add(tick), p.clone().sub(tick),
+        ]);
+        g.add(new THREE.Line(tgeo, tickMat));
+      }
+      const mid = a.clone().add(b).multiplyScalar(0.5);
+      // Stagger midpoints so W/H/D for the same part don't start stacked.
+      mid.addScaledVector(tick.clone().normalize(), 0.005 * ((staggerIndex % 5) - 2));
+      const el = document.createElement('div');
+      el.className = 'dim-label';
+      el.style.display = 'none';
+      el.textContent = dim.label;
+      const label = new CSS2DObject(el);
+      // CSS2DRenderer ignores parent.visible — keep labels off until applyDims.
+      label.visible = false;
+      label.position.copy(mid);
+      g.add(label);
+      dimLabelEntries.push({ label, el, base: mid.clone() });
+      return g;
+    }
+
+    for (const group of DIM_GROUPS) {
+      const wrap = new THREE.Group();
+      // Off until applyDims; do not infer "on" from parent Group alone (CSS2D).
+      wrap.visible = false;
+      group.dims.forEach((d, i) => wrap.add(makeDim(d, i)));
+      wrap.traverse((o) => { o.visible = false; });
+      dimRoot.add(wrap);
+      dimByGroup[group.id] = wrap;
+    }
+
+    const _proj = new THREE.Vector3();
+    function resolveDimLabelCollisions() {
+      if (!dimLabelEntries.length) return;
+      const w = innerWidth;
+      const h = innerHeight;
+      const items = [];
+      for (const entry of dimLabelEntries) {
+        let visible = true;
+        let p = entry.label;
+        while (p) {
+          if (p.visible === false) { visible = false; break; }
+          p = p.parent;
+        }
+        if (!visible) {
+          entry.el.style.marginLeft = '0px';
+          entry.el.style.marginTop = '0px';
+          continue;
+        }
+        _proj.copy(entry.base).project(camera);
+        if (_proj.z < -1 || _proj.z > 1) {
+          entry.el.style.marginLeft = '0px';
+          entry.el.style.marginTop = '0px';
+          continue;
+        }
+        const x = (_proj.x * 0.5 + 0.5) * w;
+        const y = (-_proj.y * 0.5 + 0.5) * h;
+        const bw = entry.el.offsetWidth || 88;
+        const bh = entry.el.offsetHeight || 18;
+        items.push({ entry, x, y, bw, bh, dx: 0, dy: 0 });
+      }
+      items.sort((a, b) => (a.y - b.y) || (a.x - b.x));
+      const pad = 3;
+      for (let i = 0; i < items.length; i++) {
+        for (let j = 0; j < i; j++) {
+          const A = items[i];
+          const B = items[j];
+          const ax = A.x + A.dx;
+          const ay = A.y + A.dy;
+          const bx = B.x + B.dx;
+          const by = B.y + B.dy;
+          const overlapX = Math.abs(ax - bx) < (A.bw + B.bw) / 2 + pad;
+          const overlapY = Math.abs(ay - by) < (A.bh + B.bh) / 2 + pad;
+          if (overlapX && overlapY) {
+            const need = (B.bh + A.bh) / 2 + pad - Math.abs(ay - by);
+            A.dy += (ay >= by ? 1 : -1) * Math.max(need, A.bh * 0.85 + pad);
+          }
+        }
+      }
+      for (const it of items) {
+        it.entry.el.style.marginLeft = `${Math.round(it.dx)}px`;
+        it.entry.el.style.marginTop = `${Math.round(it.dy)}px`;
+      }
+    }
+
+    function refreshDimList() {
+      const lines = [];
+      for (const group of DIM_GROUPS) {
+        const on = document.querySelector(`input[data-dim="${group.id}"]`)?.checked;
+        if (!on) continue;
+        for (const d of group.dims) lines.push(d.label);
+      }
+      document.getElementById('dimList').textContent = lines.join(' · ');
+    }
+    function applyDims() {
+      let any = false;
+      for (const group of DIM_GROUPS) {
+        const on = !!document.querySelector(`input[data-dim="${group.id}"]`)?.checked;
+        any = any || on;
+        const wrap = dimByGroup[group.id];
+        if (!wrap) continue;
+        // Set every node (incl. CSS2DObject) — renderer does not walk parents.
+        wrap.traverse((o) => { o.visible = on; });
+      }
+      // Belt: sync DOM display so mm text cannot stick hidden after a CSS flash fix.
+      for (const entry of dimLabelEntries) {
+        let on = true;
+        let p = entry.label;
+        while (p) {
+          if (p.visible === false) { on = false; break; }
+          p = p.parent;
+        }
+        entry.el.style.display = on ? '' : 'none';
+      }
+      if (any) document.getElementById('measDetails').open = true;
+      refreshDimList();
+      writeHash();
+    }
+    // Apply default_on (checkbox state) immediately — before GLB load / first paint.
+    applyDims();
+    document.getElementById('dimToggles')?.addEventListener('change', applyDims);
+    document.getElementById('btnDimsOff')?.addEventListener('click', () => {
+      for (const i of document.querySelectorAll('input[data-dim]')) i.checked = false;
+      applyDims();
+    });
+
+    // Screen-space outline: depth + normal second derivative (catches tangent blends).
+    const depthSens = FEATURES.outline_depth_sensitivity ?? 320.0;
+    const normalSens = FEATURES.outline_normal_sensitivity ?? 26.0;
+    const OutlineShader = {
+      uniforms: {
+        tDiffuse: { value: null },
+        tNormal: { value: null },
+        tDepth: { value: null },
+        resolution: { value: new THREE.Vector2(1, 1) },
+        cameraNear: { value: 0.01 },
+        cameraFar: { value: 10.0 },
+        outlineColor: { value: new THREE.Color(0xe8eef7) },
+        depthSensitivity: { value: depthSens },
+        normalSensitivity: { value: normalSens },
+        thickness: { value: 1.15 },
+        enabled: { value: 0.0 },
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform sampler2D tNormal;
+        uniform sampler2D tDepth;
+        uniform vec2 resolution;
+        uniform float cameraNear;
+        uniform float cameraFar;
+        uniform vec3 outlineColor;
+        uniform float depthSensitivity;
+        uniform float normalSensitivity;
+        uniform float thickness;
+        uniform float enabled;
+        varying vec2 vUv;
+
+        float linearDepth(vec2 uv) {
+          float d = texture2D(tDepth, uv).x;
+          float z = d * 2.0 - 1.0;
+          return (2.0 * cameraNear * cameraFar) /
+                 (cameraFar + cameraNear - z * (cameraFar - cameraNear));
+        }
+
+        vec3 readNormal(vec2 uv) {
+          return texture2D(tNormal, uv).xyz * 2.0 - 1.0;
+        }
+
+        void main() {
+          vec4 base = texture2D(tDiffuse, vUv);
+          if (enabled < 0.5) { gl_FragColor = base; return; }
+
+          vec2 texel = thickness / resolution;
+          vec2 dx = vec2(texel.x, 0.0);
+          vec2 dy = vec2(0.0, texel.y);
+
+          float d0 = linearDepth(vUv);
+          float dl = linearDepth(vUv - dx);
+          float dr = linearDepth(vUv + dx);
+          float dd = linearDepth(vUv - dy);
+          float du = linearDepth(vUv + dy);
+          float depthEdge = (abs((dl + dr) * 0.5 - d0) +
+                             abs((dd + du) * 0.5 - d0)) / max(d0, 1e-5);
+
+          vec3 n0 = readNormal(vUv);
+          vec3 nl = readNormal(vUv - dx);
+          vec3 nr = readNormal(vUv + dx);
+          vec3 nd = readNormal(vUv - dy);
+          vec3 nu = readNormal(vUv + dy);
+          float normalEdge = length((nl + nr) * 0.5 - n0) +
+                             length((nd + nu) * 0.5 - n0);
+
+          float e = clamp(depthEdge * depthSensitivity +
+                          normalEdge * normalSensitivity, 0.0, 1.0);
+          e = smoothstep(0.16, 0.55, e);
+          gl_FragColor = vec4(mix(base.rgb, outlineColor, e), base.a);
+        }
+      `,
+    };
+
+    const normalTarget = new THREE.WebGLRenderTarget(1, 1, {
+      minFilter: THREE.NearestFilter,
+      magFilter: THREE.NearestFilter,
+    });
+    normalTarget.depthTexture = new THREE.DepthTexture(1, 1);
+    normalTarget.depthTexture.format = THREE.DepthFormat;
+    normalTarget.depthTexture.type = THREE.FloatType;
+    const normalMaterial = new THREE.MeshNormalMaterial();
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const outlinePass = new ShaderPass(OutlineShader);
+    composer.addPass(outlinePass);
+    composer.addPass(new OutputPass());
+
+    let outlineOn = false;
+
+    function renderNormalBuffer() {
+      const dimWas = dimRoot.visible;
+      const markWas = markers.visible;
+      const helpWas = sectionHelper ? sectionHelper.visible : false;
+      dimRoot.visible = false;
+      markers.visible = false;
+      if (sectionHelper) sectionHelper.visible = false;
+      scene.overrideMaterial = normalMaterial;
+      renderer.setRenderTarget(normalTarget);
+      renderer.clear();
+      renderer.render(scene, camera);
+      renderer.setRenderTarget(null);
+      scene.overrideMaterial = null;
+      dimRoot.visible = dimWas;
+      markers.visible = markWas;
+      if (sectionHelper) sectionHelper.visible = helpWas;
+    }
+
+    function turbo(t) {
+      // Approximate turbo colormap (0..1 → RGB 0..1)
+      t = Math.min(1, Math.max(0, t));
+      const r = Math.max(0, Math.min(1, 1.5 - Math.abs(4 * t - 3)));
+      const g = Math.max(0, Math.min(1, 1.5 - Math.abs(4 * t - 2)));
+      const b = Math.max(0, Math.min(1, 1.5 - Math.abs(4 * t - 1)));
+      return new THREE.Color(r * 0.85 + 0.1, g * 0.9, b * 0.95);
+    }
+
+    function buildGrid(points, cell = 4.0) {
+      const grid = new Map();
+      for (const p of points) {
+        const kx = Math.floor(p[0] / cell);
+        const ky = Math.floor(p[1] / cell);
+        const kz = Math.floor(p[2] / cell);
+        const key = `${kx},${ky},${kz}`;
+        if (!grid.has(key)) grid.set(key, []);
+        grid.get(key).push(p);
+      }
+      return { grid, cell };
+    }
+
+    function nearestScalar(gridObj, x, y, z) {
+      const { grid, cell } = gridObj;
+      const cx = Math.floor(x / cell);
+      const cy = Math.floor(y / cell);
+      const cz = Math.floor(z / cell);
+      let best = Infinity;
+      let bestV = 0;
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dz = -1; dz <= 1; dz++) {
+            const bucket = grid.get(`${cx + dx},${cy + dy},${cz + dz}`);
+            if (!bucket) continue;
+            for (const p of bucket) {
+              const d = (p[0] - x) ** 2 + (p[1] - y) ** 2 + (p[2] - z) ** 2;
+              if (d < best) { best = d; bestV = p[3]; }
+            }
+          }
+        }
+      }
+      return best < Infinity ? bestV : null;
+    }
+
+    function clearFeaColors() {
+      const partId = FEATURES.fea_part || 'rear';
+      for (const mesh of (byName[partId] || [])) {
+        const mat = mesh.material;
+        if (!mat) continue;
+        mat.vertexColors = false;
+        if (mesh.userData.baseColor != null) mat.color.setHex(mesh.userData.baseColor);
+        // Restore shell opacity/depthWrite if FEA forced them opaque for ranking.
+        if (mesh.userData.feaSavedMat) {
+          const s = mesh.userData.feaSavedMat;
+          mat.opacity = s.opacity;
+          mat.transparent = s.transparent;
+          mat.depthWrite = s.depthWrite;
+          delete mesh.userData.feaSavedMat;
+        }
+        mat.needsUpdate = true;
+        if (mesh.geometry.getAttribute('color')) {
+          mesh.geometry.deleteAttribute('color');
+        }
+      }
+      feaActive = null;
+      document.getElementById('feaOut').textContent = '';
+      // Restore Spot dim/accent after FEA forced opaque turbo colours.
+      applySpot({ skipHash: true });
+    }
+
+    async function applyFea() {
+      const on = !!document.getElementById('chkFea')?.checked;
+      if (!on) {
+        clearFeaColors();
+        writeHash();
+        return;
+      }
+      document.getElementById('feaDetails').open = true;
+      const caseId = document.getElementById('feaCase')?.value;
+      const meta = FEA_OVERLAYS.find((o) => o.id === caseId);
+      if (!meta) return;
+
+      // Overlay lives on fea_part (rear shell). From Front that face is hidden
+      // behind the LCD — jump to the view that shows it and ensure it's on.
+      const partId = FEATURES.fea_part || 'rear';
+      const feaView = FEATURES.fea_view || 'rear';
+      const partCb = document.querySelector(`input[data-part="${partId}"]`);
+      if (partCb && !partCb.checked) {
+        soloPartId = null;
+        partSnapshot = null;
+        partCb.checked = true;
+        syncSoloButtons();
+        applyVisibility();
+      }
+      if (modelReady && feaView in VIEW_DIRS && lastView !== feaView) {
+        setView(feaView);
+      }
+      showHint(`FEA overlay on ${partId} — turbo scale is relative ranking, not certified strength`);
+
+      if (!feaCache[caseId]) {
+        document.getElementById('feaOut').textContent = 'Loading FEA…';
+        try {
+          const res = await fetch(meta.url);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          feaCache[caseId] = await res.json();
+        } catch (err) {
+          document.getElementById('feaOut').textContent = `FEA load failed: ${err.message}`;
+          document.getElementById('chkFea').checked = false;
+          writeHash();
+          return;
+        }
+      }
+      const data = feaCache[caseId];
+      if (!document.getElementById('chkFea')?.checked ||
+          document.getElementById('feaCase')?.value !== caseId) return;
+      const meshes = byName[partId] || [];
+      if (!meshes.length) {
+        document.getElementById('feaOut').textContent = `No mesh for fea_part=${partId}`;
+        return;
+      }
+      const off = FEATURES.fea_offset_mm || [0, 0, 0];
+      const gridObj = buildGrid(data.points || []);
+      const vmin = data.min ?? 0;
+      const vmax = data.max ?? 1;
+      const span = Math.max(1e-9, vmax - vmin);
+      const explodedBy = partRoots[partId]?.position.clone()
+        .sub(partBasePos[partId] || new THREE.Vector3()) || new THREE.Vector3();
+      for (const mesh of meshes) {
+        const pos = mesh.geometry.getAttribute('position');
+        const colors = new Float32Array(pos.count * 3);
+        mesh.updateMatrixWorld(true);
+        const v = new THREE.Vector3();
+        for (let i = 0; i < pos.count; i++) {
+          v.fromBufferAttribute(pos, i);
+          mesh.localToWorld(v);
+          // Compare in the assembled frame even while this part is exploded.
+          v.sub(explodedBy);
+          // Scene is metres; FEA overlay is mm (+ optional frame offset).
+          const sx = nearestScalar(
+            gridObj,
+            v.x * 1000 - off[0],
+            v.y * 1000 - off[1],
+            v.z * 1000 - off[2],
+          );
+          const t = sx == null ? 0 : (sx - vmin) / span;
+          const c = turbo(t);
+          colors[i * 3] = c.r;
+          colors[i * 3 + 1] = c.g;
+          colors[i * 3 + 2] = c.b;
+        }
+        mesh.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        mesh.material.vertexColors = true;
+        mesh.material.color.setHex(0xffffff);
+        // Ghost/see-through shells wash out turbo; force opaque while FEA is on.
+        if (!mesh.userData.feaSavedMat) {
+          mesh.userData.feaSavedMat = {
+            opacity: mesh.material.opacity,
+            transparent: mesh.material.transparent,
+            depthWrite: mesh.material.depthWrite,
+          };
+        }
+        mesh.material.transparent = false;
+        mesh.material.opacity = 1;
+        mesh.material.depthWrite = true;
+        mesh.material.needsUpdate = true;
+      }
+      feaActive = caseId;
+      document.getElementById('feaOut').textContent =
+        `${data.label || caseId}: ${data.field} ${vmin.toFixed(2)}–${vmax.toFixed(2)}` +
+        (data.note ? ` · ${data.note}` : '');
+      writeHash();
+    }
+
+    function explodeOffsetMm(partId) {
+      // Explicit YAML offset wins. Highlight overlays (e.g. PoE red body) sit on
+      // geometry already in the PCB ghost — omitting their offset peels a second
+      // copy off on explode. Fall back to pcb so they stay registered.
+      if (Object.prototype.hasOwnProperty.call(EXPLODE_OFFSETS, partId)) {
+        return Number(EXPLODE_OFFSETS[partId]) || 0;
+      }
+      const meta = PART_META[partId] || {};
+      if (meta.highlight && !meta.ghost && Object.prototype.hasOwnProperty.call(EXPLODE_OFFSETS, 'pcb')) {
+        return Number(EXPLODE_OFFSETS.pcb) || 0;
+      }
+      return 0;
+    }
+
+    function applyExplode() {
+      if (!FEATURES.explode || !modelReady) return;
+      const t = (Number(document.getElementById('explodeRange')?.value) || 0) / 100;
+      document.getElementById('explodePct').textContent = `${Math.round(t * 100)}%`;
+      if (t > 0) document.getElementById('explodeDetails').open = true;
+      for (const id of PART_IDS) {
+        const g = partRoots[id];
+        if (!g) continue;
+        const base = partBasePos[id] || new THREE.Vector3();
+        const mm = explodeOffsetMm(id);
+        g.position.copy(base).addScaledVector(EXPLODE_AXIS, mm * 0.001 * t);
+      }
+      recenterPivot();
+      writeHash();
+    }
+
+    function worldBox() {
+      root.updateMatrixWorld(true);
+      return new THREE.Box3().setFromObject(root);
+    }
+
+    let sectionHelper = null;
+    function syncSectionHelper(sizeHint) {
+      if (sectionHelper) {
+        scene.remove(sectionHelper);
+        sectionHelper.geometry?.dispose?.();
+        sectionHelper.material?.dispose?.();
+        sectionHelper = null;
+      }
+      if (!sectionOn || !modelReady) return;
+      const size = Math.max(sizeHint || 0.2, 0.05);
+      sectionHelper = new THREE.PlaneHelper(clipPlane, size, 0x3ec6ff);
+      sectionHelper.renderOrder = 2;
+      scene.add(sectionHelper);
+    }
+
+    function applySection() {
+      const wasOn = sectionOn;
+      sectionOn = !!document.getElementById('chkSection')?.checked;
+      const planeKey = document.getElementById('sectionPlane')?.value || 'yz';
+      const t = (Number(document.getElementById('sectionRange')?.value) || 50) / 100;
+      document.getElementById('sectionPct').textContent = `${Math.round(t * 100)}%`;
+      if (sectionOn) {
+        document.getElementById('sectionDetails').open = true;
+        if (!wasOn) showHint('Section on — drag Cut to slice; try YZ / XZ for a clear cut from Front');
+      }
+      if (!modelReady) {
+        writeHash();
+        return;
+      }
+      const box = worldBox();
+      const min = box.min;
+      const max = box.max;
+      let normal, constant;
+      if (planeKey === 'yz') {
+        const x = min.x + (max.x - min.x) * t;
+        normal = new THREE.Vector3(1, 0, 0);
+        constant = -x;
+      } else if (planeKey === 'xz') {
+        const y = min.y + (max.y - min.y) * t;
+        normal = new THREE.Vector3(0, 1, 0);
+        constant = -y;
+      } else {
+        const z = min.z + (max.z - min.z) * t;
+        normal = new THREE.Vector3(0, 0, 1);
+        constant = -z;
+      }
+      clipPlane.normal.copy(normal);
+      clipPlane.constant = constant;
+      normalMaterial.clippingPlanes = sectionOn ? clipPlanes : [];
+      normalMaterial.needsUpdate = true;
+      root.traverse((o) => {
+        if (!o.isMesh || !o.material) return;
+        const mats = Array.isArray(o.material) ? o.material : [o.material];
+        for (const m of mats) {
+          m.clippingPlanes = sectionOn ? clipPlanes : [];
+          m.clipShadows = sectionOn;
+          m.needsUpdate = true;
+        }
+      });
+      syncSectionHelper(box.getSize(new THREE.Vector3()).length());
+      writeHash();
+    }
+
+    function parseHash() {
+      if (!FEATURES.deeplink) return {};
+      const h = location.hash.replace(/^#/, '');
+      if (!h) return {};
+      const out = {};
+      for (const [key, value] of new URLSearchParams(h)) {
+        if (key) out[key] = value;
+      }
+      return out;
+    }
+
+    function writeHash() {
+      if (!FEATURES.deeplink || suppressHash || !modelReady) return;
+      const q = [];
+      q.push(`v=${encodeURIComponent(lastView)}`);
+      const partsOn = PART_IDS.filter(
+        (id) => document.querySelector(`input[data-part="${id}"]`)?.checked
+      );
+      q.push(`p=${encodeURIComponent(partsOn.join(','))}`);
+      const dimsOn = DIM_GROUPS.map((g) => g.id).filter(
+        (id) => document.querySelector(`input[data-dim="${id}"]`)?.checked
+      );
+      // Always emit d= (possibly empty) so "all off" ≠ "use default_on".
+      q.push(`d=${encodeURIComponent(dimsOn.join(','))}`);
+      if (FEATURES.outline && document.getElementById('chkEdges')) {
+        q.push(document.getElementById('chkEdges').checked ? 'o=1' : 'o=0');
+      }
+      if (FEATURES.explode) {
+        const x = document.getElementById('explodeRange')?.value || '0';
+        if (x !== '0') q.push(`x=${x}`);
+      }
+      if (FEATURES.section && document.getElementById('chkSection')?.checked) {
+        const pl = document.getElementById('sectionPlane')?.value || 'xy';
+        const sp = document.getElementById('sectionRange')?.value || '50';
+        q.push(`s=${encodeURIComponent(pl + ':' + sp)}`);
+      }
+      if (FEATURES.fea && document.getElementById('chkFea')?.checked) {
+        const f = document.getElementById('feaCase')?.value;
+        if (f) q.push(`f=${encodeURIComponent(f)}`);
+      }
+      // Always emit spot= (possibly empty) so "off" ≠ "reseed from YAML highlight".
+      q.push(`spot=${encodeURIComponent(spotPartId || '')}`);
+      q.push(`ui=${isPanelOpen() ? '1' : '0'}`);
+      const nextHash = '#' + q.join('&');
+      const url = new URL(location.href);
+      if (spotPartId) url.searchParams.set('spot', spotPartId);
+      else url.searchParams.delete('spot');
+      const next = url.pathname + url.search + nextHash;
+      const cur = location.pathname + location.search + location.hash;
+      if (cur !== next) history.replaceState(null, '', next);
+    }
+
+    function applyHashState(state) {
+      suppressHash = true;
+      if (state.ui === '0' || state.ui === '1') {
+        panelUserSet = true;
+        setPanelOpen(state.ui === '1', { skipHash: true });
+      }
+      if (state.p != null) {
+        const set = new Set(state.p.split(',').filter(Boolean));
+        for (const id of PART_IDS) {
+          const el = document.querySelector(`input[data-part="${id}"]`);
+          if (el) el.checked = set.has(id);
+        }
+        soloPartId = null;
+        partSnapshot = null;
+        applyVisibility();
+        syncSoloButtons();
+      }
+      if (state.d != null) {
+        const set = new Set(state.d.split(',').filter(Boolean));
+        for (const g of DIM_GROUPS) {
+          const el = document.querySelector(`input[data-dim="${g.id}"]`);
+          if (el) el.checked = set.has(g.id);
+        }
+      } else if ('d' in state) {
+        // Explicit empty d= → all off (deeplink "none").
+        for (const i of document.querySelectorAll('input[data-dim]')) i.checked = false;
+      }
+      // No d key: leave checkboxes as built from dim_groups[].default (default_on).
+      applyDims();
+      if (document.getElementById('chkEdges')) {
+        // Default is on; only override when the hash explicitly sets o.
+        if (state.o === '0' || state.o === '1') {
+          document.getElementById('chkEdges').checked = state.o === '1';
+        }
+        applyEdges();
+      }
+      if (FEATURES.explode && state.x != null) {
+        document.getElementById('explodeRange').value = state.x;
+        applyExplode();
+      }
+      if (FEATURES.section && state.s) {
+        const [pl, sp] = state.s.split(':');
+        if (pl) document.getElementById('sectionPlane').value = pl;
+        if (sp) document.getElementById('sectionRange').value = sp;
+        document.getElementById('chkSection').checked = true;
+        applySection();
+      }
+      if (FEATURES.fea && state.f && FEA_OVERLAYS.length) {
+        document.getElementById('feaCase').value = state.f;
+        document.getElementById('chkFea').checked = true;
+        applyFea();
+      }
+      if ('spot' in state) {
+        const sid = state.spot || '';
+        spotPartId = sid && PART_IDS.includes(sid) ? sid : null;
+        applySpot({ skipHash: true });
+      }
+      if (state.v) setView(state.v);
+      suppressHash = false;
+      writeHash();
+    }
+
+    // XY UV over bounds (same projection as stl_to_glb_lcd.py).
+    // GOTCHA: Look vs Inspect flip flags may differ (TextureLoader flipY=false).
+    // SoT = readable text on device front — see design-share-3d reference.md
+    // § Texture orientation; update that table after any flip change + PNG proof.
+    function projectXyUvs(geometry, flipU = true, flipV = true) {
+      geometry.computeBoundingBox();
+      const box = geometry.boundingBox;
+      const pos = geometry.attributes.position;
+      if (!box || !pos) return;
+      const dx = Math.max(box.max.x - box.min.x, 1e-9);
+      const dy = Math.max(box.max.y - box.min.y, 1e-9);
+      const uvs = new Float32Array(pos.count * 2);
+      for (let i = 0; i < pos.count; i++) {
+        let u = (pos.getX(i) - box.min.x) / dx;
+        let v = (pos.getY(i) - box.min.y) / dy;
+        if (flipU) u = 1 - u;
+        if (flipV) v = 1 - v;
+        uvs[i * 2] = u;
+        uvs[i * 2 + 1] = v;
+      }
+      geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+    }
+
+    // LCD stack is thick: rear / shelf / step faces share XY-projected splash
+    // UVs. A mid-stack shelf near the caption Y reads as a solid gray bar
+    // through "handheld · concept UI" (Alex crop 2026-08-03). Keep splash only
+    // on the front skin; pin every other vert to a navy field texel.
+    function neutralizeLcdBackFaceUvs(geometry) {
+      const box = geometry.boundingBox || (geometry.computeBoundingBox(), geometry.boundingBox);
+      const pos = geometry.attributes.position;
+      const uv = geometry.attributes.uv;
+      if (!box || !pos || !uv) return;
+      const zSpan = Math.max(box.max.z - box.min.z, 1e-9);
+      // Front skin only (~top 12% of thickness). Mid-plane left shelves lit.
+      const zFrontMin = box.max.z - zSpan * 0.12;
+      for (let i = 0; i < pos.count; i++) {
+        if (pos.getZ(i) < zFrontMin) {
+          uv.setXY(i, 0.02, 0.02);
+        }
+      }
+      uv.needsUpdate = true;
+    }
+
+    const glbUrl = `${MANIFEST.glb}?v=${MANIFEST.glb_version || 1}`;
+    const splashByPart = {};
+    for (const p of PARTS) {
+      if (p.splash) {
+        splashByPart[p.id] = `${p.splash}?v=${MANIFEST.glb_version || 1}`;
+      }
+    }
+    const texLoader = new THREE.TextureLoader();
+    const splashPromises = Object.fromEntries(
+      Object.entries(splashByPart).map(([id, url]) => [
+        id,
+        texLoader.loadAsync(url).then((tex) => {
+          tex.colorSpace = THREE.SRGBColorSpace;
+          // UV space matches Look (Blender embed); don't re-flip the PNG.
+          tex.flipY = false;
+          tex.wrapS = THREE.ClampToEdgeWrapping;
+          tex.wrapT = THREE.ClampToEdgeWrapping;
+          // Alpha logo matte: mipmaps bleed white into clear texels.
+          tex.generateMipmaps = false;
+          tex.minFilter = THREE.LinearFilter;
+          tex.magFilter = THREE.LinearFilter;
+          tex.needsUpdate = true;
+          return tex;
+        }).catch((err) => {
+          console.warn('splash load failed', id, err);
+          return null;
+        }),
+      ])
+    );
+
+    const loader = new GLTFLoader();
+    loader.load(glbUrl, async (gltf) => {
+      const splashTex = {};
+      await Promise.all(Object.entries(splashPromises).map(async ([id, prom]) => {
+        splashTex[id] = await prom;
+      }));
+
+      const model = gltf.scene;
+      model.traverse((o) => {
+        if (!o.isMesh) return;
+        o.castShadow = true;
+        o.receiveShadow = true;
+        const n = (o.name || o.parent?.name || '').toLowerCase();
+        // Exact id first, then longest-id includes — avoids short tokens
+        // stealing meshes (e.g. "poe" vs a longer stem).
+        let partId = null;
+        for (const id of PART_IDS) {
+          if (n === id) { partId = id; break; }
+        }
+        if (!partId) {
+          const byLen = [...PART_IDS].sort((a, b) => b.length - a.length);
+          for (const id of byLen) {
+            if (n.includes(id)) { partId = id; break; }
+          }
+        }
+        if (partId) {
+          byName[partId] = byName[partId] || [];
+          byName[partId].push(o);
+        }
+        const meta = PART_META[partId] || {};
+        let col = PART_COLOR[partId] || 0x8e9298;
+        const isGhost = !!meta.ghost;
+        const useFaceColors = !!meta.face_colors;
+        // Opaque overlay parts sit above ghost PCB — not always-on emissive paint.
+        // Spot attention mode handles dim/accent separately.
+        // (PoE red highlight retired 2026-08-03 — magnetics in board face_colors.)
+        const isOverlay = !!meta.highlight && !isGhost && !meta.transparent;
+        const splash = partId ? splashTex[partId] : null;
+        // lcd = emissive glass art; print = matte UV/film decal (alpha corners).
+        // Transparent shells / PCB ghost keep plastic shading — only the LCD
+        // stack uses glass (Alex 2026-08-02 PCB-through-shell).
+        const splashStyle = meta.splash_style
+          || (partId === 'glass' ? 'lcd' : (splash ? 'print' : null));
+        const isPrintSplash = !!splash && splashStyle === 'print';
+        const isLcdSplash = !!splash && !isPrintSplash;
+        const isGlass = !isGhost && !isOverlay && (partId === 'glass' || isLcdSplash);
+        const isAlpha = !isOverlay && (
+          isGhost || isGlass || isPrintSplash || !!meta.transparent
+          || (typeof meta.opacity === 'number' && meta.opacity < 1)
+        );
+        {
+          const c = new THREE.Color(col);
+          const hsl = { h: 0, s: 0, l: 0 };
+          c.getHSL(hsl);
+          // Hatch / dark plastics sit near black; without a floor they read as holes.
+          // Keep ghost PCB green unsaturated-lift off (ghost wants FR4 read).
+          // Overlay parts keep YAML colour (no lift/grey).
+          if (!isGlass && !isGhost && !isPrintSplash && !isOverlay && hsl.l < 0.30) {
+            c.setHSL(hsl.h, Math.min(hsl.s, 0.22), 0.36);
+          }
+          if (isGlass && !splash) c.offsetHSL(0, 0, 0.06);
+          col = c.getHex();
+        }
+        if (splash) {
+          // Inspect flips from YAML part meta (splash_flip_u / splash_flip_v).
+          // Look bake may differ — never blind-copy. TextureLoader flipY=false.
+          // SoT: product-front readable; gate: readable_marks_check.py + PNG.
+          const flipU = meta.splash_flip_u === true;
+          const flipV = meta.splash_flip_v !== false; // default true (historical)
+          projectXyUvs(o.geometry, flipU, flipV);
+          if (isLcdSplash) neutralizeLcdBackFaceUvs(o.geometry);
+        }
+        o.material = new THREE.MeshStandardMaterial({
+          color: splash ? 0xffffff : (useFaceColors ? 0xffffff : col),
+          map: splash || null,
+          emissive: isLcdSplash ? 0xffffff : 0x000000,
+          emissiveMap: isLcdSplash ? splash : null,
+          emissiveIntensity: isLcdSplash ? 1.35 : 0,
+          // Matte plastic: higher metalness + RoomEnvironment stamps a hard
+          // horizon band onto flat faces as you orbit.
+          // LCD splash: no IBL — env horizon + mid-stack shelves read as a gray
+          // bar through the concept-UI caption (Alex 2026-08-03).
+          // Soften RoomEnvironment rect wash: shells (transparent plastic) get
+          // low envMapIntensity so ceiling boxes don't stamp a milky panel;
+          // ghost PCB keeps higher IBL so FR4/SMDs stay lit (Alex 2026-08-03).
+          // LCD splash: no IBL (horizon/shelf bars).
+          metalness: isOverlay ? 0.06 : (isGlass ? 0.04 : (isPrintSplash ? 0.05 : ((isGhost || useFaceColors) ? 0.09 : (isAlpha ? 0.04 : 0.08)))),
+          roughness: isOverlay ? 0.55 : (isLcdSplash ? 0.55 : (isPrintSplash ? 0.58 : (isGlass ? 0.22 : ((isGhost || useFaceColors) ? 0.70 : (isAlpha ? 0.78 : 0.66))))),
+          envMapIntensity: isOverlay ? 0.35 : (isLcdSplash ? 0.0 : (isGlass ? 1.2 : (isPrintSplash ? 0.28 : ((isGhost || useFaceColors) ? 0.42 : (isAlpha ? 0.16 : 0.35))))),
+          transparent: isAlpha,
+          // Splash needs enough opacity to read; ghost PCB / shells use YAML.
+          // LCD: fully opaque so well-floor / shelves cannot composite a bar.
+          opacity: isOverlay
+            ? 1.0
+            : (isLcdSplash
+              ? (meta.opacity ?? 1.0)
+              : (isGhost ? (meta.opacity ?? 0.55)
+                : (isAlpha ? (meta.opacity ?? 0.55) : 1.0))),
+          // LCD splash PNGs may use alpha (logo matte cleared 2026-08-02).
+          // Without alphaTest, emissiveMap can still light transparent texels
+          // as a white square — discard low-alpha fragments like print decals.
+          alphaTest: isPrintSplash ? 0.35 : (isLcdSplash ? 0.12 : 0),
+          // Ghost / see-through shells: no depth write so PCB composites inside.
+          // Overlay always depth-writes so it wins over ghost blend.
+          depthWrite: isOverlay || isLcdSplash || isPrintSplash ? true : !isAlpha,
+          side: (isPrintSplash || isGhost) ? THREE.DoubleSide : THREE.FrontSide,
+          vertexColors: useFaceColors,
+          clippingPlanes: [],
+        });
+        if (isOverlay) o.renderOrder = 3;
+        else if (isGhost) o.renderOrder = 2;
+        o.userData.baseColor = splash ? 0xffffff : (useFaceColors ? 0xffffff : col);
+        o.userData.partId = partId;
+        o.userData.isLcdSplash = isLcdSplash;
+        o.userData.isOverlay = isOverlay;
+        o.userData.faceColors = useFaceColors;
+        o.userData.matBase = {
+          color: splash ? 0xffffff : (useFaceColors ? 0xffffff : col),
+          emissive: isLcdSplash ? 0xffffff : 0x000000,
+          emissiveIntensity: isLcdSplash ? 1.35 : 0,
+          opacity: o.material.opacity,
+          envMapIntensity: o.material.envMapIntensity,
+          renderOrder: o.renderOrder || 0,
+        };
+      });
+      const meshes = [];
+      model.traverse((o) => { if (o.isMesh) meshes.push(o); });
+      PART_IDS.forEach((id, i) => {
+        if (!byName[id]?.length && meshes[i]) byName[id] = [meshes[i]];
+      });
+
+      // Put the source scene under root first so Group.attach preserves any
+      // transforms from nested GLTF nodes while regrouping parts for explode.
+      root.add(model);
+      model.updateMatrixWorld(true);
+      root.updateMatrixWorld(true);
+
+      // One group per part so explode can translate without fighting GLTF hierarchy.
+      for (const id of PART_IDS) {
+        const g = new THREE.Group();
+        g.name = `part_${id}`;
+        root.add(g);
+        for (const mesh of (byName[id] || [])) {
+          g.attach(mesh);
+        }
+        partRoots[id] = g;
+        partBasePos[id] = g.position.clone();
+      }
+      root.remove(model);
+
+      applyVisibility();
+      modelReady = true;
+
+      const box = new THREE.Box3().setFromObject(root);
+      fit.center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      fit.radius = size.length() / 2;
+      fit.dim = Math.max(...size.toArray());
+      camera.near = fit.dim / 100;
+      camera.far = fit.dim * 20;
+
+      const hashState = parseHash();
+      const qSpot = new URLSearchParams(location.search).get('spot');
+      if (qSpot != null) {
+        spotPartId = PART_IDS.includes(qSpot) ? qSpot : null;
+      } else if ('spot' in hashState) {
+        const sid = hashState.spot || '';
+        spotPartId = sid && PART_IDS.includes(sid) ? sid : null;
+      } else {
+        // Do not auto-Spot from YAML highlight — dims translucent shells black.
+        spotPartId = null;
+      }
+      if (Object.keys(hashState).length) {
+        applyHashState(hashState);
+      } else {
+        setView('front');
+        applyDims();
+        applyExplode();
+        applySection();
+        applySpot({ skipHash: true });
+        writeHash();
+      }
+      // applyHashState may have set spot; ensure materials + buttons match.
+      applySpot({ skipHash: true });
+      syncSpotButtons();
+      document.getElementById('loading')?.remove();
+    }, undefined, (err) => {
+      document.getElementById('measureOut').textContent = 'Failed to load model: ' + err;
+    });
+
+    const fit = { center: new THREE.Vector3(), dim: 0.25, radius: 0.14 };
+    let lastView = 'front';
+    viewOffsetReady = true;
+    // Clear viewport band excluding overlay chrome (site-nav, docked HUD, hints).
+    // Cam stack is a floating overlay — never shrink the stage for centering/FIT.
+    function visibleStageRect() {
+      const w = Math.max(1, innerWidth);
+      const h = Math.max(1, innerHeight);
+      let left = 0;
+      let right = w;
+      let top = 0;
+      let bottom = h;
+
+      const nav = document.getElementById('siteNav');
+      if (nav) {
+        const nr = nav.getBoundingClientRect();
+        if (nr.bottom > top + 8) top = nr.bottom;
+      }
+
+      const hint = document.getElementById('hint');
+      if (hint && !hint.classList.contains('faded')) {
+        const hr = hint.getBoundingClientRect();
+        if (hr.top > top + 80) bottom = Math.min(bottom, hr.top);
+      }
+
+      const btn = document.getElementById('btnPanel');
+      if (btn && !isPanelOpen()) {
+        const br = btn.getBoundingClientRect();
+        if (br.top > top + 80) bottom = Math.min(bottom, br.top - 6);
+      }
+
+      const leftDocked = !hudPlaced && isPanelOpen() && !mqMobile.matches;
+      if (leftDocked) {
+        const hudNode = document.getElementById('hud');
+        if (hudNode) {
+          const hr = hudNode.getBoundingClientRect();
+          if (hr.right > left + 40) left = hr.right;
+        }
+      }
+
+      if (mqMobile.matches && isPanelOpen() && !hudPlaced) {
+        const hudNode = document.getElementById('hud');
+        if (hudNode) {
+          const hr = hudNode.getBoundingClientRect();
+          if (hr.top < bottom - 40) bottom = Math.min(bottom, hr.top - 6);
+        }
+      }
+
+      return { w, h, left, right, top, bottom };
+    }
+    function visibleAspect() {
+      const { left, right, top, bottom } = visibleStageRect();
+      return Math.max(0.25, (right - left) / Math.max(1, bottom - top));
+    }
+    function framingDistance(radius, pad) {
+      const fovV = THREE.MathUtils.degToRad(camera.fov);
+      const fovH = 2 * Math.atan(Math.tan(fovV / 2) * visibleAspect());
+      return Math.max(radius / Math.tan(fovV / 2),
+                      radius / Math.tan(fovH / 2)) * pad;
+    }
+    function setView(name) {
+      lastView = name in VIEW_DIRS ? name : Object.keys(VIEW_DIRS)[0];
+      for (const b of document.querySelectorAll('button[data-view]')) {
+        b.classList.toggle('active', b.dataset.view === lastView);
+      }
+      const dir = new THREE.Vector3(...VIEW_DIRS[lastView]).normalize();
+      const dist = framingDistance(fit.radius, 1.15);
+      camera.position.copy(fit.center).addScaledVector(dir, dist);
+      controls.target.copy(fit.center);
+      applyPanelViewOffset();
+      controls.update();
+      writeHash();
+    }
+    // Dolly along the look vector (OrbitControls zoom). factor < 1 = in.
+    function dollyBy(factor) {
+      const offset = camera.position.clone().sub(controls.target);
+      const dist = offset.length();
+      if (dist < 1e-9) return;
+      const minD = controls.minDistance || 0;
+      const maxD = (controls.maxDistance && isFinite(controls.maxDistance))
+        ? controls.maxDistance : dist * 100;
+      const next = THREE.MathUtils.clamp(dist * factor, Math.max(minD, fit.dim / 200), maxD);
+      offset.setLength(next);
+      camera.position.copy(controls.target).add(offset);
+      controls.update();
+      writeHash();
+    }
+    // Reframe all currently visible parts; keep orbit direction unless named.
+    function frameVisible(pad = 1.15, { useNamedDir = false } = {}) {
+      if (!modelReady) return;
+      const box = visibleBox();
+      if (!box || box.isEmpty()) return;
+      const size = box.getSize(new THREE.Vector3());
+      fit.center.copy(box.getCenter(new THREE.Vector3()));
+      fit.radius = Math.max(size.length() / 2, 1e-4);
+      fit.dim = Math.max(...size.toArray());
+      camera.near = fit.dim / 100;
+      camera.far = fit.dim * 20;
+      let dir;
+      if (useNamedDir) {
+        dir = new THREE.Vector3(...VIEW_DIRS[lastView]).normalize();
+      } else {
+        dir = camera.position.clone().sub(controls.target);
+        if (dir.lengthSq() < 1e-12) {
+          dir = new THREE.Vector3(...VIEW_DIRS[lastView]);
+        }
+        dir.normalize();
+      }
+      const dist = framingDistance(fit.radius, pad);
+      camera.position.copy(fit.center).addScaledVector(dir, dist);
+      controls.target.copy(fit.center);
+      applyPanelViewOffset();
+      controls.update();
+      writeHash();
+    }
+
+    // Shift the *projection* so the model centres in the clear view area
+    // (site-nav, left-docked HUD, bottom hint/Controls) — not the full window.
+    // Freely placed / dragging HUD: skip dock inset — never freeze a stale value
+    // (Hansei 2026-08-03: freeze hid the model or parked it under the HUD).
+    function applyPanelViewOffset() {
+      if (!viewOffsetReady) return;
+      if (hudDragging) return;
+      const { w, h, left, right, top, bottom } = visibleStageRect();
+
+      // Keep a sane usable band; fall back to full-frame if layout is odd.
+      if (!(right - left > 120) || !(bottom - top > 120)) {
+        camera.clearViewOffset();
+        camera.updateProjectionMatrix();
+        return;
+      }
+      // offsetX < 0 shifts content right (Three.js: left += offsetX * …).
+      // offsetY > 0 shifts content down (Three.js: top -= offsetY * …) — Y sign
+      // is opposite X. Map frustum centre onto the clear-area centre.
+      const offsetX = w / 2 - (left + right) / 2;
+      const offsetY = (top + bottom) / 2 - h / 2;
+      if (Math.abs(offsetX) < 1 && Math.abs(offsetY) < 1) {
+        camera.clearViewOffset();
+      } else {
+        camera.setViewOffset(w, h, offsetX, offsetY, w, h);
+      }
+      camera.updateProjectionMatrix();
+    }
+
+    const _visBox = new THREE.Box3();
+    function visibleBox() {
+      root.updateMatrixWorld(true);
+      _visBox.makeEmpty();
+      let any = false;
+      root.traverse((o) => {
+        if (!o.isMesh || !o.visible) return;
+        for (let p = o.parent; p; p = p.parent) {
+          if (!p.visible) return;
+        }
+        _visBox.expandByObject(o);
+        any = true;
+      });
+      return any ? _visBox : null;
+    }
+
+    // Keep the pivot on whatever is actually on screen, without jerking the view.
+    function recenterPivot() {
+      if (!modelReady) return;
+      const box = visibleBox();
+      if (!box || box.isEmpty()) return;
+      const c = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const delta = c.clone().sub(controls.target);
+      controls.target.copy(c);
+      camera.position.add(delta);
+      controls.update();
+      fit.center.copy(c);
+      fit.radius = Math.max(size.length() / 2, 1e-4);
+    }
+    for (const b of document.querySelectorAll('button[data-view]')) {
+      b.addEventListener('click', () => setView(b.dataset.view));
+    }
+    document.getElementById('btnZoomIn')?.addEventListener('click', () => dollyBy(0.82));
+    document.getElementById('btnZoomOut')?.addEventListener('click', () => dollyBy(1.22));
+    document.getElementById('btnFit')?.addEventListener('click', () => frameVisible(1.15));
+    document.getElementById('btnFill')?.addEventListener('click', () => frameVisible(1.02));
+    document.getElementById('btnHome')?.addEventListener('click', () => {
+      // Refresh fit from visible parts, then snap to the active named view.
+      const box = visibleBox();
+      if (box && !box.isEmpty()) {
+        const size = box.getSize(new THREE.Vector3());
+        fit.center.copy(box.getCenter(new THREE.Vector3()));
+        fit.radius = Math.max(size.length() / 2, 1e-4);
+        fit.dim = Math.max(...size.toArray());
+        camera.near = fit.dim / 100;
+        camera.far = fit.dim * 20;
+      }
+      setView(lastView);
+    });
+
+    function applyVisibility() {
+      for (const id of PART_IDS) {
+        const on = document.querySelector(`input[data-part="${id}"]`)?.checked ?? true;
+        const g = partRoots[id];
+        if (g) g.visible = on;
+        for (const o of (byName[id] || [])) o.visible = on;
+      }
+      recenterPivot();
+      writeHash();
+    }
+    document.getElementById('toggles').addEventListener('change', () => {
+      // Manual checkbox edits leave solo mode.
+      soloPartId = null;
+      partSnapshot = null;
+      syncSoloButtons();
+      applyVisibility();
+    });
+
+    function syncSoloButtons() {
+      for (const b of document.querySelectorAll('button[data-solo]')) {
+        const on = b.dataset.solo === soloPartId;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.textContent = on ? 'Solo ✓' : 'Solo';
+      }
+    }
+    function syncPartLabels() {
+      for (const p of PARTS) {
+        const input = document.querySelector(`input[data-part="${p.id}"]`);
+        if (!input || !input.parentElement) continue;
+        const base = p._baseLabel || String(p.label || p.id).trim();
+        while (input.nextSibling) input.nextSibling.remove();
+        input.parentElement.appendChild(document.createTextNode(` ${base}`));
+      }
+    }
+    function syncSpotButtons() {
+      for (const b of document.querySelectorAll('button[data-spot]')) {
+        const on = b.dataset.spot === spotPartId;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.textContent = on ? 'Spot ✓' : 'Spot';
+      }
+      syncPartLabels();
+    }
+    function ensureMatBase(mesh) {
+      if (mesh.userData.matBase || !mesh.material) return;
+      const m = mesh.material;
+      mesh.userData.matBase = {
+        color: m.color.getHex(),
+        emissive: m.emissive.getHex(),
+        emissiveIntensity: m.emissiveIntensity,
+        opacity: m.opacity,
+        envMapIntensity: m.envMapIntensity,
+        renderOrder: mesh.renderOrder || 0,
+      };
+    }
+    function applySpot({ skipHash = false } = {}) {
+      if (!modelReady) {
+        syncSpotButtons();
+        return;
+      }
+      const ACCENT = 0xffcc66; // review attention (warn), not real material paint
+      for (const id of PART_IDS) {
+        for (const mesh of (byName[id] || [])) {
+          const mat = mesh.material;
+          if (!mat || !mat.color) continue;
+          // Leave FEA turbo colours alone while ranking overlay is active.
+          if (mesh.userData.feaSavedMat) continue;
+          ensureMatBase(mesh);
+          const base = mesh.userData.matBase;
+          const isLcd = !!mesh.userData.isLcdSplash;
+          if (!spotPartId) {
+            mat.color.setHex(base.color);
+            mat.emissive.setHex(base.emissive);
+            mat.emissiveIntensity = base.emissiveIntensity;
+            mat.opacity = base.opacity;
+            mat.envMapIntensity = base.envMapIntensity;
+            mesh.renderOrder = base.renderOrder;
+            mat.needsUpdate = true;
+            continue;
+          }
+          if (id === spotPartId) {
+            mat.color.setHex(base.color);
+            if (isLcd) {
+              mat.emissive.setHex(base.emissive);
+              mat.emissiveIntensity = base.emissiveIntensity;
+            } else {
+              // Mild accent on the target — attention wash, not full emissive RED.
+              mat.emissive.setHex(ACCENT);
+              mat.emissiveIntensity = 0.28;
+            }
+            mat.opacity = base.opacity;
+            mat.envMapIntensity = Math.min(1.2, base.envMapIntensity + 0.2);
+            mesh.renderOrder = Math.max(base.renderOrder, 3);
+          } else {
+            const c = new THREE.Color(base.color);
+            const hsl = { h: 0, s: 0, l: 0 };
+            c.getHSL(hsl);
+            c.setHSL(hsl.h, hsl.s * 0.18, Math.max(0.08, hsl.l * 0.52));
+            mat.color.copy(c);
+            if (isLcd) {
+              mat.emissive.setHex(base.emissive);
+              mat.emissiveIntensity = base.emissiveIntensity * 0.28;
+            } else {
+              mat.emissive.setHex(0x000000);
+              mat.emissiveIntensity = 0;
+            }
+            // Keep ghosts/shells translucent; just pull them back.
+            mat.opacity = Math.max(0.28, base.opacity * (base.opacity < 1 ? 0.85 : 0.9));
+            mat.envMapIntensity = Math.max(0.25, base.envMapIntensity * 0.7);
+            mesh.renderOrder = base.renderOrder;
+          }
+          mat.needsUpdate = true;
+        }
+      }
+      syncSpotButtons();
+      if (!skipHash) writeHash();
+    }
+    function spotPart(id) {
+      if (spotPartId === id) {
+        spotPartId = null;
+      } else {
+        spotPartId = id;
+      }
+      applySpot();
+      showHint(
+        spotPartId
+          ? `Spot on ${PART_META[spotPartId]?._baseLabel || spotPartId} — others dimmed`
+          : 'Spot off',
+      );
+    }
+    function soloPart(id) {
+      if (soloPartId === id) {
+        // Toggle off → restore previous visibility snapshot.
+        if (partSnapshot) {
+          for (const pid of PART_IDS) {
+            const el = document.querySelector(`input[data-part="${pid}"]`);
+            if (el && pid in partSnapshot) el.checked = partSnapshot[pid];
+          }
+        }
+        soloPartId = null;
+        partSnapshot = null;
+        syncSoloButtons();
+        applyVisibility();
+        return;
+      }
+      if (!partSnapshot) {
+        partSnapshot = {};
+        for (const pid of PART_IDS) {
+          partSnapshot[pid] = !!document.querySelector(`input[data-part="${pid}"]`)?.checked;
+        }
+      }
+      for (const pid of PART_IDS) {
+        const el = document.querySelector(`input[data-part="${pid}"]`);
+        if (el) el.checked = pid === id;
+      }
+      soloPartId = id;
+      syncSoloButtons();
+      applyVisibility();
+    }
+    function showAllParts() {
+      if (partSnapshot) {
+        for (const pid of PART_IDS) {
+          const el = document.querySelector(`input[data-part="${pid}"]`);
+          if (el && pid in partSnapshot) el.checked = partSnapshot[pid];
+        }
+        partSnapshot = null;
+      } else {
+        for (const el of document.querySelectorAll('input[data-part]')) el.checked = true;
+      }
+      soloPartId = null;
+      syncSoloButtons();
+      applyVisibility();
+    }
+    function clearAllParts() {
+      for (const el of document.querySelectorAll('input[data-part]')) el.checked = false;
+      soloPartId = null;
+      partSnapshot = null;
+      syncSoloButtons();
+      applyVisibility();
+    }
+    document.getElementById('toggles').addEventListener('click', (ev) => {
+      const spotBtn = ev.target.closest('button[data-spot]');
+      if (spotBtn) {
+        ev.preventDefault();
+        spotPart(spotBtn.dataset.spot);
+        return;
+      }
+      const soloBtn = ev.target.closest('button[data-solo]');
+      if (!soloBtn) return;
+      ev.preventDefault();
+      soloPart(soloBtn.dataset.solo);
+    });
+    document.getElementById('btnPartsAll')?.addEventListener('click', showAllParts);
+    document.getElementById('btnPartsClear')?.addEventListener('click', clearAllParts);
+
+    let shareTimer = null;
+    document.getElementById('btnShare')?.addEventListener('click', async () => {
+      const btn = document.getElementById('btnShare');
+      writeHash();
+      const url = location.href;
+      let ok = false;
+      try {
+        await navigator.clipboard.writeText(url);
+        ok = true;
+      } catch {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = url;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          ok = document.execCommand('copy');
+          ta.remove();
+        } catch { /* ignore */ }
+      }
+      clearTimeout(shareTimer);
+      if (ok) {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        showHint('Link copied — includes view, parts, Spot, and tools', { sticky: false });
+        shareTimer = setTimeout(() => {
+          btn.textContent = 'Copy link';
+          btn.classList.remove('copied');
+        }, 1600);
+      } else {
+        btn.textContent = 'Copy failed';
+        shareTimer = setTimeout(() => { btn.textContent = 'Copy link'; }, 1600);
+        window.prompt('Copy this link:', url);
+      }
+    });
+
+    function applyEdges() {
+      outlineOn = !!document.getElementById('chkEdges')?.checked;
+      outlinePass.uniforms.enabled.value = outlineOn ? 1.0 : 0.0;
+      writeHash();
+    }
+    document.getElementById('chkEdges')?.addEventListener('change', applyEdges);
+    applyEdges();
+
+    // Checkboxes live in <summary> — stop them toggling the <details> open state.
+    for (const el of document.querySelectorAll('[data-stop-toggle]')) {
+      el.addEventListener('click', (ev) => ev.stopPropagation());
+    }
+
+    document.getElementById('explodeRange')?.addEventListener('input', applyExplode);
+    document.getElementById('chkSection')?.addEventListener('change', applySection);
+    document.getElementById('sectionPlane')?.addEventListener('change', applySection);
+    document.getElementById('sectionRange')?.addEventListener('input', applySection);
+    document.getElementById('chkFea')?.addEventListener('change', () => applyFea());
+    document.getElementById('feaCase')?.addEventListener('change', () => {
+      if (document.getElementById('chkFea')?.checked) applyFea();
+      else writeHash();
+    });
+
+    addEventListener('hashchange', () => {
+      if (suppressHash) return;
+      applyHashState(parseHash());
+    });
+
+    let pts = [];
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x3ec6ff });
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+    const btnM = document.getElementById('btnMeasure');
+    const btnC = document.getElementById('btnClear');
+    const out = document.getElementById('measureOut');
+
+    if (FEATURES.measure) {
+      btnM.onclick = () => {
+        measureOn = !measureOn;
+        btnM.classList.toggle('active', measureOn);
+        controls.enabled = !measureOn;
+        if (measureOn) {
+          document.getElementById('measDetails').open = true;
+          showHint(
+            mqMobile.matches
+              ? 'Measure on — tap point A, then point B'
+              : 'Measure on — click point A, then point B',
+            { sticky: true }
+          );
+        } else {
+          showHint(defaultHintText());
+          clearMeasure();
+        }
+      };
+      btnC.onclick = () => clearMeasure();
+    }
+
+    controls.addEventListener('start', () => {
+      if (!measureOn) fadeHintSoon();
+    });
+
+    function clearMeasure() {
+      pts = [];
+      while (markers.children.length) markers.remove(markers.children[0]);
+      out.textContent = '';
+    }
+
+    function addMarker(p) {
+      const m = new THREE.Mesh(
+        new THREE.SphereGeometry(0.0012, 16, 12),
+        new THREE.MeshBasicMaterial({ color: 0x3ec6ff })
+      );
+      m.position.copy(p);
+      markers.add(m);
+    }
+
+    canvas.addEventListener('pointerdown', (ev) => {
+      if (!measureOn) return;
+      const rect = canvas.getBoundingClientRect();
+      pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hitTargets = [];
+      root.traverse((o) => { if (o.isMesh && o.visible) hitTargets.push(o); });
+      const hits = raycaster.intersectObjects(hitTargets, true);
+      if (!hits.length) return;
+      const p = hits[0].point.clone();
+      if (pts.length >= 2) clearMeasure();
+      pts.push(p);
+      addMarker(p);
+      if (pts.length === 2) {
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        markers.add(new THREE.Line(geo, lineMat));
+        const mm = pts[0].distanceTo(pts[1]) * 1000;
+        out.textContent = `Distance: ${mm.toFixed(2)} mm`;
+        measureOn = false;
+        btnM.classList.remove('active');
+        controls.enabled = true;
+        showHint(defaultHintText());
+      } else {
+        out.textContent = mqMobile.matches
+          ? 'Point A set — tap point B'
+          : 'Point A set — click point B';
+      }
+    });
+
+    // Double-click / double-tap focuses the orbit pivot on the point you picked.
+    canvas.addEventListener('dblclick', (ev) => {
+      if (measureOn) return;
+      const rect = canvas.getBoundingClientRect();
+      pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hitTargets = [];
+      root.traverse((o) => { if (o.isMesh && o.visible) hitTargets.push(o); });
+      const hits = raycaster.intersectObjects(hitTargets, true);
+      if (!hits.length) return;
+      controls.target.copy(hits[0].point);
+      controls.update();
+      fit.center.copy(hits[0].point);
+      showHint('Pivot set here — a view button recentres');
+    });
+
+    function resize() {
+      const w = Math.max(1, innerWidth);
+      const h = Math.max(1, innerHeight);
+      const dpr = renderer.getPixelRatio();
+      renderer.setSize(w, h, false);
+      labelRenderer.setSize(w, h);
+      composer.setSize(w, h);
+      normalTarget.setSize(Math.round(w * dpr), Math.round(h * dpr));
+      outlinePass.uniforms.resolution.value.set(w * dpr, h * dpr);
+      camera.aspect = w / h;
+      applyPanelViewOffset();
+    }
+    addEventListener('resize', resize);
+    new ResizeObserver(resize).observe(document.body);
+    resize();
+
+    (function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      updateCameraLights();
+      if (outlineOn) {
+        outlinePass.uniforms.cameraNear.value = camera.near;
+        outlinePass.uniforms.cameraFar.value = camera.far;
+        renderNormalBuffer();
+        outlinePass.uniforms.tNormal.value = normalTarget.texture;
+        outlinePass.uniforms.tDepth.value = normalTarget.depthTexture;
+      }
+      composer.render();
+      resolveDimLabelCollisions();
+      labelRenderer.render(scene, camera);
+    })();
+  </script>
+<script src="../pages-update.js?v=8ff9ecbdf6" defer></script>
+</body>
+</html>
