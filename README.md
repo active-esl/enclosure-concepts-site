@@ -32,7 +32,17 @@ Status on each page is labelled. Not measured production CAD unless stated.
 - `deploy/cloudflare/` is **obsolete** (kept only as historical reference; do not redeploy).
 - `.nojekyll` is present for Pages.
 - Local dry-fit: `http://127.0.0.1:8770/` from the tip checkout.
+- **Publish path:** GitHub Actions workflow `.github/workflows/pages.yml` on
+  `main` only (`build_type: workflow`). Do **not** re-enable legacy
+  `gh-pages` branch builds or Cloudflare Workers.
+- **2026-08-06 outage:** live tip stayed on `20260806T123718Z…` because
+  (1) Pages UI CNAME create/delete kept pushing to `gh-pages`, which raced
+  Actions and left builds stuck `building` / `Page build failed`, and
+  (2) `actions/deploy-pages` failed on GitHub OIDC JWKS rotation
+  (`Invalid actions OIDC token due to No keys from key endpoint match the id
+  token`) — `error_count` only retries status polls after create, so the
+  workflow now retries the deploy step itself. `gh-pages` branch removed.
 
 After a new Look GLB, rebake/copy the beauty still PNG — Still does not
-auto-update from GLB (see `design-share-3d` skill). Publish by pushing this
-repo’s Pages source (`gh-pages` / Actions), not Workers.
+auto-update from GLB (see `design-share-3d` skill). Publish by pushing `main`
+(Actions), not Workers / not a `gh-pages` branch.

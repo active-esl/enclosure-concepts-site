@@ -1,10 +1,11 @@
 # Deploy static gallery to GitHub Pages via GitHub-hosted ubuntu-latest.
-# (Self-hosted + legacy branch builds previously stuck in deployment_queued /
-# Page build failed for this org — do not regress to those paths.)
-#
-# Pages Settings (required once):
-#   Settings → Pages → Build and deployment → Source = GitHub Actions
-#   (API: build_type=workflow).
+# Root cause history (2026-08-06):
+# - Legacy branch builds on gh-pages raced Actions and left site status=errored /
+#   stuck "building" after UI CNAME create/delete commits.
+# - deploy-pages failed hard with OIDC JWKS rotation flake:
+#   "Invalid actions OIDC token due to No keys from key endpoint match the id token"
+#   (error_count only retries status polling AFTER create — not create itself).
+# Do not regress to self-hosted runners or legacy gh-pages publish.
 name: Deploy GitHub Pages
 
 on:
@@ -17,17 +18,16 @@ permissions:
   pages: write
   id-token: write
 
+# Do not cancel mid-deploy: a cancelled deploy leaves Pages queued/errored and
+# blocks the next artifact. Prefer one-at-a-time queue.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,14 +37,13 @@ jobs:
           set -euo pipefail
           rm -rf _site
           mkdir -p _site
-          # Publish repo root as the site; keep Actions metadata / VCS out of the artifact.
           python3 - <<'PY'
           import shutil
           from pathlib import Path
 
           src = Path(".")
           dst = Path("_site")
-          # deploy/ is obsolete Worker tooling; docs notes stay out of the gallery tip.
+          # deploy/ is obsolete Worker tooling; keep Actions/VCS out of the tip.
           ignore = {".git", ".github", "_site", "deploy"}
 
           for child in src.iterdir():
@@ -60,7 +59,6 @@ jobs:
                   )
               else:
                   shutil.copy2(child, target)
-          # Custom domain (also set in repo Pages settings).
           (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
           (dst / ".nojekyll").touch()
           PY
@@ -68,6 +66,7 @@ jobs:
           test -f _site/index.html
           test -f _site/handheld-eth/build.json
           test -f _site/CNAME
+          test -f _site/.nojekyll
           python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
 
       - name: Setup Pages
@@ -78,11 +77,55 @@ jobs:
         with:
           path: _site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.resolve_url.outputs.page_url }}
+    steps:
+      # deploy-pages createPagesDeployment can 400 on GitHub OIDC JWKS rotation.
+      # Retry the whole action: error_count only covers post-create status polls.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
         with:
-          # Retry through GitHub's reporting loop; OIDC key rotation can flake once.
           error_count: 20
           reporting_interval: 10000
+          timeout: 600000
+
+      - name: Retry deploy (OIDC / queue flake)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+        with:
+          error_count: 20
+          reporting_interval: 10000
+          timeout: 600000
+
+      - name: Final deploy attempt
+        id: deployment_final
+        if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        with:
+          error_count: 30
+          reporting_interval: 10000
           timeout: 900000
+
+      - name: Expose page_url
+        id: resolve_url
+        if: always() && (steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success' || steps.deployment_final.outcome == 'success')
+        run: |
+          set -euo pipefail
+          url="${{ steps.deployment.outputs.page_url }}"
+          if [ -z "$url" ]; then url="${{ steps.deployment_retry.outputs.page_url }}"; fi
+          if [ -z "$url" ]; then url="${{ steps.deployment_final.outputs.page_url }}"; fi
+          if [ -z "$url" ]; then
+            echo "No successful deploy-pages output page_url" >&2
+            exit 1
+          fi
+          echo "page_url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed: $url"
