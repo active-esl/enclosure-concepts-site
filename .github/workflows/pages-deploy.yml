@@ -1,6 +1,6 @@
 # Static gallery → GitHub Pages (ubuntu-latest Actions only).
 # Do not use self-hosted runners or legacy gh-pages branch builds.
-name: Deploy concept gallery
+name: Pages deploy
 
 on:
   push:
