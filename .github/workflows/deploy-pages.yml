@@ -6,7 +6,7 @@
 #   "Invalid actions OIDC token due to No keys from key endpoint match the id token"
 #   (error_count only retries status polling AFTER create — not create itself).
 # Do not regress to self-hosted runners or legacy gh-pages publish.
-name: Deploy GitHub Pages
+name: Deploy concept gallery
 
 on:
   push:
@@ -21,7 +21,7 @@ permissions:
 # Do not cancel mid-deploy: a cancelled deploy leaves Pages queued/errored and
 # blocks the next artifact. Prefer one-at-a-time queue.
 concurrency:
-  group: pages-workflow-v2
+  group: concept-gallery-deploy
   cancel-in-progress: false
 
 jobs:
