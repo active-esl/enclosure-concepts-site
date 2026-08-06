@@ -16,7 +16,9 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, Linux, X64, aesl]
+    # Prefer aesl when online; fall back to any self-hosted Linux X64
+    # (gitrunner) so Pages tip is not blocked when esl-proxmox-runner is offline.
+    runs-on: [self-hosted, Linux, X64]
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
