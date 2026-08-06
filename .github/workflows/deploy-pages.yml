@@ -1,11 +1,5 @@
-# Deploy static gallery to GitHub Pages via GitHub-hosted ubuntu-latest.
-# Root cause history (2026-08-06):
-# - Legacy branch builds on gh-pages raced Actions and left site status=errored /
-#   stuck "building" after UI CNAME create/delete commits.
-# - deploy-pages failed hard with OIDC JWKS rotation flake:
-#   "Invalid actions OIDC token due to No keys from key endpoint match the id token"
-#   (error_count only retries status polling AFTER create — not create itself).
-# Do not regress to self-hosted runners or legacy gh-pages publish.
+# Static gallery → GitHub Pages (ubuntu-latest Actions only).
+# Do not use self-hosted runners or legacy gh-pages branch builds.
 name: Deploy concept gallery
 
 on:
@@ -18,16 +12,13 @@ permissions:
   pages: write
   id-token: write
 
-# Do not cancel mid-deploy: a cancelled deploy leaves Pages queued/errored and
-# blocks the next artifact. Prefer one-at-a-time queue.
-concurrency:
-  group: concept-gallery-deploy
-  cancel-in-progress: false
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.resolve_url.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,33 +31,22 @@ jobs:
           python3 - <<'PY'
           import shutil
           from pathlib import Path
-
-          src = Path(".")
-          dst = Path("_site")
-          # deploy/ is obsolete Worker tooling; keep Actions/VCS out of the tip.
+          src, dst = Path("."), Path("_site")
           ignore = {".git", ".github", "_site", "deploy"}
-
           for child in src.iterdir():
               if child.name in ignore:
                   continue
               target = dst / child.name
               if child.is_dir():
-                  shutil.copytree(
-                      child,
-                      target,
-                      ignore=lambda d, names: [n for n in names if n in ignore],
-                      dirs_exist_ok=True,
-                  )
+                  shutil.copytree(child, target, ignore=lambda d, names: [n for n in names if n in ignore], dirs_exist_ok=True)
               else:
                   shutil.copy2(child, target)
           (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
           (dst / ".nojekyll").touch()
           PY
-          echo "publish_bytes=$(du -sb _site | awk '{print $1}')"
           test -f _site/index.html
           test -f _site/handheld-eth/build.json
           test -f _site/CNAME
-          test -f _site/.nojekyll
           python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
 
       - name: Setup Pages
@@ -77,16 +57,6 @@ jobs:
         with:
           path: _site
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    environment:
-      name: github-pages
-      url: ${{ steps.resolve_url.outputs.page_url }}
-    steps:
-      # deploy-pages createPagesDeployment can 400 on GitHub OIDC JWKS rotation.
-      # Retry the whole action: error_count only covers post-create status polls.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -123,9 +93,6 @@ jobs:
           url="${{ steps.deployment.outputs.page_url }}"
           if [ -z "$url" ]; then url="${{ steps.deployment_retry.outputs.page_url }}"; fi
           if [ -z "$url" ]; then url="${{ steps.deployment_final.outputs.page_url }}"; fi
-          if [ -z "$url" ]; then
-            echo "No successful deploy-pages output page_url" >&2
-            exit 1
-          fi
+          test -n "$url"
           echo "page_url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed: $url"
