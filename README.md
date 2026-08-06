@@ -6,13 +6,16 @@ Interactive concept enclosure designs for team review (Michael / Ollie / Gary / 
 
 **Canonical public host (Cloudflare Worker — current tip):**
 
-| | URL |
-|--|-----|
-| Gallery | https://enclosure-concepts-site.ajlennon.workers.dev/ |
-| Active POE Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/assembly.html |
-| Active POE Look | https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/ |
-| Active Slim Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/handheld/assembly.html |
-| Active Eink Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/eink-imx93/assembly.html |
+Intended share host: **`https://concepts.active-esl.com/`** (AESL CF custom domain — pending Workers token rotate on the AESL account).  
+**Live now:** `https://enclosure-concepts-site.ajlennon.workers.dev/`
+
+| | Live now | Intended |
+|--|----------|----------|
+| Gallery | https://enclosure-concepts-site.ajlennon.workers.dev/ | https://concepts.active-esl.com/ |
+| Active POE Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/assembly.html | https://concepts.active-esl.com/handheld-eth/assembly.html |
+| Active POE Look | https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/ | https://concepts.active-esl.com/handheld-eth/ |
+| Active Slim Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/handheld/assembly.html | https://concepts.active-esl.com/handheld/assembly.html |
+| Active Eink Inspect | https://enclosure-concepts-site.ajlennon.workers.dev/eink-imx93/assembly.html | https://concepts.active-esl.com/eink-imx93/assembly.html |
 
 Confirm live tip: `curl -sS https://enclosure-concepts-site.ajlennon.workers.dev/handheld-eth/build.json` → `id` must match the published pack (currently `20260806T154714Z-f1cc705a7b`).
 
