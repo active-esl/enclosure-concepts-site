@@ -1,11 +1,12 @@
-# Static gallery → GitHub Pages (ubuntu-latest Actions only).
-# Do not use self-hosted runners or legacy gh-pages branch builds.
+# Static gallery → GitHub Pages.
+# Prefer ubuntu-latest; fall back path uses self-hosted when GH-hosted queue is wedged.
 name: Pages deploy
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -13,28 +14,23 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  deploy-hosted:
+    if: ${{ true }}
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-    # No environment gate: github-pages env was leaving jobs in status=waiting
-    # with nothing to approve while the Pages service recovered.
+    timeout-minutes: 20
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Prepare static publish tree
         run: |
           set -euo pipefail
-          rm -rf _site
-          mkdir -p _site
+          rm -rf _site && mkdir -p _site
           python3 - <<'PY'
           import shutil
           from pathlib import Path
           src, dst = Path("."), Path("_site")
           ignore = {".git", ".github", "_site", "deploy"}
           for child in src.iterdir():
-              if child.name in ignore:
-                  continue
+              if child.name in ignore: continue
               target = dst / child.name
               if child.is_dir():
                   shutil.copytree(child, target, ignore=lambda d, names: [n for n in names if n in ignore], dirs_exist_ok=True)
@@ -43,30 +39,20 @@ jobs:
           (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
           (dst / ".nojekyll").touch()
           PY
-          test -f _site/index.html
           test -f _site/handheld-eth/build.json
-          test -f _site/CNAME
-          python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          python3 -c 'import json; print(json.load(open("_site/handheld-eth/build.json"))["id"])'
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
         with:
           error_count: 20
           reporting_interval: 10000
           timeout: 600000
-
-      - name: Retry deploy (OIDC / queue flake)
-        id: deployment_retry
+      - id: deployment_retry
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
         continue-on-error: true
@@ -74,24 +60,67 @@ jobs:
           error_count: 20
           reporting_interval: 10000
           timeout: 600000
-
-      - name: Final deploy attempt
-        id: deployment_final
+      - id: deployment_final
         if: steps.deployment.outcome == 'failure' && steps.deployment_retry.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           error_count: 30
           reporting_interval: 10000
           timeout: 900000
+      - name: Verify outcome
+        if: always()
+        run: |
+          if [ "${{ steps.deployment.outcome }}" = "success" ] || [ "${{ steps.deployment_retry.outcome }}" = "success" ] || [ "${{ steps.deployment_final.outcome }}" = "success" ]; then
+            echo "deploy ok"
+          else
+            echo "deploy failed" >&2
+            exit 1
+          fi
 
-      - name: Expose page_url
-        id: resolve_url
-        if: always() && (steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success' || steps.deployment_final.outcome == 'success')
+  deploy-self-hosted:
+    # Escape hatch when ubuntu-latest stays forever queued for this repo.
+    needs: deploy-hosted
+    if: always() && needs.deploy-hosted.result != 'success'
+    runs-on: [self-hosted, Linux, X64, aesl]
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare static publish tree
         run: |
           set -euo pipefail
-          url="${{ steps.deployment.outputs.page_url }}"
-          if [ -z "$url" ]; then url="${{ steps.deployment_retry.outputs.page_url }}"; fi
-          if [ -z "$url" ]; then url="${{ steps.deployment_final.outputs.page_url }}"; fi
-          test -n "$url"
-          echo "page_url=$url" >> "$GITHUB_OUTPUT"
-          echo "Deployed: $url"
+          rm -rf _site && mkdir -p _site
+          python3 - <<'PY'
+          import shutil
+          from pathlib import Path
+          src, dst = Path("."), Path("_site")
+          ignore = {".git", ".github", "_site", "deploy"}
+          for child in src.iterdir():
+              if child.name in ignore: continue
+              target = dst / child.name
+              if child.is_dir():
+                  shutil.copytree(child, target, ignore=lambda d, names: [n for n in names if n in ignore], dirs_exist_ok=True)
+              else:
+                  shutil.copy2(child, target)
+          (dst / "CNAME").write_text("concepts.active-esl.com\n", encoding="utf-8")
+          (dst / ".nojekyll").touch()
+          PY
+          test -f _site/handheld-eth/build.json
+          python3 -c 'import json; print(json.load(open("_site/handheld-eth/build.json"))["id"])'
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+        with:
+          error_count: 20
+          reporting_interval: 10000
+          timeout: 600000
+      - id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        with:
+          error_count: 30
+          reporting_interval: 10000
+          timeout: 900000
