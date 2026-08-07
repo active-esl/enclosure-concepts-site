@@ -1,0 +1,84 @@
+{
+  "ranking_only": true,
+  "not_ce_certification": true,
+  "stl": "rear.stl",
+  "stl_path": "/tmp/aesl-fea/stls/rear.stl",
+  "stl_sha1": "2505c885fcdf4f95ce043f69e8675cf74629ce25",
+  "stamp": "20260807T085021305709Z",
+  "material": "PLA",
+  "E_MPa": 3500,
+  "howto": "handheld/review/FEA-HOWTO.md",
+  "cea_brief": "handheld/review/cea-mechanical-drop-fea-brief.md",
+  "cases": [
+    {
+      "case": "press_centre",
+      "label": "Press the face centre (thumb on screen)",
+      "n_nodes": 574726,
+      "n_elems": 1665328,
+      "n_fixed": 544517,
+      "n_loaded": 0,
+      "total_force_N": [
+        0,
+        0,
+        -30
+      ],
+      "result": "SKIP",
+      "warns": [
+        "no material in fixed=544517 / loaded=0 region \u2014 case likely belongs to the other half"
+      ]
+    },
+    {
+      "case": "long_edge_bend",
+      "label": "Bend across the long axis (grip + push)",
+      "n_nodes": 574726,
+      "n_elems": 1665328,
+      "n_fixed": 4244,
+      "n_loaded": 4203,
+      "total_force_N": [
+        0,
+        0,
+        -20
+      ],
+      "max_disp_mm": 8.9389,
+      "max_von_mises_MPa": 32.615,
+      "n_disp_nodes": 574726,
+      "n_stress_nodes": 574726,
+      "overlay": "overlay.json",
+      "safety_factor_yield": 1.53,
+      "warns": [
+        "max deflection 8.9389 mm > 2.0 mm",
+        "peak von Mises 32.615 MPa = 65% of yield (isotropic; FDM layer bond is weaker)"
+      ],
+      "result": "PASS"
+    },
+    {
+      "case": "corner_twist",
+      "label": "Diagonal twist (one corner up)",
+      "n_nodes": 574726,
+      "n_elems": 1665328,
+      "n_fixed": 2016,
+      "n_loaded": 1959,
+      "total_force_N": [
+        0,
+        0,
+        -15
+      ],
+      "max_disp_mm": 13.0295,
+      "max_von_mises_MPa": 61.153,
+      "n_disp_nodes": 574726,
+      "n_stress_nodes": 574726,
+      "overlay": "overlay.json",
+      "safety_factor_yield": 0.82,
+      "warns": [
+        "max deflection 13.0295 mm > 2.0 mm",
+        "peak von Mises 61.153 MPa = 122% of yield (isotropic; FDM layer bond is weaker)"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "badge_note": {
+    "PASS": "solver finished \u2014 not design OK / not CE",
+    "SKIP": "no nodes in load/fix region",
+    "FAIL": "pipeline/solver error"
+  }
+}
