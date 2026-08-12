@@ -1,0 +1,104 @@
+{
+  "id": "flexi-16-mems",
+  "title": "Active Flexi 16-MEMS",
+  "blurb": "Active Flexi \u00b7 16-MEMS sensor board (16-mems.stp) \u00b7 **PCB-only Inspect** \u2014 identity pose pending sign-off. First Flexi MEMS project. Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Shell not started. ~57\u00d725\u00d711 mm AABB.",
+  "glb": "assembly.glb",
+  "glb_version": "2171db3744",
+  "parts": [
+    {
+      "id": "pcb",
+      "label": "PCB (Flexi 16-MEMS \u2014 16-mems.stp \u00b7 pose pending)",
+      "visible": true,
+      "color": [
+        28,
+        110,
+        55
+      ],
+      "transparent": true,
+      "opacity": 0.85
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Overall pcb (W\u00d7H\u00d7D)",
+      "default": false,
+      "dims": [
+        {
+          "label": "W 53.6 mm",
+          "mm": 53.57,
+          "a": [
+            0.0,
+            0.033,
+            0.010646361351013184
+          ],
+          "b": [
+            0.05357442855834961,
+            0.033,
+            0.010646361351013184
+          ]
+        },
+        {
+          "label": "H 25.0 mm",
+          "mm": 25.0,
+          "a": [
+            0.06157442855834961,
+            0.0,
+            0.010646361351013184
+          ],
+          "b": [
+            0.06157442855834961,
+            0.025,
+            0.010646361351013184
+          ]
+        },
+        {
+          "label": "D 10.6 mm",
+          "mm": 10.65,
+          "a": [
+            0.06157442855834961,
+            0.025,
+            0.0
+          ],
+          "b": [
+            0.06157442855834961,
+            0.025,
+            0.010646361351013184
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.5,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.5,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.25,
+      0.15
+    ],
+    "top": [
+      0.15,
+      1.4,
+      0.6
+    ]
+  },
+  "features": {
+    "measure": true,
+    "outline": true,
+    "outline_depth_sensitivity": 320.0,
+    "outline_normal_sensitivity": 26.0,
+    "deeplink": true,
+    "fea": false,
+    "fea_overlays": []
+  },
+  "pages_links": []
+}

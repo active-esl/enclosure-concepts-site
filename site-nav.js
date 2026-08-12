@@ -49,6 +49,14 @@
       inspect: `${root}flexi-mems-controller/assembly.html`,
       still: `${root}still.html?c=flexi-mems-controller`,
     },
+    {
+      id: "flexi-16-mems",
+      label: "Flexi 16",
+      maturity: "wip",
+      look: `${root}flexi-16-mems/`,
+      inspect: `${root}flexi-16-mems/assembly.html`,
+      still: `${root}still.html?c=flexi-16-mems`,
+    },
   ];
 
   const readShowWip = () => {
