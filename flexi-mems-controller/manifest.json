@@ -3,7 +3,7 @@
   "title": "Active Flexi MEMS Controller",
   "blurb": "Active Flexi \u00b7 MEMS controller board (controller.stp) \u00b7 **PCB-only Inspect** \u2014 identity pose pending sign-off. Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Shell not started. ~48\u00d729\u00d77 mm AABB from STEP mesh.",
   "glb": "assembly.glb",
-  "glb_version": "2cc3c0a2cd",
+  "glb_version": "513ca9dc07",
   "parts": [
     {
       "id": "pcb",
@@ -14,8 +14,8 @@
         110,
         55
       ],
-      "transparent": true,
-      "opacity": 0.85
+      "face_colors": true,
+      "opacity": 1.0
     }
   ],
   "dim_groups": [
@@ -26,44 +26,44 @@
       "dims": [
         {
           "label": "W 48.2 mm",
-          "mm": 48.17,
+          "mm": 48.22,
           "a": [
             0.0,
             0.037,
-            0.007410400390625
+            0.006599999904632568
           ],
           "b": [
-            0.04817291259765625,
+            0.04822000122070313,
             0.037,
-            0.007410400390625
+            0.006599999904632568
           ]
         },
         {
           "label": "H 29.0 mm",
           "mm": 29.0,
           "a": [
-            0.05617291259765625,
+            0.05622000122070313,
             0.0,
-            0.007410400390625
+            0.006599999904632568
           ],
           "b": [
-            0.05617291259765625,
+            0.05622000122070313,
             0.029,
-            0.007410400390625
+            0.006599999904632568
           ]
         },
         {
-          "label": "D 7.4 mm",
-          "mm": 7.41,
+          "label": "D 6.6 mm",
+          "mm": 6.6,
           "a": [
-            0.05617291259765625,
+            0.05622000122070313,
             0.029,
             0.0
           ],
           "b": [
-            0.05617291259765625,
+            0.05622000122070313,
             0.029,
-            0.007410400390625
+            0.006599999904632568
           ]
         }
       ]

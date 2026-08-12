@@ -1,11 +1,11 @@
 {
-  "id": "20260812T162741Z-01fba63258",
-  "built_at": "2026-08-12T16:27:41Z",
+  "id": "20260812T164810Z-77ae076317",
+  "built_at": "2026-08-12T16:48:10Z",
   "concept": "flexi-sensor",
   "assets": {
-    "assembly.glb": "dffd338150",
+    "assembly.glb": "f9d6665a04",
     "site-nav.css": "d180230ef5",
-    "site-nav.js": "f737a6d214",
+    "site-nav.js": "1659f539b5",
     "look.js": "b61e24e6db",
     "look-viewer.js": "95fcba9977",
     "pages-update.js": "8ff9ecbdf6",
