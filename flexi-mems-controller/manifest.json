@@ -464,7 +464,23 @@
     "outline_default": true,
     "outline_depth_sensitivity": 320.0,
     "outline_normal_sensitivity": 26.0,
-    "explode": false,
+    "explode": true,
+    "explode_axis": [
+      0,
+      0,
+      1
+    ],
+    "explode_offsets_mm": {
+      "board": 0,
+      "ic_mcu": 10,
+      "ic_shield": 14,
+      "ic_other": 9,
+      "connectors": 12,
+      "xtal_led": 6,
+      "copper": 1,
+      "passives": 5,
+      "mechanics": 7
+    },
     "deeplink": true,
     "fea": false,
     "fea_overlays": []
