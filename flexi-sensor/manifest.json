@@ -1,9 +1,9 @@
 {
   "id": "flexi-sensor",
   "title": "Active Flexi Sensor",
-  "blurb": "Active Flexi \u00b7 MEMS sensor board (flexisensor-v2.stp) \u00b7 **multi-part Inspect** \u2014 toggle substrate / MCU / modules / passives \u00b7 explode \u00b7 outline \u00b7 Measure (mm). Identity pose pending Michael orientation. Shell not started. ~16\u00d727\u00d74 mm.",
+  "blurb": "Active Flexi \u00b7 (flexisensor-v2.stp) \u00b7 **multi-part Inspect** \u2014 toggle substrate / MCU / modules / connectors / passives \u00b7 explode \u00b7 outline \u00b7 Measure (mm). Identity pose pending Michael orientation. Shell not started. ~16\u00d727\u00d74 mm.",
   "glb": "assembly.glb",
-  "glb_version": "246c04070f",
+  "glb_version": "03466608d7",
   "parts": [
     {
       "id": "board",
@@ -29,7 +29,7 @@
     },
     {
       "id": "ic_shield",
-      "label": "Shielded modules (5047540700)",
+      "label": "Shielded modules",
       "visible": true,
       "color": [
         168,
@@ -40,7 +40,7 @@
     },
     {
       "id": "ic_ldo",
-      "label": "LDO (NCV8716)",
+      "label": "Regulators (LDO)",
       "visible": true,
       "color": [
         40,
@@ -62,7 +62,7 @@
     },
     {
       "id": "xtal_led",
-      "label": "Crystals / LED / frame",
+      "label": "Crystals / LED / frames",
       "visible": true,
       "color": [
         200,
@@ -101,6 +101,17 @@
         120,
         72,
         40
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "mechanics",
+      "label": "Mechanics / clamps / hardware",
+      "visible": true,
+      "color": [
+        110,
+        118,
+        112
       ],
       "opacity": 1.0
     }
@@ -301,10 +312,10 @@
       "default": false,
       "dims": [
         {
-          "label": "xtal_led W 6.7 mm",
-          "mm": 6.74,
+          "label": "xtal_led W 4.9 mm",
+          "mm": 4.9,
           "a": [
-            0.004130020141601563,
+            0.005975019931793213,
             0.029749959945678712,
             0.0019120174646377565
           ],
@@ -315,11 +326,11 @@
           ]
         },
         {
-          "label": "xtal_led H 17.0 mm",
-          "mm": 16.97,
+          "label": "xtal_led H 10.7 mm",
+          "mm": 10.7,
           "a": [
             0.018875020027160645,
-            0.0047749605178833004,
+            0.011049960136413574,
             0.0019120174646377565
           ],
           "b": [
@@ -434,6 +445,41 @@
           ]
         }
       ]
+    },
+    {
+      "id": "mechanics",
+      "label": "Mechanics",
+      "default": false,
+      "dims": [
+        {
+          "label": "mechanics W 4.2 mm",
+          "mm": 4.24,
+          "a": [
+            0.004130020141601563,
+            0.02511795997619629,
+            0.0018420174121856689
+          ],
+          "b": [
+            0.008375020027160644,
+            0.02511795997619629,
+            0.0018420174121856689
+          ]
+        },
+        {
+          "label": "mechanics H 12.3 mm",
+          "mm": 12.34,
+          "a": [
+            0.016375020027160646,
+            0.0047749605178833004,
+            0.0018420174121856689
+          ],
+          "b": [
+            0.016375020027160646,
+            0.01711795997619629,
+            0.0018420174121856689
+          ]
+        }
+      ]
     }
   ],
   "views": {
@@ -472,14 +518,15 @@
     ],
     "explode_offsets_mm": {
       "board": 0,
-      "ic_mcu": 8,
-      "ic_shield": 12,
-      "ic_ldo": 6,
-      "ic_other": 7,
-      "xtal_led": 5,
+      "ic_mcu": 10,
+      "ic_shield": 14,
+      "ic_ldo": 8,
+      "ic_other": 9,
+      "xtal_led": 6,
       "pads": 3,
       "copper": 1,
-      "passives": 4
+      "passives": 5,
+      "mechanics": 7
     },
     "deeplink": true,
     "fea": false,

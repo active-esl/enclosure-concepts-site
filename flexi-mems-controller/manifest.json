@@ -1,69 +1,436 @@
 {
   "id": "flexi-mems-controller",
   "title": "Active Flexi MEMS Controller",
-  "blurb": "Active Flexi \u00b7 MEMS controller board (controller.stp) \u00b7 **PCB-only Inspect** \u2014 identity pose pending sign-off. Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Shell not started. ~48\u00d729\u00d77 mm AABB from STEP mesh.",
+  "blurb": "Active Flexi \u00b7 (controller.stp) \u00b7 **multi-part Inspect** \u2014 toggle substrate / MCU / modules / connectors / passives \u00b7 explode \u00b7 outline \u00b7 Measure (mm). Identity pose pending Michael orientation. Shell not started. ~50\u00d729\u00d77 mm.",
   "glb": "assembly.glb",
-  "glb_version": "513ca9dc07",
+  "glb_version": "dea79c2912",
   "parts": [
     {
-      "id": "pcb",
-      "label": "PCB (Flexi MEMS Controller \u2014 controller.stp \u00b7 pose pending)",
+      "id": "board",
+      "label": "PCB substrate (dielectric + soldermask)",
       "visible": true,
       "color": [
         28,
         110,
         55
       ],
-      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "ic_mcu",
+      "label": "MCU (QFN)",
+      "visible": true,
+      "color": [
+        28,
+        28,
+        30
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "ic_shield",
+      "label": "Shielded modules",
+      "visible": true,
+      "color": [
+        168,
+        170,
+        175
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "ic_other",
+      "label": "Other ICs / packages",
+      "visible": true,
+      "color": [
+        36,
+        36,
+        40
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "connectors",
+      "label": "Connectors / FFC / contacts",
+      "visible": true,
+      "color": [
+        232,
+        214,
+        180
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "xtal_led",
+      "label": "Crystals / LED / frames",
+      "visible": true,
+      "color": [
+        200,
+        190,
+        120
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "copper",
+      "label": "Copper pours / planes",
+      "visible": true,
+      "color": [
+        196,
+        130,
+        60
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "passives",
+      "label": "Passives (caps / inductors / diodes)",
+      "visible": true,
+      "color": [
+        120,
+        72,
+        40
+      ],
+      "opacity": 1.0
+    },
+    {
+      "id": "mechanics",
+      "label": "Mechanics / clamps / hardware",
+      "visible": true,
+      "color": [
+        110,
+        118,
+        112
+      ],
       "opacity": 1.0
     }
   ],
   "dim_groups": [
     {
       "id": "overall",
-      "label": "Overall pcb (W\u00d7H\u00d7D)",
+      "label": "Overall board (W\u00d7H\u00d7D)",
       "default": false,
       "dims": [
         {
-          "label": "W 48.2 mm",
-          "mm": 48.22,
+          "label": "W 22.5 mm",
+          "mm": 22.5,
           "a": [
             0.0,
             0.037,
-            0.006599999904632568
+            0.004475399971008301
           ],
           "b": [
-            0.04822000122070313,
+            0.0225,
             0.037,
-            0.006599999904632568
+            0.004475399971008301
           ]
         },
         {
           "label": "H 29.0 mm",
           "mm": 29.0,
           "a": [
-            0.05622000122070313,
+            0.0305,
             0.0,
+            0.004475399971008301
+          ],
+          "b": [
+            0.0305,
+            0.029,
+            0.004475399971008301
+          ]
+        },
+        {
+          "label": "D 0.7 mm",
+          "mm": 0.74,
+          "a": [
+            0.0305,
+            0.029,
+            0.0037349998950958253
+          ],
+          "b": [
+            0.0305,
+            0.029,
+            0.004475399971008301
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ic_mcu",
+      "label": "Ic_mcu",
+      "default": false,
+      "dims": [
+        {
+          "label": "ic_mcu W 1.5 mm",
+          "mm": 1.5,
+          "a": [
+            0.0105,
+            0.0235,
+            0.004599999904632568
+          ],
+          "b": [
+            0.012,
+            0.0235,
+            0.004599999904632568
+          ]
+        },
+        {
+          "label": "ic_mcu H 2.0 mm",
+          "mm": 2.0,
+          "a": [
+            0.02,
+            0.0135,
+            0.004599999904632568
+          ],
+          "b": [
+            0.02,
+            0.0155,
+            0.004599999904632568
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ic_shield",
+      "label": "Ic_shield",
+      "default": false,
+      "dims": [
+        {
+          "label": "ic_shield W 3.0 mm",
+          "mm": 3.0,
+          "a": [
+            0.0006499996185302735,
+            0.02425,
+            0.005170034885406494
+          ],
+          "b": [
+            0.003650000095367432,
+            0.02425,
+            0.005170034885406494
+          ]
+        },
+        {
+          "label": "ic_shield H 3.6 mm",
+          "mm": 3.6,
+          "a": [
+            0.011650000095367432,
+            0.012649999618530274,
+            0.005170034885406494
+          ],
+          "b": [
+            0.011650000095367432,
+            0.01625,
+            0.005170034885406494
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ic_other",
+      "label": "Ic_other",
+      "default": false,
+      "dims": [
+        {
+          "label": "ic_other W 3.5 mm",
+          "mm": 3.52,
+          "a": [
+            0.009229999542236328,
+            0.03169099998474121,
+            0.0046999998092651365
+          ],
+          "b": [
+            0.012750000000000001,
+            0.03169099998474121,
+            0.0046999998092651365
+          ]
+        },
+        {
+          "label": "ic_other H 11.4 mm",
+          "mm": 11.44,
+          "a": [
+            0.02075,
+            0.01225,
+            0.0046999998092651365
+          ],
+          "b": [
+            0.02075,
+            0.023690999984741213,
+            0.0046999998092651365
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connectors",
+      "label": "Connectors",
+      "default": false,
+      "dims": [
+        {
+          "label": "connectors W 40.5 mm",
+          "mm": 40.47,
+          "a": [
+            0.00775,
+            0.025174999237060548,
             0.006599999904632568
           ],
           "b": [
-            0.05622000122070313,
-            0.029,
+            0.04822000122070313,
+            0.025174999237060548,
             0.006599999904632568
           ]
         },
         {
-          "label": "D 6.6 mm",
-          "mm": 6.6,
+          "label": "connectors H 5.4 mm",
+          "mm": 5.35,
           "a": [
             0.05622000122070313,
-            0.029,
-            0.0
+            0.011824987411499024,
+            0.006599999904632568
           ],
           "b": [
             0.05622000122070313,
-            0.029,
+            0.017174999237060548,
             0.006599999904632568
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xtal_led",
+      "label": "Xtal_led",
+      "default": false,
+      "dims": [
+        {
+          "label": "xtal_led W 8.6 mm",
+          "mm": 8.63,
+          "a": [
+            0.0040999999046325685,
+            0.031399999618530273,
+            0.0040999999046325685
+          ],
+          "b": [
+            0.012725000381469728,
+            0.031399999618530273,
+            0.0040999999046325685
+          ]
+        },
+        {
+          "label": "xtal_led H 11.1 mm",
+          "mm": 11.15,
+          "a": [
+            0.020725000381469728,
+            0.01225,
+            0.0040999999046325685
+          ],
+          "b": [
+            0.020725000381469728,
+            0.023399999618530273,
+            0.0040999999046325685
+          ]
+        }
+      ]
+    },
+    {
+      "id": "copper",
+      "label": "Copper",
+      "default": false,
+      "dims": [
+        {
+          "label": "copper W 22.1 mm",
+          "mm": 22.13,
+          "a": [
+            0.00019999980926513672,
+            0.03592499923706055,
+            0.0045103998184204104
+          ],
+          "b": [
+            0.022325000762939452,
+            0.03592499923706055,
+            0.0045103998184204104
+          ]
+        },
+        {
+          "label": "copper H 26.9 mm",
+          "mm": 26.87,
+          "a": [
+            0.030325000762939452,
+            0.0010500001907348634,
+            0.0045103998184204104
+          ],
+          "b": [
+            0.030325000762939452,
+            0.027924999237060547,
+            0.0045103998184204104
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passives",
+      "label": "Passives",
+      "default": false,
+      "dims": [
+        {
+          "label": "passives W 21.4 mm",
+          "mm": 21.45,
+          "a": [
+            0.0005649995803833008,
+            0.03299499893188477,
+            0.004900000095367432
+          ],
+          "b": [
+            0.022010000228881835,
+            0.03299499893188477,
+            0.004900000095367432
+          ]
+        },
+        {
+          "label": "passives H 20.5 mm",
+          "mm": 20.48,
+          "a": [
+            0.030010000228881836,
+            0.004510000228881836,
+            0.004900000095367432
+          ],
+          "b": [
+            0.030010000228881836,
+            0.024994998931884765,
+            0.004900000095367432
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanics",
+      "label": "Mechanics",
+      "default": false,
+      "dims": [
+        {
+          "label": "mechanics W 42.6 mm",
+          "mm": 42.57,
+          "a": [
+            0.002675999641418457,
+            0.03247500038146973,
+            0.007
+          ],
+          "b": [
+            0.04525,
+            0.03247500038146973,
+            0.007
+          ]
+        },
+        {
+          "label": "mechanics H 20.6 mm",
+          "mm": 20.57,
+          "a": [
+            0.05325,
+            0.0039027996063232422,
+            0.007
+          ],
+          "b": [
+            0.05325,
+            0.024475000381469728,
+            0.007
           ]
         }
       ]
@@ -94,8 +461,26 @@
   "features": {
     "measure": true,
     "outline": true,
+    "outline_default": true,
     "outline_depth_sensitivity": 320.0,
     "outline_normal_sensitivity": 26.0,
+    "explode": true,
+    "explode_axis": [
+      0,
+      0,
+      1
+    ],
+    "explode_offsets_mm": {
+      "board": 0,
+      "ic_mcu": 10,
+      "ic_shield": 14,
+      "ic_other": 9,
+      "connectors": 12,
+      "xtal_led": 6,
+      "copper": 1,
+      "passives": 5,
+      "mechanics": 7
+    },
     "deeplink": true,
     "fea": false,
     "fea_overlays": []

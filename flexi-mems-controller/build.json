@@ -1,9 +1,9 @@
 {
-  "id": "20260812T164810Z-e1ae6ad9f2",
-  "built_at": "2026-08-12T16:48:10Z",
+  "id": "20260812T165824Z-ed30bb177e",
+  "built_at": "2026-08-12T16:58:24Z",
   "concept": "flexi-mems-controller",
   "assets": {
-    "assembly.glb": "513ca9dc07",
+    "assembly.glb": "dea79c2912",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "1659f539b5",
     "look.js": "b61e24e6db",
