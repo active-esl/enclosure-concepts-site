@@ -1,9 +1,9 @@
 {
-  "id": "20260812T201752Z-c96e53a4e9",
-  "built_at": "2026-08-12T20:17:52Z",
+  "id": "20260812T203025Z-0a97f65971",
+  "built_at": "2026-08-12T20:30:25Z",
   "concept": "flexi-16-mems",
   "assets": {
-    "assembly.glb": "cbf55c6910",
+    "assembly.glb": "80b2fa9960",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "1659f539b5",
     "look.js": "b61e24e6db",
