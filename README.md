@@ -14,6 +14,8 @@ Interactive concept enclosure designs for team review (Michael / Ollie / Gary / 
 | Active POE Look | https://concepts.active-esl.com/handheld-eth/ |
 | Active Slim Inspect | https://concepts.active-esl.com/handheld/assembly.html |
 | Active Eink Inspect | https://concepts.active-esl.com/eink-imx93/assembly.html |
+| Flexi Sensor Inspect (WIP) | https://concepts.active-esl.com/flexi-sensor/assembly.html |
+| Flexi MEMS Controller Inspect (WIP) | https://concepts.active-esl.com/flexi-mems-controller/assembly.html |
 
 Confirm live tip: `curl -sS https://concepts.active-esl.com/handheld-eth/build.json` → `id` must match the published pack.
 
@@ -23,7 +25,7 @@ Confirm live tip: `curl -sS https://concepts.active-esl.com/handheld-eth/build.j
 
 Status on each page is labelled. Not measured production CAD unless stated.
 
-**WIP concepts** (currently Active Eink) are hidden from the gallery and top
+**WIP concepts** (Active Eink, Flexi Sensor, Flexi MEMS Controller) are hidden from the gallery and top
 nav by default. Use **Show projects under development** on the gallery (stored
 in `localStorage`) to reveal them with a WIP badge. Deep links to WIP Inspect
 URLs still work when someone has the URL.

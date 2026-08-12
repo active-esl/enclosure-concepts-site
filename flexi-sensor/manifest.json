@@ -1,0 +1,104 @@
+{
+  "id": "flexi-sensor",
+  "title": "Active Flexi Sensor",
+  "blurb": "Active Flexi \u00b7 MEMS sensor board (flexisensor-v2.stp) \u00b7 **PCB-only Inspect** \u2014 identity pose pending sign-off. Toggle parts \u00b7 outline \u00b7 dims \u00b7 Measure (mm). Shell not started. ~16\u00d727\u00d73 mm AABB from STEP mesh.",
+  "glb": "assembly.glb",
+  "glb_version": "dffd338150",
+  "parts": [
+    {
+      "id": "pcb",
+      "label": "PCB (Flexi Sensor \u2014 flexisensor-v2.stp \u00b7 pose pending)",
+      "visible": true,
+      "color": [
+        28,
+        110,
+        55
+      ],
+      "transparent": true,
+      "opacity": 0.85
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Overall pcb (W\u00d7H\u00d7D)",
+      "default": false,
+      "dims": [
+        {
+          "label": "W 16.0 mm",
+          "mm": 16.0,
+          "a": [
+            0.0,
+            0.03460624885559082,
+            0.002963291645050049
+          ],
+          "b": [
+            0.016002780914306642,
+            0.03460624885559082,
+            0.002963291645050049
+          ]
+        },
+        {
+          "label": "H 26.6 mm",
+          "mm": 26.61,
+          "a": [
+            0.024002780914306642,
+            0.0,
+            0.002963291645050049
+          ],
+          "b": [
+            0.024002780914306642,
+            0.02660624885559082,
+            0.002963291645050049
+          ]
+        },
+        {
+          "label": "D 3.0 mm",
+          "mm": 2.96,
+          "a": [
+            0.024002780914306642,
+            0.02660624885559082,
+            0.0
+          ],
+          "b": [
+            0.024002780914306642,
+            0.02660624885559082,
+            0.002963291645050049
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.5,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.5,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.25,
+      0.15
+    ],
+    "top": [
+      0.15,
+      1.4,
+      0.6
+    ]
+  },
+  "features": {
+    "measure": true,
+    "outline": true,
+    "outline_depth_sensitivity": 320.0,
+    "outline_normal_sensitivity": 26.0,
+    "deeplink": true,
+    "fea": false,
+    "fea_overlays": []
+  },
+  "pages_links": []
+}

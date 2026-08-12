@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color:#0b1220;color-scheme:dark">
 <head>
-  <meta name="aesl-build" content="20260806T191342Z-cta1line" />
+  <meta name="aesl-build" content="20260807T073800Z-cta-compact" />
   <meta charset="utf-8" />
   <meta name="theme-color" content="#0b1220" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -62,15 +62,16 @@
       font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
       border: 1px solid rgba(255,204,102,.35);
     }
-    /* One row always (Look/Still/Inspect/Evaluate) — never wrap Evaluate to row 2. */
+    /* One row always (Look/Still/Inspect/Evaluate) — fit 4 pills in ~280px cards. */
     .ctas {
-      display: flex; flex-wrap: nowrap; align-items: center; gap: 5px; margin-top: 14px;
-      overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 3px; margin-top: 14px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
+    .ctas::-webkit-scrollbar { display: none; }
     .ctas a {
       display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap;
-      min-height: 30px; padding: 4px 8px;
-      border-radius: 999px; font-size: .76rem; font-weight: 650; text-decoration: none;
+      min-height: 26px; padding: 2px 6px;
+      border-radius: 999px; font-size: .68rem; font-weight: 650; text-decoration: none;
       border: 1px solid rgba(62,198,255,.4); background: rgba(62,198,255,.14); color: var(--accent);
     }
     .ctas a.secondary {
@@ -81,7 +82,7 @@
 </head>
 <body style="background-color:#0b1220;margin:0">
   <nav id="siteNav" class="site-nav" data-root="./" data-mode="gallery" aria-label="Concept site"></nav>
-  <script src="site-nav.js?v=f1b7c1036e" defer></script>
+  <script src="site-nav.js?v=f737a6d214" defer></script>
   <div class="wrap">
     <div class="badge">Concept gallery</div>
     <h1>Active-ESL enclosure concepts</h1>
@@ -107,9 +108,9 @@
           <h2>Active Slim</h2>
           <p>~10″ tablet-class shell, uniform thin edge. Networking via dock / USB‑C / PoE-when-docked.</p>
           <div class="ctas">
-            <a href="handheld/">Look →</a>
-            <a class="secondary" href="still.html?c=slim">Still →</a>
-            <a class="secondary" href="handheld/assembly.html">Inspect →</a>
+            <a href="handheld/">Look</a>
+            <a class="secondary" href="still.html?c=slim">Still</a>
+            <a class="secondary" href="handheld/assembly.html">Inspect</a>
           </div>
         </div>
       </div>
@@ -121,10 +122,10 @@
           <h2>Active POE</h2>
           <p>Apple-language reveal body for onboard RJ45 + USB‑C. Thin visible edge; honest stack underneath.</p>
           <div class="ctas">
-            <a href="handheld-eth/">Look →</a>
-            <a class="secondary" href="still.html?c=eth">Still →</a>
-            <a class="secondary" href="handheld-eth/assembly.html">Inspect →</a>
-            <a class="secondary" href="handheld-eth/fea/">Evaluate →</a>
+            <a href="handheld-eth/">Look</a>
+            <a class="secondary" href="still.html?c=eth">Still</a>
+            <a class="secondary" href="handheld-eth/assembly.html">Inspect</a>
+            <a class="secondary" href="handheld-eth/fea/">Evaluate</a>
           </div>
         </div>
       </div>
@@ -133,8 +134,28 @@
           <h2>Active Eink <span class="maturity-badge" title="Not yet customer-facing">WIP · under development</span></h2>
           <p>13.3″ Spectra 6 class · DD/AESL own imx93 PCB (202500.stp). Active product · PCB-only Inspect — identity pose pending Michael orientation.</p>
           <div class="ctas">
-            <a href="eink-imx93/">Look →</a>
-            <a class="secondary" href="eink-imx93/assembly.html">Inspect →</a>
+            <a href="eink-imx93/">Look</a>
+            <a class="secondary" href="eink-imx93/assembly.html">Inspect</a>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-maturity="wip" data-concept="flexi-sensor">
+        <div class="body" style="padding-top:16px">
+          <h2>Active Flexi Sensor <span class="maturity-badge" title="Not yet customer-facing">WIP · under development</span></h2>
+          <p>MEMS sensor board (flexisensor-v2.stp) · PCB-only Inspect — identity pose pending Michael orientation. ~16×27×3 mm.</p>
+          <div class="ctas">
+            <a href="flexi-sensor/">Look</a>
+            <a class="secondary" href="flexi-sensor/assembly.html">Inspect</a>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-maturity="wip" data-concept="flexi-mems-controller">
+        <div class="body" style="padding-top:16px">
+          <h2>Active Flexi MEMS Controller <span class="maturity-badge" title="Not yet customer-facing">WIP · under development</span></h2>
+          <p>MEMS controller board (controller.stp) · PCB-only Inspect — identity pose pending Michael orientation. ~48×29×7 mm.</p>
+          <div class="ctas">
+            <a href="flexi-mems-controller/">Look</a>
+            <a class="secondary" href="flexi-mems-controller/assembly.html">Inspect</a>
           </div>
         </div>
       </div>

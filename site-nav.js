@@ -33,6 +33,22 @@
       inspect: `${root}eink-imx93/assembly.html`,
       still: `${root}still.html?c=eink-imx93`,
     },
+    {
+      id: "flexi-sensor",
+      label: "Flexi Sensor",
+      maturity: "wip",
+      look: `${root}flexi-sensor/`,
+      inspect: `${root}flexi-sensor/assembly.html`,
+      still: `${root}still.html?c=flexi-sensor`,
+    },
+    {
+      id: "flexi-mems-controller",
+      label: "Flexi Ctrl",
+      maturity: "wip",
+      look: `${root}flexi-mems-controller/`,
+      inspect: `${root}flexi-mems-controller/assembly.html`,
+      still: `${root}still.html?c=flexi-mems-controller`,
+    },
   ];
 
   const readShowWip = () => {
