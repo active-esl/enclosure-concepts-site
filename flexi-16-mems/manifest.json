@@ -3,7 +3,7 @@
   "title": "Active Flexi 16-MEMS",
   "blurb": "Active Flexi \u00b7 (16-mems.stp) \u00b7 **multi-part Inspect** \u2014 toggle substrate / MCU / **16\u00d7 MEMS** / connectors / passives \u00b7 explode \u00b7 outline \u00b7 Measure (mm). Identity pose pending. Shell not started. ~59\u00d725\u00d711 mm.",
   "glb": "assembly.glb",
-  "glb_version": "621eb34fd4",
+  "glb_version": "8498b04062",
   "parts": [
     {
       "id": "board",
@@ -382,30 +382,30 @@
       "default": false,
       "dims": [
         {
-          "label": "copper W 55.0 mm",
-          "mm": 55.0,
+          "label": "copper W 47.5 mm",
+          "mm": 47.53,
           "a": [
             0.00025,
-            0.04175,
+            0.03275,
             0.0007753999829292297
           ],
           "b": [
-            0.05525,
-            0.04175,
+            0.04777500152587891,
+            0.03275,
             0.0007753999829292297
           ]
         },
         {
-          "label": "copper H 33.5 mm",
-          "mm": 33.5,
+          "label": "copper H 24.5 mm",
+          "mm": 24.5,
           "a": [
-            0.06325,
+            0.05577500152587891,
             0.00025,
             0.0007753999829292297
           ],
           "b": [
-            0.06325,
-            0.03375,
+            0.05577500152587891,
+            0.02475,
             0.0007753999829292297
           ]
         }
