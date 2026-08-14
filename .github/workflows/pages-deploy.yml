@@ -58,6 +58,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+          # Min retention — Pages zips were ~20–25 MB each and stacked expired copies.
+          retention-days: 1
 
       - id: deployment
         uses: actions/deploy-pages@v4
