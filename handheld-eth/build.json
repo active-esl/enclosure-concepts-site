@@ -1,6 +1,6 @@
 {
-  "id": "20260902T231000Z-liveux-bridge",
-  "built_at": "2026-09-02T23:10:00Z",
+  "id": "20260902T233000Z-liveux-visible-runtime",
+  "built_at": "2026-09-02T23:30:00Z",
   "concept": "handheld-eth",
   "assets": {
     "handheld.glb": "5fe2c6a1ff",
@@ -9,7 +9,7 @@
     "active-esl-uv-badge-28x10-brand-full-600dpi.png": "bd3627da5a",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "ed8ae3f5d9",
-    "live.html": "44c0334f15",
+    "live.html": "e5616b39fe",
     "ux/index.html": "14b270dc14",
     "ux/booking-e78d741725ba.pck": "c3fe40655a",
     "ux/booking-e78d741725ba.wasm": "b569458d3d",

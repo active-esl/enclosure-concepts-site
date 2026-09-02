@@ -9,12 +9,15 @@
   <style>
     :root{--bg:#0b1220;--panel:rgba(12,18,32,.88);--text:#f4f7fb;--muted:#a9b4c7;--accent:#3ec6ff;--ok:#a8e04f}
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
-    #stage{position:fixed;inset:var(--site-nav-h,46px) 0 0}#c{display:block;width:100%;height:100%;touch-action:none}
+    #stage{position:fixed;z-index:2;inset:var(--site-nav-h,46px) 0 0}#c{display:block;width:100%;height:100%;touch-action:none}
     .bar{position:fixed;z-index:15;left:12px;right:12px;top:calc(10px + var(--site-nav-h,46px));display:flex;align-items:flex-start;justify-content:space-between;gap:10px;pointer-events:none}
     .meta,.status{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
     .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
-    #godotHost{position:fixed;left:-1400px;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none;background:#071019}
+    /* Keep the runtime inside the browser viewport. Chromium/WebKit may suspend
+       an entirely off-screen iframe and its WebGL context, leaving the LCD
+       permanently black. The Three.js stage paints above this eager runtime. */
+    #godotHost{position:fixed;z-index:1;left:0;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none;background:#071019}
     @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
   </style>
 </head>
@@ -24,7 +27,7 @@
   <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
   <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
-  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html" width="1280" height="800"></iframe>
+  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=e78d741725ba" width="1280" height="800" loading="eager"></iframe>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -56,9 +59,12 @@
       scene.add(model); if(!window.__ACTIVE_POE_LIVE_READY__) status.textContent='Model ready · starting UX…';
     },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
 
+    const uxStartedAt=performance.now();
     function findGodotCanvas(){
       try{const candidate=frame.contentDocument?.getElementById('canvas'),api=frame.contentWindow?.activePoeInput;if(candidate&&candidate.width>0&&candidate.height>0&&typeof api==='function'){godotCanvas=candidate;status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}}
-      catch(e){console.warn(e)} setTimeout(findGodotCanvas,250);
+      catch(e){console.warn(e)}
+      if(performance.now()-uxStartedAt>15000){status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__='runtime-timeout';return}
+      setTimeout(findGodotCanvas,250);
     }
     frame.addEventListener('load',()=>setTimeout(findGodotCanvas,250));
     findGodotCanvas();
