@@ -27,7 +27,7 @@
   <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
   <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
-  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=27f513bc9fdd" width="1280" height="800" loading="eager"></iframe>
+  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=4aac51f4f7e5" width="1280" height="800" loading="eager"></iframe>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -61,7 +61,7 @@
 
     const uxStartedAt=performance.now();
     function findGodotCanvas(){
-      try{const candidate=frame.contentDocument?.getElementById('canvas'),api=frame.contentWindow?.activePoeInput;if(candidate&&candidate.width>0&&candidate.height>0&&typeof api==='function'){godotCanvas=candidate;status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}}
+      try{const candidate=frame.contentDocument?.getElementById('canvas'),api=frame.contentWindow?.activePoeInput,ready=frame.contentWindow?.activePoeInputReady===true;if(candidate&&candidate.width>0&&candidate.height>0&&typeof api==='function'&&ready){godotCanvas=candidate;status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}}
       catch(e){console.warn(e)}
       if(performance.now()-uxStartedAt>15000){status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__='runtime-timeout';return}
       setTimeout(findGodotCanvas,250);
