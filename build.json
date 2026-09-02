@@ -1,10 +1,10 @@
 {
-  "id": "20260806T191342Z-cta1line",
-  "built_at": "2026-08-06T19:13:42Z",
+  "id": "20260902T223000Z-liveux",
+  "built_at": "2026-09-02T22:30:00Z",
   "concept": "enclosure-concepts",
   "assets": {
     "site-nav.css": "d180230ef5",
-    "site-nav.js": "f1b7c1036e",
+    "site-nav.js": "ed8ae3f5d9",
     "look.js": "b61e24e6db",
     "look-viewer.js": "95fcba9977",
     "pages-update.js": "8ff9ecbdf6",

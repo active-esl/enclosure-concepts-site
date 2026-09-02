@@ -22,6 +22,7 @@
       maturity: "public",
       look: `${root}handheld-eth/`,
       inspect: `${root}handheld-eth/assembly.html`,
+      live: `${root}handheld-eth/live.html`,
       eval: `${root}handheld-eth/fea/`,
       still: `${root}still.html?c=eth`,
     },
@@ -74,6 +75,7 @@
 
   const conceptHref = (c) => {
     if (mode === "inspect") return c.inspect;
+    if (mode === "live" && c.live) return c.live;
     if (mode === "eval" && c.eval) return c.eval;
     if (mode === "still") return c.still;
     return c.look;
@@ -82,6 +84,7 @@
     const cur = concepts.find((c) => c.id === concept);
     if (!cur) return `${root}`;
     if (m === "inspect") return cur.inspect;
+    if (m === "live") return cur.live || cur.look;
     if (m === "eval") return cur.eval || cur.look;
     if (m === "still") return cur.still;
     return cur.look;
@@ -109,6 +112,10 @@
     const modeBlock = concept
       ? `<div class="site-nav__modes" role="navigation" aria-label="Mode">${
           pill(modeHref("look"), "Look", mode === "look")
+        }${
+          cur?.live
+            ? pill(modeHref("live"), "Live UX", mode === "live")
+            : ""
         }${
           pill(modeHref("still"), "Still", mode === "still")
         }${

@@ -12,6 +12,7 @@ Interactive concept enclosure designs for team review (Michael / Ollie / Gary / 
 | Gallery | https://concepts.active-esl.com/ |
 | Active POE Inspect | https://concepts.active-esl.com/handheld-eth/assembly.html |
 | Active POE Look | https://concepts.active-esl.com/handheld-eth/ |
+| Active POE Live UX | https://concepts.active-esl.com/handheld-eth/live.html |
 | Active Slim Inspect | https://concepts.active-esl.com/handheld/assembly.html |
 | Active Eink Inspect | https://concepts.active-esl.com/eink-imx93/assembly.html |
 | Flexi Sensor Inspect (WIP) | https://concepts.active-esl.com/flexi-sensor/assembly.html |
@@ -57,3 +58,12 @@ URLs still work when someone has the URL.
 After a new Look GLB, rebake/copy the beauty still PNG — Still does not
 auto-update from GLB (see `design-share-3d` skill). Publish by pushing `main`
 (Actions), not Workers / not a `gh-pages` branch.
+
+## Active POE live UX
+
+`handheld-eth/live.html` keeps the established concept-site presentation and
+maps the real Godot room-booking framebuffer onto the GLB's `LCD` mesh. Pointer
+and touch coordinates are raycast onto the display UVs and forwarded to the
+same Godot controls used by the native i.MX8M Mini build. The same-origin web
+export is vendored under `handheld-eth/ux/`; refresh it from
+`godot-demos/dist/room-booking/` after exporting that project.
