@@ -11,8 +11,9 @@
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
     #stage{position:fixed;inset:var(--site-nav-h,46px) 0 0}#c{display:block;width:100%;height:100%;touch-action:none}
     .bar{position:fixed;z-index:15;left:12px;right:12px;top:calc(10px + var(--site-nav-h,46px));display:flex;align-items:flex-start;justify-content:space-between;gap:10px;pointer-events:none}
-    .meta,.status{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+    .meta,.status,.view-btn{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
+    .view-actions{display:flex;gap:8px;pointer-events:auto}.view-btn{color:var(--text);font-weight:700;cursor:pointer}.view-btn[aria-pressed="true"]{border-color:rgba(62,198,255,.75);background:rgba(62,198,255,.2)}
     .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
     #godotHost{position:fixed;left:-1400px;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none}
     @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
@@ -22,7 +23,7 @@
   <nav id="siteNav" class="site-nav" data-root="../" data-concept="eth" data-mode="live" aria-label="Concept site"></nav>
   <script src="../site-nav.js" defer></script>
   <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
-  <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Production Godot interface running on the virtual display</p></div><div id="status" class="status">Starting UX…</div></div>
+  <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Production Godot interface running on the virtual display</p></div><div class="view-actions"><button id="useDisplay" class="view-btn" type="button" aria-pressed="true">Use display</button><button id="explore" class="view-btn" type="button" aria-pressed="false">Explore model</button><div id="status" class="status">Starting UX…</div></div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
   <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html" width="1280" height="800"></iframe>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
@@ -32,7 +33,7 @@
     import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
     import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 
-    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), frame=document.getElementById('godotHost');
+    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), frame=document.getElementById('godotHost'), useDisplay=document.getElementById('useDisplay'), explore=document.getElementById('explore');
     const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
     renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
     const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(35,2,.001,20);
@@ -43,8 +44,8 @@
     const key=new THREE.DirectionalLight(0xffffff,3.1); key.position.set(-.4,.7,.55); scene.add(key);
     const fill=new THREE.DirectionalLight(0x7fcfff,1.7); fill.position.set(.7,.25,-.5); scene.add(fill);
 
-    let lcd=null,godotCanvas=null,liveTexture=null,lastCopy=0,gestureOnScreen=false;
-    const bridge=document.createElement('canvas'); bridge.width=1280; bridge.height=800;
+    let lcd=null,godotCanvas=null,liveTexture=null,lastCopy=0,refreshUntil=0,gestureOnScreen=false,displayMode=true;
+    const bridge=document.createElement('canvas'); bridge.width=960; bridge.height=600;
     const bridgeCtx=bridge.getContext('2d',{alpha:false}); bridgeCtx.fillStyle='#071019'; bridgeCtx.fillRect(0,0,bridge.width,bridge.height);
     liveTexture=new THREE.CanvasTexture(bridge); liveTexture.colorSpace=THREE.SRGBColorSpace; liveTexture.flipY=false; liveTexture.minFilter=THREE.LinearFilter; liveTexture.magFilter=THREE.LinearFilter;
 
@@ -53,7 +54,7 @@
       model.traverse(o=>{if(!o.isMesh)return;o.castShadow=true;o.receiveShadow=true;if(o.name==='LCD'||o.parent?.name==='LCD'){
         lcd=o; o.material=new THREE.MeshStandardMaterial({color:0xffffff,map:liveTexture,emissive:0xffffff,emissiveMap:liveTexture,emissiveIntensity:1.35,roughness:.36,metalness:.02,envMapIntensity:.08});
       }});
-      scene.add(model); if(!window.__ACTIVE_POE_LIVE_READY__) status.textContent='Model ready · starting UX…';
+      scene.add(model); setDisplayMode(true); if(!window.__ACTIVE_POE_LIVE_READY__) status.textContent='Model ready · starting UX…';
     },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
 
     function findGodotCanvas(){
@@ -63,6 +64,14 @@
     frame.addEventListener('load',()=>setTimeout(findGodotCanvas,250));
     findGodotCanvas();
 
+    function setDisplayMode(on){
+      displayMode=on; useDisplay.setAttribute('aria-pressed',String(on)); explore.setAttribute('aria-pressed',String(!on));
+      if(on){camera.up.set(0,0,-1);camera.position.set(.122,.36,-.083);controls.target.set(.122,0,-.083);controls.enabled=false;hint.textContent='Tap the controls directly on the display';}
+      else{camera.up.set(0,1,0);camera.position.set(.35,.31,.29);controls.target.set(.122,0,-.083);controls.enabled=true;hint.textContent='Drag to orbit · pinch or scroll to zoom · choose Use display to interact';}
+      camera.lookAt(controls.target);controls.update();
+    }
+    useDisplay.addEventListener('click',()=>setDisplayMode(true)); explore.addEventListener('click',()=>setDisplayMode(false));
+
     const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
     function hitDisplay(ev){
       if(!lcd)return null;const r=canvas.getBoundingClientRect();pointer.x=((ev.clientX-r.left)/r.width)*2-1;pointer.y=-((ev.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);
@@ -71,16 +80,16 @@
     function forward(ev,phase,hit){
       if(!godotCanvas||!hit?.uv)return; const rect=godotCanvas.getBoundingClientRect(); const u=hit.uv.x,v=1-hit.uv.y;
       const opts={bubbles:true,cancelable:true,clientX:rect.left+u*rect.width,clientY:rect.top+v*rect.height,button:0,buttons:phase==='up'?0:1,pointerId:ev.pointerId||1,pointerType:ev.pointerType||'mouse',isPrimary:true};
-      godotCanvas.dispatchEvent(new PointerEvent(`pointer${phase}`,opts)); godotCanvas.dispatchEvent(new MouseEvent(`mouse${phase==='down'?'down':phase==='up'?'up':'move'}`,opts));
+      godotCanvas.dispatchEvent(new PointerEvent(`pointer${phase}`,opts)); godotCanvas.dispatchEvent(new MouseEvent(`mouse${phase==='down'?'down':phase==='up'?'up':'move'}`,opts)); refreshUntil=performance.now()+1000;
       window.__ACTIVE_POE_LAST_TOUCH__={phase,u,v};
     }
     canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);gestureOnScreen=!!hit;if(hit){controls.enabled=false;canvas.setPointerCapture(ev.pointerId);forward(ev,'down',hit);hint.textContent='Touch sent to the running Godot UX';ev.preventDefault()}});
     canvas.addEventListener('pointermove',ev=>{if(gestureOnScreen){forward(ev,'move',hitDisplay(ev));ev.preventDefault()}});
-    function endPointer(ev){if(!gestureOnScreen)return;forward(ev,'up',hitDisplay(ev));gestureOnScreen=false;controls.enabled=true;try{canvas.releasePointerCapture(ev.pointerId)}catch(_){}ev.preventDefault()}
+    function endPointer(ev){if(!gestureOnScreen)return;forward(ev,'up',hitDisplay(ev));gestureOnScreen=false;controls.enabled=!displayMode;try{canvas.releasePointerCapture(ev.pointerId)}catch(_){}ev.preventDefault()}
     canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);
 
     function resize(){const r=document.getElementById('stage').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
-    function animate(t){requestAnimationFrame(animate);controls.update();if(godotCanvas&&t-lastCopy>33){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e);godotCanvas=null;findGodotCanvas()}}renderer.render(scene,camera)}animate(0);
+    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(godotCanvas&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e);godotCanvas=null;findGodotCanvas()}}renderer.render(scene,camera)}animate(0);
     window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,frame,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
   </script>
   <script src="../pages-update.js" defer></script>
