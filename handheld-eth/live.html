@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#0b1220">
   <title>Active POE — Live UX</title>
   <link rel="stylesheet" href="../site-nav.css">
+  <link rel="preload" href="ux/booking-bb3782be80df.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
+  <link rel="preload" href="ux/booking-bb3782be80df.pck" as="fetch" crossorigin="anonymous">
   <style>
     :root{--bg:#0b1220;--panel:rgba(12,18,32,.88);--text:#f4f7fb;--muted:#a9b4c7;--accent:#3ec6ff;--ok:#a8e04f}
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
@@ -49,18 +51,37 @@
 
     let lcd=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null;
     const bridge=document.createElement('canvas'); bridge.width=960; bridge.height=600;
-    const bridgeCtx=bridge.getContext('2d',{alpha:false}); bridgeCtx.fillStyle='#071019'; bridgeCtx.fillRect(0,0,bridge.width,bridge.height);
+    const bridgeCtx=bridge.getContext('2d',{alpha:false});
     liveTexture=new THREE.CanvasTexture(bridge); liveTexture.colorSpace=THREE.SRGBColorSpace; liveTexture.flipY=false; liveTexture.minFilter=THREE.LinearFilter; liveTexture.magFilter=THREE.LinearFilter;
+
+    function paintUxStatus(title,detail,progress=null,error=false){
+      const w=bridge.width,h=bridge.height,barX=120,barY=390,barW=w-240,barH=18;
+      bridgeCtx.fillStyle='#07111f';bridgeCtx.fillRect(0,0,w,h);
+      bridgeCtx.fillStyle=error?'#ff6075':'#3ec6ff';bridgeCtx.fillRect(0,0,w,8);
+      bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 25px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE-EDGE',48,64);
+      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='16px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE POE · LIVE PRODUCT TWIN',48,94);
+      bridgeCtx.textAlign='center';bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 48px Segoe UI, sans-serif';bridgeCtx.fillText(title,w/2,265);
+      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='22px Segoe UI, sans-serif';bridgeCtx.fillText(detail,w/2,315);
+      if(progress!==null){
+        const value=Math.max(0,Math.min(100,progress));
+        bridgeCtx.fillStyle='#1b2a3d';bridgeCtx.fillRect(barX,barY,barW,barH);
+        bridgeCtx.fillStyle=error?'#ff6075':'#a8e04f';bridgeCtx.fillRect(barX,barY,barW*value/100,barH);
+        bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 22px Segoe UI, sans-serif';bridgeCtx.fillText(`${Math.round(value)}%`,w/2,455);
+      }
+      bridgeCtx.textAlign='left';liveTexture.needsUpdate=true;
+    }
+    paintUxStatus('Loading interface…','Downloading the live Godot UX',0);
 
     new GLTFLoader().load('handheld.glb',gltf=>{
       const model=gltf.scene;
       model.traverse(o=>{if(!o.isMesh)return;o.castShadow=true;o.receiveShadow=true;if(o.name==='LCD'||o.parent?.name==='LCD'){
         lcd=o; o.material=new THREE.MeshStandardMaterial({color:0xffffff,map:liveTexture,emissive:0xffffff,emissiveMap:liveTexture,emissiveIntensity:1.35,roughness:.36,metalness:.02,envMapIntensity:.08});
       }});
-      scene.add(model); if(!window.__ACTIVE_POE_LIVE_READY__) status.textContent='Model ready · starting UX…';
+      scene.add(model);
     },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
 
     const uxStartedAt=performance.now();
+    let godotLaunchedAt=0;
     const godotEngine=new Engine({
       canvas:godotCanvas,
       canvasResizePolicy:0,
@@ -72,11 +93,15 @@
       gdnativeLibs:[]
     });
     godotEngine.startGame({
-      onProgress:(current,total)=>{if(total>0&&!window.__ACTIVE_POE_LIVE_READY__)status.textContent=`Loading UX · ${Math.round(current/total*100)}%`}
-    }).catch(error=>{console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=String(error?.message||error)});
+      onProgress:(current,total)=>{if(total>0&&!window.__ACTIVE_POE_LIVE_READY__){const percent=Math.round(current/total*100);if(percent>=100){status.textContent='Preparing UX…';paintUxStatus('Preparing interface…','Download complete · starting the engine',100)}else{status.textContent=`Loading UX · ${percent}%`;paintUxStatus('Loading interface…','Downloading the live Godot UX',percent)}}}
+    }).then(()=>{godotLaunchedAt=performance.now();if(!window.__ACTIVE_POE_LIVE_READY__){status.textContent='Launching UX…';paintUxStatus('Launching interface…','Godot is preparing the first frame',100)}}).catch(showUxFailure);
+    function showUxFailure(error){
+      const message=String(error?.message||error||'runtime failed');console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Interface failed to start','Reload the page to try again',0,true);
+    }
     function findGodotCanvas(){
       if(godotCanvas.width>0&&godotCanvas.height>0&&typeof window.activePoeInput==='function'&&window.activePoeInputReady===true){status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}
-      if(performance.now()-uxStartedAt>15000){status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__='runtime-timeout';return}
+      const now=performance.now();
+      if((godotLaunchedAt&&now-godotLaunchedAt>15000)||now-uxStartedAt>90000){showUxFailure('runtime-timeout');return}
       setTimeout(findGodotCanvas,250);
     }
     findGodotCanvas();
@@ -92,6 +117,7 @@
       if(!pointerStart)return;const moved=Math.hypot(ev.clientX-pointerStart.x,ev.clientY-pointerStart.y),hit=hitDisplay(ev),start=pointerStart;pointerStart=null;
       const tapSlop=start.pointerType==='touch'?18:8;
       if(moved>tapSlop||!hit?.uv)return;
+      if(!window.__ACTIVE_POE_LIVE_READY__||typeof window.activePoeInput!=='function'){hint.textContent='The interface is still loading';return}
       // CanvasTexture.flipY is disabled, so the LCD's UV Y axis already has
       // the same top-to-bottom orientation as Godot's viewport coordinates.
       const u=(start.uv.x+hit.uv.x)/2,v=(start.uv.y+hit.uv.y)/2;
