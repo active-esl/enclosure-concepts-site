@@ -1,8 +1,9 @@
 {
-  "id": "20260902T224319Z-liveux-face-loader",
-  "built_at": "2026-09-02T22:43:19Z",
+  "id": "20260902T224754Z-booking-concept-card",
+  "built_at": "2026-09-02T22:47:54Z",
   "concept": "enclosure-concepts",
   "assets": {
+    "index.html": "42a3e6330f",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "ed8ae3f5d9",
     "look.js": "b61e24e6db",

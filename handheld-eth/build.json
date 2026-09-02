@@ -1,9 +1,10 @@
 {
-  "id": "20260902T224319Z-liveux-face-loader",
-  "built_at": "2026-09-02T22:43:19Z",
+  "id": "20260902T224754Z-booking-concept-card",
+  "built_at": "2026-09-02T22:47:54Z",
   "concept": "handheld-eth",
   "assets": {
     "handheld.glb": "5fe2c6a1ff",
+    "booking-live-thumbnail.png": "c8cfcc05c7",
     "assembly.glb": "0de818873b",
     "lcd_splash_active_esl.png": "c3b2d277a9",
     "active-esl-uv-badge-28x10-brand-full-600dpi.png": "bd3627da5a",
