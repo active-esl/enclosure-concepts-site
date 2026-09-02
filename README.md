@@ -62,8 +62,13 @@ auto-update from GLB (see `design-share-3d` skill). Publish by pushing `main`
 ## Active POE live UX
 
 `handheld-eth/live.html` keeps the established concept-site presentation and
-maps the real Godot room-booking framebuffer onto the GLB's `LCD` mesh. Pointer
-and touch coordinates are raycast onto the display UVs and forwarded to the
-same Godot controls used by the native i.MX8M Mini build. The same-origin web
-export is vendored under `handheld-eth/ux/`; refresh it from
-`godot-demos/dist/room-booking/` after exporting that project.
+maps the real Godot room-booking framebuffer onto the GLB's `LCD` mesh. A short
+tap is raycast onto the display UVs and sent through Godot's explicit
+`activePoeInput(u, v)` bridge; a drag remains an OrbitControls gesture. This
+avoids synthetic browser events and keeps model movement and UX input on one
+page. The separate Inspect page continues to own component visibility,
+explode, section and measurement tools.
+
+The same-origin web export is vendored under `handheld-eth/ux/`. Refresh it
+from the `Room booking export` workflow artifact in `active-esl/godot-demos`;
+that export and the native i.MX8M Mini package share the same GDScript controls.
