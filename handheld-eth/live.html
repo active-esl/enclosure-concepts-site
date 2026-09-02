@@ -92,7 +92,9 @@
       if(!pointerStart)return;const moved=Math.hypot(ev.clientX-pointerStart.x,ev.clientY-pointerStart.y),hit=hitDisplay(ev),start=pointerStart;pointerStart=null;
       const tapSlop=start.pointerType==='touch'?18:8;
       if(moved>tapSlop||!hit?.uv)return;
-      const u=(start.uv.x+hit.uv.x)/2,v=1-(start.uv.y+hit.uv.y)/2;
+      // CanvasTexture.flipY is disabled, so the LCD's UV Y axis already has
+      // the same top-to-bottom orientation as Godot's viewport coordinates.
+      const u=(start.uv.x+hit.uv.x)/2,v=(start.uv.y+hit.uv.y)/2;
       const ackBefore=Number(window.activePoeInputAck||0);
       window.activePoeInput(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
       setTimeout(()=>{const ack=Number(window.activePoeInputAck||0),uxState=window.activePoeUxState||'unknown';if(ack>ackBefore){hint.textContent=`Godot received tap #${ack} · ${uxState}`;status.textContent=`Live UX · input acknowledged #${ack}`;window.__ACTIVE_POE_LAST_ACK__={ack,uxState}}else{hint.textContent='Godot did not acknowledge that tap';status.textContent='UX input bridge failed';status.dataset.error='true'}},120);
