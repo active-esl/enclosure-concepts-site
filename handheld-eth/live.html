@@ -27,7 +27,7 @@
   <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
   <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
-  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=e78d741725ba" width="1280" height="800" loading="eager"></iframe>
+  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=27f513bc9fdd" width="1280" height="800" loading="eager"></iframe>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -74,13 +74,16 @@
       if(!lcd)return null;const r=canvas.getBoundingClientRect();pointer.x=((ev.clientX-r.left)/r.width)*2-1;pointer.y=-((ev.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);
       return raycaster.intersectObject(lcd,true)[0]||null;
     }
-    canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);pointerStart=hit?{x:ev.clientX,y:ev.clientY,uv:hit.uv.clone()}:null});
+    canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);pointerStart=hit?{x:ev.clientX,y:ev.clientY,uv:hit.uv.clone(),pointerType:ev.pointerType}:null});
     canvas.addEventListener('pointermove',ev=>{canvas.style.cursor=hitDisplay(ev)?'pointer':'grab'});
     canvas.addEventListener('pointerup',ev=>{
       if(!pointerStart)return;const moved=Math.hypot(ev.clientX-pointerStart.x,ev.clientY-pointerStart.y),hit=hitDisplay(ev),start=pointerStart;pointerStart=null;
-      if(moved>8||!hit?.uv)return;
+      const tapSlop=start.pointerType==='touch'?18:8;
+      if(moved>tapSlop||!hit?.uv)return;
       const u=(start.uv.x+hit.uv.x)/2,v=1-(start.uv.y+hit.uv.y)/2;
-      frame.contentWindow.activePoeInput(u,v);refreshUntil=performance.now()+1000;hint.textContent='Tap delivered to the running Godot UX';window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
+      const ackBefore=Number(frame.contentWindow.activePoeInputAck||0);
+      frame.contentWindow.activePoeInput(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
+      setTimeout(()=>{const ack=Number(frame.contentWindow.activePoeInputAck||0),uxState=frame.contentWindow.activePoeUxState||'unknown';if(ack>ackBefore){hint.textContent=`Godot received tap #${ack} · ${uxState}`;status.textContent=`Live UX · input acknowledged #${ack}`;window.__ACTIVE_POE_LAST_ACK__={ack,uxState}}else{hint.textContent='Godot did not acknowledge that tap';status.textContent='UX input bridge failed';status.dataset.error='true'}},120);
     });
     canvas.addEventListener('pointercancel',()=>{pointerStart=null});
 
