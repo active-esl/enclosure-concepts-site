@@ -15,7 +15,8 @@
     .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
     .view-actions{display:flex;gap:8px;pointer-events:auto}.view-btn{color:var(--text);font-weight:700;cursor:pointer}.view-btn[aria-pressed="true"]{border-color:rgba(62,198,255,.75);background:rgba(62,198,255,.2)}
     .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
-    #godotHost{position:fixed;left:-1400px;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none}
+    #godotHost{position:fixed;left:-1400px;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none;background:#071019}
+    #godotHost.is-direct{z-index:4;opacity:1;pointer-events:auto;border-radius:14px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
     @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
   </style>
 </head>
@@ -66,8 +67,8 @@
 
     function setDisplayMode(on){
       displayMode=on; useDisplay.setAttribute('aria-pressed',String(on)); explore.setAttribute('aria-pressed',String(!on));
-      if(on){camera.up.set(0,0,-1);camera.position.set(.122,.36,-.083);controls.target.set(.122,0,-.083);controls.enabled=false;hint.textContent='Tap the controls directly on the display';}
-      else{camera.up.set(0,1,0);camera.position.set(.35,.31,.29);controls.target.set(.122,0,-.083);controls.enabled=true;hint.textContent='Drag to orbit · pinch or scroll to zoom · choose Use display to interact';}
+      if(on){camera.up.set(0,0,-1);camera.position.set(.122,.36,-.083);controls.target.set(.122,0,-.083);controls.enabled=false;hint.textContent='Direct touch mode · these are the real Godot controls';}
+      else{camera.up.set(0,1,0);camera.position.set(.35,.31,.29);controls.target.set(.122,0,-.083);controls.enabled=true;frame.classList.remove('is-direct');frame.style.cssText='';hint.textContent='Drag to orbit · pinch or scroll to zoom · choose Use display to interact';}
       camera.lookAt(controls.target);controls.update();
     }
     useDisplay.addEventListener('click',()=>setDisplayMode(true)); explore.addEventListener('click',()=>setDisplayMode(false));
@@ -88,8 +89,18 @@
     function endPointer(ev){if(!gestureOnScreen)return;forward(ev,'up',hitDisplay(ev));gestureOnScreen=false;controls.enabled=!displayMode;try{canvas.releasePointerCapture(ev.pointerId)}catch(_){}ev.preventDefault()}
     canvas.addEventListener('pointerup',endPointer);canvas.addEventListener('pointercancel',endPointer);
 
+    function positionGodotOverlay(){
+      if(!displayMode||!lcd||!godotCanvas)return;
+      lcd.geometry.computeBoundingBox();const box=lcd.geometry.boundingBox;if(!box)return;
+      const y=box.max.y, corners=[[box.min.x,y,box.min.z],[box.max.x,y,box.min.z],[box.min.x,y,box.max.z],[box.max.x,y,box.max.z]];
+      const rect=canvas.getBoundingClientRect(), projected=corners.map(([x,py,z])=>lcd.localToWorld(new THREE.Vector3(x,py,z)).project(camera));
+      const xs=projected.map(p=>rect.left+(p.x+1)*rect.width/2),ys=projected.map(p=>rect.top+(1-p.y)*rect.height/2);
+      const left=Math.min(...xs),top=Math.min(...ys),width=Math.max(...xs)-left,height=Math.max(...ys)-top;
+      frame.classList.add('is-direct');frame.style.left=`${left}px`;frame.style.top=`${top}px`;frame.style.width=`${width}px`;frame.style.height=`${height}px`;
+    }
+
     function resize(){const r=document.getElementById('stage').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
-    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(godotCanvas&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e);godotCanvas=null;findGodotCanvas()}}renderer.render(scene,camera)}animate(0);
+    function animate(t){requestAnimationFrame(animate);controls.update();positionGodotOverlay();const copyInterval=t<refreshUntil?100:1000;if(godotCanvas&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e);godotCanvas=null;findGodotCanvas()}}renderer.render(scene,camera)}animate(0);
     window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,frame,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
   </script>
   <script src="../pages-update.js" defer></script>
