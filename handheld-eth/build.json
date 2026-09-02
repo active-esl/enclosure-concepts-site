@@ -1,6 +1,6 @@
 {
-  "id": "20260903T000500Z-liveux-ready",
-  "built_at": "2026-09-03T00:05:00Z",
+  "id": "20260902T222257Z-liveux-same-document",
+  "built_at": "2026-09-02T22:22:57Z",
   "concept": "handheld-eth",
   "assets": {
     "handheld.glb": "5fe2c6a1ff",
@@ -9,7 +9,8 @@
     "active-esl-uv-badge-28x10-brand-full-600dpi.png": "bd3627da5a",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "ed8ae3f5d9",
-    "live.html": "6b4cf605dc",
+    "live.html": "51c7908491",
+    "calendar_day.json": "6970e10daf",
     "ux/index.html": "10abe388b2",
     "ux/booking-4aac51f4f7e5.pck": "da79fb08dc",
     "ux/booking-4aac51f4f7e5.wasm": "b569458d3d",

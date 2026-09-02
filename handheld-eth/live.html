@@ -14,10 +14,10 @@
     .meta,.status{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
     .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
-    /* Keep the runtime inside the browser viewport. Chromium/WebKit may suspend
-       an entirely off-screen iframe and its WebGL context, leaving the LCD
-       permanently black. The Three.js stage paints above this eager runtime. */
-    #godotHost{position:fixed;z-index:1;left:0;top:0;width:1280px;height:800px;border:0;opacity:.001;pointer-events:none;background:#071019}
+    /* Godot renders into this same-document framebuffer. Keeping it in the
+       viewport allows WebGL to run while the Three.js product view paints it
+       onto the physical LCD above. */
+    #godotCanvas{position:fixed;z-index:1;left:0;top:var(--site-nav-h,46px);width:1280px;height:800px;opacity:.001;pointer-events:none;background:#071019}
     @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
   </style>
 </head>
@@ -27,7 +27,8 @@
   <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
   <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
-  <iframe id="godotHost" title="Active POE Godot UX runtime" src="ux/index.html?v=4aac51f4f7e5" width="1280" height="800" loading="eager"></iframe>
+  <canvas id="godotCanvas" width="1280" height="800" aria-hidden="true"></canvas>
+  <script src="ux/booking-4aac51f4f7e5.js?v=4aac51f4f7e5"></script>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -35,7 +36,7 @@
     import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
     import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 
-    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), frame=document.getElementById('godotHost');
+    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), godotCanvas=document.getElementById('godotCanvas');
     const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
     renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
     const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(35,2,.001,20);
@@ -46,7 +47,7 @@
     const key=new THREE.DirectionalLight(0xffffff,3.1); key.position.set(-.4,.7,.55); scene.add(key);
     const fill=new THREE.DirectionalLight(0x7fcfff,1.7); fill.position.set(.7,.25,-.5); scene.add(fill);
 
-    let lcd=null,godotCanvas=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null;
+    let lcd=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null;
     const bridge=document.createElement('canvas'); bridge.width=960; bridge.height=600;
     const bridgeCtx=bridge.getContext('2d',{alpha:false}); bridgeCtx.fillStyle='#071019'; bridgeCtx.fillRect(0,0,bridge.width,bridge.height);
     liveTexture=new THREE.CanvasTexture(bridge); liveTexture.colorSpace=THREE.SRGBColorSpace; liveTexture.flipY=false; liveTexture.minFilter=THREE.LinearFilter; liveTexture.magFilter=THREE.LinearFilter;
@@ -60,13 +61,24 @@
     },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
 
     const uxStartedAt=performance.now();
+    const godotEngine=new Engine({
+      canvas:godotCanvas,
+      canvasResizePolicy:0,
+      executable:'ux/booking-4aac51f4f7e5',
+      fileSizes:{'ux/booking-4aac51f4f7e5.pck':1541552,'ux/booking-4aac51f4f7e5.wasm':19796835},
+      focusCanvas:false,
+      args:[],
+      experimentalVK:false,
+      gdnativeLibs:[]
+    });
+    godotEngine.startGame({
+      onProgress:(current,total)=>{if(total>0&&!window.__ACTIVE_POE_LIVE_READY__)status.textContent=`Loading UX · ${Math.round(current/total*100)}%`}
+    }).catch(error=>{console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=String(error?.message||error)});
     function findGodotCanvas(){
-      try{const candidate=frame.contentDocument?.getElementById('canvas'),api=frame.contentWindow?.activePoeInput,ready=frame.contentWindow?.activePoeInputReady===true;if(candidate&&candidate.width>0&&candidate.height>0&&typeof api==='function'&&ready){godotCanvas=candidate;status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}}
-      catch(e){console.warn(e)}
+      if(godotCanvas.width>0&&godotCanvas.height>0&&typeof window.activePoeInput==='function'&&window.activePoeInputReady===true){status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}
       if(performance.now()-uxStartedAt>15000){status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__='runtime-timeout';return}
       setTimeout(findGodotCanvas,250);
     }
-    frame.addEventListener('load',()=>setTimeout(findGodotCanvas,250));
     findGodotCanvas();
 
     const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
@@ -81,15 +93,15 @@
       const tapSlop=start.pointerType==='touch'?18:8;
       if(moved>tapSlop||!hit?.uv)return;
       const u=(start.uv.x+hit.uv.x)/2,v=1-(start.uv.y+hit.uv.y)/2;
-      const ackBefore=Number(frame.contentWindow.activePoeInputAck||0);
-      frame.contentWindow.activePoeInput(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
-      setTimeout(()=>{const ack=Number(frame.contentWindow.activePoeInputAck||0),uxState=frame.contentWindow.activePoeUxState||'unknown';if(ack>ackBefore){hint.textContent=`Godot received tap #${ack} · ${uxState}`;status.textContent=`Live UX · input acknowledged #${ack}`;window.__ACTIVE_POE_LAST_ACK__={ack,uxState}}else{hint.textContent='Godot did not acknowledge that tap';status.textContent='UX input bridge failed';status.dataset.error='true'}},120);
+      const ackBefore=Number(window.activePoeInputAck||0);
+      window.activePoeInput(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
+      setTimeout(()=>{const ack=Number(window.activePoeInputAck||0),uxState=window.activePoeUxState||'unknown';if(ack>ackBefore){hint.textContent=`Godot received tap #${ack} · ${uxState}`;status.textContent=`Live UX · input acknowledged #${ack}`;window.__ACTIVE_POE_LAST_ACK__={ack,uxState}}else{hint.textContent='Godot did not acknowledge that tap';status.textContent='UX input bridge failed';status.dataset.error='true'}},120);
     });
     canvas.addEventListener('pointercancel',()=>{pointerStart=null});
 
     function resize(){const r=document.getElementById('stage').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
-    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(godotCanvas&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e);godotCanvas=null;findGodotCanvas()}}renderer.render(scene,camera)}animate(0);
-    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,frame,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
+    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
+    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,godotEngine,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
   </script>
   <script src="../pages-update.js" defer></script>
 </body>
