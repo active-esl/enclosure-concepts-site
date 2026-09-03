@@ -51,6 +51,23 @@ jobs:
           test -f _site/index.html
           test -f _site/handheld-eth/build.json
           test -f _site/CNAME
+          ! grep -Eq 'godot-demos/.+-[0-9a-f]{12}\.(js|wasm|pck)' \
+            _site/manufacturing-demonstration/index.html \
+            _site/max-pad-tactical-tablet/index.html
+          grep -Fq 'godot-demos/embed/manufacturing/godot.js' \
+            _site/manufacturing-demonstration/index.html
+          grep -Fq 'godot-demos/embed/max-tablet/godot.js' \
+            _site/max-pad-tactical-tablet/index.html
+          for asset in \
+            embed/manufacturing/godot.js \
+            embed/manufacturing/godot.wasm \
+            embed/manufacturing/godot.pck \
+            embed/max-tablet/godot.js \
+            embed/max-tablet/godot.wasm \
+            embed/max-tablet/godot.pck; do
+            curl --fail --silent --show-error --head --retry 3 \
+              "https://active-esl.github.io/godot-demos/${asset}" >/dev/null
+          done
           python3 -c 'import json; print("handheld-eth build id:", json.load(open("_site/handheld-eth/build.json"))["id"])'
 
       - uses: actions/configure-pages@v6
