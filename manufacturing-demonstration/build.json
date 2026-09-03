@@ -1,10 +1,13 @@
 {
-  "id": "20260903T084819Z-demo-gallery-entries",
-  "built_at": "2026-09-03T08:48:19Z",
+  "id": "20260903T085551Z-live-product-twins",
+  "built_at": "2026-09-03T08:55:51Z",
   "concept": "manufacturing-demonstration",
   "assets": {
-    "index.html": "5a2cf27ae7",
-    "thumbnail.png": "86992d2895",
-    "social-preview.png": "4283902697"
+    "index.html": "fc1ba1f48b",
+    "thumbnail.png": "9833607ea0",
+    "social-preview.png": "0f1266f608",
+    "../site-nav.js": "d57b6a3505",
+    "../pages-update.js": "d91c47e81c",
+    "../handheld-eth/handheld.glb": "5fe2c6a1ff"
   }
 }

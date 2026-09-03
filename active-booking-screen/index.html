@@ -44,7 +44,7 @@
 </head>
 <body>
   <nav id="siteNav" class="site-nav" data-root="../" data-concept="active-booking-screen" data-mode="live" aria-label="Concept site"></nav>
-  <script src="../site-nav.js?v=7a5d942889" defer></script>
+  <script src="../site-nav.js?v=d57b6a3505" defer></script>
   <main id="stage"><canvas id="c" aria-label="Interactive Active Booking Screen product twin"></canvas></main>
   <div class="bar"><div class="meta"><h1>Active Booking Screen — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot booking interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
@@ -154,6 +154,6 @@
     function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
     window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,godotEngine,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
   </script>
-  <script src="../pages-update.js?v=acdb2300f2" defer></script>
+  <script src="../pages-update.js?v=d91c47e81c" defer></script>
 </body>
 </html>

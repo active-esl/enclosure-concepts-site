@@ -32,6 +32,18 @@
       live: `${root}active-booking-screen/`,
     },
     {
+      id: "manufacturing-demonstration",
+      label: "Manufacturing",
+      maturity: "public",
+      live: `${root}manufacturing-demonstration/`,
+    },
+    {
+      id: "max-pad-tactical-tablet",
+      label: "MAX Pad",
+      maturity: "public",
+      live: `${root}max-pad-tactical-tablet/`,
+    },
+    {
       id: "eink-imx93",
       label: "Eink",
       maturity: "wip",

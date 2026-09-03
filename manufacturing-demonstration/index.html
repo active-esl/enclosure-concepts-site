@@ -1,32 +1,167 @@
 <!doctype html>
 <html lang="en" style="background:#0b1220;color-scheme:dark">
 <head>
+  <meta name="aesl-build" content="20260903T085551Z-live-product-twins">
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0;url=https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="Run the Active-Edge Manufacturing Demonstration: an interactive Godot digital twin with simulated processes, live operational values, controls and quality insights.">
+  <meta name="description" content="Orbit a physical tablet product twin and operate the live Active-Edge Manufacturing Demonstration directly on its display." />
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <title>Manufacturing Demonstration — Live Godot Digital Twin | Active-Edge</title>
+  <title>Manufacturing Demonstration — Live Godot Product Twin | Active-Edge</title>
   <link rel="canonical" href="https://concepts.active-esl.com/manufacturing-demonstration/">
   <link rel="icon" href="https://concepts.active-esl.com/assets/active-edge-favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Active-Edge Concepts">
-  <meta property="og:title" content="Manufacturing Demonstration — Live Digital Twin">
-  <meta property="og:description" content="Operate a simulated manufacturing process with animated machinery, live values, asset controls and quality insights.">
+  <meta property="og:title" content="Manufacturing Demonstration — Live Product Twin">
+  <meta property="og:description" content="Orbit the physical tablet, then operate its running Godot manufacturing digital twin directly on the display.">
   <meta property="og:url" content="https://concepts.active-esl.com/manufacturing-demonstration/">
   <meta property="og:image" content="https://concepts.active-esl.com/manufacturing-demonstration/social-preview.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
-  <meta property="og:image:alt" content="Active-Edge manufacturing digital twin process overview">
+  <meta property="og:image:alt" content="Active-Edge manufacturing digital twin interface">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Manufacturing Demonstration — Live Digital Twin">
-  <meta name="twitter:description" content="An interactive Godot manufacturing digital twin with simulated live process data.">
+  <meta name="twitter:title" content="Manufacturing Demonstration — Live Product Twin">
+  <meta name="twitter:description" content="Orbit the product and operate its running manufacturing UX directly in the browser.">
   <meta name="twitter:image" content="https://concepts.active-esl.com/manufacturing-demonstration/social-preview.png">
-  <script>location.replace("https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/" + location.search + location.hash)</script>
+  <link rel="stylesheet" href="../site-nav.css">
+  <link rel="preload" href="https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
+  <link rel="preload" href="https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.pck" as="fetch" crossorigin="anonymous">
+  <style>
+    :root{--bg:#0b1220;--panel:rgba(12,18,32,.88);--text:#f4f7fb;--muted:#a9b4c7;--accent:#3ec6ff;--ok:#a8e04f}
+    *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
+    #stage{position:fixed;z-index:2;inset:var(--site-nav-h,46px) 0 0}#c{display:block;width:100%;height:100%;touch-action:none}
+    .bar{position:fixed;z-index:15;left:12px;right:12px;top:calc(10px + var(--site-nav-h,46px));display:flex;align-items:flex-start;justify-content:space-between;gap:10px;pointer-events:none}
+    .meta,.status{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+    .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
+    .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
+    /* Godot renders into this same-document framebuffer. Keeping it in the
+       viewport allows WebGL to run while the Three.js product view paints it
+       onto the physical LCD above. */
+    #godotCanvas{position:fixed;z-index:1;left:0;top:var(--site-nav-h,46px);width:1920px;height:1200px;opacity:.001;pointer-events:none;background:#071019}
+    @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
+  </style>
 </head>
-<body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#0b1220;color:#f4f7fb;font:16px system-ui,sans-serif">
-  <p>Opening the <a style="color:#3ec6ff" href="https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/">Manufacturing Demonstration</a>…</p>
+<body>
+  <nav id="siteNav" class="site-nav" data-root="../" data-concept="manufacturing-demonstration" data-mode="live" aria-label="Concept site"></nav>
+  <script src="../site-nav.js?v=d57b6a3505" defer></script>
+  <main id="stage"><canvas id="c" aria-label="Interactive Manufacturing Demonstration product twin"></canvas></main>
+  <div class="bar"><div class="meta"><h1>Manufacturing Demonstration — Live UX</h1><p>Drag to orbit · tap the display to operate the running Godot digital twin</p></div><div id="status" class="status">Starting UX…</div></div>
+  <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
+  <canvas id="godotCanvas" width="1920" height="1200" aria-hidden="true"></canvas>
+  <script src="https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.js"></script>
+  <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+  <script type="module">
+    import * as THREE from 'three';
+    import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+    import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+    import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), godotCanvas=document.getElementById('godotCanvas');
+    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
+    const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(35,2,.001,20);
+    camera.position.set(.35,.31,.29);
+    const controls=new OrbitControls(camera,canvas); controls.enableDamping=true; controls.target.set(.122,0,-.083); controls.minDistance=.26; controls.maxDistance=1.2;
+    const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(renderer),.04).texture;
+    scene.add(new THREE.HemisphereLight(0xddeeff,0x182030,1.7));
+    const key=new THREE.DirectionalLight(0xffffff,3.1); key.position.set(-.4,.7,.55); scene.add(key);
+    const fill=new THREE.DirectionalLight(0x7fcfff,1.7); fill.position.set(.7,.25,-.5); scene.add(fill);
+
+    let lcd=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null;
+    const bridge=document.createElement('canvas'); bridge.width=960; bridge.height=600;
+    const bridgeCtx=bridge.getContext('2d',{alpha:false});
+    liveTexture=new THREE.CanvasTexture(bridge); liveTexture.colorSpace=THREE.SRGBColorSpace; liveTexture.flipY=false; liveTexture.minFilter=THREE.LinearFilter; liveTexture.magFilter=THREE.LinearFilter;
+
+    function paintUxStatus(title,detail,progress=null,error=false){
+      const w=bridge.width,h=bridge.height,barX=120,barY=390,barW=w-240,barH=18;
+      bridgeCtx.fillStyle='#07111f';bridgeCtx.fillRect(0,0,w,h);
+      bridgeCtx.fillStyle=error?'#ff6075':'#3ec6ff';bridgeCtx.fillRect(0,0,w,8);
+      bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 25px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE-EDGE',48,64);
+      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='16px Segoe UI, sans-serif';bridgeCtx.fillText('MANUFACTURING DEMONSTRATION · LIVE PRODUCT TWIN',48,94);
+      bridgeCtx.textAlign='center';bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 48px Segoe UI, sans-serif';bridgeCtx.fillText(title,w/2,265);
+      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='22px Segoe UI, sans-serif';bridgeCtx.fillText(detail,w/2,315);
+      if(progress!==null){
+        const value=Math.max(0,Math.min(100,progress));
+        bridgeCtx.fillStyle='#1b2a3d';bridgeCtx.fillRect(barX,barY,barW,barH);
+        bridgeCtx.fillStyle=error?'#ff6075':'#a8e04f';bridgeCtx.fillRect(barX,barY,barW*value/100,barH);
+        bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 22px Segoe UI, sans-serif';bridgeCtx.fillText(`${Math.round(value)}%`,w/2,455);
+      }
+      bridgeCtx.textAlign='left';liveTexture.needsUpdate=true;
+    }
+    paintUxStatus('Loading interface…','Downloading the live Godot UX',0);
+
+    new GLTFLoader().load('../handheld-eth/handheld.glb',gltf=>{
+      const model=gltf.scene;
+      model.traverse(o=>{if(!o.isMesh)return;o.castShadow=true;o.receiveShadow=true;if(o.name==='LCD'||o.parent?.name==='LCD'){
+        lcd=o; o.material=new THREE.MeshStandardMaterial({color:0xffffff,map:liveTexture,emissive:0xffffff,emissiveMap:liveTexture,emissiveIntensity:1.35,roughness:.36,metalness:.02,envMapIntensity:.08});
+      }});
+      scene.add(model);
+    },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
+
+    const uxStartedAt=performance.now();
+    let godotLaunchedAt=0,runtimeReady=false;
+    const godotEngine=new Engine({
+      canvas:godotCanvas,
+      canvasResizePolicy:0,
+      executable:'manufacturing',
+      fileSizes:{'https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.pck':1493888,'https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.wasm':19796835},
+      focusCanvas:false,
+      args:[],
+      experimentalVK:false,
+      gdnativeLibs:[],
+      onProgress:(current,total)=>{if(total>0&&!runtimeReady){const percent=Math.round(current/total*100);if(percent>=100){status.textContent='Preparing UX…';paintUxStatus('Preparing interface…','Download complete · starting the engine',100)}else{status.textContent=`Loading UX · ${percent}%`;paintUxStatus('Loading interface…','Downloading the live Godot UX',percent)}}}
+    });
+    // Fetch the shared runtime from the POE asset directory, but mount the
+    // pack under a clean virtual-FS name. Godot cannot mount a "../" pack path.
+    Promise.all([
+      godotEngine.init('https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b'),
+      godotEngine.preloadFile('https://active-esl.github.io/godot-demos/elanco-manufacturing-digital-twin/manufacturing-59c2c9c23c5b.pck','manufacturing.pck')
+    ]).then(()=>godotEngine.start({args:['--main-pack','manufacturing.pck']})).then(()=>{godotLaunchedAt=performance.now();status.textContent='Launching UX…';paintUxStatus('Launching interface…','Godot is preparing the first frame',100);setTimeout(markUxReady,3000)}).catch(showUxFailure);
+    function showUxFailure(error){
+      const message=String(error?.message||error||'runtime failed');console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Interface failed to start',message.slice(0,84),0,true);
+    }
+    function markUxReady(){runtimeReady=true;status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true}
+
+    let deliveredInputs=0,lastDeliveredAt=0;
+    function deliverGodotTap(u,v){
+      const r=godotCanvas.getBoundingClientRect(),clientX=r.left+u*r.width,clientY=r.top+v*r.height;
+      godotCanvas.focus();
+      for(const type of ['mousedown','mouseup','click']) godotCanvas.dispatchEvent(new MouseEvent(type,{bubbles:true,cancelable:true,view:window,clientX,clientY,button:0,buttons:type==='mousedown'?1:0}));
+      deliveredInputs+=1;window.__ACTIVE_POE_LAST_ACK__={ack:deliveredInputs,u,v};return deliveredInputs;
+    }
+
+    const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
+    function hitDisplay(ev){
+      if(!lcd)return null;const r=canvas.getBoundingClientRect();pointer.x=((ev.clientX-r.left)/r.width)*2-1;pointer.y=-((ev.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);
+      return raycaster.intersectObject(lcd,true)[0]||null;
+    }
+    canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);pointerStart=hit?{x:ev.clientX,y:ev.clientY,uv:hit.uv.clone(),pointerType:ev.pointerType}:null});
+    canvas.addEventListener('pointermove',ev=>{canvas.style.cursor=hitDisplay(ev)?'pointer':'grab'});
+    canvas.addEventListener('pointerup',ev=>{
+      if(!pointerStart)return;const moved=Math.hypot(ev.clientX-pointerStart.x,ev.clientY-pointerStart.y),hit=hitDisplay(ev),start=pointerStart;pointerStart=null;
+      const tapSlop=start.pointerType==='touch'?18:8;
+      if(moved>tapSlop||!hit?.uv)return;
+      if(!window.__ACTIVE_POE_LIVE_READY__){hint.textContent='The interface is still loading';return}
+      // CanvasTexture.flipY is disabled, so the LCD's UV Y axis already has
+      // the same top-to-bottom orientation as Godot's viewport coordinates.
+      const u=(start.uv.x+hit.uv.x)/2,v=(start.uv.y+hit.uv.y)/2;
+      const ack=deliverGodotTap(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
+      lastDeliveredAt=performance.now();
+      hint.textContent=`Tap delivered to Godot #${ack}`;status.textContent=`Live UX · input delivered #${ack}`;
+    });
+    canvas.addEventListener('click',ev=>{
+      if(performance.now()-lastDeliveredAt<250||!window.__ACTIVE_POE_LIVE_READY__)return;
+      const hit=hitDisplay(ev);if(!hit?.uv)return;
+      const ack=deliverGodotTap(hit.uv.x,hit.uv.y);lastDeliveredAt=performance.now();refreshUntil=lastDeliveredAt+1000;
+      hint.textContent=`Tap delivered to Godot #${ack}`;status.textContent=`Live UX · input delivered #${ack}`;
+    });
+    canvas.addEventListener('pointercancel',()=>{pointerStart=null});
+
+    function resize(){const r=document.getElementById('stage').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
+    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
+    window.__ACTIVE_POE_LIVE__={hitDisplay,deliverGodotTap,bridge,godotEngine,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
+  </script>
+  <script src="../pages-update.js?v=d91c47e81c" defer></script>
 </body>
 </html>

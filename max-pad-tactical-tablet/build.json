@@ -1,10 +1,13 @@
 {
-  "id": "20260903T084819Z-demo-gallery-entries",
-  "built_at": "2026-09-03T08:48:19Z",
+  "id": "20260903T085551Z-live-product-twins",
+  "built_at": "2026-09-03T08:55:51Z",
   "concept": "max-pad-tactical-tablet",
   "assets": {
-    "index.html": "c6159089cb",
-    "thumbnail.png": "9f9b28e5a7",
-    "social-preview.png": "cfcd5a4202"
+    "index.html": "89d3f7f5af",
+    "thumbnail.png": "fba02301d2",
+    "social-preview.png": "1be74303f4",
+    "../site-nav.js": "d57b6a3505",
+    "../pages-update.js": "d91c47e81c",
+    "../handheld-eth/handheld.glb": "5fe2c6a1ff"
   }
 }

@@ -1,17 +1,17 @@
 {
-  "id": "20260903T084819Z-demo-gallery-entries",
-  "built_at": "2026-09-03T08:48:19Z",
+  "id": "20260903T085551Z-live-product-twins",
+  "built_at": "2026-09-03T08:55:51Z",
   "concept": "enclosure-concepts",
   "assets": {
-    "index.html": "b01cb825d9",
+    "index.html": "d32bd19f22",
     "robots.txt": "c69c760bd2",
     "sitemap.xml": "ed4bfb12ca",
     "assets/active-edge-favicon.svg": "38055c76f3",
     "site-nav.css": "d180230ef5",
-    "site-nav.js": "7a5d942889",
+    "site-nav.js": "d57b6a3505",
     "look.js": "b61e24e6db",
     "look-viewer.js": "95fcba9977",
-    "pages-update.js": "acdb2300f2",
+    "pages-update.js": "d91c47e81c",
     "still.js": "2e090d54cf",
     "inspect-lighting.js": "3f90d182e8"
   }
