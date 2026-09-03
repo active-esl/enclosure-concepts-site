@@ -151,7 +151,7 @@
       bridgeCtx.textAlign='left';bridgeCtx.textBaseline='alphabetic';bridgeCtx.fillStyle='#91a3ba';bridgeCtx.font='13px Segoe UI';bridgeCtx.fillText('DRAG OUTSIDE DISPLAY TO ORBIT',22,552);bridgeCtx.fillText('OPEN ENGINE + OPEN GAME DATA',660,552);
     }
     function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?30:100;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{drawRuntime();liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
-    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,get lcd(){return lcd},get gameCanvas(){return gameCanvas}};
+    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,camera,controls,get lcd(){return lcd},get gameCanvas(){return gameCanvas}};
   </script>
   <script src="../pages-update.js?v=d91c47e81c" defer></script>
 </body>
