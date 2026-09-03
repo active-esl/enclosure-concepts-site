@@ -22,9 +22,14 @@
       maturity: "public",
       look: `${root}handheld-eth/`,
       inspect: `${root}handheld-eth/assembly.html`,
-      live: `${root}handheld-eth/live.html`,
       eval: `${root}handheld-eth/fea/`,
       still: `${root}still.html?c=eth`,
+    },
+    {
+      id: "active-booking-screen",
+      label: "Booking",
+      maturity: "public",
+      live: `${root}active-booking-screen/`,
     },
     {
       id: "eink-imx93",
@@ -78,7 +83,7 @@
     if (mode === "live" && c.live) return c.live;
     if (mode === "eval" && c.eval) return c.eval;
     if (mode === "still") return c.still;
-    return c.look;
+    return c.look || c.live;
   };
   const modeHref = (m) => {
     const cur = concepts.find((c) => c.id === concept);
@@ -87,7 +92,7 @@
     if (m === "live") return cur.live || cur.look;
     if (m === "eval") return cur.eval || cur.look;
     if (m === "still") return cur.still;
-    return cur.look;
+    return cur.look || cur.live;
   };
 
   const pill = (href, label, current) =>
@@ -111,15 +116,15 @@
     // Gallery / concept pills default to Look; Still is secondary.
     const modeBlock = concept
       ? `<div class="site-nav__modes" role="navigation" aria-label="Mode">${
-          pill(modeHref("look"), "Look", mode === "look")
+          cur?.look ? pill(modeHref("look"), "Look", mode === "look") : ""
         }${
           cur?.live
             ? pill(modeHref("live"), "Live UX", mode === "live")
             : ""
         }${
-          pill(modeHref("still"), "Still", mode === "still")
+          cur?.still ? pill(modeHref("still"), "Still", mode === "still") : ""
         }${
-          pill(modeHref("inspect"), "Inspect", mode === "inspect")
+          cur?.inspect ? pill(modeHref("inspect"), "Inspect", mode === "inspect") : ""
         }${
           cur?.eval
             ? pill(modeHref("eval"), "Evaluate", mode === "eval")

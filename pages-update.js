@@ -10,14 +10,14 @@
   const BUILD_META = 'aesl-build';
 
   const conceptDirFromPath = (pathname) => {
-    const m = String(pathname || "").match(/^(.*\/(?:handheld-eth|handheld)\/)/);
+    const m = String(pathname || "").match(/^(.*\/(?:active-booking-screen|handheld-eth|handheld)\/)/);
     return m ? m[1] : null;
   };
 
   const isLookOrInspectPath = (pathname) => {
     const p = String(pathname || "");
     // Look / Inspect / Evaluate board (fea/) share concept build.json busting.
-    return /\/(?:handheld-eth|handheld)\/(?:|assembly\.html|fea\/?|fea\/index\.html)$/.test(
+    return /\/(?:active-booking-screen|handheld-eth|handheld)\/(?:|index\.html|assembly\.html|fea\/?|fea\/index\.html)$/.test(
       p
     );
   };

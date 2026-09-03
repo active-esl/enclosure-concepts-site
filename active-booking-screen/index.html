@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en" style="background:#0b1220;color-scheme:dark">
 <head>
+  <meta name="aesl-build" content="20260903T083239Z-active-booking-screen-route">
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0;url=../active-booking-screen/">
-  <script>location.replace("../active-booking-screen/" + location.search + location.hash)</script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="Operate a live Godot room-booking interface on a movable 3D Active POE product twin, using the same UX code built for the embedded hardware." />
-  <meta name="robots" content="noindex,follow">
-  <title>Active Booking Screen — Live UX | Active-Edge</title>
+  <meta name="description" content="Explore the Active Booking Screen: orbit the physical product and operate its live Godot room-booking UX directly on the display." />
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>Active Booking Screen — Live Godot Product Twin | Active-Edge</title>
   <link rel="canonical" href="https://concepts.active-esl.com/active-booking-screen/">
   <link rel="icon" href="https://concepts.active-esl.com/assets/active-edge-favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
@@ -20,14 +19,14 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
-  <meta property="og:image:alt" content="Live room-booking UX running on the display of a movable 3D Active POE product twin">
+  <meta property="og:image:alt" content="Active Booking Screen live UX running on the display of a movable 3D product twin">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Active Booking Screen — Live UX">
   <meta name="twitter:description" content="Orbit the product and operate its running embedded UX directly in the browser.">
   <meta name="twitter:image" content="https://concepts.active-esl.com/active-booking-screen/social-preview.png">
   <link rel="stylesheet" href="../site-nav.css">
-  <link rel="preload" href="ux/booking-bb3782be80df.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
-  <link rel="preload" href="ux/booking-bb3782be80df.pck" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="../handheld-eth/ux/booking-bb3782be80df.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
+  <link rel="preload" href="../handheld-eth/ux/booking-bb3782be80df.pck" as="fetch" crossorigin="anonymous">
   <style>
     :root{--bg:#0b1220;--panel:rgba(12,18,32,.88);--text:#f4f7fb;--muted:#a9b4c7;--accent:#3ec6ff;--ok:#a8e04f}
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
@@ -44,13 +43,13 @@
   </style>
 </head>
 <body>
-  <nav id="siteNav" class="site-nav" data-root="../" data-concept="eth" data-mode="live" aria-label="Concept site"></nav>
-  <script src="../site-nav.js" defer></script>
-  <main id="stage"><canvas id="c" aria-label="Interactive Active POE product twin"></canvas></main>
-  <div class="bar"><div class="meta"><h1>Active POE — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot interface</p></div><div id="status" class="status">Starting UX…</div></div>
+  <nav id="siteNav" class="site-nav" data-root="../" data-concept="active-booking-screen" data-mode="live" aria-label="Concept site"></nav>
+  <script src="../site-nav.js?v=7a5d942889" defer></script>
+  <main id="stage"><canvas id="c" aria-label="Interactive Active Booking Screen product twin"></canvas></main>
+  <div class="bar"><div class="meta"><h1>Active Booking Screen — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot booking interface</p></div><div id="status" class="status">Starting UX…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
   <canvas id="godotCanvas" width="1280" height="800" aria-hidden="true"></canvas>
-  <script src="ux/booking-bb3782be80df.js?v=bb3782be80df"></script>
+  <script src="../handheld-eth/ux/booking-bb3782be80df.js?v=bb3782be80df"></script>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -79,7 +78,7 @@
       bridgeCtx.fillStyle='#07111f';bridgeCtx.fillRect(0,0,w,h);
       bridgeCtx.fillStyle=error?'#ff6075':'#3ec6ff';bridgeCtx.fillRect(0,0,w,8);
       bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 25px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE-EDGE',48,64);
-      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='16px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE POE · LIVE PRODUCT TWIN',48,94);
+      bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='16px Segoe UI, sans-serif';bridgeCtx.fillText('ACTIVE BOOKING SCREEN · LIVE PRODUCT TWIN',48,94);
       bridgeCtx.textAlign='center';bridgeCtx.fillStyle='#f4f7fb';bridgeCtx.font='700 48px Segoe UI, sans-serif';bridgeCtx.fillText(title,w/2,265);
       bridgeCtx.fillStyle='#a9b4c7';bridgeCtx.font='22px Segoe UI, sans-serif';bridgeCtx.fillText(detail,w/2,315);
       if(progress!==null){
@@ -92,7 +91,7 @@
     }
     paintUxStatus('Loading interface…','Downloading the live Godot UX',0);
 
-    new GLTFLoader().load('handheld.glb',gltf=>{
+    new GLTFLoader().load('../handheld-eth/handheld.glb',gltf=>{
       const model=gltf.scene;
       model.traverse(o=>{if(!o.isMesh)return;o.castShadow=true;o.receiveShadow=true;if(o.name==='LCD'||o.parent?.name==='LCD'){
         lcd=o; o.material=new THREE.MeshStandardMaterial({color:0xffffff,map:liveTexture,emissive:0xffffff,emissiveMap:liveTexture,emissiveIntensity:1.35,roughness:.36,metalness:.02,envMapIntensity:.08});
@@ -105,18 +104,22 @@
     const godotEngine=new Engine({
       canvas:godotCanvas,
       canvasResizePolicy:0,
-      executable:'ux/booking-bb3782be80df',
-      fileSizes:{'ux/booking-bb3782be80df.pck':1542096,'ux/booking-bb3782be80df.wasm':19796835},
+      executable:'../handheld-eth/ux/booking-bb3782be80df',
+      fileSizes:{'../handheld-eth/ux/booking-bb3782be80df.pck':1542096,'../handheld-eth/ux/booking-bb3782be80df.wasm':19796835},
       focusCanvas:false,
       args:[],
       experimentalVK:false,
-      gdnativeLibs:[]
-    });
-    godotEngine.startGame({
+      gdnativeLibs:[],
       onProgress:(current,total)=>{if(total>0&&!window.__ACTIVE_POE_LIVE_READY__){const percent=Math.round(current/total*100);if(percent>=100){status.textContent='Preparing UX…';paintUxStatus('Preparing interface…','Download complete · starting the engine',100)}else{status.textContent=`Loading UX · ${percent}%`;paintUxStatus('Loading interface…','Downloading the live Godot UX',percent)}}}
-    }).then(()=>{godotLaunchedAt=performance.now();if(!window.__ACTIVE_POE_LIVE_READY__){status.textContent='Launching UX…';paintUxStatus('Launching interface…','Godot is preparing the first frame',100)}}).catch(showUxFailure);
+    });
+    // Fetch the shared runtime from the POE asset directory, but mount the
+    // pack under a clean virtual-FS name. Godot cannot mount a "../" pack path.
+    Promise.all([
+      godotEngine.init('../handheld-eth/ux/booking-bb3782be80df'),
+      godotEngine.preloadFile('../handheld-eth/ux/booking-bb3782be80df.pck','booking.pck')
+    ]).then(()=>godotEngine.start({args:['--main-pack','booking.pck']})).then(()=>{godotLaunchedAt=performance.now();if(!window.__ACTIVE_POE_LIVE_READY__){status.textContent='Launching UX…';paintUxStatus('Launching interface…','Godot is preparing the first frame',100)}}).catch(showUxFailure);
     function showUxFailure(error){
-      const message=String(error?.message||error||'runtime failed');console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Interface failed to start','Reload the page to try again',0,true);
+      const message=String(error?.message||error||'runtime failed');console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Interface failed to start',message.slice(0,84),0,true);
     }
     function findGodotCanvas(){
       if(godotCanvas.width>0&&godotCanvas.height>0&&typeof window.activePoeInput==='function'&&window.activePoeInputReady===true){status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}
@@ -151,6 +154,6 @@
     function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
     window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,godotEngine,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
   </script>
-  <script src="../pages-update.js" defer></script>
+  <script src="../pages-update.js?v=acdb2300f2" defer></script>
 </body>
 </html>

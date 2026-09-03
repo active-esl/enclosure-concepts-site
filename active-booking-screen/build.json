@@ -1,0 +1,17 @@
+{
+  "id": "20260903T083239Z-active-booking-screen-route",
+  "built_at": "2026-09-03T08:32:39Z",
+  "concept": "active-booking-screen",
+  "assets": {
+    "index.html": "138f724c58",
+    "calendar_day.json": "6970e10daf",
+    "thumbnail.png": "c8cfcc05c7",
+    "social-preview.png": "b5a033abd9",
+    "../handheld-eth/handheld.glb": "5fe2c6a1ff",
+    "../handheld-eth/ux/booking-bb3782be80df.js": "6d49dff3d5",
+    "../handheld-eth/ux/booking-bb3782be80df.pck": "287c8fc7a4",
+    "../handheld-eth/ux/booking-bb3782be80df.wasm": "85f5cad107",
+    "../site-nav.js": "7a5d942889",
+    "../pages-update.js": "acdb2300f2"
+  }
+}
