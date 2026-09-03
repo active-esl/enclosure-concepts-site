@@ -1,11 +1,11 @@
 {
-  "id": "20260903T084322Z-wip-card-images",
-  "built_at": "2026-09-03T08:43:22Z",
+  "id": "20260903T084819Z-demo-gallery-entries",
+  "built_at": "2026-09-03T08:48:19Z",
   "concept": "enclosure-concepts",
   "assets": {
-    "index.html": "d66c6971f9",
+    "index.html": "b01cb825d9",
     "robots.txt": "c69c760bd2",
-    "sitemap.xml": "1fcaf36c13",
+    "sitemap.xml": "ed4bfb12ca",
     "assets/active-edge-favicon.svg": "38055c76f3",
     "site-nav.css": "d180230ef5",
     "site-nav.js": "7a5d942889",
