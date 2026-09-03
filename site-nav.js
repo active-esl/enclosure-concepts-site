@@ -44,6 +44,12 @@
       live: `${root}max-pad-tactical-tablet/`,
     },
     {
+      id: "can-it-run-freedoom",
+      label: "Freedoom PoE",
+      maturity: "public",
+      live: `${root}can-it-run-freedoom/`,
+    },
+    {
       id: "eink-imx93",
       label: "Eink",
       maturity: "wip",
