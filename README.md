@@ -13,6 +13,7 @@ Interactive concept enclosure designs for team review (Michael / Ollie / Gary / 
 | Active POE Inspect | https://concepts.active-esl.com/handheld-eth/assembly.html |
 | Active POE Look | https://concepts.active-esl.com/handheld-eth/ |
 | Active POE Live UX | https://concepts.active-esl.com/handheld-eth/live.html |
+| Can It Run Freedoom? | https://concepts.active-esl.com/can-it-run-freedoom/ |
 | Active Slim Inspect | https://concepts.active-esl.com/handheld/assembly.html |
 | Active Eink Inspect | https://concepts.active-esl.com/eink-imx93/assembly.html |
 | Flexi Sensor Inspect (WIP) | https://concepts.active-esl.com/flexi-sensor/assembly.html |

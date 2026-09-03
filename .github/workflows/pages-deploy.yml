@@ -58,13 +58,18 @@ jobs:
             _site/manufacturing-demonstration/index.html
           grep -Fq 'godot-demos/embed/max-tablet/godot.js' \
             _site/max-pad-tactical-tablet/index.html
+          grep -Fq 'godot-demos/embed/freedoom-poe/godot.js' \
+            _site/can-it-run-freedoom/index.html
           for asset in \
             embed/manufacturing/godot.js \
             embed/manufacturing/godot.wasm \
             embed/manufacturing/godot.pck \
             embed/max-tablet/godot.js \
             embed/max-tablet/godot.wasm \
-            embed/max-tablet/godot.pck; do
+            embed/max-tablet/godot.pck \
+            embed/freedoom-poe/godot.js \
+            embed/freedoom-poe/godot.wasm \
+            embed/freedoom-poe/godot.pck; do
             curl --fail --silent --show-error --head --retry 3 \
               "https://active-esl.github.io/godot-demos/${asset}" >/dev/null
           done
