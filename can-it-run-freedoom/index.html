@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="Can It Run Freedoom? Orbit the Active-Edge PoE product and operate its touch-controlled Godot 3 software-rendering showcase." />
+  <meta name="description" content="Can It Run Freedoom? Orbit the Active-Edge PoE product and operate a real open Doom-compatible engine on its touchscreen." />
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <title>Can It Run Freedoom? — Live Godot Product Twin | Active-Edge</title>
+  <title>Can It Run Freedoom? — Live Product Twin | Active-Edge</title>
   <link rel="canonical" href="https://concepts.active-esl.com/can-it-run-freedoom/">
   <link rel="icon" href="https://concepts.active-esl.com/assets/active-edge-favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
@@ -25,8 +25,7 @@
   <meta name="twitter:description" content="Orbit the product and operate its running embedded UX directly in the browser.">
   <meta name="twitter:image" content="https://concepts.active-esl.com/can-it-run-freedoom/social-preview.png">
   <link rel="stylesheet" href="../site-nav.css">
-  <link rel="preload" href="https://active-esl.github.io/godot-demos/embed/freedoom-poe/godot.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
-  <link rel="preload" href="https://active-esl.github.io/godot-demos/embed/freedoom-poe/godot.pck" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="https://active-esl.github.io/godot-demos/freedoom-engine/doom.wasm" as="fetch" type="application/wasm" crossorigin="anonymous">
   <style>
     :root{--bg:#0b1220;--panel:rgba(12,18,32,.88);--text:#f4f7fb;--muted:#a9b4c7;--accent:#3ec6ff;--ok:#a8e04f}
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:radial-gradient(1200px 700px at 70% 10%,#15233d 0%,var(--bg) 55%);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif}
@@ -35,10 +34,9 @@
     .meta,.status{pointer-events:auto;background:var(--panel);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;box-shadow:0 8px 28px rgba(0,0,0,.35)}
     .meta h1{margin:0;font-size:.95rem;font-weight:650}.meta p,.status{margin:2px 0 0;color:var(--muted);font-size:.8rem}.status[data-ready="true"]{color:var(--ok)}
     .hint{position:fixed;z-index:15;left:50%;bottom:14px;transform:translateX(-50%);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 15px;color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap}
-    /* Godot renders into this same-document framebuffer. Keeping it in the
-       viewport allows WebGL to run while the Three.js product view paints it
-       onto the physical LCD above. */
-    #godotCanvas{position:fixed;z-index:1;left:0;top:var(--site-nav-h,46px);width:1280px;height:800px;opacity:.001;pointer-events:none;background:#071019}
+    /* The open engine renders into a same-document canvas. Keeping it in the
+       viewport lets the product view copy it safely onto the physical LCD. */
+    #screen{position:fixed;z-index:1;left:0;top:var(--site-nav-h,46px);width:640px;height:400px;opacity:.001;pointer-events:none;background:#000}
     @media(max-width:640px){.bar{top:calc(8px + var(--site-nav-h,84px));flex-direction:column}.hint{font-size:.72rem;max-width:calc(100% - 16px);white-space:normal;text-align:center}}
   </style>
 </head>
@@ -46,10 +44,12 @@
   <nav id="siteNav" class="site-nav" data-root="../" data-concept="can-it-run-freedoom" data-mode="live" aria-label="Concept site"></nav>
   <script src="../site-nav.js?v=d57b6a3505" defer></script>
   <main id="stage"><canvas id="c" aria-label="Interactive Can It Run Freedoom? product twin"></canvas></main>
-  <div class="bar"><div class="meta"><h1>Can It Run Freedoom? — Live UX</h1><p>Drag to orbit · tap the display to use the running Godot software-engineering showcase</p></div><div id="status" class="status">Starting UX…</div></div>
+  <div class="bar"><div class="meta"><h1>Can It Run Freedoom? — Live UX</h1><p>Drag to orbit · use the controls rendered on the product touchscreen</p></div><div id="status" class="status">Starting engine…</div></div>
   <div id="hint" class="hint">Tap the display to use it · drag outside it to orbit · pinch or scroll to zoom</div>
-  <canvas id="godotCanvas" width="1280" height="800" aria-hidden="true"></canvas>
-  <script src="https://active-esl.github.io/godot-demos/embed/freedoom-poe/godot.js"></script>
+  <canvas id="screen" width="640" height="400" aria-hidden="true"></canvas>
+  <div hidden><div id="output"></div><span id="getmsps_stats"></span><span id="getms_stats"></span><span id="fps_stats"></span><span id="drawframes_stats"></span><span id="animationfps_stats"></span><span id="focushint"></span><span id="runtime-status"></span><div id="start-overlay"></div><button id="enterButton"></button><button id="leftButton"></button><button id="rightButton"></button><button id="upButton"></button><button id="downButton"></button><button id="ctrlButton"></button><button id="spaceButton"></button><button id="altButton"></button></div>
+  <script>window.freedoomWasmUrl='https://active-esl.github.io/godot-demos/freedoom-engine/doom.wasm';</script>
+  <script src="https://active-esl.github.io/godot-demos/freedoom-engine/main.js" defer></script>
   <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
   <script type="module">
     import * as THREE from 'three';
@@ -57,7 +57,7 @@
     import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
     import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 
-    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), godotCanvas=document.getElementById('godotCanvas');
+    const canvas=document.getElementById('c'), status=document.getElementById('status'), hint=document.getElementById('hint'), gameCanvas=document.getElementById('screen');
     const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
     renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
     const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(35,2,.001,20);
@@ -68,7 +68,7 @@
     const key=new THREE.DirectionalLight(0xffffff,3.1); key.position.set(-.4,.7,.55); scene.add(key);
     const fill=new THREE.DirectionalLight(0x7fcfff,1.7); fill.position.set(.7,.25,-.5); scene.add(fill);
 
-    let lcd=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null;
+    let lcd=null,liveTexture=null,lastCopy=0,refreshUntil=0,pointerStart=null,activeGameKey=null;
     const bridge=document.createElement('canvas'); bridge.width=960; bridge.height=600;
     const bridgeCtx=bridge.getContext('2d',{alpha:false});
     liveTexture=new THREE.CanvasTexture(bridge); liveTexture.colorSpace=THREE.SRGBColorSpace; liveTexture.flipY=false; liveTexture.minFilter=THREE.LinearFilter; liveTexture.magFilter=THREE.LinearFilter;
@@ -89,7 +89,7 @@
       }
       bridgeCtx.textAlign='left';liveTexture.needsUpdate=true;
     }
-    paintUxStatus('Loading interface…','Downloading the live Godot UX',0);
+    paintUxStatus('Loading engine…','Downloading the open Freedoom runtime',0);
 
     new GLTFLoader().load('../handheld-eth/handheld.glb',gltf=>{
       const model=gltf.scene;
@@ -100,58 +100,58 @@
     },undefined,e=>{status.textContent='Model failed to load';console.error(e)});
 
     const uxStartedAt=performance.now();
-    let godotLaunchedAt=0;
-    const godotEngine=new Engine({
-      canvas:godotCanvas,
-      canvasResizePolicy:0,
-      executable:'freedoom-poe',
-      focusCanvas:false,
-      args:[],
-      experimentalVK:false,
-      gdnativeLibs:[],
-      onProgress:(current,total)=>{if(total>0&&!window.__ACTIVE_POE_LIVE_READY__){const percent=Math.round(current/total*100);if(percent>=100){status.textContent='Preparing UX…';paintUxStatus('Preparing interface…','Download complete · starting the engine',100)}else{status.textContent=`Loading UX · ${percent}%`;paintUxStatus('Loading interface…','Downloading the live Godot UX',percent)}}}
-    });
-    // Fetch the shared runtime from the POE asset directory, but mount the
-    // pack under a clean virtual-FS name. Godot cannot mount a "../" pack path.
-    Promise.all([
-      godotEngine.init('https://active-esl.github.io/godot-demos/embed/freedoom-poe/godot'),
-      godotEngine.preloadFile('https://active-esl.github.io/godot-demos/embed/freedoom-poe/godot.pck','freedoom-poe.pck')
-    ]).then(()=>godotEngine.start({args:['--main-pack','freedoom-poe.pck']})).then(()=>{godotLaunchedAt=performance.now();if(!window.__ACTIVE_POE_LIVE_READY__){status.textContent='Launching UX…';paintUxStatus('Launching interface…','Godot is preparing the first frame',100)}}).catch(showUxFailure);
     function showUxFailure(error){
-      const message=String(error?.message||error||'runtime failed');console.error('Godot failed to start',error);status.textContent='UX failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Interface failed to start',message.slice(0,84),0,true);
+      const message=String(error?.message||error||'runtime failed');console.error('Freedoom failed to start',error);status.textContent='Engine failed to start · reload';status.dataset.error='true';window.__ACTIVE_POE_LIVE_ERROR__=message;paintUxStatus('Engine failed to start',message.slice(0,84),0,true);
     }
-    function findGodotCanvas(){
-      if(godotCanvas.width>0&&godotCanvas.height>0&&typeof window.activePoeInput==='function'&&window.activePoeInputReady===true){status.textContent='Live UX · tap screen, drag model';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;return}
+    function findEngineCanvas(){
+      if(gameCanvas.width>0&&gameCanvas.height>0&&window.freedoomRuntimeReady===true&&typeof window.freedoomInput==='function'){status.textContent='Live engine · touch controls ready';status.dataset.ready='true';window.__ACTIVE_POE_LIVE_READY__=true;window.freedoomInput(13,true);setTimeout(()=>window.freedoomInput(13,false),80);return}
       const now=performance.now();
-      if((godotLaunchedAt&&now-godotLaunchedAt>15000)||now-uxStartedAt>90000){showUxFailure('runtime-timeout');return}
-      setTimeout(findGodotCanvas,250);
+      if(window.freedoomRuntimeError||now-uxStartedAt>90000){showUxFailure(window.freedoomRuntimeError||'runtime-timeout');return}
+      setTimeout(findEngineCanvas,250);
     }
-    findGodotCanvas();
+    findEngineCanvas();
 
     const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
     function hitDisplay(ev){
       if(!lcd)return null;const r=canvas.getBoundingClientRect();pointer.x=((ev.clientX-r.left)/r.width)*2-1;pointer.y=-((ev.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);
       return raycaster.intersectObject(lcd,true)[0]||null;
     }
-    canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);pointerStart=hit?{x:ev.clientX,y:ev.clientY,uv:hit.uv.clone(),pointerType:ev.pointerType}:null});
+    function gameKeyAt(uv){
+      const x=uv.x*960,y=uv.y*600;
+      if(x<735)return 13;
+      if(y>=150&&y<=220&&x>=774&&x<=844)return 0xad;
+      if(y>=230&&y<=300&&x>=744&&x<=814)return 0xac;
+      if(y>=230&&y<=300&&x>=824&&x<=894)return 0xae;
+      if(y>=310&&y<=380&&x>=774&&x<=844)return 0xaf;
+      if(y>=405&&y<=467&&x>=748&&x<=834)return 0x9d;
+      if(y>=405&&y<=467&&x>=844&&x<=930)return 32;
+      return 13;
+    }
+    canvas.addEventListener('pointerdown',ev=>{const hit=hitDisplay(ev);pointerStart=hit?{x:ev.clientX,y:ev.clientY,uv:hit.uv.clone(),pointerType:ev.pointerType}:null;if(pointerStart&&window.__ACTIVE_POE_LIVE_READY__){controls.enabled=false;activeGameKey=gameKeyAt(hit.uv);window.freedoomInput(activeGameKey,true);refreshUntil=performance.now()+1000;canvas.setPointerCapture(ev.pointerId);ev.preventDefault()}});
     canvas.addEventListener('pointermove',ev=>{canvas.style.cursor=hitDisplay(ev)?'pointer':'grab'});
     canvas.addEventListener('pointerup',ev=>{
       if(!pointerStart)return;const moved=Math.hypot(ev.clientX-pointerStart.x,ev.clientY-pointerStart.y),hit=hitDisplay(ev),start=pointerStart;pointerStart=null;
+      if(activeGameKey!==null&&typeof window.freedoomInput==='function')window.freedoomInput(activeGameKey,false);
+      activeGameKey=null;controls.enabled=true;
       const tapSlop=start.pointerType==='touch'?18:8;
-      if(moved>tapSlop||!hit?.uv)return;
-      if(!window.__ACTIVE_POE_LIVE_READY__||typeof window.activePoeInput!=='function'){hint.textContent='The interface is still loading';return}
-      // CanvasTexture.flipY is disabled, so the LCD's UV Y axis already has
-      // the same top-to-bottom orientation as Godot's viewport coordinates.
-      const u=(start.uv.x+hit.uv.x)/2,v=(start.uv.y+hit.uv.y)/2;
-      const ackBefore=Number(window.activePoeInputAck||0);
-      window.activePoeInput(u,v);refreshUntil=performance.now()+1000;window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u,v};
-      setTimeout(()=>{const ack=Number(window.activePoeInputAck||0),uxState=window.activePoeUxState||'unknown';if(ack>ackBefore){hint.textContent=`Godot received tap #${ack} · ${uxState}`;status.textContent=`Live UX · input acknowledged #${ack}`;window.__ACTIVE_POE_LAST_ACK__={ack,uxState}}else{hint.textContent='Godot did not acknowledge that tap';status.textContent='UX input bridge failed';status.dataset.error='true'}},120);
+      if(moved<=tapSlop&&hit?.uv){hint.textContent='Input sent to the live engine';status.textContent='Live engine · input acknowledged';window.__ACTIVE_POE_LAST_TOUCH__={phase:'tap',u:hit.uv.x,v:hit.uv.y}}
     });
-    canvas.addEventListener('pointercancel',()=>{pointerStart=null});
+    canvas.addEventListener('pointercancel',()=>{if(activeGameKey!==null&&typeof window.freedoomInput==='function')window.freedoomInput(activeGameKey,false);activeGameKey=null;pointerStart=null;controls.enabled=true});
 
     function resize(){const r=document.getElementById('stage').getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
-    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?100:1000;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{bridgeCtx.drawImage(godotCanvas,0,0,bridge.width,bridge.height);liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
-    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,godotEngine,get lcd(){return lcd},get godotCanvas(){return godotCanvas}};
+    function drawRuntime(){
+      bridgeCtx.fillStyle='#07111f';bridgeCtx.fillRect(0,0,960,600);
+      bridgeCtx.drawImage(gameCanvas,22,72,696,435);
+      bridgeCtx.fillStyle='#20d6d2';bridgeCtx.fillRect(22,32,4,22);
+      bridgeCtx.fillStyle='#f7f9fc';bridgeCtx.font='700 20px Segoe UI';bridgeCtx.fillText('FREEDOOM / POE EDGE RUNTIME',38,51);
+      bridgeCtx.fillStyle='#0f2035';bridgeCtx.fillRect(738,72,202,435);
+      bridgeCtx.fillStyle='#20d6d2';bridgeCtx.font='700 15px Segoe UI';bridgeCtx.fillText('TOUCH CONTROL',758,108);
+      const button=(x,y,w,h,label,accent=false)=>{bridgeCtx.fillStyle=accent?'#263950':'#142b47';bridgeCtx.strokeStyle=accent?'#b6f23b':'#20d6d2';bridgeCtx.lineWidth=2;bridgeCtx.fillRect(x,y,w,h);bridgeCtx.strokeRect(x,y,w,h);bridgeCtx.fillStyle=accent?'#b6f23b':'#f7f9fc';bridgeCtx.font='700 17px Segoe UI';bridgeCtx.textAlign='center';bridgeCtx.textBaseline='middle';bridgeCtx.fillText(label,x+w/2,y+h/2)};
+      button(774,150,70,70,'▲');button(744,230,70,70,'◀');button(824,230,70,70,'▶');button(774,310,70,70,'▼');button(748,405,86,62,'FIRE',true);button(844,405,86,62,'OPEN');
+      bridgeCtx.textAlign='left';bridgeCtx.textBaseline='alphabetic';bridgeCtx.fillStyle='#91a3ba';bridgeCtx.font='13px Segoe UI';bridgeCtx.fillText('DRAG OUTSIDE DISPLAY TO ORBIT',22,552);bridgeCtx.fillText('OPEN ENGINE + OPEN GAME DATA',660,552);
+    }
+    function animate(t){requestAnimationFrame(animate);controls.update();const copyInterval=t<refreshUntil?30:100;if(window.__ACTIVE_POE_LIVE_READY__&&t-lastCopy>copyInterval){try{drawRuntime();liveTexture.needsUpdate=true;lastCopy=t}catch(e){console.warn('UX texture copy failed',e)}}renderer.render(scene,camera)}animate(0);
+    window.__ACTIVE_POE_LIVE__={hitDisplay,bridge,get lcd(){return lcd},get gameCanvas(){return gameCanvas}};
   </script>
   <script src="../pages-update.js?v=d91c47e81c" defer></script>
 </body>
