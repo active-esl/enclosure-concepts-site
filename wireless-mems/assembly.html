@@ -1095,6 +1095,10 @@
     // Shared inspect-lighting.js (RoomEnvironment + studio lights).
     applyInspectEnvironment(THREE, scene, renderer);
     const { updateCameraLights: _updateInspectLights } = createInspectLights(THREE, scene);
+    // This bare PCB uses solid glTF materials, not the shared ghost-shell palette.
+    // Keep the studio rig's directions but reduce its combined light energy.
+    scene.traverse((object) => { if (object.isLight) object.intensity *= 0.22; });
+    renderer.toneMappingExposure = 0.95;
     function updateCameraLights() {
       _updateInspectLights(camera, controls.target);
     }
@@ -1564,6 +1568,8 @@
         return Number(EXPLODE_OFFSETS[partId]) || 0;
       }
       const meta = PART_META[partId] || {};
+        const sourceMaterial = o.material;
+        const sourceColors = !!meta.face_colors && !o.geometry.attributes.color && !!sourceMaterial?.color;
       if (meta.highlight && !meta.ghost && Object.prototype.hasOwnProperty.call(EXPLODE_OFFSETS, 'pcb')) {
         return Number(EXPLODE_OFFSETS.pcb) || 0;
       }
@@ -1872,6 +1878,8 @@
           byName[partId].push(o);
         }
         const meta = PART_META[partId] || {};
+        const sourceMaterial = o.material;
+        const sourceColors = !!meta.face_colors && !o.geometry.attributes.color && !!sourceMaterial?.color;
         let col = meta.face_colors && !o.geometry.attributes.color && o.material?.color
           ? o.material.color.clone() : (PART_COLOR[partId] || 0x8e9298);
         const isGhost = !!meta.ghost;
@@ -1900,7 +1908,7 @@
           // Hatch / dark plastics sit near black; without a floor they read as holes.
           // Keep ghost PCB green unsaturated-lift off (ghost wants FR4 read).
           // Overlay parts keep YAML colour (no lift/grey).
-          if (!isGlass && !isGhost && !isPrintSplash && !isOverlay && hsl.l < 0.30) {
+          if (!sourceColors && !isGlass && !isGhost && !isPrintSplash && !isOverlay && hsl.l < 0.30) {
             c.setHSL(hsl.h, Math.min(hsl.s, 0.22), 0.36);
           }
           if (isGlass && !splash) c.offsetHSL(0, 0, 0.06);
