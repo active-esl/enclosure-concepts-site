@@ -1,5 +1,5 @@
 {
-  "id": "20261015-wireless-mems-0fa4294de2",
+  "id": "20261015-wireless-mems-inspect-contrast",
   "concept": "wireless-mems",
   "source_sha256": "2111031b5c115a4b12f7b09a0e91d053e070c90b75de369aa646a79e136f9fe9",
   "assets": {
@@ -7,7 +7,7 @@
     "beauty.png": "cbb6f36e3d",
     "thumbnail.png": "d1479f5e69",
     "share-preview.png": "3cfe5389c6",
-    "assembly.html": "471f33de4b",
+    "assembly.html": "e575a9a24f",
     "manifest.json": "87a8b07c5c",
     "index.html": "bc7c109bf1"
   }
