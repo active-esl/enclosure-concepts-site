@@ -1,0 +1,62 @@
+"""FreeCAD GUI under xvfb: STEP -> coloured meshes, source-parts report and AABB.
+Keep SENSOR.stp private; run in the directory containing it. No geometry scaling
+or mirroring: output is in the original STEP frame, in millimetres.
+"""
+import FreeCAD as App, FreeCADGui as Gui, ImportGui, Part
+import json, math, traceback, os, hashlib
+from pathlib import Path
+from collections import defaultdict
+from PySide import QtCore
+P=Path(os.environ['WIRELESS_MEMS_JOB'])
+def run():
+ try:
+  source=P/'SENSOR.stp'
+  ImportGui.open(str(source))
+  doc=App.ActiveDocument
+  groups={}; parts=[]; points=[]
+  for obj in doc.Objects:
+   if not hasattr(obj,'Shape') or obj.Shape.isNull(): continue
+   if obj.TypeId not in ['Part::Feature','PartDesign::Feature']: continue
+   sh=obj.Shape.copy()
+   try: sh.Placement=obj.getGlobalPlacement()
+   except: pass
+   b=sh.BoundBox
+   bounds=[b.XMin,b.YMin,b.ZMin,b.XMax,b.YMax,b.ZMax]
+   if not all(math.isfinite(v) and abs(v)<1000 for v in bounds): continue
+   if b.DiagonalLength<0.015: continue
+   ancestors=[]; parent=obj
+   for _ in range(8):
+    ancestors.append(parent.Label)
+    pars=[o for o in parent.InList if o.TypeId=='App::Part']
+    if not pars: break
+    parent=pars[0]
+   path='/'.join(reversed(ancestors));low=path.lower()
+   if 'silkscreen' in low: category='markings'
+   elif 'bmp390' in low: category='pressure_sensor'
+   elif 'aani' in low: category='antenna'
+   elif '212134' in low or '/j1/' in low: category='connector'
+   elif any(x in low for x in ['cap0805','capc0603','xrcgb','/c','/r','/x1/']): category='passives'
+   elif 'placebound' in low: category='package_envelopes'
+   elif b.XLength>18 and b.YLength>14 and b.ZLength<1.5: category='board'
+   else: category='components'
+   parts.append({'name':obj.Name,'label':obj.Label,'path':path,'category':category,'bounds_mm':bounds,'volume_mm3':sh.Volume,'faces':len(sh.Faces)})
+   points.extend([bounds[:3],bounds[3:]])
+   colors=list(obj.ViewObject.DiffuseColor)
+   fallback=tuple(obj.ViewObject.ShapeColor)
+   for index,face in enumerate(sh.Faces):
+    color=tuple(colors[index][:3]) if len(colors)==len(sh.Faces) else fallback
+    if category=='markings': color=(0.89,0.91,0.86)
+    key=(category,tuple(round(c,3) for c in color))
+    v,f=face.tessellate(0.035)
+    if not f: continue
+    g=groups.setdefault(key,{'category':category,'color':list(color),'vertices':[],'faces':[]})
+    offset=len(g['vertices']);g['vertices'].extend([[p.x,p.y,p.z] for p in v]);g['faces'].extend([[offset+a,offset+b,offset+c] for a,b,c in f])
+  mn=[min(v[i] for v in points) for i in range(3)];mx=[max(v[i] for v in points) for i in range(3)]
+  report={'source':'SENSOR.stp','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'bounds_mm':[mn,mx],'size_mm':[mx[i]-mn[i] for i in range(3)],'source_to_viewer_rotation':'Rx(-90deg), determinant +1; millimetres to glTF metres','parts':parts}
+  (P/'parts-eval.json').write_text(json.dumps(report,indent=2))
+  (P/'meshes.json').write_text(json.dumps(list(groups.values()),separators=(',',':')))
+  (P/'export-complete.json').write_text(json.dumps({'parts':len(parts),'meshes':len(groups),'triangles':sum(len(g['faces']) for g in groups.values()),'size_mm':report['size_mm']}))
+  os._exit(0)
+ except:
+  (P/'export-error.txt').write_text(traceback.format_exc());os._exit(1)
+QtCore.QTimer.singleShot(500,run)

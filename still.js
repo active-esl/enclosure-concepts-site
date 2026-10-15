@@ -4,6 +4,13 @@
    * Query: ?c=slim|eth
    */
   const STILLS = {
+    "wireless-mems": {
+      src: "wireless-mems/beauty.png",
+      look: "wireless-mems/",
+      inspect: "wireless-mems/assembly.html",
+      title: "Active Wireless MEMS — still",
+      caption: "20 × 16 × 3.23 mm · FreeCAD STEP geometry / Blender Cycles · U1 is a package envelope",
+    },
     slim: {
       src: "handheld/beauty_raytrace_baseline.png",
       look: "handheld/",

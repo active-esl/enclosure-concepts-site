@@ -1,18 +1,18 @@
 {
-  "id": "20260903T085551Z-live-product-twins",
-  "built_at": "2026-09-03T08:55:51Z",
+  "id": "20261015-wireless-mems",
+  "built_at": "2026-10-15T12:00:00Z",
   "concept": "enclosure-concepts",
   "assets": {
-    "index.html": "d32bd19f22",
+    "index.html": "40cab44cd0",
     "robots.txt": "c69c760bd2",
-    "sitemap.xml": "ed4bfb12ca",
+    "sitemap.xml": "b5956a169f",
     "assets/active-edge-favicon.svg": "38055c76f3",
-    "site-nav.css": "d180230ef5",
-    "site-nav.js": "d57b6a3505",
-    "look.js": "b61e24e6db",
-    "look-viewer.js": "95fcba9977",
-    "pages-update.js": "d91c47e81c",
-    "still.js": "2e090d54cf",
-    "inspect-lighting.js": "3f90d182e8"
+    "site-nav.css": "0437f4843a",
+    "site-nav.js": "4ba5287d35",
+    "look.js": "95a0d77e03",
+    "look-viewer.js": "dbdfe9c4cd",
+    "pages-update.js": "45841fa8ad",
+    "still.js": "711de7a64d",
+    "inspect-lighting.js": "a348731b40"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "renderer": "Blender Cycles",
+  "device": "CPU",
+  "samples": 32,
+  "geometry": "FreeCAD STEP tessellation; identity physical pose; glTF Y-up proper rotation",
+  "glb_bytes": 15306396
+}

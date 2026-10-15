@@ -1,0 +1,25 @@
+const { chromium }=require('playwright');
+const fs=require('fs');
+(async()=>{
+const out=process.argv[2]||'/tmp/wireless-mems-browser-qa';fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:1440,height:1000},ignoreHTTPSErrors:true});const errors=[];const missing=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push({status:r.status(),url:r.url()});});
+await page.goto('http://127.0.0.1:8771/wireless-mems/',{waitUntil:'networkidle',timeout:60000});
+await page.waitForFunction(()=>document.querySelector('model-viewer')?.loaded,{timeout:60000});
+await page.locator('model-viewer').evaluate(e=>{e.autoRotate=false;});
+await page.screenshot({path:out+'/look.png'});
+await page.goto('http://127.0.0.1:8771/wireless-mems/assembly.html',{waitUntil:'networkidle',timeout:60000});
+await page.waitForFunction(()=>document.querySelectorAll('input[data-part]').length===8,{timeout:30000});
+await page.waitForFunction(()=>document.querySelector('#title')?.textContent==='Active Wireless MEMS');
+const glb=await page.request.get('http://127.0.0.1:8771/wireless-mems/assembly.glb');if(glb.status()!==200)throw Error('GLB not served');
+await page.locator('input[data-part="package_envelopes"]').uncheck();await page.locator('input[data-part="package_envelopes"]').check();
+await page.locator('#explodeRange').evaluate(e=>{for(let a=e.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;});
+await page.locator('#explodeRange').fill('30');await page.locator('#explodeRange').dispatchEvent('input');
+await page.locator('#explodeRange').fill('0');await page.locator('#explodeRange').dispatchEvent('input');
+await page.screenshot({path:out+'/inspect.png'});
+await page.goto('http://127.0.0.1:8771/still.html?c=wireless-mems',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelector('#stillImg')?.naturalWidth>0);await page.screenshot({path:out+'/still.png'});
+await page.goto('http://127.0.0.1:8771/',{waitUntil:'networkidle'});await page.locator('#showWip').check();await page.locator('[data-concept="wireless-mems"].card').waitFor({state:'visible'});await page.screenshot({path:out+'/gallery.png',fullPage:true});
+const result={passed:errors.length===0&&missing.length===0,errors,missing,parts:8,lookLoaded:true,inspectorInteractions:true,galleryDiscovery:true,stillLoaded:true};
+fs.writeFileSync(out+'/result.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));await browser.close();if(!result.passed)process.exitCode=1;
+})().catch(e=>{console.error(e.message);process.exit(1)});

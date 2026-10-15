@@ -1,0 +1,162 @@
+{
+  "id": "wireless-mems",
+  "title": "Active Wireless MEMS",
+  "blurb": "Wireless MEMS pressure-sensor board · 20 × 16 × 3.23 mm from SENSOR.stp. BMP390 model present; radio variant and U1 part number await confirmation. Board-only concept; no enclosure or battery model.",
+  "glb": "assembly.glb",
+  "glb_version": "0fa4294de2",
+  "parts": [
+    {
+      "id": "board",
+      "label": "PCB substrate and solder mask",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "pressure_sensor",
+      "label": "Pressure sensor model (BMP390)",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "antenna",
+      "label": "Antenna model (U3)",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "connector",
+      "label": "Connector (J1)",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "package_envelopes",
+      "label": "U1 package envelope (part number unconfirmed)",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "passives",
+      "label": "Small components",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "markings",
+      "label": "Silkscreen",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    },
+    {
+      "id": "components",
+      "label": "Copper and other STEP features",
+      "visible": true,
+      "face_colors": true,
+      "opacity": 1.0
+    }
+  ],
+  "dim_groups": [
+    {
+      "id": "overall",
+      "label": "Full model envelope",
+      "default": false,
+      "dims": [
+        {
+          "label": "20.00 mm",
+          "mm": 20,
+          "a": [
+            -0.01,
+            0.004,
+            0.011
+          ],
+          "b": [
+            0.01,
+            0.004,
+            0.011
+          ]
+        },
+        {
+          "label": "16.00 mm",
+          "mm": 16,
+          "a": [
+            0.014,
+            0.004,
+            -0.008
+          ],
+          "b": [
+            0.014,
+            0.004,
+            0.008
+          ]
+        },
+        {
+          "label": "3.23 mm overall",
+          "mm": 3.227337,
+          "a": [
+            -0.014,
+            -0.000754,
+            0.008
+          ],
+          "b": [
+            -0.014,
+            0.002473,
+            0.008
+          ]
+        }
+      ]
+    }
+  ],
+  "views": {
+    "front": [
+      0.75,
+      0.65,
+      1.15
+    ],
+    "rear": [
+      -0.75,
+      0.6,
+      -1.15
+    ],
+    "side": [
+      1.4,
+      0.45,
+      0.15
+    ],
+    "top": [
+      0,
+      1.4,
+      0.0001
+    ]
+  },
+  "features": {
+    "outline": true,
+    "outline_default": false,
+    "explode": true,
+    "explode_axis": [
+      0,
+      1,
+      0
+    ],
+    "explode_offsets_mm": {
+      "board": 0,
+      "components": 0.3,
+      "markings": 0.5,
+      "passives": 2,
+      "pressure_sensor": 4,
+      "antenna": 4,
+      "package_envelopes": 5,
+      "connector": 6
+    },
+    "section": true,
+    "measure": true,
+    "deeplink": true
+  },
+  "pages_links": []
+}
