@@ -58,6 +58,14 @@
       still: `${root}still.html?c=eink-imx93`,
     },
     {
+      id: "wireless-mems",
+      label: "Wireless MEMS",
+      maturity: "wip",
+      look: `${root}wireless-mems/`,
+      inspect: `${root}wireless-mems/assembly.html`,
+      still: `${root}still.html?c=wireless-mems`,
+    },
+    {
       id: "flexi-sensor",
       label: "Flexi Sensor",
       maturity: "wip",

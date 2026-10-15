@@ -1,0 +1,6856 @@
+{
+  "source": "SENSOR.stp",
+  "source_sha256": "2111031b5c115a4b12f7b09a0e91d053e070c90b75de369aa646a79e136f9fe9",
+  "bounds_mm": [
+    [
+      -10.000000000000092,
+      -8.0,
+      -0.7540174183063809
+    ],
+    [
+      10.0,
+      8.0,
+      2.4733196100146198
+    ]
+  ],
+  "size_mm": [
+    20.000000000000092,
+    16.0,
+    3.2273370283210006
+  ],
+  "source_to_viewer_rotation": "Rx(-90deg), determinant +1; millimetres to glTF metres",
+  "parts": [
+    {
+      "name": "Part__Feature",
+      "label": "CAP0805x1p45.STEP",
+      "path": "202606r1/Components/ComponentsTop/C1/CAP0805x1p45.STEP003/CAP0805x1p45.STEP",
+      "category": "passives",
+      "bounds_mm": [
+        -2.96411961001462,
+        -1.3500020092751104,
+        0.9950803899853802,
+        -1.6858803899853805,
+        -0.8499999999999994,
+        2.4733196100146198
+      ],
+      "volume_mm3": 0.9249653569749586,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature001",
+      "label": "CAP0805x1p45.STEP001",
+      "path": "202606r1/Components/ComponentsTop/C1/CAP0805x1p45.STEP003/CAP0805x1p45.STEP001",
+      "category": "passives",
+      "bounds_mm": [
+        -2.9500000000000006,
+        -0.8500000000000001,
+        1.0091999999999999,
+        -1.7,
+        0.1500000000000002,
+        2.4592
+      ],
+      "volume_mm3": 1.8103539816339744,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature002",
+      "label": "CAP0805x1p45.STEP002",
+      "path": "202606r1/Components/ComponentsTop/C1/CAP0805x1p45.STEP003/CAP0805x1p45.STEP002",
+      "category": "passives",
+      "bounds_mm": [
+        -2.96411961001462,
+        0.14999999999999986,
+        0.9950803899853802,
+        -1.6858803899853805,
+        0.6500020092751003,
+        2.4733196100146198
+      ],
+      "volume_mm3": 0.9249668422560267,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature003",
+      "label": "User Library-CAPC0603X___",
+      "path": "202606r1/Components/ComponentsTop/C2/User Library-CAPC0603X___003/User Library-CAPC0603X___",
+      "category": "passives",
+      "bounds_mm": [
+        -1.2750000000000001,
+        0.27499999999999997,
+        1.0091999999999999,
+        -0.975,
+        0.5750000000000001,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192338,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature004",
+      "label": "User Library-CAPC0603X___001",
+      "path": "202606r1/Components/ComponentsTop/C2/User Library-CAPC0603X___003/User Library-CAPC0603X___001",
+      "category": "passives",
+      "bounds_mm": [
+        -1.2891196100146196,
+        0.12499799072481199,
+        0.9950803899853802,
+        -0.9608803899853802,
+        0.2750000000000001,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665313,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature005",
+      "label": "User Library-CAPC0603X___002",
+      "path": "202606r1/Components/ComponentsTop/C2/User Library-CAPC0603X___003/User Library-CAPC0603X___002",
+      "category": "passives",
+      "bounds_mm": [
+        -1.2891196100146198,
+        0.575,
+        0.9950803899853802,
+        -0.9608803899853804,
+        0.725002009275109,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339001,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature006",
+      "label": "User Library-CAPC0603X___004",
+      "path": "202606r1/Components/ComponentsTop/C3/User Library-CAPC0603X___007/User Library-CAPC0603X___004",
+      "category": "passives",
+      "bounds_mm": [
+        7.125,
+        3.025,
+        1.0091999999999999,
+        7.425000000000001,
+        3.3249999999999997,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192345,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature007",
+      "label": "User Library-CAPC0603X___005",
+      "path": "202606r1/Components/ComponentsTop/C3/User Library-CAPC0603X___007/User Library-CAPC0603X___005",
+      "category": "passives",
+      "bounds_mm": [
+        7.110880389985381,
+        3.3249999999999997,
+        0.9950803899853802,
+        7.43911961001462,
+        3.4750020092751877,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature008",
+      "label": "User Library-CAPC0603X___006",
+      "path": "202606r1/Components/ComponentsTop/C3/User Library-CAPC0603X___007/User Library-CAPC0603X___006",
+      "category": "passives",
+      "bounds_mm": [
+        7.110880389985381,
+        2.874997990724891,
+        0.9950803899853802,
+        7.43911961001462,
+        3.025,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339007,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature009",
+      "label": "User Library-CAPC0603X___008",
+      "path": "202606r1/Components/ComponentsTop/C4/User Library-CAPC0603X___011/User Library-CAPC0603X___008",
+      "category": "passives",
+      "bounds_mm": [
+        3.15,
+        -1.9000000000000001,
+        1.0091999999999999,
+        3.4499999999999997,
+        -1.5999999999999999,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019233,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature010",
+      "label": "User Library-CAPC0603X___009",
+      "path": "202606r1/Components/ComponentsTop/C4/User Library-CAPC0603X___011/User Library-CAPC0603X___009",
+      "category": "passives",
+      "bounds_mm": [
+        3.13588038998538,
+        -2.050002009275188,
+        0.9950803899853802,
+        3.4641196100146194,
+        -1.9,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665314,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature011",
+      "label": "User Library-CAPC0603X___010",
+      "path": "202606r1/Components/ComponentsTop/C4/User Library-CAPC0603X___011/User Library-CAPC0603X___010",
+      "category": "passives",
+      "bounds_mm": [
+        3.13588038998538,
+        -1.6,
+        0.9950803899853802,
+        3.4641196100146194,
+        -1.449997990724891,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339001,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature012",
+      "label": "User Library-CAPC0603X___012",
+      "path": "202606r1/Components/ComponentsTop/C5/User Library-CAPC0603X___015/User Library-CAPC0603X___012",
+      "category": "passives",
+      "bounds_mm": [
+        3.9,
+        6.574999999999999,
+        1.0091999999999999,
+        4.2,
+        6.875,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019236,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature013",
+      "label": "User Library-CAPC0603X___013",
+      "path": "202606r1/Components/ComponentsTop/C5/User Library-CAPC0603X___015/User Library-CAPC0603X___013",
+      "category": "passives",
+      "bounds_mm": [
+        3.749997990724812,
+        6.56088038998538,
+        0.9950803899853802,
+        3.9,
+        6.889119610014619,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665318,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature014",
+      "label": "User Library-CAPC0603X___014",
+      "path": "202606r1/Components/ComponentsTop/C5/User Library-CAPC0603X___015/User Library-CAPC0603X___014",
+      "category": "passives",
+      "bounds_mm": [
+        4.2,
+        6.56088038998538,
+        0.9950803899853802,
+        4.350002009275109,
+        6.889119610014619,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338988,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature015",
+      "label": "User Library-CAPC0603X___016",
+      "path": "202606r1/Components/ComponentsTop/C6/User Library-CAPC0603X___019/User Library-CAPC0603X___016",
+      "category": "passives",
+      "bounds_mm": [
+        -0.3,
+        -1.0,
+        1.0091999999999999,
+        4.517509052022935e-18,
+        -0.7,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192345,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature016",
+      "label": "User Library-CAPC0603X___017",
+      "path": "202606r1/Components/ComponentsTop/C6/User Library-CAPC0603X___019/User Library-CAPC0603X___017",
+      "category": "passives",
+      "bounds_mm": [
+        -0.45000200927518796,
+        -1.0141196100146197,
+        0.9950803899853802,
+        -0.29999999999999993,
+        -0.6858803899853803,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature017",
+      "label": "User Library-CAPC0603X___018",
+      "path": "202606r1/Components/ComponentsTop/C6/User Library-CAPC0603X___019/User Library-CAPC0603X___018",
+      "category": "passives",
+      "bounds_mm": [
+        0.0,
+        -1.0141196100146197,
+        0.9950803899853802,
+        0.150002009275109,
+        -0.6858803899853803,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339001,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature018",
+      "label": "User Library-CAPC0603X___020",
+      "path": "202606r1/Components/ComponentsTop/C7/User Library-CAPC0603X___023/User Library-CAPC0603X___020",
+      "category": "passives",
+      "bounds_mm": [
+        -0.6000000000000001,
+        5.8999999999999995,
+        1.0091999999999999,
+        -0.3,
+        6.2,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019236,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature019",
+      "label": "User Library-CAPC0603X___021",
+      "path": "202606r1/Components/ComponentsTop/C7/User Library-CAPC0603X___023/User Library-CAPC0603X___021",
+      "category": "passives",
+      "bounds_mm": [
+        -0.6141196100146197,
+        6.2,
+        0.9950803899853802,
+        -0.2858803899853803,
+        6.350002009275188,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665295,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature020",
+      "label": "User Library-CAPC0603X___022",
+      "path": "202606r1/Components/ComponentsTop/C7/User Library-CAPC0603X___023/User Library-CAPC0603X___022",
+      "category": "passives",
+      "bounds_mm": [
+        -0.6141196100146198,
+        5.749997990724891,
+        0.9950803899853802,
+        -0.2858803899853804,
+        5.8999999999999995,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338984,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature021",
+      "label": "User Library-CAPC0603X___024",
+      "path": "202606r1/Components/ComponentsTop/C8/User Library-CAPC0603X___027/User Library-CAPC0603X___024",
+      "category": "passives",
+      "bounds_mm": [
+        -1.225,
+        4.0,
+        1.0091999999999999,
+        -0.9249999999999998,
+        4.300000000000001,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019236,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature022",
+      "label": "User Library-CAPC0603X___025",
+      "path": "202606r1/Components/ComponentsTop/C8/User Library-CAPC0603X___027/User Library-CAPC0603X___025",
+      "category": "passives",
+      "bounds_mm": [
+        -1.2391196100146196,
+        4.300000000000001,
+        0.9950803899853802,
+        -0.9108803899853801,
+        4.450002009275188,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665297,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature023",
+      "label": "User Library-CAPC0603X___026",
+      "path": "202606r1/Components/ComponentsTop/C8/User Library-CAPC0603X___027/User Library-CAPC0603X___026",
+      "category": "passives",
+      "bounds_mm": [
+        -1.2391196100146198,
+        3.8499979907248916,
+        0.9950803899853802,
+        -0.9108803899853802,
+        4.0,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338988,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature024",
+      "label": "User Library-CAPC0603X___028",
+      "path": "202606r1/Components/ComponentsTop/C9/User Library-CAPC0603X___031/User Library-CAPC0603X___028",
+      "category": "passives",
+      "bounds_mm": [
+        1.8749999999999998,
+        6.625,
+        1.0091999999999999,
+        2.175,
+        6.925000000000001,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019235,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature025",
+      "label": "User Library-CAPC0603X___029",
+      "path": "202606r1/Components/ComponentsTop/C9/User Library-CAPC0603X___031/User Library-CAPC0603X___029",
+      "category": "passives",
+      "bounds_mm": [
+        2.175,
+        6.610880389985381,
+        0.9950803899853802,
+        2.3250020092751877,
+        6.93911961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature026",
+      "label": "User Library-CAPC0603X___030",
+      "path": "202606r1/Components/ComponentsTop/C9/User Library-CAPC0603X___031/User Library-CAPC0603X___030",
+      "category": "passives",
+      "bounds_mm": [
+        1.724997990724891,
+        6.610880389985381,
+        0.9950803899853802,
+        1.875,
+        6.93911961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339005,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature027",
+      "label": "User Library-CAPC0603X___032",
+      "path": "202606r1/Components/ComponentsTop/C29/User Library-CAPC0603X___035/User Library-CAPC0603X___032",
+      "category": "passives",
+      "bounds_mm": [
+        8.575,
+        6.8999999999999995,
+        1.0091999999999999,
+        8.875,
+        7.2,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192372,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature028",
+      "label": "User Library-CAPC0603X___033",
+      "path": "202606r1/Components/ComponentsTop/C29/User Library-CAPC0603X___035/User Library-CAPC0603X___033",
+      "category": "passives",
+      "bounds_mm": [
+        8.424997990724812,
+        6.88588038998538,
+        0.9950803899853802,
+        8.575,
+        7.214119610014619,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature029",
+      "label": "User Library-CAPC0603X___034",
+      "path": "202606r1/Components/ComponentsTop/C29/User Library-CAPC0603X___035/User Library-CAPC0603X___034",
+      "category": "passives",
+      "bounds_mm": [
+        8.875,
+        6.88588038998538,
+        0.9950803899853802,
+        9.02500200927511,
+        7.214119610014619,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339007,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature030",
+      "label": "User Library-CAPC0603X___036",
+      "path": "202606r1/Components/ComponentsTop/C30/User Library-CAPC0603X___039/User Library-CAPC0603X___036",
+      "category": "passives",
+      "bounds_mm": [
+        6.925,
+        6.875,
+        1.0091999999999999,
+        7.2250000000000005,
+        7.175000000000001,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192372,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature031",
+      "label": "User Library-CAPC0603X___037",
+      "path": "202606r1/Components/ComponentsTop/C30/User Library-CAPC0603X___039/User Library-CAPC0603X___037",
+      "category": "passives",
+      "bounds_mm": [
+        7.2250000000000005,
+        6.860880389985381,
+        0.9950803899853802,
+        7.375002009275188,
+        7.18911961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.0135041778446653,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature032",
+      "label": "User Library-CAPC0603X___038",
+      "path": "202606r1/Components/ComponentsTop/C30/User Library-CAPC0603X___039/User Library-CAPC0603X___038",
+      "category": "passives",
+      "bounds_mm": [
+        6.774997990724891,
+        6.860880389985381,
+        0.9950803899853802,
+        6.925,
+        7.18911961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338988,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature033",
+      "label": "User Library-CAPC0603X___040",
+      "path": "202606r1/Components/ComponentsTop/C10/User Library-CAPC0603X___043/User Library-CAPC0603X___040",
+      "category": "passives",
+      "bounds_mm": [
+        -1.1500000000000001,
+        1.45,
+        1.0091999999999999,
+        -0.85,
+        1.7500000000000002,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192338,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature034",
+      "label": "User Library-CAPC0603X___041",
+      "path": "202606r1/Components/ComponentsTop/C10/User Library-CAPC0603X___043/User Library-CAPC0603X___041",
+      "category": "passives",
+      "bounds_mm": [
+        -1.1641196100146196,
+        1.299997990724812,
+        0.9950803899853802,
+        -0.8358803899853802,
+        1.4500000000000002,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665314,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature035",
+      "label": "User Library-CAPC0603X___042",
+      "path": "202606r1/Components/ComponentsTop/C10/User Library-CAPC0603X___043/User Library-CAPC0603X___042",
+      "category": "passives",
+      "bounds_mm": [
+        -1.1641196100146198,
+        1.75,
+        0.9950803899853802,
+        -0.8358803899853803,
+        1.900002009275109,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339003,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature036",
+      "label": "User Library-CAPC0603X___044",
+      "path": "202606r1/Components/ComponentsTop/C11/User Library-CAPC0603X___047/User Library-CAPC0603X___044",
+      "category": "passives",
+      "bounds_mm": [
+        7.05,
+        1.8499999999999999,
+        1.0091999999999999,
+        7.3500000000000005,
+        2.15,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192345,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature037",
+      "label": "User Library-CAPC0603X___045",
+      "path": "202606r1/Components/ComponentsTop/C11/User Library-CAPC0603X___047/User Library-CAPC0603X___045",
+      "category": "passives",
+      "bounds_mm": [
+        7.035880389985381,
+        1.699997990724812,
+        0.9950803899853802,
+        7.36411961001462,
+        1.85,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665318,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature038",
+      "label": "User Library-CAPC0603X___046",
+      "path": "202606r1/Components/ComponentsTop/C11/User Library-CAPC0603X___047/User Library-CAPC0603X___046",
+      "category": "passives",
+      "bounds_mm": [
+        7.035880389985381,
+        2.15,
+        0.9950803899853802,
+        7.36411961001462,
+        2.300002009275109,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339007,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature039",
+      "label": "User Library-CAPC0603X___048",
+      "path": "202606r1/Components/ComponentsTop/C12/User Library-CAPC0603X___051/User Library-CAPC0603X___048",
+      "category": "passives",
+      "bounds_mm": [
+        5.074999999999999,
+        6.5,
+        1.0091999999999999,
+        5.375,
+        6.800000000000001,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019238,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature040",
+      "label": "User Library-CAPC0603X___049",
+      "path": "202606r1/Components/ComponentsTop/C12/User Library-CAPC0603X___051/User Library-CAPC0603X___049",
+      "category": "passives",
+      "bounds_mm": [
+        5.375,
+        6.485880389985381,
+        0.9950803899853802,
+        5.5250020092751875,
+        6.81411961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.0135041778446653,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature041",
+      "label": "User Library-CAPC0603X___050",
+      "path": "202606r1/Components/ComponentsTop/C12/User Library-CAPC0603X___051/User Library-CAPC0603X___050",
+      "category": "passives",
+      "bounds_mm": [
+        4.924997990724891,
+        6.485880389985381,
+        0.9950803899853802,
+        5.074999999999999,
+        6.81411961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338988,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature042",
+      "label": "User Library-CAPC0603X___052",
+      "path": "202606r1/Components/ComponentsTop/C19/User Library-CAPC0603X___055/User Library-CAPC0603X___052",
+      "category": "passives",
+      "bounds_mm": [
+        -9.525,
+        1.7999999999999998,
+        1.0091999999999999,
+        -9.225,
+        2.1,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192365,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature043",
+      "label": "User Library-CAPC0603X___053",
+      "path": "202606r1/Components/ComponentsTop/C19/User Library-CAPC0603X___055/User Library-CAPC0603X___053",
+      "category": "passives",
+      "bounds_mm": [
+        -9.225,
+        1.7858803899853801,
+        0.9950803899853802,
+        -9.074997990724812,
+        2.11411961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.01350417784466531,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature044",
+      "label": "User Library-CAPC0603X___054",
+      "path": "202606r1/Components/ComponentsTop/C19/User Library-CAPC0603X___055/User Library-CAPC0603X___054",
+      "category": "passives",
+      "bounds_mm": [
+        -9.67500200927511,
+        1.7858803899853801,
+        0.9950803899853802,
+        -9.525,
+        2.11411961001462,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339001,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature045",
+      "label": "User Library-CAPC0603X___056",
+      "path": "202606r1/Components/ComponentsTop/C20/User Library-CAPC0603X___059/User Library-CAPC0603X___056",
+      "category": "passives",
+      "bounds_mm": [
+        -8.675,
+        1.5499999999999998,
+        1.0091999999999999,
+        -8.375,
+        1.85,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019235,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature046",
+      "label": "User Library-CAPC0603X___057",
+      "path": "202606r1/Components/ComponentsTop/C20/User Library-CAPC0603X___059/User Library-CAPC0603X___057",
+      "category": "passives",
+      "bounds_mm": [
+        -8.68911961001462,
+        1.399997990724812,
+        0.9950803899853802,
+        -8.36088038998538,
+        1.55,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.01350417784466531,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature047",
+      "label": "User Library-CAPC0603X___058",
+      "path": "202606r1/Components/ComponentsTop/C20/User Library-CAPC0603X___059/User Library-CAPC0603X___058",
+      "category": "passives",
+      "bounds_mm": [
+        -8.68911961001462,
+        1.8499999999999999,
+        0.9950803899853802,
+        -8.36088038998538,
+        2.000002009275109,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature048",
+      "label": "User Library-CAPC0603X___060",
+      "path": "202606r1/Components/ComponentsTop/C21/User Library-CAPC0603X___063/User Library-CAPC0603X___060",
+      "category": "passives",
+      "bounds_mm": [
+        -7.425000000000001,
+        1.6249999999999998,
+        1.0091999999999999,
+        -7.125,
+        1.9249999999999998,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019236,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature049",
+      "label": "User Library-CAPC0603X___061",
+      "path": "202606r1/Components/ComponentsTop/C21/User Library-CAPC0603X___063/User Library-CAPC0603X___061",
+      "category": "passives",
+      "bounds_mm": [
+        -7.125,
+        1.61088038998538,
+        0.9950803899853802,
+        -6.9749979907248125,
+        1.9391196100146197,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665299,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature050",
+      "label": "User Library-CAPC0603X___062",
+      "path": "202606r1/Components/ComponentsTop/C21/User Library-CAPC0603X___063/User Library-CAPC0603X___062",
+      "category": "passives",
+      "bounds_mm": [
+        -7.575002009275109,
+        1.61088038998538,
+        0.9950803899853802,
+        -7.425000000000001,
+        1.9391196100146197,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338984,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature051",
+      "label": "User Library-CAPC0603X___064",
+      "path": "202606r1/Components/ComponentsTop/C25/User Library-CAPC0603X___067/User Library-CAPC0603X___064",
+      "category": "passives",
+      "bounds_mm": [
+        -8.0,
+        2.525,
+        1.0091999999999999,
+        -7.699999999999999,
+        2.8249999999999997,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192345,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature052",
+      "label": "User Library-CAPC0603X___065",
+      "path": "202606r1/Components/ComponentsTop/C25/User Library-CAPC0603X___067/User Library-CAPC0603X___065",
+      "category": "passives",
+      "bounds_mm": [
+        -8.01411961001462,
+        2.374997990724812,
+        0.9950803899853802,
+        -7.68588038998538,
+        2.525,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665314,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature053",
+      "label": "User Library-CAPC0603X___066",
+      "path": "202606r1/Components/ComponentsTop/C25/User Library-CAPC0603X___067/User Library-CAPC0603X___066",
+      "category": "passives",
+      "bounds_mm": [
+        -8.01411961001462,
+        2.8249999999999997,
+        0.9950803899853802,
+        -7.68588038998538,
+        2.9750020092751086,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339003,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature054",
+      "label": "User Library-CAPC0603X___068",
+      "path": "202606r1/Components/ComponentsTop/C26/User Library-CAPC0603X___071/User Library-CAPC0603X___068",
+      "category": "passives",
+      "bounds_mm": [
+        -8.137132034355965,
+        5.2378679656440355,
+        1.0091999999999999,
+        -7.712867965644035,
+        5.662132034355965,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019233,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature055",
+      "label": "User Library-CAPC0603X___069",
+      "path": "202606r1/Components/ComponentsTop/C26/User Library-CAPC0603X___071/User Library-CAPC0603X___069",
+      "category": "passives",
+      "bounds_mm": [
+        -8.222138134090303,
+        5.444286101584111,
+        0.9950803899853802,
+        -7.9192861015841105,
+        5.747138134090303,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665321,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature056",
+      "label": "User Library-CAPC0603X___070",
+      "path": "202606r1/Components/ComponentsTop/C26/User Library-CAPC0603X___071/User Library-CAPC0603X___070",
+      "category": "passives",
+      "bounds_mm": [
+        -7.930713898415889,
+        5.152861865909697,
+        0.9950803899853802,
+        -7.627861865909698,
+        5.4557138984158895,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338991,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature057",
+      "label": "User Library-CAPC0603X___072",
+      "path": "202606r1/Components/ComponentsTop/C27/User Library-CAPC0603X___075/User Library-CAPC0603X___072",
+      "category": "passives",
+      "bounds_mm": [
+        -6.712132034355964,
+        5.8128679656440365,
+        1.0091999999999999,
+        -6.287867965644036,
+        6.237132034355964,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192324,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature058",
+      "label": "User Library-CAPC0603X___073",
+      "path": "202606r1/Components/ComponentsTop/C27/User Library-CAPC0603X___075/User Library-CAPC0603X___073",
+      "category": "passives",
+      "bounds_mm": [
+        -6.797138134090303,
+        6.019286101584111,
+        0.9950803899853802,
+        -6.494286101584111,
+        6.322138134090303,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665318,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature059",
+      "label": "User Library-CAPC0603X___074",
+      "path": "202606r1/Components/ComponentsTop/C27/User Library-CAPC0603X___075/User Library-CAPC0603X___074",
+      "category": "passives",
+      "bounds_mm": [
+        -6.505713898415889,
+        5.727861865909698,
+        0.9950803899853802,
+        -6.202861865909698,
+        6.03071389841589,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338993,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature060",
+      "label": "User Library-CAPC0603X___076",
+      "path": "202606r1/Components/ComponentsTop/C28/User Library-CAPC0603X___079/User Library-CAPC0603X___076",
+      "category": "passives",
+      "bounds_mm": [
+        -4.912132034355965,
+        5.3628679656440355,
+        1.0091999999999999,
+        -4.4878679656440355,
+        5.787132034355965,
+        1.3092
+      ],
+      "volume_mm3": 0.02635619449019233,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature061",
+      "label": "User Library-CAPC0603X___077",
+      "path": "202606r1/Components/ComponentsTop/C28/User Library-CAPC0603X___079/User Library-CAPC0603X___077",
+      "category": "passives",
+      "bounds_mm": [
+        -4.7057138984158895,
+        5.569286101584111,
+        0.9950803899853802,
+        -4.402861865909697,
+        5.872138134090303,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature062",
+      "label": "User Library-CAPC0603X___078",
+      "path": "202606r1/Components/ComponentsTop/C28/User Library-CAPC0603X___079/User Library-CAPC0603X___078",
+      "category": "passives",
+      "bounds_mm": [
+        -4.997138134090303,
+        5.277861865909698,
+        0.9950803899853802,
+        -4.694286101584111,
+        5.5807138984158895,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458338991,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature063",
+      "label": "User Library-CAPC0603X___080",
+      "path": "202606r1/Components/ComponentsTop/C13/User Library-CAPC0603X___083/User Library-CAPC0603X___080",
+      "category": "passives",
+      "bounds_mm": [
+        1.9749999999999999,
+        -6.125,
+        1.0091999999999999,
+        2.275,
+        -5.824999999999999,
+        1.3092
+      ],
+      "volume_mm3": 0.026356194490192345,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature064",
+      "label": "User Library-CAPC0603X___081",
+      "path": "202606r1/Components/ComponentsTop/C13/User Library-CAPC0603X___083/User Library-CAPC0603X___081",
+      "category": "passives",
+      "bounds_mm": [
+        2.275,
+        -6.139119610014619,
+        0.9950803899853802,
+        2.425002009275188,
+        -5.81088038998538,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504177844665316,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature065",
+      "label": "User Library-CAPC0603X___082",
+      "path": "202606r1/Components/ComponentsTop/C13/User Library-CAPC0603X___083/User Library-CAPC0603X___082",
+      "category": "passives",
+      "bounds_mm": [
+        1.824997990724891,
+        -6.139119610014619,
+        0.9950803899853802,
+        1.975,
+        -5.81088038998538,
+        1.3233196100146198
+      ],
+      "volume_mm3": 0.013504569458339005,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature066",
+      "label": "RCLAMP3631P.stp",
+      "path": "202606r1/Components/ComponentsTop/D1/RCLAMP3631P.stp003/RCLAMP3631P.stp",
+      "category": "passives",
+      "bounds_mm": [
+        -0.9,
+        -2.1,
+        1.0292,
+        0.09999999999999998,
+        -1.5,
+        1.5292
+      ],
+      "volume_mm3": 0.29982107369153715,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature067",
+      "label": "RCLAMP3631P.stp001",
+      "path": "202606r1/Components/ComponentsTop/D1/RCLAMP3631P.stp003/RCLAMP3631P.stp001",
+      "category": "passives",
+      "bounds_mm": [
+        -0.2,
+        -2.05,
+        0.9991999999999999,
+        0.04999999999999999,
+        -1.5499999999999998,
+        1.0292
+      ],
+      "volume_mm3": 0.0037500000000000007,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature068",
+      "label": "RCLAMP3631P.stp002",
+      "path": "202606r1/Components/ComponentsTop/D1/RCLAMP3631P.stp003/RCLAMP3631P.stp002",
+      "category": "passives",
+      "bounds_mm": [
+        -0.8500000000000001,
+        -2.05,
+        0.9991999999999999,
+        -0.6000000000000001,
+        -1.5499999999999998,
+        1.0292
+      ],
+      "volume_mm3": 0.0036000000000000008,
+      "faces": 7
+    },
+    {
+      "name": "Part__Feature069",
+      "label": "2121340002.stp",
+      "path": "202606r1/Components/ComponentsTop/J1/2121340002.stp",
+      "category": "connector",
+      "bounds_mm": [
+        -2.85000000000001,
+        -7.495000000000092,
+        0.9991999999999972,
+        1.05,
+        -2.705,
+        2.199200000000002
+      ],
+      "volume_mm3": 9.77535723642226,
+      "faces": 143
+    },
+    {
+      "name": "Part__Feature070",
+      "label": "Document",
+      "path": "202606r1/Components/ComponentsTop/R8/Document004/Document",
+      "category": "passives",
+      "bounds_mm": [
+        8.1,
+        2.7500000000000018,
+        1.0491999999999757,
+        8.6,
+        3.05,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.028467075992652045,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature071",
+      "label": "Document001",
+      "path": "202606r1/Components/ComponentsTop/R8/Document004/Document001",
+      "category": "passives",
+      "bounds_mm": [
+        8.15,
+        2.7500000000000018,
+        1.249199999999999,
+        8.549999999999999,
+        3.05,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999954,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature072",
+      "label": "Document002",
+      "path": "202606r1/Components/ComponentsTop/R8/Document004/Document002",
+      "category": "passives",
+      "bounds_mm": [
+        8.5,
+        2.7500000000000018,
+        0.999199999999999,
+        8.65,
+        3.05,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006872019095555846,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature073",
+      "label": "Document003",
+      "path": "202606r1/Components/ComponentsTop/R8/Document004/Document003",
+      "category": "passives",
+      "bounds_mm": [
+        8.049999999999999,
+        2.7500000000000018,
+        0.999199999999999,
+        8.2,
+        3.05,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.00677505803767475,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature074",
+      "label": "Document005",
+      "path": "202606r1/Components/ComponentsTop/R7/Document009/Document005",
+      "category": "passives",
+      "bounds_mm": [
+        0.65,
+        6.500000000000003,
+        1.0491999999999757,
+        1.15,
+        6.800000000000001,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.02846707599265204,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature075",
+      "label": "Document006",
+      "path": "202606r1/Components/ComponentsTop/R7/Document009/Document006",
+      "category": "passives",
+      "bounds_mm": [
+        0.7,
+        6.500000000000003,
+        1.249199999999999,
+        1.1,
+        6.800000000000001,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999962,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature076",
+      "label": "Document007",
+      "path": "202606r1/Components/ComponentsTop/R7/Document009/Document007",
+      "category": "passives",
+      "bounds_mm": [
+        1.05,
+        6.500000000000003,
+        0.999199999999999,
+        1.2,
+        6.800000000000001,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006872019095555793,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature077",
+      "label": "Document008",
+      "path": "202606r1/Components/ComponentsTop/R7/Document009/Document008",
+      "category": "passives",
+      "bounds_mm": [
+        0.6000000000000001,
+        6.500000000000003,
+        0.999199999999999,
+        0.75,
+        6.800000000000001,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006775058037674732,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature078",
+      "label": "Document010",
+      "path": "202606r1/Components/ComponentsTop/R5/Document014/Document010",
+      "category": "passives",
+      "bounds_mm": [
+        -7.282842712474619,
+        5.242157287525382,
+        1.0491999999999757,
+        -6.717157287525382,
+        5.807842712474617,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.028467075992652052,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature079",
+      "label": "Document011",
+      "path": "202606r1/Components/ComponentsTop/R5/Document014/Document011",
+      "category": "passives",
+      "bounds_mm": [
+        -7.247487373415292,
+        5.277512626584708,
+        1.249199999999999,
+        -6.75251262658471,
+        5.772487373415291,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999961,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature080",
+      "label": "Document012",
+      "path": "202606r1/Components/ComponentsTop/R5/Document014/Document012",
+      "category": "passives",
+      "bounds_mm": [
+        -7.318198051533947,
+        5.525,
+        0.999199999999999,
+        -7.000000000000002,
+        5.843198051533945,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.0068720190955557856,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature081",
+      "label": "Document013",
+      "path": "202606r1/Components/ComponentsTop/R5/Document014/Document013",
+      "category": "passives",
+      "bounds_mm": [
+        -6.999999999999999,
+        5.206801948466054,
+        0.999199999999999,
+        -6.681801948466055,
+        5.524999999999999,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.0067750580376747345,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature082",
+      "label": "Document015",
+      "path": "202606r1/Components/ComponentsTop/R6/Document019/Document015",
+      "category": "passives",
+      "bounds_mm": [
+        -5.907842712474619,
+        5.792157287525382,
+        1.0491999999999757,
+        -5.342157287525382,
+        6.357842712474617,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.028467075992652045,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature083",
+      "label": "Document016",
+      "path": "202606r1/Components/ComponentsTop/R6/Document019/Document016",
+      "category": "passives",
+      "bounds_mm": [
+        -5.872487373415292,
+        5.827512626584708,
+        1.249199999999999,
+        -5.37751262658471,
+        6.32248737341529,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999962,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature084",
+      "label": "Document017",
+      "path": "202606r1/Components/ComponentsTop/R6/Document019/Document017",
+      "category": "passives",
+      "bounds_mm": [
+        -5.943198051533947,
+        6.075,
+        0.999199999999999,
+        -5.625000000000002,
+        6.393198051533945,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006872019095555789,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature085",
+      "label": "Document018",
+      "path": "202606r1/Components/ComponentsTop/R6/Document019/Document018",
+      "category": "passives",
+      "bounds_mm": [
+        -5.624999999999999,
+        5.7568019484660535,
+        0.999199999999999,
+        -5.306801948466055,
+        6.074999999999998,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006775058037674739,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature086",
+      "label": "Document020",
+      "path": "202606r1/Components/ComponentsTop/R1/Document024/Document020",
+      "category": "passives",
+      "bounds_mm": [
+        1.85,
+        -4.15,
+        1.0491999999999757,
+        2.35,
+        -3.850000000000002,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.028467075992652052,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature087",
+      "label": "Document021",
+      "path": "202606r1/Components/ComponentsTop/R1/Document024/Document021",
+      "category": "passives",
+      "bounds_mm": [
+        1.9000000000000001,
+        -4.15,
+        1.249199999999999,
+        2.3000000000000003,
+        -3.850000000000002,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999965,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature088",
+      "label": "Document022",
+      "path": "202606r1/Components/ComponentsTop/R1/Document024/Document022",
+      "category": "passives",
+      "bounds_mm": [
+        1.8,
+        -4.15,
+        0.999199999999999,
+        1.9500000000000002,
+        -3.850000000000002,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006872019095555797,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature089",
+      "label": "Document023",
+      "path": "202606r1/Components/ComponentsTop/R1/Document024/Document023",
+      "category": "passives",
+      "bounds_mm": [
+        2.25,
+        -4.15,
+        0.999199999999999,
+        2.4,
+        -3.850000000000002,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006775058037674728,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature090",
+      "label": "Document025",
+      "path": "202606r1/Components/ComponentsTop/R2/Document029/Document025",
+      "category": "passives",
+      "bounds_mm": [
+        1.85,
+        -4.8500000000000005,
+        1.0491999999999757,
+        2.35,
+        -4.5500000000000025,
+        1.249199999999999
+      ],
+      "volume_mm3": 0.028467075992652045,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature091",
+      "label": "Document026",
+      "path": "202606r1/Components/ComponentsTop/R2/Document029/Document026",
+      "category": "passives",
+      "bounds_mm": [
+        1.9000000000000001,
+        -4.8500000000000005,
+        1.249199999999999,
+        2.3000000000000003,
+        -4.5500000000000025,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.005999999999999963,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature092",
+      "label": "Document027",
+      "path": "202606r1/Components/ComponentsTop/R2/Document029/Document027",
+      "category": "passives",
+      "bounds_mm": [
+        1.8,
+        -4.8500000000000005,
+        0.999199999999999,
+        1.9500000000000002,
+        -4.5500000000000025,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006872019095555795,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature093",
+      "label": "Document028",
+      "path": "202606r1/Components/ComponentsTop/R2/Document029/Document028",
+      "category": "passives",
+      "bounds_mm": [
+        2.25,
+        -4.8500000000000005,
+        0.999199999999999,
+        2.4,
+        -4.5500000000000025,
+        1.299199999999999
+      ],
+      "volume_mm3": 0.006775058037674723,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature094",
+      "label": "XRCGB.STEP",
+      "path": "202606r1/Components/ComponentsTop/X1/XRCGB.STEP",
+      "category": "passives",
+      "bounds_mm": [
+        7.300000000000001,
+        4.775,
+        0.9991999999999999,
+        9.3,
+        6.375,
+        1.6482000000000003
+      ],
+      "volume_mm3": 1.7907002565327976,
+      "faces": 76
+    },
+    {
+      "name": "Part__Feature095",
+      "label": "AANI-NI-0014.STEP",
+      "path": "202606r1/Components/ComponentsTop/U3/AANI-NI-0014.STEP",
+      "category": "antenna",
+      "bounds_mm": [
+        -9.8,
+        -0.9500000000000003,
+        0.9993592653589795,
+        -5.899999999999999,
+        4.550000000000001,
+        1.4851999999999999
+      ],
+      "volume_mm3": 1.504325464336299,
+      "faces": 176
+    },
+    {
+      "name": "Part__Feature096",
+      "label": "Body8",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body8",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -1.0152896315467854,
+        -5.515289631546783,
+        -0.7540174183063809,
+        1.0152896315467834,
+        -3.4847103684532184,
+        -0.11999998645781973
+      ],
+      "volume_mm3": 0.4716938193199906,
+      "faces": 96
+    },
+    {
+      "name": "Part__Feature097",
+      "label": "Body7",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body7",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -1.0152896315467854,
+        -5.515289631546783,
+        -0.23999998645781992,
+        1.0152896315467834,
+        -3.4847103684532184,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.0767544399131619,
+      "faces": 128
+    },
+    {
+      "name": "Part__Feature098",
+      "label": "Body6",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body6",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.389,
+        -4.892000000000001,
+        -0.10199998645781992,
+        -0.28900000000000003,
+        -4.792000000000002,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769361e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature099",
+      "label": "Body001",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body001",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.07550000000000001,
+        -4.721,
+        -0.10199998645781992,
+        0.024499999999999994,
+        -4.621,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769384e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature100",
+      "label": "Body002",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body002",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.11900000000000001,
+        -4.55,
+        -0.10199998645781992,
+        0.21900000000000003,
+        -4.45,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769396e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature101",
+      "label": "Body003",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body003",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.18,
+        -4.55,
+        -0.10199998645781992,
+        -0.08,
+        -4.45,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769395e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature102",
+      "label": "Body004",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body004",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.028999999999999984,
+        -4.207999999999998,
+        -0.10199998645781992,
+        0.129,
+        -4.107999999999999,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769362e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature103",
+      "label": "Body005",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body005",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.389,
+        -4.55,
+        -0.10199998645781992,
+        -0.28900000000000003,
+        -4.45,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769397e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature104",
+      "label": "Body006",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body006",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.18,
+        -4.207999999999998,
+        -0.10199998645781992,
+        -0.08,
+        -4.107999999999999,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769361e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature105",
+      "label": "Body007",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body007",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.2845,
+        -4.721,
+        -0.10199998645781992,
+        -0.1845,
+        -4.621,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769381e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature106",
+      "label": "Body008",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body008",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.07550000000000001,
+        -4.379,
+        -0.10199998645781992,
+        0.024499999999999994,
+        -4.279,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769384e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature107",
+      "label": "Body009",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body009",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.18,
+        -4.892000000000001,
+        -0.10199998645781992,
+        -0.08,
+        -4.792000000000002,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769361e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature108",
+      "label": "Body010",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body010",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.2845,
+        -4.379,
+        -0.10199998645781992,
+        -0.1845,
+        -4.279,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769383e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature109",
+      "label": "Body011",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body011",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.028999999999999984,
+        -4.892000000000001,
+        -0.10199998645781992,
+        0.129,
+        -4.792000000000002,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769362e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature110",
+      "label": "Body012",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body013/Body012",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.389,
+        -4.207999999999998,
+        -0.10199998645781992,
+        -0.28900000000000003,
+        -4.107999999999999,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 9.424777960769362e-05,
+      "faces": 4
+    },
+    {
+      "name": "Part__Feature111",
+      "label": "Body5",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body5",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.925,
+        -5.425000000000001,
+        -0.10199998645781992,
+        0.925,
+        -3.575,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.005914793703097042,
+      "faces": 66
+    },
+    {
+      "name": "Part__Feature112",
+      "label": "Body014",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body014",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.38,
+        -4.810000000000001,
+        -0.10199998645781992,
+        0.5452,
+        -4.71,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.00016929600000000172,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature113",
+      "label": "Body015",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body015",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.3799999999999998,
+        -4.29,
+        -0.10199998645781992,
+        0.5452,
+        -4.189999999999999,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.00017237036971828822,
+      "faces": 14
+    },
+    {
+      "name": "Part__Feature114",
+      "label": "Body016",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body016",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.38,
+        -4.680000000000001,
+        -0.10199998645781992,
+        0.5452,
+        -4.58,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.00016929599999999928,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature115",
+      "label": "Body017",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body017",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.38,
+        -4.42,
+        -0.10199998645781992,
+        0.5452,
+        -4.319999999999999,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.00016970834459984974,
+      "faces": 12
+    },
+    {
+      "name": "Part__Feature116",
+      "label": "Body018",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body019/Body018",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.38,
+        -4.55,
+        -0.10199998645781992,
+        0.5452,
+        -4.45,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.0001695557783999997,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature117",
+      "label": "Body4",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body4",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.775000000000021,
+        -5.275000000000021,
+        -0.11999998645781992,
+        0.775000000000021,
+        -3.724999999999979,
+        -0.08999998645781992
+      ],
+      "volume_mm3": 0.0645723920122495,
+      "faces": 52
+    },
+    {
+      "name": "Part__Feature118",
+      "label": "Body3",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body3",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -1.0,
+        -5.5,
+        -0.08999998645781992,
+        1.0,
+        -3.5,
+        -0.029999986457819927
+      ],
+      "volume_mm3": 0.23999999999999994,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature119",
+      "label": "Body2",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body2",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.900000000000001,
+        -4.125,
+        -0.029999986457819927,
+        -0.625,
+        -3.875,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature120",
+      "label": "Body020",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body020",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.625,
+        -5.125,
+        -0.029999986457819927,
+        0.900000000000001,
+        -4.875,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature121",
+      "label": "Body021",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body021",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.75,
+        -5.4,
+        -0.029999986457819927,
+        0.900000000000001,
+        -5.25,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.00013500000000000114,
+      "faces": 5
+    },
+    {
+      "name": "Part__Feature122",
+      "label": "Body022",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body022",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.859999999999994,
+        -4.325,
+        -0.029999986457819927,
+        1.0,
+        -4.239999999999994,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 8.776991272342453e-05,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature123",
+      "label": "Body023",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body023",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.12499999999999999,
+        -5.4,
+        -0.029999986457819927,
+        0.375,
+        -5.125,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000001,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature124",
+      "label": "Body024",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body024",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.625,
+        -4.625,
+        -0.029999986457819927,
+        0.900000000000001,
+        -4.375,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature125",
+      "label": "Body025",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body025",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.375,
+        -5.4,
+        -0.029999986457819927,
+        -0.125,
+        -5.125,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000001,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature126",
+      "label": "Body026",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body026",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.625,
+        -4.125,
+        -0.029999986457819927,
+        0.900000000000001,
+        -3.875,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature127",
+      "label": "Body027",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body027",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.900000000000001,
+        -5.125,
+        -0.029999986457819927,
+        -0.625,
+        -4.875,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature128",
+      "label": "Body028",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body028",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        0.12499999999999999,
+        -3.875,
+        -0.029999986457819927,
+        0.375,
+        -3.6,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008249999999999996,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature129",
+      "label": "Body029",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body029",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.900000000000001,
+        -4.625,
+        -0.029999986457819927,
+        -0.625,
+        -4.375,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008250000000000028,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature130",
+      "label": "Body030",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body031/Body030",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.375,
+        -3.875,
+        -0.029999986457819927,
+        -0.125,
+        -3.6,
+        -0.01799998645781993
+      ],
+      "volume_mm3": 0.0008249999999999996,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature131",
+      "label": "Body1",
+      "path": "202606r1/Components/ComponentsBottom/U2/BMP390.stp001/BMP390.stp/Body1",
+      "category": "pressure_sensor",
+      "bounds_mm": [
+        -0.95,
+        -5.450000000000001,
+        -0.029999986457819927,
+        1.0,
+        -3.549999999999999,
+        1.3542180071768328e-08
+      ],
+      "volume_mm3": 0.08332778760909566,
+      "faces": 57
+    },
+    {
+      "name": "Part__Feature132",
+      "label": "PlaceBound_U1",
+      "path": "202606r1/PlaceBound/PlaceBoundTop/PlaceBound_U1",
+      "category": "package_envelopes",
+      "bounds_mm": [
+        0.0499999999999998,
+        -0.3500000000000001,
+        0.9992,
+        6.05,
+        5.65,
+        1.9992
+      ],
+      "volume_mm3": 36.0,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature133",
+      "label": "SILKSCREEN_TOP_Model_66_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_66_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.8800000000000119,
+        3.8016,
+        1.0119,
+        -1.5,
+        3.9983,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005400969501484775,
+      "faces": 80
+    },
+    {
+      "name": "Part__Feature134",
+      "label": "SILKSCREEN_TOP_Model_65_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_65_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        7.7016,
+        3.275,
+        1.0119,
+        7.8983,
+        3.6550000000000122,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005400969501477627,
+      "faces": 80
+    },
+    {
+      "name": "Part__Feature135",
+      "label": "SILKSCREEN_TOP_Model_64_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_64_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.252300000000489,
+        5.883699999999577,
+        1.0119,
+        -4.938,
+        6.197900000000248,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005400666199451112,
+      "faces": 80
+    },
+    {
+      "name": "Part__Feature136",
+      "label": "SILKSCREEN_TOP_Model_63_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_63_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -8.100000000000191,
+        2.141599999999894,
+        1.0119,
+        -7.716599999999895,
+        2.5800000000001915,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0007112849613179075,
+      "faces": 104
+    },
+    {
+      "name": "Part__Feature137",
+      "label": "SILKSCREEN_TOP_Model_62_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_62_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        0.0116,
+        -1.655,
+        1.0119,
+        0.1883,
+        -1.2749999999999457,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004920463518853714,
+      "faces": 74
+    },
+    {
+      "name": "Part__Feature138",
+      "label": "SILKSCREEN_TOP_Model_61_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_61(2)/SILKSCREEN_TOP_Model_61_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.797700000000353,
+        5.143999999999425,
+        1.0119,
+        -5.4851,
+        5.4392000000000005,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004919735460154769,
+      "faces": 73
+    },
+    {
+      "name": "Part__Feature139",
+      "label": "SILKSCREEN_TOP_Model_61_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_61(2)/SILKSCREEN_TOP_Model_61_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -8.557300000000353,
+        4.907899999999424,
+        1.0119,
+        -8.2447,
+        5.2031,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004919735460154766,
+      "faces": 73
+    },
+    {
+      "name": "Part__Feature140",
+      "label": "SILKSCREEN_TOP_Model_60_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_60(2)/SILKSCREEN_TOP_Model_60_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        1.683299999999574,
+        7.199999999999946,
+        1.0119,
+        1.8666000000000302,
+        7.579999999999999,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000505873492834035,
+      "faces": 69
+    },
+    {
+      "name": "Part__Feature141",
+      "label": "SILKSCREEN_TOP_Model_60_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_60(2)/SILKSCREEN_TOP_Model_60_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -9.416600000000425,
+        2.374999999999946,
+        1.0119,
+        -9.23329999999997,
+        2.755,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005058734928340349,
+      "faces": 69
+    },
+    {
+      "name": "Part__Feature142",
+      "label": "SILKSCREEN_TOP_Model_59_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_59_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        8.58329999999997,
+        6.245,
+        1.0119,
+        8.766600000000425,
+        6.625000000000012,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005058721335014926,
+      "faces": 69
+    },
+    {
+      "name": "Part__Feature143",
+      "label": "SILKSCREEN_TOP_Model_58_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_58(2)/SILKSCREEN_TOP_Model_58_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -8.100000000000351,
+        1.5515999999999999,
+        1.0119,
+        -7.719999999999946,
+        1.7483,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004901506624546409,
+      "faces": 66
+    },
+    {
+      "name": "Part__Feature144",
+      "label": "SILKSCREEN_TOP_Model_58_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_58(2)/SILKSCREEN_TOP_Model_58_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -0.5750000000003496,
+        1.4516,
+        1.0119,
+        -0.1949999999999457,
+        1.6483,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004901506624546409,
+      "faces": 66
+    },
+    {
+      "name": "Part__Feature145",
+      "label": "SILKSCREEN_TOP_Model_57_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_57_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        7.0266,
+        7.449999999999733,
+        1.0119,
+        7.2233,
+        7.830000000000012,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004901506759371146,
+      "faces": 66
+    },
+    {
+      "name": "Part__Feature146",
+      "label": "SILKSCREEN_TOP_Model_56_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_56(2)/SILKSCREEN_TOP_Model_56_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.584100000000022,
+        4.885599999999525,
+        1.0119,
+        -5.2346,
+        5.263200000000001,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005482525396989473,
+      "faces": 41
+    },
+    {
+      "name": "Part__Feature147",
+      "label": "SILKSCREEN_TOP_Model_56_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_56(2)/SILKSCREEN_TOP_Model_56_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -6.959100000000022,
+        4.335599999999524,
+        1.0119,
+        -6.6096,
+        4.7132000000000005,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005482525396989474,
+      "faces": 41
+    },
+    {
+      "name": "Part__Feature148",
+      "label": "SILKSCREEN_TOP_Model_55_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_55_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.61000000000013,
+        -2.2466,
+        1.0119,
+        -1.39,
+        -2.1533,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00012437085256496386,
+      "faces": 42
+    },
+    {
+      "name": "Part__Feature149",
+      "label": "SILKSCREEN_TOP_Model_54_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_54(2)/SILKSCREEN_TOP_Model_54_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.8582999999997485,
+        -4.755,
+        1.0119,
+        3.0416000000000003,
+        -4.37499999999956,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005482406027946278,
+      "faces": 36
+    },
+    {
+      "name": "Part__Feature150",
+      "label": "SILKSCREEN_TOP_Model_54_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_54(2)/SILKSCREEN_TOP_Model_54_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        2.8582999999997485,
+        -5.455,
+        1.0119,
+        3.0416000000000003,
+        -5.0749999999995605,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005482406027946278,
+      "faces": 36
+    },
+    {
+      "name": "Part__Feature151",
+      "label": "SILKSCREEN_TOP_Model_53_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_53_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.0416000000000004,
+        7.024999999999562,
+        1.0119,
+        0.1416000000002513,
+        7.405,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00054811360279374,
+      "faces": 36
+    },
+    {
+      "name": "Part__Feature152",
+      "label": "SILKSCREEN_TOP_Model_52_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_52_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        7.4083,
+        3.2749999999995616,
+        1.0119,
+        7.591600000000251,
+        3.655,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0005482406027937421,
+      "faces": 36
+    },
+    {
+      "name": "Part__Feature153",
+      "label": "SILKSCREEN_TOP_Model_51_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_51_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        3.725,
+        -1.6083000000000003,
+        1.0119,
+        4.105,
+        -1.3916,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004512186336235042,
+      "faces": 20
+    },
+    {
+      "name": "Part__Feature154",
+      "label": "SILKSCREEN_TOP_Model_50_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_50_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -2.975,
+        -0.7000000000000003,
+        1.0119,
+        -1.675,
+        0.0,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.004544745566751468,
+      "faces": 14
+    },
+    {
+      "name": "Part__Feature155",
+      "label": "SILKSCREEN_TOP_Model_49_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_49_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.66,
+        2.0716,
+        1.0119,
+        -5.44,
+        2.1666000000000007,
+        1.0246000000000002
+      ],
+      "volume_mm3": 9.332985608656003e-05,
+      "faces": 68
+    },
+    {
+      "name": "Part__Feature156",
+      "label": "SILKSCREEN_TOP_Model_48_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_48_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -7.425000000000491,
+        2.1999999999999997,
+        1.0119,
+        -7.045,
+        2.7233000000000005,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0007279552626519435,
+      "faces": 66
+    },
+    {
+      "name": "Part__Feature157",
+      "label": "SILKSCREEN_TOP_Model_47_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_47_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        6.469999999999605,
+        2.8265999999999996,
+        1.0119,
+        6.850000000000491,
+        3.0266,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000423013430564255,
+      "faces": 64
+    },
+    {
+      "name": "Part__Feature158",
+      "label": "SILKSCREEN_TOP_Model_46_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_46_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.0766,
+        -5.550000000000492,
+        1.0119,
+        2.2766,
+        -5.169999999999606,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00042301343056387776,
+      "faces": 64
+    },
+    {
+      "name": "Part__Feature159",
+      "label": "SILKSCREEN_TOP_Model_45_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_45_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        6.7265999999999995,
+        7.45,
+        1.0119,
+        6.9266,
+        7.83000000000002,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004230286746349826,
+      "faces": 64
+    },
+    {
+      "name": "Part__Feature160",
+      "label": "SILKSCREEN_TOP_Model_44_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_44(2)/SILKSCREEN_TOP_Model_44_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        5.7848999999999995,
+        -1.07000000000054,
+        1.0119,
+        5.965000000000384,
+        -0.755,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00030025827018785134,
+      "faces": 63
+    },
+    {
+      "name": "Part__Feature161",
+      "label": "SILKSCREEN_TOP_Model_44_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_44(2)/SILKSCREEN_TOP_Model_44_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -7.215000000000001,
+        -1.07000000000054,
+        1.0119,
+        -7.034899999999616,
+        -0.755,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00030025827018785134,
+      "faces": 63
+    },
+    {
+      "name": "Part__Feature162",
+      "label": "SILKSCREEN_TOP_Model_43_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_43_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.6726,
+        5.4696,
+        1.0119,
+        -5.354299999999821,
+        5.795,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039013818280392683,
+      "faces": 61
+    },
+    {
+      "name": "Part__Feature163",
+      "label": "SILKSCREEN_TOP_Model_42_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_42(2)/SILKSCREEN_TOP_Model_42_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -6.72,
+        5.052299999999999,
+        1.0119,
+        -6.3946000000000005,
+        5.370600000000178,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039013818280403715,
+      "faces": 61
+    },
+    {
+      "name": "Part__Feature164",
+      "label": "SILKSCREEN_TOP_Model_42_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_42(2)/SILKSCREEN_TOP_Model_42_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -8.145,
+        4.4773,
+        1.0119,
+        -7.8196,
+        4.795600000000179,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039013818280403693,
+      "faces": 61
+    },
+    {
+      "name": "Part__Feature165",
+      "label": "SILKSCREEN_TOP_Model_41_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_41_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -2.295,
+        0.34659999999999996,
+        1.0119,
+        -1.98,
+        0.5533000000002245,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00028017218929174485,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature166",
+      "label": "SILKSCREEN_TOP_Model_40_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_40(3)/SILKSCREEN_TOP_Model_40_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -7.425000000000191,
+        3.1165999999998943,
+        1.0119,
+        -7.044999999999646,
+        3.3333,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463050466,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature167",
+      "label": "SILKSCREEN_TOP_Model_40_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_40(3)/SILKSCREEN_TOP_Model_40_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -0.575000000000191,
+        2.0415999999998946,
+        1.0119,
+        -0.194999999999647,
+        2.2582999999999998,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463050466,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature168",
+      "label": "SILKSCREEN_TOP_Model_40_Inst002",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_40(3)/SILKSCREEN_TOP_Model_40_Inst002",
+      "category": "markings",
+      "bounds_mm": [
+        -0.700000000000191,
+        0.8665999999998946,
+        1.0119,
+        -0.319999999999647,
+        1.0833,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463050477,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature169",
+      "label": "SILKSCREEN_TOP_Model_39_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_39(2)/SILKSCREEN_TOP_Model_39_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        7.624999999999647,
+        2.4415999999998945,
+        1.0119,
+        8.005000000000193,
+        2.6582999999999997,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000390152123012512,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature170",
+      "label": "SILKSCREEN_TOP_Model_39_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_39(2)/SILKSCREEN_TOP_Model_39_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        3.724999999999647,
+        -1.3083000000001053,
+        1.0119,
+        4.105000000000191,
+        -1.0916,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000390152123012512,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature171",
+      "label": "SILKSCREEN_TOP_Model_38_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_38_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        0.29159999999989467,
+        -1.655000000000191,
+        1.0119,
+        0.5083,
+        -1.2749999999996473,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003901521230124848,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature172",
+      "label": "SILKSCREEN_TOP_Model_37_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_37(2)/SILKSCREEN_TOP_Model_37_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        9.166599999999896,
+        6.2449999999996475,
+        1.0119,
+        9.3833,
+        6.625000000000191,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463101917,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature173",
+      "label": "SILKSCREEN_TOP_Model_37_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_37(2)/SILKSCREEN_TOP_Model_37_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        4.491599999999894,
+        5.919999999999647,
+        1.0119,
+        4.7083,
+        6.300000000000191,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003901484446310191,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature174",
+      "label": "SILKSCREEN_TOP_Model_36_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_36_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        6.469999999999647,
+        2.5166,
+        1.0119,
+        6.8500000000001915,
+        2.733300000000105,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463029725,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature175",
+      "label": "SILKSCREEN_TOP_Model_35_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_35(2)/SILKSCREEN_TOP_Model_35_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.2550000000001913,
+        5.3916,
+        1.0119,
+        -0.8749999999996472,
+        5.6083000000001055,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003901521230121782,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature176",
+      "label": "SILKSCREEN_TOP_Model_35_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_35(2)/SILKSCREEN_TOP_Model_35_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -1.8800000000001913,
+        3.4916,
+        1.0119,
+        -1.4999999999996472,
+        3.7083000000001056,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039015212301217803,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature177",
+      "label": "SILKSCREEN_TOP_Model_34_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_34_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        1.4666,
+        -5.550000000000191,
+        1.0119,
+        1.683300000000105,
+        -5.169999999999647,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039014844463053627,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature178",
+      "label": "SILKSCREEN_TOP_Model_33_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_33(3)/SILKSCREEN_TOP_Model_33_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        6.4166,
+        7.449999999999648,
+        1.0119,
+        6.633300000000105,
+        7.830000000000191,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039015212301243796,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature179",
+      "label": "SILKSCREEN_TOP_Model_33_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_33(3)/SILKSCREEN_TOP_Model_33_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        1.3666,
+        7.199999999999648,
+        1.0119,
+        1.583300000000105,
+        7.580000000000191,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00039015212301243813,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature180",
+      "label": "SILKSCREEN_TOP_Model_33_Inst002",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_33(3)/SILKSCREEN_TOP_Model_33_Inst002",
+      "category": "markings",
+      "bounds_mm": [
+        4.5666,
+        7.074999999999648,
+        1.0119,
+        4.783300000000105,
+        7.455000000000191,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003901521230124381,
+      "faces": 59
+    },
+    {
+      "name": "Part__Feature181",
+      "label": "SILKSCREEN_TOP_Model_32_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_32_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -7.187600000000001,
+        4.566499999999524,
+        1.0119,
+        -6.846699999999709,
+        4.892500000000173,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000441203605204617,
+      "faces": 55
+    },
+    {
+      "name": "Part__Feature182",
+      "label": "SILKSCREEN_TOP_Model_31_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_31_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        4.2016,
+        5.92,
+        1.0119,
+        4.398300000000001,
+        6.300000000000492,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004410498778300386,
+      "faces": 54
+    },
+    {
+      "name": "Part__Feature183",
+      "label": "SILKSCREEN_TOP_Model_30_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_30_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.468400000000399,
+        5.6419,
+        1.0119,
+        -5.120399999999524,
+        5.995200000000261,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330292933086985,
+      "faces": 51
+    },
+    {
+      "name": "Part__Feature184",
+      "label": "SILKSCREEN_TOP_Model_29_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_29(2)/SILKSCREEN_TOP_Model_29_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -6.920200000000262,
+        5.256499999999601,
+        1.0119,
+        -6.5669,
+        5.604500000000477,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330292933089182,
+      "faces": 51
+    },
+    {
+      "name": "Part__Feature185",
+      "label": "SILKSCREEN_TOP_Model_29_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_29(2)/SILKSCREEN_TOP_Model_29_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -8.345200000000261,
+        4.681499999999601,
+        1.0119,
+        -7.9919,
+        5.029500000000477,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330292933089181,
+      "faces": 51
+    },
+    {
+      "name": "Part__Feature186",
+      "label": "SILKSCREEN_TOP_Model_28_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_28_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -10.000000000000092,
+        2.3749999999996474,
+        1.0119,
+        -9.816599999999895,
+        2.7550000000001913,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003159550751739562,
+      "faces": 50
+    },
+    {
+      "name": "Part__Feature187",
+      "label": "SILKSCREEN_TOP_Model_27_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_27_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        6.0349,
+        -1.07,
+        1.0119,
+        6.215,
+        -0.7549999999997287,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003163695039513135,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature188",
+      "label": "SILKSCREEN_TOP_Model_26_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_26(2)/SILKSCREEN_TOP_Model_26_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        5.179899999999999,
+        7.074999999999999,
+        1.0119,
+        5.369999999999999,
+        7.454999999999999,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.000433057085373934,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature189",
+      "label": "SILKSCREEN_TOP_Model_26_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_26(2)/SILKSCREEN_TOP_Model_26_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -7.62,
+        2.1999999999999997,
+        1.0119,
+        -7.4299,
+        2.58,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330570853739338,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature190",
+      "label": "SILKSCREEN_TOP_Model_25_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_25(3)/SILKSCREEN_TOP_Model_25_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -7.425,
+        2.8299,
+        1.0119,
+        -7.044999999999999,
+        3.02,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330891362137999,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature191",
+      "label": "SILKSCREEN_TOP_Model_25_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_25(3)/SILKSCREEN_TOP_Model_25_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -8.100000000000001,
+        1.8549,
+        1.0119,
+        -7.72,
+        2.045,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00043308913621379925,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature192",
+      "label": "SILKSCREEN_TOP_Model_25_Inst002",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_25(3)/SILKSCREEN_TOP_Model_25_Inst002",
+      "category": "markings",
+      "bounds_mm": [
+        -0.7000000000000001,
+        0.5799,
+        1.0119,
+        -0.31999999999999995,
+        0.77,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00043308913621379973,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature193",
+      "label": "SILKSCREEN_TOP_Model_24_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_24_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.5549,
+        -5.455,
+        1.0119,
+        2.745,
+        -5.075,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00043305708537507754,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature194",
+      "label": "SILKSCREEN_TOP_Model_23_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_23_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        8.8799,
+        6.245,
+        1.0119,
+        9.07,
+        6.625,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0004330891362127363,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature195",
+      "label": "SILKSCREEN_TOP_Model_22_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_22_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.3433,
+        -2.2850000000002595,
+        1.0119,
+        -1.25659999999964,
+        -2.065,
+        1.0246000000000002
+      ],
+      "volume_mm3": 7.146289433875976e-05,
+      "faces": 31
+    },
+    {
+      "name": "Part__Feature196",
+      "label": "SILKSCREEN_TOP_Model_21_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_21_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.6032999999999995,
+        6.389999999999737,
+        1.0119,
+        2.696600000000004,
+        6.61,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00011371467371707093,
+      "faces": 30
+    },
+    {
+      "name": "Part__Feature197",
+      "label": "SILKSCREEN_TOP_Model_20_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_20_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -5.660000000000119,
+        2.203299999999996,
+        1.0119,
+        -5.44,
+        2.2966,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00011368229718536495,
+      "faces": 30
+    },
+    {
+      "name": "Part__Feature198",
+      "label": "SILKSCREEN_TOP_Model_19_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_19_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -7.158900000000006,
+        5.4366,
+        1.0119,
+        -6.823699999999486,
+        5.762300000000001,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00032148867120795243,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature199",
+      "label": "SILKSCREEN_TOP_Model_18_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_18_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.2550000000000003,
+        5.7083,
+        1.0119,
+        -0.8749999999999997,
+        5.8916,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003215285695996618,
+      "faces": 25
+    },
+    {
+      "name": "Part__Feature200",
+      "label": "SILKSCREEN_TOP_Model_17_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_17_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        0.2582999999999996,
+        7.0249999999999995,
+        1.0119,
+        0.44160000000000005,
+        7.405,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00032152856959886353,
+      "faces": 25
+    },
+    {
+      "name": "Part__Feature201",
+      "label": "SILKSCREEN_TOP_Model_16_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_16_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        8.654899999999923,
+        4.1649999999999245,
+        1.0119,
+        8.745000000000077,
+        4.385000000000077,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00010750264762884629,
+      "faces": 22
+    },
+    {
+      "name": "Part__Feature202",
+      "label": "SILKSCREEN_TOP_Model_15_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_15_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.2000000000000848,
+        -2.285,
+        1.0119,
+        -1.1399999999999997,
+        -2.065,
+        1.0246000000000002
+      ],
+      "volume_mm3": 7.207332726065996e-05,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature203",
+      "label": "SILKSCREEN_TOP_Model_14_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_14_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.749899999999999,
+        6.39,
+        1.0119,
+        2.8099000000000007,
+        6.61,
+        1.0246000000000002
+      ],
+      "volume_mm3": 7.208464810267836e-05,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature204",
+      "label": "SILKSCREEN_TOP_Model_13_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_13_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.61,
+        -2.1000000000000005,
+        1.0119,
+        -1.3899999999999997,
+        -2.04,
+        1.0246000000000002
+      ],
+      "volume_mm3": 7.208464810267755e-05,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature205",
+      "label": "SILKSCREEN_TOP_Model_12_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_12_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -6.9350000000003265,
+        -1.07,
+        1.0119,
+        -6.815,
+        -0.755,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00021940693759807704,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature206",
+      "label": "SILKSCREEN_TOP_Model_11_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_11_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -2.295,
+        0.14,
+        1.0119,
+        -1.98,
+        0.26000000000032647,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00021940693759833811,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature207",
+      "label": "SILKSCREEN_TOP_Model_10_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_10_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        8.54,
+        4.165,
+        1.0119,
+        8.600000000000085,
+        4.385,
+        1.0246000000000002
+      ],
+      "volume_mm3": 7.207332726065702e-05,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature208",
+      "label": "SILKSCREEN_TOP_Model_9_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_9_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        1.809899999999751,
+        -5.55,
+        1.0119,
+        1.9399,
+        -5.17,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.00031286388583495327,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature209",
+      "label": "SILKSCREEN_TOP_Model_8_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_8(2)/SILKSCREEN_TOP_Model_8_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        4.9099,
+        7.074999999999999,
+        1.0119,
+        5.039899999999999,
+        7.455,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128846828338584,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature210",
+      "label": "SILKSCREEN_TOP_Model_8_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_8(2)/SILKSCREEN_TOP_Model_8_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        -9.69,
+        2.3749999999999996,
+        1.0119,
+        -9.56,
+        2.7550000000000003,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128846828338585,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature211",
+      "label": "SILKSCREEN_TOP_Model_7_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_7(2)/SILKSCREEN_TOP_Model_7_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        7.625,
+        2.1849999999999996,
+        1.0119,
+        8.005,
+        2.315,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128846828338578,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature212",
+      "label": "SILKSCREEN_TOP_Model_7_Inst001",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_7(2)/SILKSCREEN_TOP_Model_7_Inst001",
+      "category": "markings",
+      "bounds_mm": [
+        7.625,
+        1.8849999999999996,
+        1.0119,
+        8.005,
+        2.015,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128846828338582,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature213",
+      "label": "SILKSCREEN_TOP_Model_6_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_6_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.5750000000000002,
+        1.785,
+        1.0119,
+        -0.1949999999999999,
+        1.9150000000002487,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128638858349612,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature214",
+      "label": "SILKSCREEN_TOP_Model_5_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_5_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        2.5849999999999995,
+        -4.755,
+        1.0119,
+        2.715,
+        -4.375,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0003128846828338442,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature215",
+      "label": "SILKSCREEN_TOP_Model_4_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_4_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        5.5825,
+        -0.4125,
+        1.0119,
+        6.1125,
+        0.1075,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.001415206185061474,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature216",
+      "label": "SILKSCREEN_TOP_Model_3_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_3_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.0125,
+        -0.4125,
+        1.0119,
+        0.5085,
+        0.1085,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0014025061850614735,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature217",
+      "label": "SILKSCREEN_TOP_Model_2_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_2_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        5.5875,
+        5.1825,
+        1.0119,
+        6.1125,
+        5.7125,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.0014231436850614732,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature218",
+      "label": "SILKSCREEN_TOP_Model_1_Inst",
+      "path": "202606r1/SILKSCREEN_TOP (86 bodies)/SILKSCREEN_TOP_Model_1_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.0125,
+        5.1875,
+        1.0119,
+        0.5125,
+        5.7125,
+        1.0246000000000002
+      ],
+      "volume_mm3": 0.001415206185061474,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature219",
+      "label": "SOLDERMASK_TOP_Model_1_Inst",
+      "path": "202606r1/SOLDERMASK_TOP (1 bodies)/SOLDERMASK_TOP_Model_1_Inst",
+      "category": "board",
+      "bounds_mm": [
+        -10.0,
+        -8.0,
+        0.9642,
+        10.0,
+        8.0,
+        1.0119
+      ],
+      "volume_mm3": 9.772338511684122,
+      "faces": 550
+    },
+    {
+      "name": "Part__Feature220",
+      "label": "TOP_Model_53_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_53_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -2.65,
+        -3.425,
+        0.9642,
+        -1.05,
+        -2.625,
+        0.9992
+      ],
+      "volume_mm3": 0.042600885142487145,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature221",
+      "label": "TOP_Model_52_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_52_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.75,
+        -3.425,
+        0.9642,
+        1.0,
+        -2.475,
+        0.9992
+      ],
+      "volume_mm3": 0.055988385142487135,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature222",
+      "label": "TOP_Model_51_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_51_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -2.95,
+        0.20499999999999996,
+        0.9642,
+        0.5245,
+        1.075,
+        0.9992
+      ],
+      "volume_mm3": 0.049462410046762884,
+      "faces": 39
+    },
+    {
+      "name": "Part__Feature223",
+      "label": "TOP_Model_50_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_50_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        2.725,
+        0.9642,
+        8.233,
+        3.0749999999999997,
+        0.9992
+      ],
+      "volume_mm3": 0.024061935782835126,
+      "faces": 31
+    },
+    {
+      "name": "Part__Feature224",
+      "label": "TOP_Model_49_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_49_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.3,
+        -1.0,
+        0.9642,
+        -0.267,
+        0.308,
+        0.9992
+      ],
+      "volume_mm3": 0.016747531524022197,
+      "faces": 28
+    },
+    {
+      "name": "Part__Feature225",
+      "label": "TOP_Model_48_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_48_Inst",
+      "category": "components",
+      "bounds_mm": [
+        7.192,
+        5.725,
+        0.9642,
+        8.608,
+        7.225,
+        0.9992
+      ],
+      "volume_mm3": 0.038893152254793256,
+      "faces": 27
+    },
+    {
+      "name": "Part__Feature226",
+      "label": "TOP_Model_47_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_47_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.625,
+        4.76499999999992,
+        0.9642,
+        0.5245000000000011,
+        5.933,
+        0.9992
+      ],
+      "volume_mm3": 0.01678477785054351,
+      "faces": 26
+    },
+    {
+      "name": "Part__Feature227",
+      "label": "TOP_Model_46_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_46_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.033000000000000015,
+        -1.0,
+        0.9642,
+        0.935,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.0176630407991159,
+      "faces": 25
+    },
+    {
+      "name": "Part__Feature228",
+      "label": "TOP_Model_45_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_45_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.225,
+        4.225,
+        0.9642,
+        0.5245000000000011,
+        4.575,
+        0.9992
+      ],
+      "volume_mm3": 0.01559193578283428,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature229",
+      "label": "TOP_Model_44_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_44_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.225,
+        3.725,
+        0.9642,
+        0.5245,
+        4.075,
+        0.9992
+      ],
+      "volume_mm3": 0.015591935782834252,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature230",
+      "label": "TOP_Model_43_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_43_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.125,
+        -1.633,
+        0.9642,
+        3.4749999999999996,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.015661935782835215,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature231",
+      "label": "TOP_Model_42_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_42_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        3.225,
+        0.9642,
+        7.425,
+        3.592,
+        0.9992
+      ],
+      "volume_mm3": 0.016556521170543924,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature232",
+      "label": "TOP_Model_41_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_41_Inst",
+      "category": "components",
+      "bounds_mm": [
+        1.608,
+        5.1755,
+        0.9642,
+        1.975,
+        6.925,
+        0.9992
+      ],
+      "volume_mm3": 0.015681521170545998,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature233",
+      "label": "TOP_Model_40_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_40_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.625,
+        5.1755,
+        0.9642,
+        3.9749999999999996,
+        6.875,
+        0.9992
+      ],
+      "volume_mm3": 0.015154435782835209,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature234",
+      "label": "TOP_Model_39_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_39_Inst",
+      "category": "components",
+      "bounds_mm": [
+        2.125,
+        5.1755,
+        0.9642,
+        2.4749999999999996,
+        6.925,
+        0.9992
+      ],
+      "volume_mm3": 0.015591935782835215,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature235",
+      "label": "TOP_Model_38_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_38_Inst",
+      "category": "components",
+      "bounds_mm": [
+        4.125,
+        5.1755,
+        0.9642,
+        4.475,
+        6.875,
+        0.9992
+      ],
+      "volume_mm3": 0.01516486442002131,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature236",
+      "label": "TOP_Model_37_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_37_Inst",
+      "category": "components",
+      "bounds_mm": [
+        1.65,
+        -5.35,
+        0.9642,
+        2.0,
+        -3.85,
+        0.9992
+      ],
+      "volume_mm3": 0.013522974399810603,
+      "faces": 23
+    },
+    {
+      "name": "Part__Feature237",
+      "label": "TOP_Model_36_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_36_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        1.0999999999999999,
+        0.9642,
+        7.1458,
+        1.535000000000144,
+        0.9992
+      ],
+      "volume_mm3": 0.011419038558809585,
+      "faces": 18
+    },
+    {
+      "name": "Part__Feature238",
+      "label": "TOP_Model_35_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_35_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        -0.175,
+        0.9642,
+        6.4505,
+        0.535,
+        0.9992
+      ],
+      "volume_mm3": 0.010312469083692696,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature239",
+      "label": "TOP_Model_34_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_34_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.125,
+        -1.1005,
+        0.9642,
+        5.475,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.010008505503837478,
+      "faces": 16
+    },
+    {
+      "name": "Part__Feature240",
+      "label": "TOP_Model_33_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_33_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        0.7250000000000001,
+        0.9642,
+        6.825,
+        1.075,
+        0.9992
+      ],
+      "volume_mm3": 0.010094255503846275,
+      "faces": 16
+    },
+    {
+      "name": "Part__Feature241",
+      "label": "TOP_Model_32_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_32_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        4.225,
+        0.9642,
+        6.8500000000000005,
+        4.575,
+        0.9992
+      ],
+      "volume_mm3": 0.010181755503846533,
+      "faces": 16
+    },
+    {
+      "name": "Part__Feature242",
+      "label": "TOP_Model_31_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_31_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.342,
+        6.475,
+        0.9642,
+        6.025,
+        6.825000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.005849224399810816,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature243",
+      "label": "TOP_Model_30_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_30_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.6,
+        6.142,
+        0.9642,
+        0.12499999999999999,
+        6.492,
+        0.9992
+      ],
+      "volume_mm3": 0.0062167243998109125,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature244",
+      "label": "TOP_Model_29_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_29_Inst",
+      "category": "components",
+      "bounds_mm": [
+        2.217,
+        -4.875,
+        0.9642,
+        2.9749999999999996,
+        -4.525,
+        0.9992
+      ],
+      "volume_mm3": 0.006505474399811023,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature245",
+      "label": "TOP_Model_28_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_28_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.925,
+        -6.15,
+        0.9642,
+        2.008,
+        -5.8,
+        0.9992
+      ],
+      "volume_mm3": 0.009349224399809671,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature246",
+      "label": "TOP_Model_27_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_27_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -2.95,
+        -1.555,
+        0.9642,
+        -1.7,
+        -0.5249999999999999,
+        0.9992
+      ],
+      "volume_mm3": 0.031110474399809924,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature247",
+      "label": "TOP_Model_26_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_26_Inst",
+      "category": "components",
+      "bounds_mm": [
+        8.442,
+        2.75,
+        0.9642,
+        8.792,
+        3.508,
+        0.9992
+      ],
+      "volume_mm3": 0.006505474399809833,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature248",
+      "label": "TOP_Model_25_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_25_Inst",
+      "category": "components",
+      "bounds_mm": [
+        2.192,
+        -4.15,
+        0.9642,
+        2.542,
+        -3.383,
+        0.9992
+      ],
+      "volume_mm3": 0.00658422439980989,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature249",
+      "label": "TOP_Model_24_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_24_Inst",
+      "category": "components",
+      "bounds_mm": [
+        2.217,
+        -6.525,
+        0.9642,
+        2.567000000000001,
+        -5.825,
+        0.9992
+      ],
+      "volume_mm3": 0.005997974399809804,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature250",
+      "label": "TOP_Model_23_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_23_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.125,
+        -2.5749999999999997,
+        0.9642,
+        3.4749999999999996,
+        -1.867,
+        0.9992
+      ],
+      "volume_mm3": 0.0060679743998098175,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature251",
+      "label": "TOP_Model_22_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_22_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.575,
+        -2.1,
+        0.9642,
+        -0.55,
+        -1.5,
+        0.9992
+      ],
+      "volume_mm3": 0.015054224399809444,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature252",
+      "label": "TOP_Model_21_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_21_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.25000000000000006,
+        -2.1,
+        0.9642,
+        0.7,
+        -1.5,
+        0.9992
+      ],
+      "volume_mm3": 0.014397974399811483,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature253",
+      "label": "TOP_Model_20_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_20(2)/TOP_Model_20_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.5,
+        -7.5,
+        0.9642,
+        9.5,
+        -1.5,
+        0.9992
+      ],
+      "volume_mm3": 0.6992498023497907,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature254",
+      "label": "TOP_Model_20_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_20(2)/TOP_Model_20_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -9.5,
+        -7.5,
+        0.9642,
+        -3.5,
+        -1.5,
+        0.9992
+      ],
+      "volume_mm3": 0.6992498023497907,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature255",
+      "label": "TOP_Model_19_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_19_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.483,
+        4.675,
+        0.9642,
+        9.6,
+        7.7,
+        0.9992
+      ],
+      "volume_mm3": 0.07604932359298675,
+      "faces": 53
+    },
+    {
+      "name": "Part__Feature256",
+      "label": "TOP_Model_18_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_18_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.1649999999998557,
+        4.675,
+        0.9642,
+        8.05,
+        7.25,
+        0.9992
+      ],
+      "volume_mm3": 0.05542603618347641,
+      "faces": 37
+    },
+    {
+      "name": "Part__Feature257",
+      "label": "TOP_Model_17_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_17_Inst",
+      "category": "components",
+      "bounds_mm": [
+        2.6649999999998557,
+        5.1755,
+        0.9642,
+        9.4,
+        7.475,
+        0.9992
+      ],
+      "volume_mm3": 0.05935656712449712,
+      "faces": 31
+    },
+    {
+      "name": "Part__Feature258",
+      "label": "TOP_Model_16_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_16_Inst",
+      "category": "components",
+      "bounds_mm": [
+        4.664999999999856,
+        5.1755,
+        0.9642,
+        5.108,
+        6.8,
+        0.9992
+      ],
+      "volume_mm3": 0.01268077489991919,
+      "faces": 21
+    },
+    {
+      "name": "Part__Feature259",
+      "label": "TOP_Model_15_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_15_Inst",
+      "category": "components",
+      "bounds_mm": [
+        1.017,
+        5.1755,
+        0.9642,
+        1.435,
+        6.8,
+        0.9992
+      ],
+      "volume_mm3": 0.012644531213215559,
+      "faces": 21
+    },
+    {
+      "name": "Part__Feature260",
+      "label": "TOP_Model_14_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_14_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        1.583,
+        0.9642,
+        7.35,
+        2.035000000000144,
+        0.9992
+      ],
+      "volume_mm3": 0.013218822627136353,
+      "faces": 21
+    },
+    {
+      "name": "Part__Feature261",
+      "label": "TOP_Model_13_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_13_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.5755,
+        2.117,
+        0.9642,
+        7.35,
+        2.535000000000144,
+        0.9992
+      ],
+      "volume_mm3": 0.01316953121321515,
+      "faces": 21
+    },
+    {
+      "name": "Part__Feature262",
+      "label": "TOP_Model_12_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_12_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.15,
+        1.717,
+        0.9642,
+        0.5245,
+        2.035,
+        0.9992
+      ],
+      "volume_mm3": 0.012630479834050124,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature263",
+      "label": "TOP_Model_11_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_11_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.15,
+        1.183,
+        0.9642,
+        0.5245,
+        1.535,
+        0.9992
+      ],
+      "volume_mm3": 0.012630479834050128,
+      "faces": 15
+    },
+    {
+      "name": "Part__Feature264",
+      "label": "TOP_Model_10_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.165,
+        5.1755,
+        0.9642,
+        5.4350000000000005,
+        6.0504999999999995,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908597,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature265",
+      "label": "TOP_Model_10_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        4.665,
+        -0.7505000000000001,
+        0.9642,
+        4.9350000000000005,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908596,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature266",
+      "label": "TOP_Model_10_Inst002",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        4.165,
+        -0.7505000000000001,
+        0.9642,
+        4.4350000000000005,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908597,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature267",
+      "label": "TOP_Model_10_Inst003",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        3.665,
+        -0.7505000000000001,
+        0.9642,
+        3.935,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.0077211934139085935,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature268",
+      "label": "TOP_Model_10_Inst004",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        2.665,
+        -0.7505000000000001,
+        0.9642,
+        2.935,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908593,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature269",
+      "label": "TOP_Model_10_Inst005",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        2.165,
+        -0.7505000000000001,
+        0.9642,
+        2.435,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908594,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature270",
+      "label": "TOP_Model_10_Inst006",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        1.665,
+        -0.7505000000000001,
+        0.9642,
+        1.935,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908592,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature271",
+      "label": "TOP_Model_10_Inst007",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_10(8)/TOP_Model_10_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        1.165,
+        -0.7505000000000001,
+        0.9642,
+        1.435,
+        0.12450000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908592,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature272",
+      "label": "TOP_Model_9_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst",
+      "category": "components",
+      "bounds_mm": [
+        5.575500000000001,
+        4.765,
+        0.9642,
+        6.4505,
+        5.035,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908595,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature273",
+      "label": "TOP_Model_9_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        5.575500000000001,
+        3.7649999999999997,
+        0.9642,
+        6.4505,
+        4.035,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908592,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature274",
+      "label": "TOP_Model_9_Inst002",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -0.35050000000000003,
+        3.2649999999999997,
+        0.9642,
+        0.5245,
+        3.535,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908593,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature275",
+      "label": "TOP_Model_9_Inst003",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        -0.35050000000000003,
+        2.7649999999999997,
+        0.9642,
+        0.5245,
+        3.035,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908591,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature276",
+      "label": "TOP_Model_9_Inst004",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        -0.35050000000000003,
+        2.2649999999999997,
+        0.9642,
+        0.5245,
+        2.535,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908593,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature277",
+      "label": "TOP_Model_9_Inst005",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_9(6)/TOP_Model_9_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        -0.35050000000000003,
+        0.265,
+        0.9642,
+        0.5245,
+        0.535,
+        0.9992
+      ],
+      "volume_mm3": 0.007721193413908592,
+      "faces": 8
+    },
+    {
+      "name": "Part__Feature278",
+      "label": "TOP_Model_8_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -6.025932034356001,
+        6.0516679656440004,
+        0.9642,
+        -5.601667965643999,
+        6.475932034356001,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature279",
+      "label": "TOP_Model_8_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -6.900932034356001,
+        6.001667965644001,
+        0.9642,
+        -6.476667965643999,
+        6.425932034356,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature280",
+      "label": "TOP_Model_8_Inst002",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -5.648332034356001,
+        5.674067965644,
+        0.9642,
+        -5.224067965644,
+        6.098332034356,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010647,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature281",
+      "label": "TOP_Model_8_Inst003",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        -6.523332034356001,
+        5.6240679656440005,
+        0.9642,
+        -6.099067965644,
+        6.048332034356001,
+        0.9992
+      ],
+      "volume_mm3": 0.003150000000001064,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature282",
+      "label": "TOP_Model_8_Inst004",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        -4.723332034356001,
+        5.5516679656440004,
+        0.9642,
+        -4.299067965643999,
+        5.975932034356001,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature283",
+      "label": "TOP_Model_8_Inst005",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        -7.400932034356,
+        5.501667965644001,
+        0.9642,
+        -6.9766679656439985,
+        5.925932034356,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010647,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature284",
+      "label": "TOP_Model_8_Inst006",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        -8.325932034356,
+        5.4266679656440004,
+        0.9642,
+        -7.901667965643998,
+        5.850932034356001,
+        0.9992
+      ],
+      "volume_mm3": 0.003150000000001063,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature285",
+      "label": "TOP_Model_8_Inst007",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        -5.100932034356001,
+        5.174067965644,
+        0.9642,
+        -4.676667965644,
+        5.598332034356,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature286",
+      "label": "TOP_Model_8_Inst008",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst008",
+      "category": "components",
+      "bounds_mm": [
+        -7.023332034356001,
+        5.1240679656440005,
+        0.9642,
+        -6.599067965644,
+        5.548332034356001,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature287",
+      "label": "TOP_Model_8_Inst009",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_8(10)/TOP_Model_8_Inst009",
+      "category": "components",
+      "bounds_mm": [
+        -7.948332034356,
+        5.049067965644,
+        0.9642,
+        -7.524067965643999,
+        5.473332034356,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000010643,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature288",
+      "label": "TOP_Model_7_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -8.0,
+        2.792,
+        0.9642,
+        -7.699999999999999,
+        3.092,
+        0.9992
+      ],
+      "volume_mm3": 0.003150000000000005,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature289",
+      "label": "TOP_Model_7_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -8.0,
+        2.258,
+        0.9642,
+        -7.699999999999999,
+        2.558,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000052,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature290",
+      "label": "TOP_Model_7_Inst002",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -8.675,
+        1.817,
+        0.9642,
+        -8.375,
+        2.117,
+        0.9992
+      ],
+      "volume_mm3": 0.003150000000000009,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature291",
+      "label": "TOP_Model_7_Inst003",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        -9.258000000000001,
+        1.7999999999999998,
+        0.9642,
+        -8.958,
+        2.1,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000096,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature292",
+      "label": "TOP_Model_7_Inst004",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        -9.792000000000002,
+        1.7999999999999998,
+        0.9642,
+        -9.491999999999999,
+        2.1,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000096,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature293",
+      "label": "TOP_Model_7_Inst005",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        -7.158000000000001,
+        1.625,
+        0.9642,
+        -6.8580000000000005,
+        1.925,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000087,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature294",
+      "label": "TOP_Model_7_Inst006",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        -7.692000000000001,
+        1.625,
+        0.9642,
+        -7.392,
+        1.925,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000087,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature295",
+      "label": "TOP_Model_7_Inst007",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_7(8)/TOP_Model_7_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        -8.675,
+        1.283,
+        0.9642,
+        -8.375,
+        1.583,
+        0.9992
+      ],
+      "volume_mm3": 0.0031500000000000096,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature296",
+      "label": "TOP_Model_6_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_6(2)/TOP_Model_6_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.34999999999999964,
+        -7.425,
+        0.9642,
+        0.8999999999999999,
+        -6.625,
+        0.9992
+      ],
+      "volume_mm3": 0.01540000000000001,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature297",
+      "label": "TOP_Model_6_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_6(2)/TOP_Model_6_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -2.7,
+        -7.425,
+        0.9642,
+        -2.15,
+        -6.625,
+        0.9992
+      ],
+      "volume_mm3": 0.01540000000000001,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature298",
+      "label": "TOP_Model_5_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_5(2)/TOP_Model_5_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -7.5,
+        2.1999999999999997,
+        0.9642,
+        -6.9,
+        2.6,
+        0.9992
+      ],
+      "volume_mm3": 0.008399999999999993,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature299",
+      "label": "TOP_Model_5_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_5(2)/TOP_Model_5_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -7.5,
+        1.0,
+        0.9642,
+        -6.9,
+        1.4,
+        0.9992
+      ],
+      "volume_mm3": 0.008399999999999996,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature300",
+      "label": "TOP_Model_4_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_4(2)/TOP_Model_4_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -6.225,
+        3.525,
+        0.9642,
+        -5.625,
+        4.7250000000000005,
+        0.9992
+      ],
+      "volume_mm3": 0.025199999999999993,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature301",
+      "label": "TOP_Model_4_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_4(2)/TOP_Model_4_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -6.225,
+        -1.125,
+        0.9642,
+        -5.625,
+        0.075,
+        0.9992
+      ],
+      "volume_mm3": 0.02519999999999999,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature302",
+      "label": "TOP_Model_3_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_3(2)/TOP_Model_3_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -9.8,
+        2.25,
+        0.9642,
+        -9.15,
+        2.55,
+        0.9992
+      ],
+      "volume_mm3": 0.006825000000000005,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature303",
+      "label": "TOP_Model_3_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_3(2)/TOP_Model_3_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -9.8,
+        1.05,
+        0.9642,
+        -9.15,
+        1.35,
+        0.9992
+      ],
+      "volume_mm3": 0.006825000000000006,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature304",
+      "label": "TOP_Model_2_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_2(2)/TOP_Model_2_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -9.8,
+        3.9999999999999996,
+        0.9642,
+        -9.1,
+        4.4,
+        0.9992
+      ],
+      "volume_mm3": 0.009800000000000014,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature305",
+      "label": "TOP_Model_2_Inst001",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_2(2)/TOP_Model_2_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -9.8,
+        -0.8,
+        0.9642,
+        -9.1,
+        -0.4,
+        0.9992
+      ],
+      "volume_mm3": 0.009800000000000019,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature306",
+      "label": "TOP_Model_1_Inst",
+      "path": "202606r1/TOP (87 bodies)/TOP_Model_1_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.75,
+        0.34999999999999964,
+        0.9642,
+        5.35,
+        4.95,
+        0.9992
+      ],
+      "volume_mm3": 0.7406000000000001,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature307",
+      "label": "BOTTOM_Model_10_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_10_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.15,
+        -4.125,
+        0.0,
+        6.188,
+        0.175,
+        0.035
+      ],
+      "volume_mm3": 0.03673635955948077,
+      "faces": 51
+    },
+    {
+      "name": "Part__Feature308",
+      "label": "BOTTOM_Model_9_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_9_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.125,
+        -3.8745,
+        0.0,
+        7.3458,
+        4.575,
+        0.035
+      ],
+      "volume_mm3": 0.049178337547326686,
+      "faces": 49
+    },
+    {
+      "name": "Part__Feature309",
+      "label": "BOTTOM_Model_8_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_8_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.55,
+        -5.65,
+        0.0,
+        6.825,
+        1.075,
+        0.035
+      ],
+      "volume_mm3": 0.05160595590595927,
+      "faces": 49
+    },
+    {
+      "name": "Part__Feature310",
+      "label": "BOTTOM_Model_7_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_7_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -1.35,
+        -4.625,
+        0.0,
+        7.1458,
+        1.4500000000000008,
+        0.035
+      ],
+      "volume_mm3": 0.04738381571838895,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature311",
+      "label": "BOTTOM_Model_6_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_6_Inst",
+      "category": "components",
+      "bounds_mm": [
+        -0.375,
+        -3.8745,
+        0.0,
+        5.475,
+        -0.7505,
+        0.035
+      ],
+      "volume_mm3": 0.02746184279796678,
+      "faces": 33
+    },
+    {
+      "name": "Part__Feature312",
+      "label": "BOTTOM_Model_5_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_5_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.125,
+        -6.15,
+        0.0,
+        1.275000000000001,
+        -5.1245,
+        0.035
+      ],
+      "volume_mm3": 0.01432551932102634,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature313",
+      "label": "BOTTOM_Model_4_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_4_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.6255,
+        -5.35,
+        0.0,
+        2.0,
+        -4.875,
+        0.035
+      ],
+      "volume_mm3": 0.011985582453951666,
+      "faces": 17
+    },
+    {
+      "name": "Part__Feature314",
+      "label": "BOTTOM_Model_3_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst",
+      "category": "components",
+      "bounds_mm": [
+        7.7250000000000005,
+        6.875000000000001,
+        0.0,
+        8.075000000000001,
+        7.2250000000000005,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature315",
+      "label": "BOTTOM_Model_3_Inst001",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        5.675,
+        6.4750000000000005,
+        0.0,
+        6.0249999999999995,
+        6.825,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature316",
+      "label": "BOTTOM_Model_3_Inst002",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -0.22500000000000026,
+        6.142,
+        0.0,
+        0.12499999999999972,
+        6.492,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature317",
+      "label": "BOTTOM_Model_3_Inst003",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        4.125,
+        6.125000000000001,
+        0.0,
+        4.475,
+        6.4750000000000005,
+        0.035
+      ],
+      "volume_mm3": 0.0022678371968101315,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature318",
+      "label": "BOTTOM_Model_3_Inst004",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        3.625,
+        6.125000000000001,
+        0.0,
+        3.9749999999999996,
+        6.4750000000000005,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature319",
+      "label": "BOTTOM_Model_3_Inst005",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        2.125,
+        6.125000000000001,
+        0.0,
+        2.4749999999999996,
+        6.4750000000000005,
+        0.035
+      ],
+      "volume_mm3": 0.00226783719681013,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature320",
+      "label": "BOTTOM_Model_3_Inst006",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        1.6249999999999998,
+        6.125000000000001,
+        0.0,
+        1.9749999999999999,
+        6.4750000000000005,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature321",
+      "label": "BOTTOM_Model_3_Inst007",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        -0.6250000000000002,
+        5.150000000000001,
+        0.0,
+        -0.2750000000000002,
+        5.500000000000001,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature322",
+      "label": "BOTTOM_Model_3_Inst008",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst008",
+      "category": "components",
+      "bounds_mm": [
+        -0.8,
+        4.2250000000000005,
+        0.0,
+        -0.45,
+        4.575,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature323",
+      "label": "BOTTOM_Model_3_Inst009",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst009",
+      "category": "components",
+      "bounds_mm": [
+        -0.8,
+        3.7250000000000005,
+        0.0,
+        -0.45,
+        4.075,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature324",
+      "label": "BOTTOM_Model_3_Inst010",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst010",
+      "category": "components",
+      "bounds_mm": [
+        6.575,
+        3.2250000000000005,
+        0.0,
+        6.925,
+        3.575,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature325",
+      "label": "BOTTOM_Model_3_Inst011",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst011",
+      "category": "components",
+      "bounds_mm": [
+        8.441999999999998,
+        3.1580000000000004,
+        0.0,
+        8.792,
+        3.508,
+        0.035
+      ],
+      "volume_mm3": 0.00226783719681013,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature326",
+      "label": "BOTTOM_Model_3_Inst012",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst012",
+      "category": "components",
+      "bounds_mm": [
+        6.55,
+        2.7250000000000005,
+        0.0,
+        6.8999999999999995,
+        3.075,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature327",
+      "label": "BOTTOM_Model_3_Inst013",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst013",
+      "category": "components",
+      "bounds_mm": [
+        -0.8,
+        0.7250000000000003,
+        0.0,
+        -0.45,
+        1.0750000000000004,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature328",
+      "label": "BOTTOM_Model_3_Inst014",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst014",
+      "category": "components",
+      "bounds_mm": [
+        -1.3,
+        -0.425,
+        0.0,
+        -0.95,
+        -0.07500000000000001,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature329",
+      "label": "BOTTOM_Model_3_Inst015",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst015",
+      "category": "components",
+      "bounds_mm": [
+        0.11199999999999993,
+        -0.4879999999999997,
+        0.0,
+        0.4619999999999999,
+        -0.13799999999999973,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature330",
+      "label": "BOTTOM_Model_3_Inst016",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst016",
+      "category": "components",
+      "bounds_mm": [
+        -2.4999999999999996,
+        -0.8749999999999993,
+        0.0,
+        -2.15,
+        -0.5249999999999992,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature331",
+      "label": "BOTTOM_Model_3_Inst017",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst017",
+      "category": "components",
+      "bounds_mm": [
+        3.125,
+        -1.1999999999999995,
+        0.0,
+        3.4749999999999996,
+        -0.8499999999999994,
+        0.035
+      ],
+      "volume_mm3": 0.0022678371968101294,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature332",
+      "label": "BOTTOM_Model_3_Inst018",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst018",
+      "category": "components",
+      "bounds_mm": [
+        0.3499999999999999,
+        -1.9749999999999999,
+        0.0,
+        0.7,
+        -1.6249999999999998,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature333",
+      "label": "BOTTOM_Model_3_Inst019",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst019",
+      "category": "components",
+      "bounds_mm": [
+        -1.575,
+        -1.9749999999999999,
+        0.0,
+        -1.2249999999999999,
+        -1.6249999999999998,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature334",
+      "label": "BOTTOM_Model_3_Inst020",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst020",
+      "category": "components",
+      "bounds_mm": [
+        3.125,
+        -2.5749999999999993,
+        0.0,
+        3.4749999999999996,
+        -2.2249999999999996,
+        0.035
+      ],
+      "volume_mm3": 0.00226783719681013,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature335",
+      "label": "BOTTOM_Model_3_Inst021",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst021",
+      "category": "components",
+      "bounds_mm": [
+        0.5499999999999998,
+        -2.8499999999999996,
+        0.0,
+        0.8999999999999999,
+        -2.5,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature336",
+      "label": "BOTTOM_Model_3_Inst022",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst022",
+      "category": "components",
+      "bounds_mm": [
+        0.0500000000000001,
+        -3.0499999999999994,
+        0.0,
+        0.4000000000000001,
+        -2.6999999999999997,
+        0.035
+      ],
+      "volume_mm3": 0.0022678371968101294,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature337",
+      "label": "BOTTOM_Model_3_Inst023",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst023",
+      "category": "components",
+      "bounds_mm": [
+        -2.6,
+        -3.0749999999999993,
+        0.0,
+        -2.2500000000000004,
+        -2.7249999999999996,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature338",
+      "label": "BOTTOM_Model_3_Inst024",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst024",
+      "category": "components",
+      "bounds_mm": [
+        -2.1750000000000003,
+        -3.3749999999999996,
+        0.0,
+        -1.8250000000000004,
+        -3.025,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature339",
+      "label": "BOTTOM_Model_3_Inst025",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst025",
+      "category": "components",
+      "bounds_mm": [
+        2.192,
+        -3.7329999999999997,
+        0.0,
+        2.542,
+        -3.383,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature340",
+      "label": "BOTTOM_Model_3_Inst026",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst026",
+      "category": "components",
+      "bounds_mm": [
+        2.625,
+        -4.874999999999999,
+        0.0,
+        2.9749999999999996,
+        -4.5249999999999995,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature341",
+      "label": "BOTTOM_Model_3_Inst027",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_3(28)/BOTTOM_Model_3_Inst027",
+      "category": "components",
+      "bounds_mm": [
+        2.217,
+        -6.5249999999999995,
+        0.0,
+        2.5669999999999997,
+        -6.175,
+        0.035
+      ],
+      "volume_mm3": 0.002267837196810129,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature342",
+      "label": "BOTTOM_Model_2_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_2(2)/BOTTOM_Model_2_Inst",
+      "category": "components",
+      "bounds_mm": [
+        3.25,
+        -7.75,
+        0.0,
+        9.75,
+        -1.25,
+        0.035
+      ],
+      "volume_mm3": 0.8710556505929825,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature343",
+      "label": "BOTTOM_Model_2_Inst001",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_2(2)/BOTTOM_Model_2_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -9.75,
+        -7.75,
+        0.0,
+        -3.25,
+        -1.25,
+        0.035
+      ],
+      "volume_mm3": 0.8710556505929825,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature344",
+      "label": "BOTTOM_Model_1_Inst",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_1(3)/BOTTOM_Model_1_Inst",
+      "category": "components",
+      "bounds_mm": [
+        0.6255,
+        -4.125,
+        0.0,
+        0.9004999999999999,
+        -3.875,
+        0.035
+      ],
+      "volume_mm3": 0.0024062499999999995,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature345",
+      "label": "BOTTOM_Model_1_Inst001",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_1(3)/BOTTOM_Model_1_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        0.6255,
+        -4.625,
+        0.0,
+        0.9004999999999999,
+        -4.375,
+        0.035
+      ],
+      "volume_mm3": 0.0024062499999999995,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature346",
+      "label": "BOTTOM_Model_1_Inst002",
+      "path": "202606r1/BOTTOM (40 bodies)/BOTTOM_Model_1(3)/BOTTOM_Model_1_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -0.8995,
+        -5.125,
+        0.0,
+        -0.6245,
+        -4.875,
+        0.035
+      ],
+      "volume_mm3": 0.0024062499999999995,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature347",
+      "label": "SILKSCREEN_BOTTOM_Model_6_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_6_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.315,
+        -5.960000000000008,
+        -0.0254,
+        -0.2248999999997591,
+        -5.74,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 9.452841185861282e-05,
+      "faces": 48
+    },
+    {
+      "name": "Part__Feature348",
+      "label": "SILKSCREEN_BOTTOM_Model_5_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_5_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -0.446600000000004,
+        -5.96,
+        -0.0254,
+        -0.3533,
+        -5.739999999999878,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 0.00011371467371706312,
+      "faces": 30
+    },
+    {
+      "name": "Part__Feature349",
+      "label": "SILKSCREEN_BOTTOM_Model_4_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_4_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        0.5135,
+        -5.5625,
+        -0.0254,
+        1.0625,
+        -5.2285,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 0.001150093685061467,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature350",
+      "label": "SILKSCREEN_BOTTOM_Model_3_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_3_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.0625,
+        -5.5625,
+        -0.0254,
+        -0.5135,
+        -5.2285,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 0.0011500936850614668,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature351",
+      "label": "SILKSCREEN_BOTTOM_Model_2_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_2_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        0.5185,
+        -3.7625,
+        -0.0254,
+        1.0625,
+        -3.4375,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 0.0011278686850614678,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature352",
+      "label": "SILKSCREEN_BOTTOM_Model_1_Inst",
+      "path": "202606r1/SILKSCREEN_BOTTOM (6 bodies)/SILKSCREEN_BOTTOM_Model_1_Inst",
+      "category": "markings",
+      "bounds_mm": [
+        -1.0625,
+        -3.7625,
+        -0.0254,
+        -0.5185,
+        -3.4375,
+        -0.012700000000000098
+      ],
+      "volume_mm3": 0.0011278686850614682,
+      "faces": 11
+    },
+    {
+      "name": "Part__Feature353",
+      "label": "SOLDERMASK_BOTTOM_Model_1_Inst",
+      "path": "202606r1/SOLDERMASK_BOTTOM (1 bodies)/SOLDERMASK_BOTTOM_Model_1_Inst",
+      "category": "board",
+      "bounds_mm": [
+        -10.0,
+        -8.0,
+        -0.0127,
+        10.0,
+        8.0,
+        0.0350000000000001
+      ],
+      "volume_mm3": 11.93757429262967,
+      "faces": 50
+    },
+    {
+      "name": "Part__Feature354",
+      "label": "DIELECTRIC_Model_1_Inst",
+      "path": "202606r1/DIELECTRIC (1 bodies)/DIELECTRIC_Model_1_Inst",
+      "category": "board",
+      "bounds_mm": [
+        -10.0,
+        -8.0,
+        0.035,
+        10.0,
+        8.0,
+        0.9642000000000001
+      ],
+      "volume_mm3": 281.92714456131426,
+      "faces": 10
+    },
+    {
+      "name": "Part__Feature355",
+      "label": "Plating_TOP--TOP_Model_1_Inst",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst",
+      "category": "components",
+      "bounds_mm": [
+        7.800000000000001,
+        6.950000000000001,
+        0.9642,
+        8.0,
+        7.15,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature356",
+      "label": "Plating_TOP--TOP_Model_1_Inst001",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        5.75,
+        6.550000000000001,
+        0.9642,
+        5.949999999999999,
+        6.75,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature357",
+      "label": "Plating_TOP--TOP_Model_1_Inst002",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -0.14999999999999986,
+        6.2170000000000005,
+        0.9642,
+        0.04999999999999934,
+        6.417,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature358",
+      "label": "Plating_TOP--TOP_Model_1_Inst003",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        4.2,
+        6.200000000000001,
+        0.9642,
+        4.3999999999999995,
+        6.4,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809329,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature359",
+      "label": "Plating_TOP--TOP_Model_1_Inst004",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        3.7,
+        6.200000000000001,
+        0.9642,
+        3.8999999999999995,
+        6.4,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature360",
+      "label": "Plating_TOP--TOP_Model_1_Inst005",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        2.2,
+        6.200000000000001,
+        0.9642,
+        2.3999999999999995,
+        6.4,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093354,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature361",
+      "label": "Plating_TOP--TOP_Model_1_Inst006",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        1.7000000000000002,
+        6.200000000000001,
+        0.9642,
+        1.8999999999999995,
+        6.4,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809334,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature362",
+      "label": "Plating_TOP--TOP_Model_1_Inst007",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        -0.5499999999999998,
+        5.225000000000001,
+        0.9642,
+        -0.3500000000000006,
+        5.425000000000001,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature363",
+      "label": "Plating_TOP--TOP_Model_1_Inst008",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst008",
+      "category": "components",
+      "bounds_mm": [
+        6.575000000000001,
+        4.300000000000001,
+        0.9642,
+        6.775,
+        4.5,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature364",
+      "label": "Plating_TOP--TOP_Model_1_Inst009",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst009",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        4.300000000000001,
+        0.9642,
+        -0.5250000000000004,
+        4.5,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature365",
+      "label": "Plating_TOP--TOP_Model_1_Inst010",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst010",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        3.8000000000000007,
+        0.9642,
+        -0.5250000000000004,
+        4.0,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature366",
+      "label": "Plating_TOP--TOP_Model_1_Inst011",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst011",
+      "category": "components",
+      "bounds_mm": [
+        6.65,
+        3.3000000000000007,
+        0.9642,
+        6.85,
+        3.5,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature367",
+      "label": "Plating_TOP--TOP_Model_1_Inst012",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst012",
+      "category": "components",
+      "bounds_mm": [
+        8.517,
+        3.2330000000000005,
+        0.9642,
+        8.716999999999999,
+        3.433,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature368",
+      "label": "Plating_TOP--TOP_Model_1_Inst013",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst013",
+      "category": "components",
+      "bounds_mm": [
+        6.625,
+        2.8000000000000007,
+        0.9642,
+        6.824999999999999,
+        3.0,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature369",
+      "label": "Plating_TOP--TOP_Model_1_Inst014",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst014",
+      "category": "components",
+      "bounds_mm": [
+        6.870800000000001,
+        1.1750000000000007,
+        0.9642,
+        7.0708,
+        1.375,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature370",
+      "label": "Plating_TOP--TOP_Model_1_Inst015",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst015",
+      "category": "components",
+      "bounds_mm": [
+        6.550000000000001,
+        0.8000000000000007,
+        0.9642,
+        6.75,
+        1.0,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature371",
+      "label": "Plating_TOP--TOP_Model_1_Inst016",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst016",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        0.8000000000000007,
+        0.9642,
+        -0.5250000000000004,
+        1.0,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093354,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature372",
+      "label": "Plating_TOP--TOP_Model_1_Inst017",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst017",
+      "category": "components",
+      "bounds_mm": [
+        5.913,
+        -0.0999999999999996,
+        0.9642,
+        6.1129999999999995,
+        0.0999999999999996,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809337,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature373",
+      "label": "Plating_TOP--TOP_Model_1_Inst018",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst018",
+      "category": "components",
+      "bounds_mm": [
+        -1.2249999999999996,
+        -0.3499999999999996,
+        0.9642,
+        -1.0250000000000004,
+        -0.1500000000000004,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature374",
+      "label": "Plating_TOP--TOP_Model_1_Inst019",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst019",
+      "category": "components",
+      "bounds_mm": [
+        0.18700000000000033,
+        -0.4129999999999993,
+        0.9642,
+        0.3869999999999995,
+        -0.21300000000000013,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093354,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature375",
+      "label": "Plating_TOP--TOP_Model_1_Inst020",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst020",
+      "category": "components",
+      "bounds_mm": [
+        -2.4249999999999994,
+        -0.7999999999999989,
+        0.9642,
+        -2.225,
+        -0.5999999999999996,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093354,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature376",
+      "label": "Plating_TOP--TOP_Model_1_Inst021",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst021",
+      "category": "components",
+      "bounds_mm": [
+        5.2,
+        -1.0254999999999992,
+        0.9642,
+        5.3999999999999995,
+        -0.8254999999999999,
+        0.9992
+      ],
+      "volume_mm3": 0.000481056375080933,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature377",
+      "label": "Plating_TOP--TOP_Model_1_Inst022",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst022",
+      "category": "components",
+      "bounds_mm": [
+        3.2,
+        -1.1249999999999991,
+        0.9642,
+        3.3999999999999995,
+        -0.9249999999999998,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature378",
+      "label": "Plating_TOP--TOP_Model_1_Inst023",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst023",
+      "category": "components",
+      "bounds_mm": [
+        0.4250000000000003,
+        -1.8999999999999995,
+        0.9642,
+        0.6249999999999996,
+        -1.7000000000000002,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature379",
+      "label": "Plating_TOP--TOP_Model_1_Inst024",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst024",
+      "category": "components",
+      "bounds_mm": [
+        -1.4999999999999996,
+        -1.8999999999999995,
+        0.9642,
+        -1.3000000000000003,
+        -1.7000000000000002,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809334,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature380",
+      "label": "Plating_TOP--TOP_Model_1_Inst025",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst025",
+      "category": "components",
+      "bounds_mm": [
+        3.2,
+        -2.499999999999999,
+        0.9642,
+        3.3999999999999995,
+        -2.3,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature381",
+      "label": "Plating_TOP--TOP_Model_1_Inst026",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst026",
+      "category": "components",
+      "bounds_mm": [
+        0.6250000000000002,
+        -2.7749999999999995,
+        0.9642,
+        0.8249999999999995,
+        -2.575,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature382",
+      "label": "Plating_TOP--TOP_Model_1_Inst027",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst027",
+      "category": "components",
+      "bounds_mm": [
+        0.1250000000000005,
+        -2.974999999999999,
+        0.9642,
+        0.3249999999999997,
+        -2.775,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809334,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature383",
+      "label": "Plating_TOP--TOP_Model_1_Inst028",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst028",
+      "category": "components",
+      "bounds_mm": [
+        -2.525,
+        -2.999999999999999,
+        0.9642,
+        -2.3250000000000006,
+        -2.8,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature384",
+      "label": "Plating_TOP--TOP_Model_1_Inst029",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst029",
+      "category": "components",
+      "bounds_mm": [
+        -2.1,
+        -3.2999999999999994,
+        0.9642,
+        -1.9000000000000008,
+        -3.1,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809335,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature385",
+      "label": "Plating_TOP--TOP_Model_1_Inst030",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst030",
+      "category": "components",
+      "bounds_mm": [
+        2.2670000000000003,
+        -3.6579999999999995,
+        0.9642,
+        2.4669999999999996,
+        -3.458,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature386",
+      "label": "Plating_TOP--TOP_Model_1_Inst031",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst031",
+      "category": "components",
+      "bounds_mm": [
+        2.7,
+        -4.799999999999999,
+        0.9642,
+        2.8999999999999995,
+        -4.6,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature387",
+      "label": "Plating_TOP--TOP_Model_1_Inst032",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst032",
+      "category": "components",
+      "bounds_mm": [
+        1.7250000000000003,
+        -5.2749999999999995,
+        0.9642,
+        1.9249999999999996,
+        -5.075,
+        0.9992
+      ],
+      "volume_mm3": 0.00048105637508093343,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature388",
+      "label": "Plating_TOP--TOP_Model_1_Inst033",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst033",
+      "category": "components",
+      "bounds_mm": [
+        1.0000000000000002,
+        -6.074999999999999,
+        0.9642,
+        1.1999999999999995,
+        -5.875,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature389",
+      "label": "Plating_TOP--TOP_Model_1_Inst034",
+      "path": "202606r1/Platings/Plating_TOP--TOP (35 bodies)/Plating_TOP--TOP_Model_1(35)/Plating_TOP--TOP_Model_1_Inst034",
+      "category": "components",
+      "bounds_mm": [
+        2.2920000000000003,
+        -6.449999999999999,
+        0.9642,
+        2.4919999999999995,
+        -6.25,
+        0.9992
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature390",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst",
+      "category": "components",
+      "bounds_mm": [
+        7.800000000000001,
+        6.950000000000001,
+        0.0,
+        8.0,
+        7.15,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature391",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst001",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        5.75,
+        6.550000000000001,
+        0.0,
+        5.949999999999999,
+        6.75,
+        0.035
+      ],
+      "volume_mm3": 0.000481056375080933,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature392",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst002",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst002",
+      "category": "components",
+      "bounds_mm": [
+        -0.14999999999999986,
+        6.2170000000000005,
+        0.0,
+        0.04999999999999934,
+        6.417,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature393",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst003",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst003",
+      "category": "components",
+      "bounds_mm": [
+        4.2,
+        6.200000000000001,
+        0.0,
+        4.3999999999999995,
+        6.4,
+        0.035
+      ],
+      "volume_mm3": 0.00048105637508093267,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature394",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst004",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst004",
+      "category": "components",
+      "bounds_mm": [
+        3.7,
+        6.200000000000001,
+        0.0,
+        3.8999999999999995,
+        6.4,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature395",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst005",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst005",
+      "category": "components",
+      "bounds_mm": [
+        2.2,
+        6.200000000000001,
+        0.0,
+        2.3999999999999995,
+        6.4,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature396",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst006",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst006",
+      "category": "components",
+      "bounds_mm": [
+        1.7000000000000002,
+        6.200000000000001,
+        0.0,
+        1.8999999999999995,
+        6.4,
+        0.035
+      ],
+      "volume_mm3": 0.00048105637508093316,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature397",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst007",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst007",
+      "category": "components",
+      "bounds_mm": [
+        -0.5499999999999998,
+        5.225000000000001,
+        0.0,
+        -0.3500000000000006,
+        5.425000000000001,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature398",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst008",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst008",
+      "category": "components",
+      "bounds_mm": [
+        6.575000000000001,
+        4.300000000000001,
+        0.0,
+        6.775,
+        4.5,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature399",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst009",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst009",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        4.300000000000001,
+        0.0,
+        -0.5250000000000004,
+        4.5,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature400",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst010",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst010",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        3.8000000000000007,
+        0.0,
+        -0.5250000000000004,
+        4.0,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature401",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst011",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst011",
+      "category": "components",
+      "bounds_mm": [
+        6.65,
+        3.3000000000000007,
+        0.0,
+        6.85,
+        3.5,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature402",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst012",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst012",
+      "category": "components",
+      "bounds_mm": [
+        8.517,
+        3.2330000000000005,
+        0.0,
+        8.716999999999999,
+        3.433,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature403",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst013",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst013",
+      "category": "components",
+      "bounds_mm": [
+        6.625,
+        2.8000000000000007,
+        0.0,
+        6.824999999999999,
+        3.0,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature404",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst014",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst014",
+      "category": "components",
+      "bounds_mm": [
+        6.870800000000001,
+        1.1750000000000007,
+        0.0,
+        7.0708,
+        1.375,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature405",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst015",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst015",
+      "category": "components",
+      "bounds_mm": [
+        6.550000000000001,
+        0.8000000000000007,
+        0.0,
+        6.75,
+        1.0,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature406",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst016",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst016",
+      "category": "components",
+      "bounds_mm": [
+        -0.7249999999999996,
+        0.8000000000000007,
+        0.0,
+        -0.5250000000000004,
+        1.0,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature407",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst017",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst017",
+      "category": "components",
+      "bounds_mm": [
+        5.913,
+        -0.0999999999999996,
+        0.0,
+        6.1129999999999995,
+        0.0999999999999996,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809335,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature408",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst018",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst018",
+      "category": "components",
+      "bounds_mm": [
+        -1.2249999999999996,
+        -0.3499999999999996,
+        0.0,
+        -1.0250000000000004,
+        -0.1500000000000004,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature409",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst019",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst019",
+      "category": "components",
+      "bounds_mm": [
+        0.18700000000000033,
+        -0.4129999999999993,
+        0.0,
+        0.3869999999999995,
+        -0.21300000000000013,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature410",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst020",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst020",
+      "category": "components",
+      "bounds_mm": [
+        -2.4249999999999994,
+        -0.7999999999999989,
+        0.0,
+        -2.225,
+        -0.5999999999999996,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809333,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature411",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst021",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst021",
+      "category": "components",
+      "bounds_mm": [
+        5.2,
+        -1.0254999999999992,
+        0.0,
+        5.3999999999999995,
+        -0.8254999999999999,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809328,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature412",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst022",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst022",
+      "category": "components",
+      "bounds_mm": [
+        3.2,
+        -1.1249999999999991,
+        0.0,
+        3.3999999999999995,
+        -0.9249999999999998,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature413",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst023",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst023",
+      "category": "components",
+      "bounds_mm": [
+        0.4250000000000003,
+        -1.8999999999999995,
+        0.0,
+        0.6249999999999996,
+        -1.7000000000000002,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature414",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst024",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst024",
+      "category": "components",
+      "bounds_mm": [
+        -1.4999999999999996,
+        -1.8999999999999995,
+        0.0,
+        -1.3000000000000003,
+        -1.7000000000000002,
+        0.035
+      ],
+      "volume_mm3": 0.00048105637508093316,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature415",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst025",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst025",
+      "category": "components",
+      "bounds_mm": [
+        3.2,
+        -2.499999999999999,
+        0.0,
+        3.3999999999999995,
+        -2.3,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature416",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst026",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst026",
+      "category": "components",
+      "bounds_mm": [
+        0.6250000000000002,
+        -2.7749999999999995,
+        0.0,
+        0.8249999999999995,
+        -2.575,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature417",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst027",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst027",
+      "category": "components",
+      "bounds_mm": [
+        0.1250000000000005,
+        -2.974999999999999,
+        0.0,
+        0.3249999999999997,
+        -2.775,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature418",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst028",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst028",
+      "category": "components",
+      "bounds_mm": [
+        -2.525,
+        -2.999999999999999,
+        0.0,
+        -2.3250000000000006,
+        -2.8,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature419",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst029",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst029",
+      "category": "components",
+      "bounds_mm": [
+        -2.1,
+        -3.2999999999999994,
+        0.0,
+        -1.9000000000000008,
+        -3.1,
+        0.035
+      ],
+      "volume_mm3": 0.00048105637508093327,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature420",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst030",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst030",
+      "category": "components",
+      "bounds_mm": [
+        2.2670000000000003,
+        -3.6579999999999995,
+        0.0,
+        2.4669999999999996,
+        -3.458,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature421",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst031",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst031",
+      "category": "components",
+      "bounds_mm": [
+        2.7,
+        -4.799999999999999,
+        0.0,
+        2.8999999999999995,
+        -4.6,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature422",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst032",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst032",
+      "category": "components",
+      "bounds_mm": [
+        1.7250000000000003,
+        -5.2749999999999995,
+        0.0,
+        1.9249999999999996,
+        -5.075,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809332,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature423",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst033",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst033",
+      "category": "components",
+      "bounds_mm": [
+        1.0000000000000002,
+        -6.074999999999999,
+        0.0,
+        1.1999999999999995,
+        -5.875,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature424",
+      "label": "Plating_BOTTOM--BOTTOM_Model_1_Inst034",
+      "path": "202606r1/Platings/Plating_BOTTOM--BOTTOM (35 bodies)/Plating_BOTTOM--BOTTOM_Model_1(35)/Plating_BOTTOM--BOTTOM_Model_1_Inst034",
+      "category": "components",
+      "bounds_mm": [
+        2.2920000000000003,
+        -6.449999999999999,
+        0.0,
+        2.4919999999999995,
+        -6.25,
+        0.035
+      ],
+      "volume_mm3": 0.0004810563750809331,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature425",
+      "label": "Plating_TOP--BOTTOM_Model_1_Inst",
+      "path": "202606r1/Platings/Plating_TOP--BOTTOM (2 bodies)/Plating_TOP--BOTTOM_Model_1(2)/Plating_TOP--BOTTOM_Model_1_Inst",
+      "category": "components",
+      "bounds_mm": [
+        4.875,
+        -6.125,
+        0.0,
+        8.125,
+        -2.875,
+        0.9992
+      ],
+      "volume_mm3": 0.2530882749695218,
+      "faces": 6
+    },
+    {
+      "name": "Part__Feature426",
+      "label": "Plating_TOP--BOTTOM_Model_1_Inst001",
+      "path": "202606r1/Platings/Plating_TOP--BOTTOM (2 bodies)/Plating_TOP--BOTTOM_Model_1(2)/Plating_TOP--BOTTOM_Model_1_Inst001",
+      "category": "components",
+      "bounds_mm": [
+        -8.125,
+        -6.125,
+        0.0,
+        -4.875,
+        -2.875,
+        0.9992
+      ],
+      "volume_mm3": 0.2530882749695218,
+      "faces": 6
+    }
+  ]
+}
